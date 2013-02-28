@@ -1,0 +1,597 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[categories: Assembly | 折腾来折腾去]]></title>
+  <link href="http://pikipity.github.com/blog/categories/assembly/atom.xml" rel="self"/>
+  <link href="http://pikipity.github.com/"/>
+  <updated>2013-01-30T00:00:00+08:00</updated>
+  <id>http://pikipity.github.com/</id>
+  <author>
+    <name><![CDATA[pikipity]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[汇编实战之LED数码管]]></title>
+    <link href="http://pikipity.github.com/blog/assembly-application-3.html"/>
+    <updated>2013-02-08T21:25:00+08:00</updated>
+    <id>http://pikipity.github.com/blog/assembly-application-3</id>
+    <content type="html"><![CDATA[<p>之前已经讲述了如何用汇编来实现<a href="/blog/assembly-application-1.html">加减</a><a href="/blog/assembly-application-2.html">乘除</a>的实现方法，但是只是做运算是远远不够的，还需要将运算后的数字显示出来，那么如何显示呢，这篇讲述如何用时钟中断以尽量少的I/O口的数量来实现LED数码管的显示。</p>
+
+<!--more-->
+
+<h3 id="section">算法</h3>
+
+<p>说是算法，很不准确啊，但是没有想出更好的题目了，主要是介绍一下我的想法，这种想法还是非常常见和好用的。主要为两点：</p>
+
+<ol>
+  <li>
+    <p>不是所有数码管同时亮，而是一个一个的亮，利用人眼的视觉误差，让人感觉是一起亮就可以了。由于<a href="http://zh.wikipedia.org/wiki/%E8%A6%96%E8%A6%BA%E6%9A%AB%E7%95%99">人眼的视觉停留</a>大约为0.1s，也就是说要在0.1s内将全部数码管显示一遍，这里我们放置了5个，显示一个的时间大约是0.02s，这里使用12MHz的晶振，时钟周期位$\frac{1}{12}$us，机械周期为1us，那么计时器设定为计时20000就可以了。</p>
+  </li>
+  <li>
+    <p>由于十进制数字只有$0\sim 9$十个数字，数量少且固定，所以可以通过查表法来控制数码管。</p>
+  </li>
+</ol>
+
+<h3 id="section-1">电路图</h3>
+
+<p><img src="/images/post/assembly-application-3.png" alt="数码管显示电路图" /></p>
+
+<p>主要原件如下：</p>
+
+<ol>
+  <li>8051系列单片机使用 AT89C51。</li>
+  <li>数码管选择7段共阴数码管。</li>
+  <li>
+    <p>用来选择数码管的38译码器 74HC138，这样就可以只用三个引脚就可以最多从8个数码管中选择一个了。74HC138的真值表如下</p>
+
+    <p><img src="/images/post/assembly-application-3-table.png" alt="74HC138真值表" /></p>
+  </li>
+</ol>
+
+<h3 id="section-2">程序</h3>
+
+<p>这个程序是让电路图中的五个数码管从左到右显示数字 1,2,3,4,5</p>
+
+<pre><code>	ORG 0H
+	JMP START
+	ORG 0BH    ;0BH is the timer0 interrupt address
+	JMP DISPLAY
+	ORG 30H    ;avoid interrupt address
+	MOV SP,#30H
+;;;;;;;;;;;;;;;;;;;;;;;;;;
+;Display five 7-seg LEDs
+;note: the most left LED is number 1
+;input: 5FH, 5EH, 5DH, 5CH, 5BH
+;output: P2.0, P2.1, P2.2 -&gt; choose LED
+;        P1 -&gt; display
+;REG: A (has been protect), DPTR, 5AH
+DISPLAY:
+	PUSH Acc
+	;choose LED
+	MOV A,5AH
+	MOV P2,A
+	;choose number
+	MOV A,5AH
+	CJNE A,#0,next1
+display0:
+	MOV A,5FH
+	MOVC A,@A+DPTR
+	MOV P1,A
+	JMP display_end
+next1:
+	CJNE A,#1,next2
+display1:
+	MOV A,5EH
+	MOVC A,@A+DPTR
+	MOV P1,A
+	JMP display_end
+next2:
+	CJNE A,#2,next3
+display2:
+	MOV A,5DH
+	MOVC A,@A+DPTR
+	MOV P1,A
+	JMP display_end
+next3:
+	CJNE A,#3,next4
+display3:
+	MOV A,5CH
+	MOVC A,@A+DPTR
+	MOV P1,A
+	JMP display_end
+next4:
+	CJNE A,#4,display_end
+display4:
+	MOV A,5BH
+	MOVC A,@A+DPTR
+	MOV P1,A
+	JMP display_end
+display_end:
+	MOV A,5AH
+	CJNE A,#4,add_5AH
+	JMP clear_5AH
+clear_5AH:
+	MOV 5AH,#0
+	JMP displayend
+add_5AH:
+	INC 5AH
+	JMP displayend
+	;
+displayend:
+	MOV TL0,#low (65536-20000)
+	MOV TH0,#high (65536-20000)
+	POP Acc
+	RETI		
+;table of LED
+table:
+	DB 3FH,06H,5BH,4FH,66H,6DH,7DH,07H,7FH,6FH
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+START:
+;;;;;;;;;;;;;;;;;;;;;;;;;;
+;Display initial
+	MOV P1,#0
+	MOV P2,#0FFH
+	MOV 5AH,#0
+	MOV DPTR,#table
+;;;;;;;;;;;;;;;;;;;;;;;;;;
+;Timer initial
+	MOV TMOD,#1;use timer 0 mode 1
+	MOV TL0,#low (65536-20000)
+	MOV TH0,#high (65536-20000)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;Interrupt initial
+	SETB ET0;start timer0 interval
+	;
+	SETB EA    ;start interrupt
+	SETB TR0   ;start timing
+	MOV 5FH,#1
+	MOV 5EH,#2
+	MOV 5DH,#3
+	MOV 5CH,#4
+	MOV 5BH,#5
+	;
+STOP:
+	JMP STOP
+	END
+</code></pre>
+
+<h3 id="section-3">效果</h3>
+
+<p>将速度放慢后的仿真效果是这样的：</p>
+
+<p><img src="/images/post/assembly-application-3-result.gif" alt="仿真效果" /></p>
+
+<p>注意：由于仿真软件只是显示仿真的计算效果，可能会由于时间调整不恰当，出现不合适的仿真结果，建议可能的话，还是用实物比较靠谱</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[汇编实战之乘除法]]></title>
+    <link href="http://pikipity.github.com/blog/assembly-application-2.html"/>
+    <updated>2013-02-08T09:35:00+08:00</updated>
+    <id>http://pikipity.github.com/blog/assembly-application-2</id>
+    <content type="html"><![CDATA[<p>上一篇<a href="/blog/assembly-application-1.html">《汇编实战之加减法》</a>中介绍了加减法的考虑方法，接下来将会介绍稍微难一点乘除法的思考与实现方法。</p>
+
+<!--more-->
+
+<h2 id="section">一个16位二进制乘以一个8位二进制</h2>
+
+<h3 id="section-1">算法</h3>
+
+<p>乘法还是很简单的，和加减法没有太大的不同，但要注意得数的范围。同样的，先看8051的汇编指令表，其中已经提供了一个用来做两个8位二进制之间的乘法的指令：</p>
+
+<pre><code>MUL AB
+</code></pre>
+
+<p>这条指令同时对累加器Acc与累乘器B作用，将Acc与B中的数值相乘以后，高8位到B中，低八位到Acc中。那么还是依照加法算法的思考路线，我们就可以这样了：</p>
+
+<script type="math/tex; mode=display">% &lt;![CDATA[
+\begin{array}{rcl}
+c&=&a*b\\
+&=&\left([a_{15}\cdots a_8]\times256+[a_7\cdots a_0]\right)*[b_7\cdots b_0]\\
+[c_{15}\cdots c_8]\times 256+[c_7\cdots c_0]&=&\left([a_{15}\cdots a_8]*[b_7\cdots b_0]\right)\times256+\left([a_7\cdots a_0]*[b_7\cdots b_0]\right)
+\end{array} %]]&gt;</script>
+
+<p>在上面的式子中，我用“$*$”标记需要用MUL指令来做乘法的地方，用”$\times$”来标记需要移位的地方。低八位相乘会产生一个16位的二进制数，高八位相乘再移位后会产生一个24位的二进制数，所以至少我们需要3个地址来存放得数。</p>
+
+<p>那么还需不需要考虑低八位乘积的16位数与高八位乘积的24位数相加的进位呢？由于16位二进制最大换算成十进制是65536，而八进制是255，所以得数最大是16777216，也就是说会刚好超出24位，所以得数还需要一个C来存放进位。这样就可以开始编程了。</p>
+
+<h3 id="section-2">汇编子程序</h3>
+
+<pre><code>;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;Multiplication of unsigned number
+;input: 16 bits: 7CH 7DH
+;        8 bits:     7FH
+;output 24 bits: C 60H 61H 62H
+;REG:A(have been protected), B(have been protected), 63H, C
+Multi:
+	PUSH Acc   ;protect Acc
+	PUSH B     ;protect B
+	;Multiply low 8 bits
+	MOV A,7DH
+	MOV B,A
+	MOV A,7FH
+	MUL AB
+	MOV 62H,A
+	MOV A,B
+	MOV 61H,A
+	;Multiply high 8 bits
+	MOV A,7CH
+	MOV B,A
+	MOV A,7FH
+	MUL AB
+	MOV 63H,A
+	MOV A,B
+	MOV 60H,A
+	;Summation center 8 bits
+	CLR C
+	MOV A,63H
+	ADD	A,61H
+	MOV 61H,A
+	;Add C and high 8 bits
+	MOV A,60H
+	ADDC A,#0
+	MOV 60H,A
+	;
+	POP B      ;back B
+	POP Acc    ;back Acc
+	RET
+</code></pre>
+
+<h2 id="section-3">一个16位二进制除以一个8位二进制</h2>
+
+<h3 id="section-4">算法</h3>
+
+<p>通过查汇编指令表，我们可以发现，和乘法一样8051也提供了一个8位二进制的除法指令：</p>
+
+<pre><code>DIV AB
+</code></pre>
+
+<p>还是对Acc与B作用，商到Acc中，余数到B中。但是除法比较特殊，当我们通过与上面乘法类似的算法考虑的时候，会得到下面的式子：</p>
+
+<script type="math/tex; mode=display">% &lt;![CDATA[
+\begin{array}{rcl}
+c&=&\frac{a}{b}\\
+&=&\left(a\mbox{的高八位与}b\mbox{的商}\times256+a\mbox{的低八位与}b\mbox{的商}\right)\\
+&&+\left(\frac{a\mbox{的高八位与}b\mbox{的余数}\times256+a\mbox{的低八位与}b\mbox{的余数}}{b}\right)
+\end{array} %]]&gt;</script>
+
+<p>最终得到，商的高八位就是$a$的高八位与$b$的商，商的低八位就是$a$的低八位与$b$的商，余数的高八位就是$a$的高八位与$b$的余数，余数的低八位就是$a$的低八位与$b$的余数。但是经过测试，这是不正确的，为什么呢？再次观察我们最后的结论就会发现问题，式子本身没有问题，<strong><em>问题在于进位</em></strong>。尽管$a$的高八位与$b$的余数和$a$的低八位与$b$的余数分别与$b$做除法的时候无法再出现非0商了，但是两者加起来却有可能大于$b$，在与$b$做除法的时候就会出现非0商，如果单纯按照上面的方法做，我们就会少考虑这个由余数产生出来的商的进位。所以上面的算法行不通。</p>
+
+<p>最终我采用的是移位的方法，原理类似与笔算除法。基本流程如下</p>
+
+<p><img src="/images/post/assembly-application-2.png" width="400pt" alt="除法流程图" /></p>
+
+<h3 id="section-5">汇编子程序</h3>
+
+<pre><code>;;;;;;;;;;;;;;;;;;;;;;;;;
+;Division for unsigned integer
+;input: 16 bits: 64H 65H
+;        8 bits: 66H
+;output: quotient: 67H 68H
+;        remainder: 69H
+;Reg: A(has been protected), B(has been protected), C, 6AH
+division:
+	PUSH Acc   ;protect Acc
+	PUSH B     ;protect B
+	CLR C      ;clear C
+	;clear result
+	MOV 67H,#0
+	MOV 68H,#0
+	MOV 69H,#0
+	MOV 70H,#0
+	MOV 6BH,#0
+	;division for high 8 bits
+	MOV A,66H
+	MOV B,A
+	MOV A,64H
+	DIV AB
+	;quotient go to high quotient of final result
+	MOV 67H,A
+	;remiander go to remainder of final result
+	MOV A,B
+	MOV 69H,A
+	;begin 8 times of loop
+	MOV 6AH,#8
+division_loop:
+	;rotate 65H left with C
+	MOV A,65H
+	RLC A
+	MOV 65H,A
+	;rotate 69H left with C
+	MOV A,69H
+	RLC A
+	MOV 69H,A    ;result -&gt; rotate 69H and 65H left together with C
+	;69H - 66H
+	CLR C
+	MOV A,69H
+	SUBB A,66H   ;if negative C=1, otherwise C=0. Result in A
+	;
+	JC division_quotient_set_0   ;if C=1, go to division_quotient_set_0
+division_quotient_set_1:    ;if C=0, go down
+	MOV 69H,A     ;sub result go to 69H
+	;most right bit of 68H set 1
+	SETB C
+	MOV A,68H
+	RLC A
+	MOV 68H,A
+	;go to dicision
+	JMP division_loop_dicision
+division_quotient_set_0:    ;if C=1, go down
+	;most right bit of 68H set 0
+	CLR C
+	MOV A,68H
+	RLC A
+	MOV 68H,A
+division_loop_dicision:
+	DEC 6AH
+	MOV A,6AH
+	CJNE A,#0,division_loop
+	;
+	POP B      ;get back B
+	POP Acc    ;get back Acc
+	RET
+</code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[汇编实战之加减法]]></title>
+    <link href="http://pikipity.github.com/blog/assembly-application-1.html"/>
+    <updated>2013-02-07T23:21:00+08:00</updated>
+    <id>http://pikipity.github.com/blog/assembly-application-1</id>
+    <content type="html"><![CDATA[<p>上一篇<a href="/blog/new-assembler.html">《汇编语言初学者遇到的困难和解决方法》</a>中讲述了汇编新手可能会遇到的问题和解决办法，接下来就通过汇编的实例来将方法运用到实际问题中去。这一篇是编写最基本的加减法，每一种运算都以子程序的形式呈现出来。声明：以下程序皆由<a href="">pikipity</a>自己想出，绝对不是最好的，因为</p>
+
+<blockquote>
+  <p>世界上最好的程序是自己想出来的程序</p>
+</blockquote>
+
+<!--more-->
+
+<h2 id="section">两个16位二进制之间的加法</h2>
+
+<h3 id="section-1">算法</h3>
+
+<p>通过查8051汇编指令表，我们就可以发现，其中已经提供了两个有关8位二进制之间的加法的指令，两个指令是</p>
+
+<pre><code>ADD A,&lt;byte&gt;
+ADDC A,&lt;byte&gt;
+</code></pre>
+
+<p>两条指令都是对累加器Acc作用，并且其中的&lt;byte&gt;都支持直接寻址、间接寻址、寄存器寻址和立即寻址四种寻址方式。不同也是显而易见的，ADDC的加法中会包括进位C，而ADD中则不包括。</p>
+
+<p>清楚了要使用的主要指令后，就是算法了，由于这两条命令的计算单位都是8位二进制，所以我们也以8位来考虑。这里我们用$[b_n\cdots b_0]$的方式代表一个二进制数$b$中的从最低第$0$位到第$n$位。让我们假设两个16位二进制数分别是$a$和$b$，它们的和是$c$。算法很简单如下，</p>
+
+<script type="math/tex; mode=display">% &lt;![CDATA[
+\begin{array}{rcl}
+	c & = & a+b \\
+	& = & [a_{15}\cdots a_0]+[b_{15}\cdots b_0]\\
+	&=&[a_{15}\cdots a_{8}]\times 256+[a_7\cdots a_0]+[b_{15}\cdots b_8]\times 256+[b_7\cdots b_0]\\
+	[c_{15}\cdots c_8]\times 256+[c_7\cdots c_0]&=&\left([a_{15}\cdots a_8]+[b_{15}\cdots b_8]\right)\times 256+\left([a_7\cdots a_0]+[b_7\cdots b_0]\right)
+\end{array} %]]&gt;</script>
+
+<p>比较等号两边我们就可以发现，只要让16位二进制的高八位相加做得数的高八位，低八位相加做得数的低八位就可以了。</p>
+
+<p>但是要注意，低八位相加得数的范围是$0\sim510$，所以有可能会产生一个新的256到高八位里面，在高八位相加的时候需要考虑进去（也就是要考虑低八位的进位）。</p>
+
+<h3 id="section-2">汇编子程序</h3>
+
+<pre><code>;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;sumation of unsigned number
+;input: 16 bits: 70H 71H
+;       16 bits: 72H 73H
+;output: C and 16 bits 74H 75H
+;Reg: A (have been protected), C
+SUM_unsigned:
+	PUSH Acc  ;protect Acc
+	CLR C     ;clear C
+	;Add low 8 bits
+	MOV A,71H
+	ADDC A,73H
+	MOV 75H,A
+	;Add high 8 bits and C
+	MOV A,70H
+	ADDC A,72H
+	MOV 74H,A
+	; 
+	POP Acc   ;return Acc
+	RET
+</code></pre>
+
+<h2 id="section-3">两个16位二进制之间的减法</h2>
+
+<h3 id="section-4">算法</h3>
+
+<p>通过查汇编指令表，我们可以发现，8051中已经提供了一条关于8位二进制减法的指令。</p>
+
+<pre><code>SUBB A,&lt;byte&gt;
+</code></pre>
+
+<p>和加法类似，我们可以用这条命令来考虑我们的算法了。</p>
+
+<script type="math/tex; mode=display">% &lt;![CDATA[
+\begin{array}{rcl}
+	c&=&a-b\\
+	[c_{15}\cdots c_8]\times 256+[c_7\cdots c_0]&=&\left([a_{15}\cdots a_8]-[b_{15}\cdots b_8]\right)\times 256+\left([a_7\cdots a_0]-[b_7\cdots b_0]\right)
+\end{array} %]]&gt;</script>
+
+<p>我们可以发现，同样的，高八位相减就是得数的高八位，低八位相减就是得数的低八位。注意，低八位相减有可能需要从高八位借一个256，所以高八位相减需要考虑低八位的借位，如果得数是负数（也就是$a&lt;b$），就将C置一。</p>
+
+<h3 id="section-5">汇编子程序</h3>
+
+<pre><code>;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;Subtraction of unsigned number
+;input: 16 bits: 76H 77H
+;       16 bits: 78H 79H
+;output: C and 2bytes: 7AH 7BH
+;Reg: A(have been protected), C
+Subtraction:
+	PUSH Acc    ;protect Acc
+	CLR C       ;Clear C
+	;subtraction of low 8 bits
+	MOV A,77H
+	SUBB A,79H
+	MOV 7BH,A
+	;subtraction of high 8 bits
+	MOV A,76H
+	SUBB A,78H
+	MOV 7AH,A
+	;
+	POP Acc    ;get back Acc
+	RET
+</code></pre>
+
+<p>加减法的考虑还是很简单，接下来会介绍一下比较难的<a href="/blog/assembly-application-2.html">乘除法的考虑方法</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[汇编语言初学者遇到的困难和解决方法]]></title>
+    <link href="http://pikipity.github.com/blog/new-assembler.html"/>
+    <updated>2013-02-02T22:13:00+08:00</updated>
+    <id>http://pikipity.github.com/blog/new-assembler</id>
+    <content type="html"><![CDATA[<p>这是一篇汇编初学者的总结，欢迎指正与讨论，以下讨论都以8051单片机的汇编语言为基础进行讨论。</p>
+
+<p>使用汇编语言也有一段时间了，由于汇编语言是非常底层的语言，用惯了C或是C++之类的高级编程语言，突然开始使用这种与硬件紧密结合的语言会有很大的难度，无论是从分析、理解还是撰写。总结起来，对于一名汇编语言的初学者会遇到的最大的困难无非是3个：</p>
+
+<ol>
+  <li>
+    <p>汇编语言本身命令有限且难以理解：</p>
+
+    <!--more-->
+    <p>C与C++的大部分语句都是以函数的形式存在，把每个函数当做一个黑箱，只要搞清每个函数的输入输出即可了解程序本身，而且函数众多，几乎涵盖了可以想到的所有基础操作。</p>
+
+    <p>但是汇编却不一样，每一个命令行不是单纯的“输入输出”的黑箱作业，会牵扯到很多隐藏的bit操作，并且命令有限，一个在C中简单的加减法的实现都要好多行，常常让初学者算法心中有数却不知如何用什么命令实现。</p>
+  </li>
+  <li>
+    <p>C的编写逻辑不再适用：</p>
+
+    <p>虽然C是强调过程的语言，不像Python等脚本语言是强调对象的语言，但是在编写的时候，我们更多思考的是对一个变量如何如何。但是汇编则完全不行，我们很难对一个地址中的内容做直接操作，需要跳转，在这种跳转极易出错</p>
+  </li>
+  <li>
+    <p>汇编语言运算基础是二进制：</p>
+
+    <p>困难最大的一点，C中只要数据类型是正确的，那么以十进制的思维考虑就可以了。但是汇编中只有二进制，二进制在生活中很少用到，思考难度很大，常常无法想的全面，并且一些二进制独有的特性往往被忽略掉</p>
+  </li>
+</ol>
+
+<p>那么对应这三个问题，我们应该如何解决呢？这里列出了我的解决方案：</p>
+
+<ol>
+  <li>
+    <p>熟悉汇编命令：</p>
+
+    <p>对于汇编语言，命令少，既是缺点也是优点。缺点上面已经列出，优点就是极其容易做到全局把握。全局把握就是说，不是要把每条命令是什么都背过但是至少要做到以下几点：</p>
+
+    <ul>
+      <li>至少把每条命令都看过一遍，做到看到这条命令就可以回想起这条命令涉及的内存地址有哪些。</li>
+      <li>熟悉汇编命令，做到有哪些命令心中有数，比如，一说到跳转命令就马上联想到AT89C51 datasheet中architectural overview部分中的boolean and jump两个table中有相关的指令，这样就可以快速查询了</li>
+    </ul>
+
+    <p>做到这些之后就不会面对着自己辛辛苦苦画出的程序设计流程图茫然无措了</p>
+  </li>
+  <li>
+    <p>汇编的编写逻辑基本是这样的：</p>
+
+    <ol>
+      <li>数据存放入内存</li>
+      <li>将数据移入Acc或是B中</li>
+      <li>在Acc或是B中操作</li>
+      <li>将结果存回内存中</li>
+    </ol>
+
+    <p>只要按照这样的思路，就可以很容易的理解和写出汇编中数据操作的部分了，虽然过程复杂了一点，在C中一行就可以的搞定的，往往在汇编中要4、5行才行，但是这就是C语言那一行命令的本质。接下来，就是C语言中if, for, while在汇编中如何实现了，其实基本都对应了固定的程序块，只要记住就可以直接拿来是要了。这里列出常用的程序块写法</p>
+
+    <ul>
+      <li>
+        <p>XXX 循环n次      </p>
+
+        <pre><code>    MOV 存放循环次数的地址,#n
+L1: XXX
+    DJNZ 存放循环次数的地址,L1	   
+</code></pre>
+      </li>
+      <li>
+        <p>执行 XXX 从i=x到i=y，也就是for循环</p>
+
+        <pre><code>    MOV 起始数值存放地址,#x
+    MOV 终止数值存放地址,#y
+    INC 终止数值存放地址
+L1: XXX
+    INC 起始地址
+    MOV A,起始地址
+    CJNE A,终止数值存放地址,L1
+</code></pre>
+      </li>
+      <li>
+        <p>if x=y then XXX else YYY</p>
+
+        <pre><code>    XCH A,x的存放地址
+    CJNE A,y的存放地址,L1
+    XCH A,x的存放地址
+L2: XXX
+    JMP L3
+L1: XCH A,x的存放地址
+    YYY
+L3:        
+</code></pre>
+      </li>
+      <li>
+        <p>do XXX while x&gt;=y</p>
+
+        <pre><code>L1: XXX
+    XCH A,x的存放地址
+    CJNE A,y的存放地址,L2
+L2: XCH A,x的存放地址
+    JNC L1
+</code></pre>
+      </li>
+    </ul>
+
+    <p>还有一种，能够让逻辑清晰的方法，就是写出数学表达式。数学表达式的优点就是每一步的运算都逻辑清晰，并且对于二进制，十进制的基本运算的运算方法还是适用的，比如加法结合律还有乘法分配律，所以只要列出数据的二进制数学表达式，那么逻辑自然明了了。</p>
+  </li>
+  <li>
+    <p>为什么汇编语言用2进制就让人难以计算和想象了呢？主要原因是人们会习惯性地按照十进制“位”的概念以bit为计算单位，在进行数据操作的时候，动辄就是8位，16位，就相当于十进制里的“千万”、“千万亿”，如此大的数量总会让人头昏眼花。但要注意的是单片机里已经提供了一些硬件运算，比如AT89C51就提供了8位二进制的硬件加减乘除，我们应该以这些基本运算为前提来搭建自己的程序，也就是说我们思考的单位不应该是bit，而是硬件的硬件计算单位，比如AT89C51就以8位为思考单位就会大大减少思考量。当然还是需要具体问题具体分析的，如果以3位为思考单位会更简单就用3位，5为简单就用5位，这也就是为什么二进制里为什么提出byte概念的原因吧。</p>
+
+    <p>总的来说，就是以“byte”来思考二进制，而不是bit</p>
+  </li>
+</ol>
+
+<p>最后介绍两种学习汇编的方法</p>
+
+<ol>
+  <li>
+    <p>跟编译器学习，比如使用Keil的时候，先用C编写程序，然后编译，就可以查看编译器产生的汇编语言了，虽然非常难懂，但也不失为一种向高手学习的方法。在Keil上查看相关汇编的方法如下（下图为Keil uVision3）</p>
+
+    <ol>
+      <li>
+        <p>编写C程序，并编译成功，测试成功</p>
+
+        <p><img src="/images/post/new_assembler_1.png" alt="编译成功" /></p>
+      </li>
+      <li>
+        <p>点击工具栏上的红色D “start/stop debug session” <img src="/images/post/new_assembler_2.png" /></p>
+      </li>
+      <li>
+        <p>然后再点击工具栏上的 “Disassembly window” <img src="/images/post/new_assembler_3.png" /></p>
+
+        <p>就得到了编译产生的汇编文件，并且C语句和相对应的汇编语句对应排列。</p>
+
+        <p><img src="/images/post/new_assembler_4.png" alt="汇编文件" /></p>
+      </li>
+    </ol>
+  </li>
+  <li>
+    <p>如果可以上网，就比较方便了，去<a href="https://github.com/">Github</a>看别人写的程序，经常自己苦恼上好几天的程序，也许别人已经提供了范例在那里，不要抄，看思路，那不是最好的，最好的程序永远是自己写出来了</p>
+  </li>
+</ol>
+
+<p>接下来，就是如何将方法运用到解决实际问题中去了，<a href="/blog/assembly-application-1.html">这里</a>是<a href="">pikipity</a>自己编写的一些程序了。  </p>
+
+]]></content>
+  </entry>
+  
+</feed>

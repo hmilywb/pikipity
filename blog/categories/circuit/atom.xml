@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[categories: Circuit | 折腾来折腾去]]></title>
+  <link href="http://pikipity.github.com/blog/categories/circuit/atom.xml" rel="self"/>
+  <link href="http://pikipity.github.com/"/>
+  <updated>2013-01-30T00:00:00+08:00</updated>
+  <id>http://pikipity.github.com/</id>
+  <author>
+    <name><![CDATA[pikipity]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[单 MOSFET 放大器]]></title>
+    <link href="http://pikipity.github.com/blog/single-mos-amp.html"/>
+    <updated>2013-02-18T23:43:00+08:00</updated>
+    <id>http://pikipity.github.com/blog/single-mos-amp</id>
+    <content type="html"><![CDATA[<p>最基本的 MOSFET 放大器就是单 MOSFET 放大器了，也就是只有一个 MOSFET 的放大器，大多数介绍 MOSFET 的资料都会介绍这一部分，但是十分的冗长并且复杂且没有广泛适用价值，这里进行归纳总结。</p>
+
+<!--more-->
+
+<p>说到 MOSFET 组成的放大器，当然前提是假设 MOSFET 已经在 Saturation region，我们重点关注MOSFET在 Small Signal Analysis 下的三个参数，这三个参数为</p>
+
+<ol>
+  <li>Voltage Gain: <script type="math/tex">A_v=\frac{V_{out}}{V_{in}}</script></li>
+  <li>Input Impedence: <script type="math/tex">R_{in}=\frac{V_{in}}{I_{in}}</script> 注意：输出是开路</li>
+  <li>Output Impedence: <script type="math/tex">R_{out}=\frac{V_{out}}{I_{out}}</script> 注意：输入是短路</li>
+</ol>
+
+<p>单 MOSFET 的放大器无非就是三种，接下来就会一一介绍。（下面的电路图中可能会漏掉负载，但是式子中都已经包含负载 $R_L$）</p>
+
+<h3 id="common-source--cs">共源极 (Common Source 简称 CS)</h3>
+
+<p>基本电路图如下</p>
+
+<p><img src="/images/post/CS.jpg" alt="CS基本电路" width="550pt" /></p>
+
+<p>三个参数为</p>
+
+<script type="math/tex; mode=display">% &lt;![CDATA[
+\begin{array}{rcl}
+A_v&=&-\frac{R_D||R_L}{\frac{1}{g_m}+R_s+\frac{R_s+R_D||R_L}{r_0g_m}}\\
+R_{in}&=&R_G\\
+R_{out}&=&R_D||\left(r_0+r_0R_sg_m+R_s\right)
+\end{array} %]]&gt;</script>
+
+<h3 id="common-gate--cg">共栅极 (Common Gate 简称 CG)</h3>
+
+<p>基本电路图如下</p>
+
+<p><img src="/images/post/CG.jpg" alt="CG基本电路" width="550pt" /></p>
+
+<p>三个参数为</p>
+
+<script type="math/tex; mode=display">% &lt;![CDATA[
+\begin{array}{rcl}
+A_v&=&\frac{R_1||\left(\frac{\left(\frac{1}{g_m}+\frac{R_D||R_L}{r_0g_m}\right)r_0^2g_m}{r_0^2g_m+1}\right)}{R_s+R_1||\left(\frac{\left(\frac{1}{g_m}+\frac{R_D||R_L}{r_0g_m}\right)r_0^2g_m}{r_0^2g_m+1}\right)}\cdot\frac{\left(R_D||R_L\right)\left(r_0^2g_m+1\right)}{\left(\frac{1}{g_m}+\frac{R_D||R_L}{r_0g_m}\right)r_0^2g_m}\\
+R_{in}&=&R_s+R_1||\left(\frac{\left(\frac{1}{g_m}+\frac{R_D||R_L}{r_0g_m}\right)r_0^2g_m}{r_0^2g_m+1}\right)\\
+R_{out}&=&\left(R_D||R_L\right)||\left[r_0+g_mr_0\left(R_s||R_1\right)+\left(R_s||R_1\right)\right]
+\end{array} %]]&gt;</script>
+
+<h3 id="common-drain--source-follower--cd--sf">共漏极 (Common Drain 或者 Source Follower 简称 CD 或者 SF)</h3>
+
+<p>基本电路如下</p>
+
+<p><img src="/images/post/CD.jpg" alt="CD基本电路" width="550pt" /></p>
+
+<p>三个参数为</p>
+
+<script type="math/tex; mode=display">% &lt;![CDATA[
+\begin{array}{rcl}
+A_v&=&\frac{r_0||\left(R_s||R_L\right)}{r_0||\left(R_s||R_L\right)+\frac{1}{g_m}}\\
+R_{in}&=&\infty\\
+R_{out}&=&r_0||\frac{1}{g_m}
+\end{array} %]]&gt;</script>
+
+<p>尽管上面的式子看起来都很复杂，但是实际中我们会经常忽略掉一些内容，比如当忽略负载时就令 $R_L$ 为 0 就可以了，当需要忽略 $r_0$ 时就让 $r_0\rightarrow\infty$ 就可以了。</p>
+
+<p>有时 bias current 并不是由一个简单的电阻控制而是由另外的一个由 MOSFET 组成的电流源控制，所以还需要熟悉 MOSFET 各个端口的阻抗值，当遇到这种情况的时候只要等效代替就可以了。MOSFET 各个端口的阻抗值如下：</p>
+
+<ol>
+  <li>栅极阻抗：<script type="math/tex">R_G=\infty</script></li>
+  <li>漏极阻抗：<script type="math/tex">R_D=r_0+g_mr_0R_s+R_s</script></li>
+  <li>源极阻抗：$R_s=r_0||\frac{1}{g_m}$</li>
+</ol>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[MOSFET分析总结]]></title>
+    <link href="http://pikipity.github.com/blog/mosfet.html"/>
+    <updated>2013-02-17T15:05:00+08:00</updated>
+    <id>http://pikipity.github.com/blog/mosfet</id>
+    <content type="html"><![CDATA[<p>在看了很多关于<a href="http://en.wikipedia.org/wiki/MOSFET">MOSFET</a>介绍后发现这些资料都有一个共同的毛病，就是对于PMOS的介绍少的可怜，往往就是一句“和NMOS类似”就一带而过，但是NMOS和PMOS还是有很多不一样的，所以在这里对NMOS和PMOS的Large Signal Analysis和Small Signal Analysis做一下总结归纳。</p>
+
+<!--more-->
+
+<h2 id="large-signal-analysis">Large Signal Analysis</h2>
+
+<p>对于MOSFET的分析，第一步就是通过Large Signal Analysis来确定MOSFET的工作范围，并通过不同工作范围下的电压电流特性来确定Small Signal Analysis下的current gain。MOSFET有三个工作范围：cut-off region, triode region and saturation region。当MOSFET作为开关使用的时候，要控制在triode region；当MOSFET作为放大器使用的时候，要控制在saturation region。</p>
+
+<h3 id="noms">NOMS</h3>
+
+<p>n-channel MOSFET有下面5种符号表示法，分别表示不同种类的NMOS</p>
+
+<p><img src="/images/post/MOStype.jpg" alt="NMOS不同种类的符号" width="550pt" /></p>
+
+<ol>
+  <li>
+    <p>Cut-off region</p>
+
+    <ul>
+      <li>条件：$V_{GS}&lt;V_{TH}$</li>
+      <li>电压电流特性：$I_D=0$</li>
+    </ul>
+  </li>
+  <li>
+    <p>Triode region</p>
+
+    <ul>
+      <li>条件：$V_{TH}&lt;V_{GD}$</li>
+      <li>电压电流特性：
+<script type="math/tex">I_D=\mu_n C_{ox}\frac{W}{L}\left[\left(V_{GS}-V_{TH}\right)V_{DS}-\frac{1}{2}V_{DS}^2\right]</script>    </li>
+    </ul>
+  </li>
+  <li>
+    <p>Saturation region</p>
+
+    <ul>
+      <li>条件：<script type="math/tex">V_{TH}>V_{GD}</script></li>
+      <li>电压电流特性：<script type="math/tex">I_D=\frac{1}{2}\mu_n C_{ox}\frac{W}{L}\left(V_{GS}-V_{TH}\right)^2\left(1+\lambda V_{DS}\right)</script></li>
+    </ul>
+  </li>
+  <li>
+    <p>Transconductor: 就是Small Signal Analysis中的current gain，<script type="math/tex">g_m=\frac{I_D}{V_{GS}}</script></p>
+
+<script type="math/tex; mode=display">% &lt;![CDATA[
+\begin{array}{rcl}
+g_m&=&\mu_n C_{ox}\frac{W}{L}\left(V_{GS}-V_{TH}\right)\\
+g_m&=&\sqrt{2\mu_nC_{ox}\frac{W}{L}I_D}\\
+g_m&=&\frac{2I_D}{V_{GS}-V_{TH}}
+\end{array} %]]&gt;</script>
+  </li>
+  <li>
+    <p>Output resistor：就是Small Signal Analysis中的<script type="math/tex">r_0</script></p>
+
+<script type="math/tex; mode=display">r_0\approx \frac{1}{\lambda I_D}</script>
+  </li>
+</ol>
+
+<h3 id="pmos">PMOS</h3>
+
+<p>p-channel MOSFET一样有5种符号表示法，分别代表不同种类的PMOS</p>
+
+<p><img src="/images/post/PMOStype.jpg" alt="PMOS不同种类的符号" width="550pt" /></p>
+
+<ol>
+  <li>
+    <p>Cut-off region</p>
+
+    <ul>
+      <li>条件：<script type="math/tex">V_{GS}>V_{TH}</script></li>
+      <li>电压电流特性：<script type="math/tex">I_D=0</script></li>
+    </ul>
+  </li>
+  <li>
+    <p>Triode region</p>
+
+    <ul>
+      <li>条件：<script type="math/tex">V_{DG}>\left\|V_{TH}\right\|</script></li>
+      <li>电压电流特性：<script type="math/tex">I_D=\mu_p C_{ox}\frac{W}{L}\left[\left(V_{GS}-V_{TH}\right)V_{DS}-\frac{1}{2}V_{DS}^2\right]</script></li>
+    </ul>
+  </li>
+  <li>
+    <p>Saturation region</p>
+
+    <ul>
+      <li>条件：<script type="math/tex">% &lt;![CDATA[
+V_{DG}<\left\| V_{TH}\right\| %]]&gt;</script></li>
+      <li>电压电流特性：<script type="math/tex">I_D=\frac{1}{2}\mu_pC_{ox}\frac{W}{L}\left(V_{GS}-V_{TH}\right)^2\left(1-\lambda V_{DS}\right)</script></li>
+    </ul>
+  </li>
+  <li>
+    <p>Transconductor $g_m$ and output resistance $r_0$: 和NMOS完全一样。</p>
+  </li>
+</ol>
+
+<h2 id="small-signal-analysis">Small Signal Analysis</h2>
+
+<p>Small Signal Analysis是将MOSFET用等效电路代替，来分析AC信号的分析过程。在进行Small Signal Analysis的时候，要将DC电压源看做等效AC短路，将DC电流源看做等效AC断路。</p>
+
+<p>Small Signal Analysis最重要的就是明确MOSFET的等效电路，然后就是电路分析了。NMOS和PMOS的等效电路如图</p>
+
+<p><img src="/images/post/NMOSequivalentcircuit.jpg" alt="NMOS等效电路" width="450pt" /></p>
+
+<p><img src="/images/post/PMOSequivalentcircuit.jpg" alt="PMOS等效电路" width="450pt" /></p>
+]]></content>
+  </entry>
+  
+</feed>

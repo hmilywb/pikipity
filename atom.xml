@@ -1,0 +1,1281 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[折腾来折腾去]]></title>
+  <link href="http://pikipity.github.com/atom.xml" rel="self"/>
+  <link href="http://pikipity.github.com/"/>
+  <updated>2013-01-30T00:00:00+08:00</updated>
+  <id>http://pikipity.github.com/</id>
+  <author>
+    <name><![CDATA[pikipity]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[单片机原理及程序设计 第二章 记忆体和寄存器]]></title>
+    <link href="http://pikipity.github.com/blog/scm-principle-2.html"/>
+    <updated>2013-02-27T22:37:00+08:00</updated>
+    <id>http://pikipity.github.com/blog/scm-principle-2</id>
+    <content type="html"><![CDATA[<p><a href="http://pikipity.github.com/blog/scm-principle-1.html">上一章</a>主要是简单介绍了一下 8051 的样子和结构，这一章主要介绍内存，为将来介绍各个特殊功能和 assembly 做准备。</p>
+
+<h3 id="section">记忆体种类</h3>
+
+<p>记忆体主要分为两种：</p>
+
+<ol>
+  <li>只读记忆体（ROM）：资料一旦存储就不能删除或是修改（既不能重新写入），且内容不会因为断电而消失。一般来说，我们可以认为你所编写的程式就存储在 8051 的 ROM 中，当然现在的新科技已经允许通过一定的手段来从新修改 ROM 上的内容了，所以你可以向你的 8051 芯片中重新写入程式，但是重新写入的次数是有限，但是这个次数非常大，所以不用担心。</li>
+  <li>随即存储存储器（RAM）：可以随时将数据存入记忆体的任意位置，但是断电后数据会消失。一般来说，我们可以认为程式临时数据就是存储在 8051 的 RAM 中的。</li>
+</ol>
+
+<!--more-->
+
+<h3 id="section-1">地址分配</h3>
+
+<p>我们不可能随意的将数据存储在记忆体中，如果那样的话，我们就难以知道自己所需的数据到底存储在哪里，所以我们用“地址”来对记忆体中的数据定位。我们一般用一个十六进制数<sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup> 来表示一个地址。程式记忆体（可以理解为 ROM）和资料记忆体（可以理解为 RAM）的地址是分开的。</p>
+
+<ol>
+  <li>程式记忆体地址分配：由于 8051 允许外部扩充程式记忆体，所以程式记忆体的地址分配有两种（以下程式记忆体的地址都是一个地址代表一个字节（8位二进制））：
+    <ul>
+      <li>
+        <p>EA 引脚接高时：</p>
+
+        <p><img src="http://pikipity.github.com/images/post/scm-principle-2-1.jpg" alt="当 EA 接高时，程式记忆体的地址分配" width="350pt" /></p>
+      </li>
+      <li>
+        <p>EA 引脚接地时：</p>
+
+        <p><img src="http://pikipity.github.com/images/post/scm-principle-2-2.jpg" alt="当 EA 接地时，程式记忆体的地址分配" width="350pt" /></p>
+      </li>
+    </ul>
+  </li>
+  <li>资料记忆体地址分配：资料记忆体的地址（依然是一个地址代表一个字节（8位二进制））从 00H 到 FFH，共分为四个部分：
+    <ul>
+      <li>
+        <p>00H ~ 1FH：四个寄存器组。由于在写 assembly 程序的时候，每次都记住地址很麻烦，所以 assembly 为一部分地址直接预设了名字，这样我们就可以直接通过调用名字来使用这一部分内存而不是记住地址。这四个寄存器组 RB0~RB3 中，每个寄存器组又包含8个8位寄存器 R0~R7（每个字节地址就是一个寄存器），主要用来存放数据。但每次只能使用一个寄存器组，通过 RS0 和 RS1 两个位元来控制到底使用哪个寄存器组：</p>
+
+        <table>
+          <thead>
+            <tr>
+              <th style="text-align: center">RS1</th>
+              <th style="text-align: center">RS0</th>
+              <th style="text-align: center">寄存器组</th>
+              <th style="text-align: center">位置</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="text-align: center">0</td>
+              <td style="text-align: center">0</td>
+              <td style="text-align: center">RB0</td>
+              <td style="text-align: center">00H~07H</td>
+            </tr>
+            <tr>
+              <td style="text-align: center">0</td>
+              <td style="text-align: center">1</td>
+              <td style="text-align: center">RB1</td>
+              <td style="text-align: center">08H~0FH</td>
+            </tr>
+            <tr>
+              <td style="text-align: center">1</td>
+              <td style="text-align: center">0</td>
+              <td style="text-align: center">RB2</td>
+              <td style="text-align: center">10H~17H</td>
+            </tr>
+            <tr>
+              <td style="text-align: center">1</td>
+              <td style="text-align: center">1</td>
+              <td style="text-align: center">RB3</td>
+              <td style="text-align: center">18H~1FH</td>
+            </tr>
+          </tbody>
+        </table>
+      </li>
+      <li>20H ~ 2FH：可位元寻址区，这一部分的地址都允许直接对 bit 进行操作。例如，21H.0 就代表在字节地址 21H 的8位二进制的第 0 位。</li>
+      <li>30H ~ 7FH：一般数据与堆栈区。不可以位元寻址，就是一般的存储数据的地方</li>
+      <li>
+        <p>80H ~ FFH：特殊功能寄存器（SFR）。8051 本事已经内置了很多的功能，在<a href="http://pikipity.github.com/blog/scm-principle-1.html">第一章</a>的8051单片机结构中就可以看到，有计时/计数器、中断、UART串口等等，这些特殊功能需要通过设置这一部分的 SFR 的参数来控制。在讲解各个特殊功能的时候会讲解如何设置参数，和这些参数代表什么意思。下面是一幅AT89系列的 SFR 地址分配表，将来可以对照、理解。</p>
+
+        <p><img src="http://pikipity.github.com/images/post/scm-principle-2-3.jpg" alt="当 EA 接地时，程式记忆体的地址分配" width="550pt" /></p>
+
+        <p>注意：</p>
+
+        <ul>
+          <li>注意最左边一列都可以位元寻址</li>
+          <li>括号中的寄存器代表 AT89C52 才有，AT89C51 没有</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ol>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+      <p>十六进制数就是以逢16进1作为进位制的数，一般用数字0到9和字母A到F表示，并在数后面加一个“H”来表示此数为16进制。<a href="#fnref:1" rel="reference">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[《云图》影评]]></title>
+    <link href="http://pikipity.github.com/blog/cloud-atlas.html"/>
+    <updated>2013-02-26T23:29:00+08:00</updated>
+    <id>http://pikipity.github.com/blog/cloud-atlas</id>
+    <content type="html"><![CDATA[<p>2012年上映的德国科幻电影，当情节主旋律定格为“轮回转生”以后我以为会挺扯的，结果还是意外的好看，在<a href="http://blog.sina.com.cn/u/2289398997">“免费写手”的新浪微博</a>上看到一篇写的很好的影评，抄录在下面，原文在<a href="http://blog.sina.com.cn/s/blog_887574d50101bmyx.html">这里</a>。内容剧透在<a href="http://zh.wikipedia.org/wiki/%E9%9B%B2%E5%9C%96_(%E9%9B%BB%E5%BD%B1)">这里</a>，官方网站在<a href="http://cloudatlas.warnerbros.com/">这里</a>（网页做的很带感，有木有）。</p>
+
+<p><img src="http://pikipity.github.com/images/post/Cloud_Atlas.jpg" width="550pt" /></p>
+
+<p>正文开始。</p>
+
+<!--more-->
+
+<blockquote>
+  <p>在看了第三遍之后我终于决定写下云图的影评，但每个选择改变的人都会改变这个世界，于是这部智商150标准的影评诞生了。</p>
+
+  <p>我要向导演沃卓斯基姐弟和汤姆·提克威致敬，其中沃卓斯基姐弟导演了1849(亚当-尤恩的太平洋日记), 2144(星美-451的记录)和2321(思路刹路口及之后所有)年份的故事，汤姆-提克威执导了1936(寄自西德海姆庄园的信), 1973(半衰期——路易莎·雷的迷第一部)和 2012(蒂莫西·卡文迪什的苦难经历)年份的故事。三位导演在原著作者的改编下成功的将故事自然流畅的拼接在一起，这里既能看到汤姆·提克威在《罗拉快跑》里的剪辑风格，也能看到典型的《黑客帝国》叙述的口吻，不得不说这会继“子弹时间”后开创一个新的电影拍摄手法的到来。（如果你不知道什么是子弹时间可以google）汤姆·提克威导演的才华也让人惊讶，他在剪片时间之余创造了片中的主题音乐很好听。（他说没钱请人做曲，我不信。。。）</p>
+
+  <p>在这里我并不想再多做笔墨讲述这6个故事的大概剧情，我想智商超过90的人基本上可以把6个故事的简单情节看懂了（90以下智商看不懂可以google各类影评），当然有天在微博上看到某女作家的影评例外（此人是个黄V作家，智商绝对低于75更可怕的是这样的人也能写影评。。她的读者是得有多低端？她以为1973的故事是核试验有危险，路易莎冒死揭露核试验的危害，但失败了，所以大爆炸导致了2321年世界毁灭，这样连基本故事都没看懂就喊着云图简单的人我很佩服他们面对生活的勇气）。</p>
+
+  <p>导演一共留下了2个线索把6个故事串联起来，使得观众可以很好的继承上下关系。</p>
+</blockquote>
+
+<blockquote>
+  <p>第一条线索是明线的一个彗星的胎记，这个胎记分别存在于：律师的胸前、作曲家的后腰部、女记者的左肩、卡文迪什的小腿部、星美颈部、扎克里头后脑上。
+第二条线索是暗线，用于每个故事中对下一个故事的关联，分别是：律师亚当尤因写的航海日记被作曲家弗洛比舍看到，他在被通缉时的感受和尤因在船上时一样的无望和对未来的恐惧，在住旅馆时也使用了尤因这个假名字；女记者路易莎雷听到的云图六重奏，在死去的斯科特史密斯那里看到了其年轻时佛罗比舍写给他的信；卡文迪什在被他哥哥忽悠着去老人院的火车上读的是路易莎的小侄子哈维耶戈麦斯写的《半衰期–路易莎·雷之迷》；幼娜和星美在仓库里看的sumsang播放器的电影是《蒂莫西·卡文迪什的苦难经历》；扎克里的部落信奉星美作为自己的神，祭司那里有一本星美的启示录（临死前的演讲）；律师尤因第一次和医生古斯在海滩上相遇时古斯正在费力的挖掘着食人族部落当年留下来的牙齿，这些牙齿就是扎克里那个年代的遗物。（此处中国电影版被剪掉了！）还有尤因那颗与众不同的扣子（被医生给偷走了），正是扎克里发现并做成项链最后差点勒死自己的宝石，当然不能忘了女先知号货船的名字也和先知有关。扎克里和古斯医生都有一个搜集东西的小口袋，都喜欢用同样的姿势满足的拍着口袋。故事的发生地都在太平洋的岛上（一个说是夏威夷大岛，一个说是某岛）这么多线索形成一个了麦比乌斯圈。（此处为各位网友的提示修改完成。）</p>
+
+  <p>至此6个故事环环相扣完成了一个圆形，也形成了所谓的轮回。但我想说的是，这个影评只是刚刚开始。。。。</p>
+
+  <p>我们先一起大喊一声：剪掉中国电影版40分钟的编辑是一个大傻逼。</p>
+
+  <p>然后可以继续了，我用我的智商很难想象，在这样一部情节如此紧凑的电影上，是怎么做到剪掉40分钟的情节，没有这部影评他们怎么看懂电影呢？</p>
+
+  <p>沃卓斯基兄弟在黑客帝国时期用了3部电影10个小时才把世界这点东西讲透彻了，里面涵盖了哲学、宗教、信仰等一系列的东西。这么多年过去了当我认为这二位江郎才尽的时候，竟然又以沃卓斯基姐妹的身份拍了云图，用3个小时就讲明白了这个世界。为此我要为我以前的微博内容而向他俩道歉（我以前微博说这哥哥变性之后就没拍出像样的东西了）这两部片子讲的内容高度的相似，以至于我怀疑真实的世界是不是就是这样。</p>
+
+  <p>首先是关于真相</p>
+
+  <p>霍罗克斯牧师对律师尤因说哈斯克尔 摩尔是一个能够说出真相的人，档案员希望星美能够说出真相。故事的6个主人公（身上有彗星胎记的）分别通过说（星美和扎克力）和写（剩下4个）的办法都说出了自己了解的真相。正是有了这些真相，才改变了别人的世界。6个主人公中探索真相的只有路易莎和扎克力，但6人都参与了真相的传播。有意思的是在黑客帝国中的配置也是如此尼奥完成了探索真相过程，先知传播真相。</p>
+
+  <p>其次是自然的秩序</p>
+
+  <p>世间任何事物都有自己的秩序，99.99%的人都在遵守着秩序，有了法律之后秩序变的更加明晰，统治者往往为了巩固自己的统治地位而设定了大量的秩序便于管理。可是这个世界上总有那么0.01%的人存在着，这些人的存在使得秩序面对着极大的挑战。从尤因的口中我们可以得知摩尔书中探讨的大量话题是什么可以改变，但什么一定不能改变。</p>
+
+  <p>尤因打破了黑奴买卖的秩序，佛罗比舍用生命打破了需要被大作曲家维维安 埃尔斯联署签名作品的秩序，路易莎、斯科特、萨克 萨克斯、乔纳皮尔打破了石油大亨建立的秩序，卡文迪什和3个老年人打破了老人院里监管的秩序、星美打破了建立公司制对克隆人循环管理的秩序、扎克里战胜了心魔老乔治和祭司的预言打破了被食人族部落欺负的秩序。同样在黑客帝国里救世主尼奥为了大爱打破了设计师建立的循环秩序，史密斯也干了和尼奥同样的事情，只是他为了自己打破设计师建立的秩序（从另外一个方面说史密斯也是尼奥是不同目的的一类人，干了同样的事情）。</p>
+
+  <p>那到底是什么作为诱因打破了这种自然秩序，创造出了这0.01%的群体出来呢，沃卓斯基姐弟在不同的片里都在强调这点–人类的本能，这样的本能本身就是优缺点并存的。</p>
+
+  <p>让我们说说本能</p>
+
+  <p>诱发选择的结果因素大部分来源于人性的本能，这包含了承诺、爱、恨、贪婪、正义、善良、从众、利益、自由等等，但最后的结果都是人选择了自己想要选择的。</p>
+
+  <p>我们的生命和我们的选择就像量子轨迹，只有理解了这一刻才能知道下一刻，在每一个交叉点上，在每一次相遇都蕴含了一个新的或潜在的方向，在影片里尤因选择帮助奥图瓦获得水手身份（相当于自由身，非奴隶身份）；弗罗比舍选择要成为英国伟大作曲家独自完成《云图六重奏》；路易莎选择去探究核事件的真相；卡文迪什选择相信3个同伴并带领他们一起逃出老人院，星美选择听从阿庇斯将军的建议帮助反抗军，扎克里选择帮助和保护先知并带她去首尔山。</p>
+
+  <p>除了主角之外类似的情节还有很多，奥图瓦选择对尤因的守护并救了他一命。埃尔斯妻子伊俄卡斯特对于埃尔斯事业的帮助，不仅和德国指挥家塔德乌什 凯塞林上床还和弗罗比舍上床，以便他们可以帮助埃尔斯。艾萨克 萨克斯对路易莎的一见钟情导致了他的死亡，同时也贡献出了一个报告的副本（虽然这个副本掉水里了）。乔-纳皮尔对路易莎的保护和帮助，甚至还有陌生的墨西哥妇女答应了路易莎的请求后对她的保护（最后还是她杀死了杀手）。飞扬跋扈的作曲家埃尔斯的选择嘲笑弗罗比舍，旅馆的老板选择帮助并敲诈弗罗比舍。老人院中只会说我知道我知道的米克斯选择在关键时刻说出了一段拯救大家并且激动人心的话。。档案员选择相信星美所说的真相，并记录了下来。每个人都在因为不同的原因做着不同的选择，正是这些不同的选择导致的后果从而改变了世界的组成。</p>
+
+  <p>关于轮回</p>
+
+  <p>很多人说导演用一人饰多角是为了减低成本，我真不知道这样的理论从哪来的，从逻辑上我就觉得狗屁不通，难道一个人演多个角色就可以减少工时么？大牌演员演一天的费用和演100天的能一样？如果让一线大牌演员一人演100天，还不如让他演10天，换俩二线演剩下的90天省钱。这样的逻辑都不懂还写影评。。这智商真让人着急。</p>
+
+  <p>作为智商超过150的影评我必须说导演这么安排是有其特殊用意的，在轮回中导演用了多空间多角色来描述轮回和因果关系。演员的多角色是让观众读懂整个影片的根本。
+轮回并非线状的，基于当下的时间点梦见未来和过去是一件很神奇的事情。在这个时空过完一生，又去到另外的时空。可能是久远的过去，可能是杳渺的未来。要经历多少轮回才能遇见之前人生里遇见的人？在循环的轮回中当一个灵魂再一次回到之前的时空，有没有可能以另一个身份遇见之前的“另一个自己”？灵魂的轮回是没有完整的记忆的，却又被各个时空的因缘绑在一起。</p>
+
+  <p>这种非线性的轮回在影片中穿插出现，黑人部落脸上的纹身，就是白人扎克里部落脸上的纹身，埃尔斯在梦里梦到了papa宋餐厅的场景和云图的音乐，路易莎对着音像店员说我一定听过这个音乐（云图六重奏）弗罗比舍和爱人斯科史密斯同样死于口中爆头（只是一个是自己开枪一个被开枪），卡文迪什从养老院第一次独自逃跑时对着玻璃窗内看热闹的人喊着绿色食品是人，绿色食品是人肉做的”（被剪掉了）（电影《绿色食品》中的台词）暗示着星美故事里克隆人自己吃自己的速扑饮料。比如扎克里在梦中将6个故事的片段杂乱的拼接惊醒跑到祭司那里寻求指点。2321年女先知梅丽尼姆脸上的疤痕和2144年张海柱那些反抗军脸上的疤痕一样。本 威士肖扮演的弗罗比舍是个GAY在1936年时在埃尔斯家弹奏出了云图时对他说，我有时候想象我们在不同的时空一遍遍的相遇于是在1849年威士肖扮演的船员在满足了同样扮演暴虐船长的吉姆 布劳德本特的性需求。星美说到死亡是一扇门时刚好是下个轮回尤因和妻子回家相遇在一起。（寓意和张海柱未来的相遇）</p>
+
+  <p>文明是电影中的一个谜团，也是诸多科幻题材作品的一个巨大谜团。它匍匐在一个莫比乌斯圈上，不断前进，却也不知道终点。未知变为已知，已知又隐藏到未知的阴影中。人类的进化，是下一个轮回的结束和开始。 </p>
+
+  <p>导演在本片内的轮回都是积极向善的，无论从每个个体角色的轮回还是从每个故事的内容来看，向善是轮回的核心思路。</p>
+
+  <p>汤姆汉克斯扮演的，亨利古斯医生妄图毒害亚当，谋财害命。扮演的客栈老板贪图钱财但却换回了封口，扮演的艾萨克萨克斯核电站安检员，与女主角路易莎雷偶遇，对其一见钟情，不惜涉险帮其揭露真相，最后被杀手比尔斯莫克在飞机上灭口。扮演的扎克里战胜了心魔老乔治帮助了先知。从贪婪到善良的一系列轮回。我们还能看到其他角色的轮回表演。</p>
+
+  <p>只是每一次轮回一个角色是自己故事的主角，也可能是其他故事的重要配角，还会是另外故事的龙套。我个人倒是最喜欢吉姆 布劳德本特扮演的蒂莫西 卡文迪什和维维安 埃尔斯两个角色，他把这两个角色诠释的惟妙惟肖，同样的贪婪和自私，但有着截然不同的结局。埃尔斯的自大和贪婪逼走了弗洛比舍，自己名声的积累基础是来源媳妇通过陪睡对自己的帮助。而卡文迪什则是一个胆小、不愿意负责、自私、狡诈的综合性人物，从小就泡妞但却不敢对妞负责，一辈子靠着坑蒙拐骗借钱度日（名声也很差），睡了嫂子，骗了朋友，甚至连拍卖行也骗（卖古董桌子）但就这样一个自私的人在最后一刻选择回去帮助米克斯逃脱，选择回去找到初恋女友完成了向善的轮回。当然并不是每个人的轮回都向善的那么明显，比如大反派雨果 维文扮演6个角色，从制定杀人规则（奴隶制的坚定拥护者）到参与杀人精神统治（暗示纳粹艺术家）到亲自杀人，到不杀人只打人，最后到连人都不打了。当然也有永远的好人，比如飞跃老人院中的米克斯在船上同样扮演了拯救黑人角色的老水手并说出了关键一句话改变了船长的主意。</p>
+
+  <p>从6个影片上来每一次轮回反派的角色就显得越发的模糊，最后一个故事的反派只是内心深处的心魔，导演塑造的轮回是一个从无到有从有到无的过程。影片还极力的凸显出了追求平等的内涵，山谷人和先知人的生命谁更重要，黑奴为什么天生就得做奴隶，年轻没有名气的作曲家为什么就必须要借助已经成名的作曲家的名气来写作（这样的情况在中外文艺界很常见），老年人为什么只能被儿女送到老人院里等待死亡而不能过自己想要的生活，克隆人和纯种人有什么不一样，为什么不能和平的共存。</p>
+
+  <p>很多人问为什么我提到的在电影院里没看见？那我们必须大声说一句中国电影版剪辑的编辑是大傻逼，他删了40分钟内容，他不仅自己没有看懂这部影片，还让更多的人看不懂。</p>
+
+  <p>影片哲学</p>
+
+  <p>导演在不同的片段中通过不同的人说出了自己想要对观众表达的观点，沃卓斯基姐弟对于哲学、宗教的研究已经达到了一个新的高度。我先简单的把黑客帝国3部曲中导演的哲学观点整理出来</p>
+</blockquote>
+
+<blockquote>
+  <ol>
+    <li>凡事都有因和果的关系。</li>
+    <li>人总是会听到自己想听的话。记住的也都是自己想要记住的。</li>
+    <li>对于不想听的话或者不愿意听到的，会产生排斥和怀疑。</li>
+    <li>当你开始怀疑这个世界的时候，已经开始探索接近真相。所谓的真相，往往是你不愿意相信的那部分。</li>
+    <li>坚持做自己认为正确的事情，一定可以达到自己的目的，或许这个目的不一定和初衷相符。 </li>
+    <li>世界一定会变成你所希望的那样，自己内心深处的态度决定了这一切。</li>
+    <li>人总会有信仰，但信仰是可以改变。</li>
+    <li>根本没有所谓的选择，任何选择之前就已经有了答案。只不过很多人不愿意承认而已。</li>
+    <li>如果你觉得事情糟糕透了，那接下来的一切就只会更好，既然经历了最差当然可以接受更好。</li>
+    <li>所有的规则都会被改变，在规则束缚中永远只能是凡人，救世主就是用来破坏和重树规则的，当然很多人也这么做了，最后没有成功是因为人性的弱点。所以如果你不能改变规则，那就想办法适应规则，如果不愿意适应规则就去改变规则，千万不能抱怨这个世界的不平等。</li>
+    <li>人总会为自己的行为找很多理由和借口。</li>
+    <li>任何事情和人的存在都是有其合理性的，与其浪费时间想为什么会遇到，不如花点时间想想之后该怎么办。</li>
+    <li>真相是什么并不重要，重要的是你是不是真的能够接受真相。</li>
+    <li>有些事永远不会改变，有些事却一定会改变。</li>
+    <li>永远不要为了迎合别人而改变自己，因为在你身边的人不迎合也会在，不在身边的人改变再多也会消失。除非你的存在就是为了迎合。</li>
+    <li>起点就是终点，终点就是起点</li>
+  </ol>
+</blockquote>
+
+<blockquote>
+  <p>再看看云图的片中哲学。</p>
+
+  <ol>
+    <li>人的命运只能掌握在自己手中。</li>
+    <li>绝不会向暴力犯罪屈服。</li>
+    <li>这个世界被那些同样的、扭曲我们心灵的看不见的力量所控制。</li>
+    <li>你可以维持对人民的统治，只要你给他们东西，剥夺一个人的一切，将会使你失去对那个人的控制。（作为一个五毛我并不认同索尔仁尼琴在1982年访问台湾时关于中国大陆的言论）</li>
+    <li>我们的生命并不属于我们自己，从子宫到坟墓我们和其他人紧紧相连，无论前生还是今世，每一桩恶行每一项善举都会决定我们未来的重生。</li>
+    <li>痛苦很强大，但朋友的眼睛更强大。</li>
+    <li>如果你不想我跳阳台，为何还开着阳台门。那是因为比起你跳阳台更糟的是，你会困在那里。</li>
+    <li>死亡是一扇门，当它关闭时另一扇就会打开，如果来让我想象天堂我会想象那扇门打开了，在门后我会发现他就在那里等着我。</li>
+    <li>你必须做，你不能不做的事情。</li>
+    <li>贪婪比智慧更强大</li>
+    <li>信仰，和恐惧或爱情一样，必须通过努力才能理解，就像我们理解相对论和测不准原理,就像理解那些决定我们生命进程的各种现象。</li>
+    <li>昨天生活朝着一个方向进行，今天却朝着另外一个方向。昨天，我不相信我能做的事，今天我却做了。</li>
+    <li>那些经常改造时间和空间的力量，那些能够改变我们设想好的命运的力量，在我们诞生前很久就起作用了并在我们死后继续起作用。</li>
+    <li>名声在我们的世界里就是一切</li>
+    <li>没有人生来就是革命者</li>
+    <li>所有的界限都是常规，等待着被超越。一个人能够超越任何常规，只要这个人能首先想到这么做。在这样的时刻，我能够感觉到你的心跳，清晰的就像感觉到我自己的。我知道分离是一种幻觉。我的生命远远超越了我自己的极限 。</li>
+    <li>为什么人会一遍遍犯同样的错误。</li>
+    <li>弱者是肉，强者必食</li>
+    <li>没有众多的一滴水，哪里来的汪洋大海？</li>
+    <li>为什么越是需要语言的时候，语言越是会从我们嘴边溜走，如果我的语言没有溜走，我能阻止将会发生的可怕事情吗？</li>
+    <li>也许那一刻我第一眼看见你。也是命运。</li>
+    <li>在不同的人生，不同的时空，我们一次次相遇。</li>
+    <li>爱是一种自然现象。爱可以超越生死。</li>
+  </ol>
+
+  <p>最后说说星美的爱情故事，这个故事很有意思。（虽然电影对原著中的6个故事改动超过了几十处）在原著中星美是被人利用和欺骗的（电影改编的时候有很多细节也印证了这点，比如女先知对扎克里说起星美的时候说她的生事很悲惨，被人欺骗和利用等）张海柱并不爱她，反抗军联盟也和统一部是一伙的都是公司制度下的产物，幼娜和星美也都是精心挑选出来用于反抗的工具，反抗就会破坏秩序会被镇压，为了让纯种人更加厌恶克隆人（星美在回答档案员的问题时说我不知道他是谁，但我知道他是第一个对我有善的纯种人）从而使得纯种人的统治更加牢靠（防止纯种人对克隆人产生同情），在最后一刻星美发现了这个阴谋，改变了自己的演讲内容，将单纯仇恨的反抗变成了意识的觉醒，使得更多的纯种人和克隆人投入到了打破秩序的革命中来。</p>
+
+  <p>这个故事显然和黑客帝国中的描述惊人的雷同，救世主尼奥并不是唯一的，在他之前已经有很多任了，他只是设计师用来检验matrix安全性的程序而已，锡安的存在和毁灭也已经经历过无数次（就如反抗军和有觉醒的克隆人的存在和毁灭一样）于是导演改编了这个有点黑暗的剧本，使得他变成了一个凄美的爱情故事。</p>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <p>你爱过他吗？</p>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <p>我爱他。</p>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <p>你是说你现在仍然爱他？</p>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <p>不，我永远爱他。</p>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <p>这个改编我很喜欢。现在你真的确定自己看懂了《云图》了么？</p>
+</blockquote>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[2013年奥斯卡最佳纪录长片奖 -- 《寻找小糖人》]]></title>
+    <link href="http://pikipity.github.com/blog/searching-for-sugar-man.html"/>
+    <updated>2013-02-26T23:19:00+08:00</updated>
+    <id>http://pikipity.github.com/blog/searching-for-sugar-man</id>
+    <content type="html"><![CDATA[<p>这是一部讲述音乐人 <a href="http://zh.wikipedia.org/wiki/%E8%A5%BF%E6%96%AF%E6%89%98%C2%B7%E7%BD%97%E5%BE%B7%E9%87%8C%E6%A0%BC%E6%96%AF">Rodriguez</a> 的纪录片，不是有才华就可以成功的，一个人真的可以和命运抗争么？结局很治愈。据说，这是第一部用手机（iphone5）拍摄的奥斯卡最佳纪录长片。不管怎么说，看看吧。</p>
+
+<embed src="http://player.youku.com/player.php/sid/XNTAyNTUwNzAw/v.swf" quality="high" width="480" height="400" align="middle" allowscriptaccess="sameDomain" allowfullscreen="true" type="application/x-shockwave-flash" />
+
+<p>影片如果无法播放，请点<a href="http://v.youku.com/v_show/id_XNTAyNTUwNzAw.html">这里</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[骨头社出品，必属精品 -- 燃到爆的《钢炼》BGM]]></title>
+    <link href="http://pikipity.github.com/blog/fullmetal-alchemist-bgm.html"/>
+    <updated>2013-02-25T22:46:00+08:00</updated>
+    <id>http://pikipity.github.com/blog/fullmetal-alchemist-bgm</id>
+    <content type="html"><![CDATA[<p><a href="http://baike.baidu.com/view/2995261.htm">骨头社</a>出品，绝对热血，绝对燃到爆的<a href="http://baike.baidu.com/view/3656.htm">《钢炼》</a>BGM – Diamond Eyes。up主还很良心的连BGM原档也发布了出来，快狂点<a href="http://pan.baidu.com/share/link?shareid=67962&amp;uk=1477362479">这里</a>下载吧。<a href="http://www.bilibili.tv/video/av323319/">B站直通车这里上车</a></p>
+
+<embed src="http://player.youku.com/player.php/sid/XNDM0NjM3MjM2/v.swf" quality="high" width="480" height="400" align="middle" allowscriptaccess="sameDomain" allowfullscreen="true" type="application/x-shockwave-flash" />
+
+<p>影片如果无法播放，请点<a href="http://v.youku.com/v_show/id_XNDM0NjM3MjM2.html">这里</a></p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[ kramdown 语法文档翻译（一）]]></title>
+    <link href="http://pikipity.github.com/blog/kramdown-syntax-chinese-1.html"/>
+    <updated>2013-02-23T17:14:00+08:00</updated>
+    <id>http://pikipity.github.com/blog/kramdown-syntax-chinese-1</id>
+    <content type="html"><![CDATA[<p>这是 《kramdown Syntax》的中文翻译系列，英文、中文都不好，翻译过来为大家方便查询与学习，原文在<a href="http://kramdown.rubyforge.org/syntax.html#attribute-list-definitions">这里</a>。</p>
+
+<p><img src="http://pikipity.github.com/images/post/overview_kramdown.png" width="550pt" /></p>
+
+<p>kramdown 语法是基于 Markdown 语法建立并加入了一些其他 Markdown 扩展版本（例如，<a href="http://maruku.rubyforge.org/">Maruku</a>、<a href="http://michelf.com/projects/php-markdown/extra/">PHP Markdown Extra</a> 和 <a href="http://johnmacfarlane.net/pandoc/">Pandoc</a>）所具有的特性。不仅如此，它努力去提供一个包括明确规则的严格的语法，所以它不可能完全符合 Markdown 语法。尽管如此，大多数用 Markdown 编写的文档依然可以用 kramdown 很好地解析。下面所有和 Markdown 语法存在不一样的地方的 kranmdown 语法都用高亮指出了。</p>
+
+<p>下面是所有 kramdown 所支持元素的语法定义，同时还有告诉你 kramdown 通过一个可用的编译器转换之后你将得到什么样的文档。</p>
+
+<!--more-->
+
+<h2 id="section">源文件文本格式</h2>
+
+<p>一个 kramdown 文本可以支持多种编码格式，比如 ASCII、UTF-8 和 ISO-8859-1，并且会将他们转化为和你源文件同样的编码格式。</p>
+
+<p>文件包括两种元素：块级元素 (block-level elements) 和跨度级元素 (span-level elements)</p>
+
+<ul>
+  <li>块级元素定义了内容的主体部分，比如，哪块文字是一个段落，哪块是一个列表，哪块是一个引用文字等等</li>
+  <li>跨度级元素标记了一些小的文字块，比如，强调文字或是链接</li>
+</ul>
+
+<p>因此，跨度级元素只能出现在块级元素或是另一个跨度级元素之内。</p>
+
+<p>在对于块级元素的描述中，你会经常发现以“第一行”或是一个块级元素的某一行的“第一个字”作为参照的叫法。这种参照仅仅是相对于当前的缩进级别。因为有的块级元素中会出现一个新的缩进级别（例如，引用文字）。一个 kramdown 文件总是开始于以文本第一行为开始的默认缩进。</p>
+
+<h3 id="section-1">自动换行</h3>
+
+<p>一些轻量级的语法不能很好地在强制断行的换行环境中使用，例如，很多的 email 程序中。但是，kramdown 允许内容比如段落或是引用中使用强制断行的换行形式，比如行之间的中断。这个有时被称为“懒语法”，因为对于连续行来说，文本第一行的缩进或是行首标记并不需要。</p>
+
+<p>当下面条件满足时，块级元素的一行结束：</p>
+
+<ul>
+  <li>一个空行，一条具有 EOB 标记的行，一条空的内联属性列表或是文本结束</li>
+  <li>或是 HTML 块</li>
+</ul>
+
+<p>在 krandom 的文件中支持自动换行，但是还是有一些块级元素不支持强制断行：</p>
+
+<ul>
+  <li>标题: 因为标题一般只有一行，所以在大多数情况下没有问题。如果标题一行太长，你需要用 HTML 语法代替</li>
+  <li>独立的程序代码块：一个独立代码块的分界线不支持强制断行，因为在分界线之间的东西都被当做独立代码块的内容。</li>
+  <li>定义：每一个定义项必须出现在一个单独的行里面。强制断行将会引入一个新的定义项。</li>
+  <li>表格：因为 kramdown 表格的每一行代表表格的一行或是两个表格之间的分割，所以表格不可能支持强制断行</li>
+</ul>
+
+<p><strong>注意</strong>：并不是建议使用懒语法来书写 kramdown 文档。因为自动换行所提供的 kramdown 语法的灵活性会影响易读性，所以不应该使用。</p>
+
+<h3 id="tab-">Tab 的使用</h3>
+
+<p>krandown 定义 tab 是四个空格，当在在列表的行首空格使用 tab 的时候，这点非常重要。并且，tab 只可以在行首使用，不可以用来代替空格，否则结果不可预测。</p>
+
+<h3 id="section-2">自动和手动逃逸</h3>
+
+<p>根据输出的形式，有一些常用字符需要特别对待，比如，当将一个 kramdowmn 文档转化为 HTML 的时候，需要特别注意“&lt;”、“&gt;”和“&amp;”字符。为了放别对这些特殊字符的处理，它们会正确地自动根据输出方式逃逸。</p>
+
+<p>比如，你可以直接在 kramdown 文档中使用“&lt;”、“&gt;”和“&amp;”字符，而不必去考虑它们在 HTML 中的使用。并且，如果你以 HTML 语言的形式或是 HTML 标签的形式使用使用这些字符的话，结果一样是正确的。</p>
+
+<p>因为 kramdown 也是用了一些字符去标记文本，所以这里有一种方法去实现这种字符的逃逸，这样它们就是自己本来的意思了。这是使用反斜杠逃逸。比如，你可以类似这样来使用单引号：</p>
+
+<pre><code>This \`is not a code\` span!
+</code></pre>
+
+<p>下面是一个包含全部可以逃逸的字符的列表</p>
+
+<pre><code>\         反斜线
+.         点号
+*         星号
+_         下划线
++         加号
+-         减号
+=         等号
+`         撇号
+()[]{}&lt;&gt;  小、中、大括号、单书名号
+#         井号
+!         感叹号
+&lt;&lt;        双小于
+&gt;&gt;        双大于
+:         冒号
+|         单竖杠
+"         双引号
+'         单引号
+$         钱的符号
+</code></pre>
+
+<h3 id="section-3">块边界</h3>
+
+<p>一些块级元素必须以块边界来开始或是结束。这里有两种情况来使块边界发挥作用：</p>
+
+<ul>
+  <li>如果块级元素必须以块边界来开始，那么它必须是一个空行，一个 EOB 标记，或是一个断掉的 IAL 或者它就是第一个元素</li>
+  <li>如果块级元素必须以块边界结束，那么它必须跟一个空行，一个 EOB 标记，或是一个断掉的 IAL 或者它就是最后元素</li>
+</ul>
+
+<h2 id="section-4">结构元素</h2>
+
+<p>所有的结构元素都是块级元素，并且它们用来构成整个内容。它们可以标记很多文本，比如一个简单的段落，一段引用或是一个列表等</p>
+
+<h3 id="section-5">空行</h3>
+
+<p>在 kramdown 中，任何一行只包含空字符例如空格或是 tab 就被认为是一个空行。一个或是多个连续的空行被认为是一个空行。空行被用来分割块级元素和其他部分，所以没有语义上的意思。但是，这里还是有一些空行有寓意的情况：</p>
+
+<ul>
+  <li>在标题使用时</li>
+  <li>在代码块中使用时</li>
+  <li>在列表中使用时</li>
+  <li>在数学快中使用时</li>
+  <li>在用来做一些元素的块边界的时候</li>
+</ul>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[用Octopress 和 Github 建立自己的 Blog]]></title>
+    <link href="http://pikipity.github.com/blog/octopress-and-github.html"/>
+    <updated>2013-02-22T08:44:00+08:00</updated>
+    <id>http://pikipity.github.com/blog/octopress-and-github</id>
+    <content type="html"><![CDATA[<p>这个 Blog 就是在使用 Octopress 和 Github 建立起来的。基本思路如下，首先用 Markdown 语言迅速成文，然后由 Octopress 生成站点文件并上传到 Github，利用 Github 的 Pages 功能，就可以直接通过访问 Github 提供的二级域名访问到你的站点了。</p>
+
+<p><img src="http://pikipity.github.com/images/post/octopress.jpg" width="550pt" /></p>
+
+<!--more-->
+
+<h3 id="octopress">为什么用 Octopress</h3>
+
+<p>有很多人看到就会吐槽了，为什么不用 WordPress 呢？那么下面就做一下 Octopress 和 WordPress 的对比好了。</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center"> </th>
+      <th style="text-align: center">Octopress</th>
+      <th style="text-align: center">WordPress</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">使用的脚本语言</td>
+      <td style="text-align: center">Ruby</td>
+      <td style="text-align: center">PHP</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">生成网页</td>
+      <td style="text-align: center">静态网页</td>
+      <td style="text-align: center">动态网页</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">外挂、主题数量</td>
+      <td style="text-align: center">少</td>
+      <td style="text-align: center">多</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">速度</td>
+      <td style="text-align: center">快</td>
+      <td style="text-align: center">慢</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">易用性</td>
+      <td style="text-align: center">起点比较高</td>
+      <td style="text-align: center">简单</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>其实准确的说 Octopress 并不是只能生成静态网页，但是这里介绍的是 Octopress 和 Github 联合使用，由于 Github 并不是一个服务器代理商，Pages本身只是为简单的项目主页准备的，所以没有数据库，每次打开网页都是一个新生成的过程，所以只能支持静态网页。</p>
+
+<p>从上面的表格就可以看出两者各有优缺点，我选择 Octopress 的原因很简单：</p>
+
+<ol>
+  <li>需要折腾</li>
+  <li>可改动性大</li>
+  <li>markdown 语法直接成文，舒服</li>
+</ol>
+
+<p>但是由于 Octopress 本身刚起步，国内教程、论坛都少的可怜，所以大部分的学习只能去看外国的网站，或是直接去 Github 上拉别人的网页来研究。下面就是如何在自己的电脑上安装 Octopress 和利用 Github 来搭建 Blog 了。下面的安装和使用都以 Mac OS X 10.8 为基础，我想 Linux 应该也是差不多的，Windows 应该比较麻烦，请看<a href="http://yanping.me/cn/blog/2011/12/26/octopress-on-windows/">这里</a></p>
+
+<h3 id="section">前期准备</h3>
+
+<p>首先你要具备一点 *nix 命令行的知识和 html 语言的知识。下面提供三个网址可以先看一下：</p>
+
+<ul>
+  <li><a href="http://www.douban.com/note/75797151/">Mac 终端命令</a></li>
+  <li><a href="http://www.linuxguide.it/command_line/linux_commands_cn.html">Linux 终端命令</a></li>
+  <li><a href="http://www.w3schools.com/html/default.asp">html 语言教程</a></li>
+</ul>
+
+<p>接下来就要做一些 Octopress 安装前的准备工作了。由于 Octopress 需要 Ruby 1.9.2，运行</p>
+
+<pre><code>$ ruby -v
+</code></pre>
+
+<p>检查一下版本号是否正确，如果正确，就可以直接安装 Octopress 了，如果版本不对就还是按照下面的步骤走一遍吧。</p>
+
+<ol>
+  <li>安装 GCC。如果已经安装了 Xcode，就可以不必安装了，由于后面的安装会需要源文件编译，所以需要安装 GCC 来提供支持，可以到<a href="https://github.com/kennethreitz/osx-gcc-installer">这里</a>下载对应版本的 GCC 来安装</li>
+  <li>
+    <p>安装 Homebrew，Homebrew 是 Mac 上的一个包管理器，后面为了方便，将直接用 Homebrew 来完成 Git 安装。运行下面指令来安装</p>
+
+    <pre><code>	$ ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)"
+</code></pre>
+
+    <p>Homebrew 如何使用可以直接到<a href="http://mxcl.github.com/homebrew/">这里</a>来看，安装那些 Mac 本身没有的包还是很方便的。</p>
+  </li>
+  <li>
+    <p>安装 Git。运行下面命令来安装</p>
+
+    <pre><code> $ brew install git
+</code></pre>
+  </li>
+  <li>安装 RVM，RVM 是 Ruby 的一个版本管理器，为了方便安装，可以直接到<a href="http://jewelrybox.unfiniti.com/">这里</a>下载 具有 GUI 的版本，这个的安装过程就和 Mac 上的其他软件没有什么不同了。</li>
+  <li>
+    <p>安装 Ruby 1.9.2，绕了一大圈，终于到重点了。运行下面的两条命令安装</p>
+
+    <pre><code> $ rvm install 1.9.2
+ $ rvm 1.9.2 --default
+</code></pre>
+  </li>
+</ol>
+
+<h3 id="octopress-1">安装 Octopress</h3>
+
+<p>主角登场。</p>
+
+<p>先在终端移动到你准备存放 Octopress 的地方，用下面的命令</p>
+
+<pre><code>$ cd 你的路径
+</code></pre>
+
+<p>然后直接用 Git 将 Octopress 从 Github 上拖下来就可以了，用下面的命令</p>
+
+<pre><code>$ git clone git://github.com/jsw0528/octopress.git
+</code></pre>
+
+<p>OK，在你当前路径下应该会多出一个叫 octopress 的文件夹，里面的就是 octopress 的程序了，这就叫做轻量。</p>
+
+<p>还需要安装一些基本的套件，否则生成的东西实在没法看，运行下面命令安装相关套件</p>
+
+<pre><code>$ cd octopress
+$ bundle install
+</code></pre>
+
+<p>然后就是安装主题了，这里可以有三种选择（支线剧情 Flag，+_+）：</p>
+
+<ol>
+  <li>
+    <p>使用预设主题，预设主题本身其实已经挺不错了，但是万千世界千篇一律就没意思了，可以将默认主题做模板来修改出自己的主题，用下面的命令安装预设主题</p>
+
+    <pre><code> $ rake install
+</code></pre>
+  </li>
+  <li>
+    <p>直接使用别人的主题或是在别人的主题上稍作修改，这里推荐两款</p>
+
+    <ul>
+      <li>
+        <p>极简风格的 Slash，大家可以到其<a href="http://zespia.tw/Octopress-Theme-Slash/index_tw.html">主页</a>看效果，其实这个 Blog 的主题就是在 Slash 上修改出来的，安装使用下面命令：</p>
+
+        <pre><code>   $ git clone git://github.com/tommy351/Octopress-Theme-Slash.git .themes/slash
+   $ rake install['slash']
+</code></pre>
+      </li>
+      <li>
+        <p>由 <a href="https://github.com/eDoctor">eDoctor</a> 开发的主题，大家可以来 <a href="http://mrzhang.me/">MrZhang.me</a> 来看效果，主题名就叫 “blog”，安装方法如下</p>
+
+        <pre><code>  $ git submodule init
+  $ git submodule update
+  $ rake install['blog']
+</code></pre>
+      </li>
+      <li>
+        <p>如果你觉得别人的主题都太烂了，Come on，自己做一个吧</p>
+      </li>
+    </ul>
+  </li>
+</ol>
+
+<p>安装完主题，Octopress 就算是安装完了，不要松懈，一切才刚刚开始</p>
+
+<h3 id="github-">连接 Github 账号</h3>
+
+<ol>
+  <li>
+    <p>到<a href="https://github.com">这里</a>注册一个 Github 账户，创建一个新的 Repository，名称为 <code>你的帐号.github.com</code>。</p>
+  </li>
+  <li>
+    <p>修改 Octopress 安装目录下的 <code>source/CNAME</code></p>
+
+    <ul>
+      <li>如果你要使用自己的域名，就将<code>source/CNAME</code>修改成你自己的域名，然后将域名的 A Record 指向 IP：<code>207.97.227.245</code>就可以了</li>
+      <li>如果直接使用 Github 提供的二级域名，就直接删除 <code>source/CNAME</code> 文件   </li>
+    </ul>
+  </li>
+  <li>
+    <p>运行下面命令</p>
+
+    <pre><code> $ rake setup_github_pages
+</code></pre>
+
+    <p>会提示输入有读写权限的 Repository url，可以在你刚才新建的 Repository 里面找到，具体位置见图片</p>
+
+    <p><img src="http://pikipity.github.com/images/post/Repository_url.jpg" alt="Repository_url 在这里" width="550pt" /></p>
+  </li>
+</ol>
+
+<h3 id="octopress-2">配置 Octopress</h3>
+
+<p>一般只需要配置两个文件就可以了</p>
+
+<ol>
+  <li>配置 <code>_config.yml</code>：这个文件在你的安装目录下面，里面是你 Blog 的一些基本配置，比如名字、创建时间等等，懂英文的一般都懂了一条条是什么意思，需要注意的是冒号后面的一个空格不要漏掉，<a href="https://gist.github.com/pikipity/5010379">这里</a>是我的 <code>_config.yml</code>，大家可以参考参考。</li>
+  <li>配置 <code>Rakefile</code>：这是软件的配置，不明白是什么就不要乱动了，有时候当你写 post 的时候会发现自动生成的文件格式不适合你，你可以修改 <code>Rakefile</code> 中 <code>new_post_ext</code> 对应的内容。</li>
+</ol>
+
+<p>至此，Octopress 就算是安装配置完了，你可以用它来生成博文并发布了。Octopress 的命令可以用下面的方法查询</p>
+
+<pre><code>$ rake -T
+</code></pre>
+
+<p>命令不多，真正常用的就几个，下面列出来：</p>
+
+<ul>
+  <li><code>rake generate</code>：生成站点</li>
+  <li><code>rake deploy</code>：发布站点</li>
+  <li><code>rake den_deploy</code>：上面两条命令的结合</li>
+  <li><code>rake new_post[title]</code>：在 <code>source/_posts</code> 中生成一个新的 post</li>
+  <li><code>rake new_page[filename]</code>：在 <code>source/(filename)/index.markdown</code> 中生成一个新页面</li>
+  <li><code>rake preview</code>：预览站点，默认在浏览器打开 <code>localhost:4000</code> 就可以预览</li>
+</ul>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[腐女的哲学]]></title>
+    <link href="http://pikipity.github.com/blog/game-pole-pit-father-s-philosophy.html"/>
+    <updated>2013-02-21T23:24:00+08:00</updated>
+    <id>http://pikipity.github.com/blog/game-pole-pit-father-s-philosophy</id>
+    <content type="html"><![CDATA[<p>今天被一个学妹这么说自己的 Blog：</p>
+
+<blockquote>
+  <p>他写的没有一个我不知道…或者说我怎么觉得那些个话我都在别的地儿看过。。。</p>
+</blockquote>
+
+<p>呵呵，原来大家都这么好学，想看别的地方没看过的，呵呵，这个网易专题应该没有了，希望零星看我 Blog 的读者喜欢 (*^◎^*)</p>
+
+<p>《极坑爹的哲学小游戏》，呵呵，下载在<a href="http://pan.baidu.com/share/link?shareid=377738&amp;uk=4080321956">这里</a>，攻略在下面，呵呵。为什么这么多”呵呵”，看攻略吧。</p>
+
+<ol>
+  <li><a href="http://player.youku.com/player.php/sid/XNTEzNTIxOTI4/v.swf">END1</a></li>
+  <li><a href="http://player.youku.com/player.php/sid/XNTEzNTI3NzY0/v.swf">END2</a></li>
+  <li><a href="http://player.youku.com/player.php/sid/XNTEzNTMzOTI4/v.swf">END3</a></li>
+  <li><a href="http://player.youku.com/player.php/sid/XNTEzNTM0NjIw/v.swf">END4</a></li>
+  <li><a href="http://player.youku.com/player.php/sid/XNTEzNTM2NzYw/v.swf">END5</a></li>
+  <li><a href="http://player.youku.com/player.php/sid/XNTEzNTM4MzQ4/v.swf">END6</a></li>
+  <li><a href="http://player.youku.com/player.php/sid/XNTEzNTQxMjI4/v.swf">END7</a></li>
+  <li><a href="http://player.youku.com/player.php/sid/XNTEzNTQxOTA0/v.swf">END8</a></li>
+</ol>
+
+<p><img src="http://pikipity.github.com/images/post/Boy_Game.jpg" width="550pt" /></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[这是 Google 宣传片么？]]></title>
+    <link href="http://pikipity.github.com/blog/the-internship.html"/>
+    <updated>2013-02-21T10:35:00+08:00</updated>
+    <id>http://pikipity.github.com/blog/the-internship</id>
+    <content type="html"><![CDATA[<p>最新的 Fox 出品，肖恩·利维执导，欧文·威尔逊、文斯·沃恩联袂主演的《挨踢实习生》将于今年6月7日北美首映，<a href="http://news.mtime.com/2013/02/14/1506703.html">时光网</a>是这样说的</p>
+
+<blockquote>
+  <p>本片剧本由主演之一的文斯·沃恩执笔：随着互联网时代来临，两个年已四旬的老友忽然下岗。为了重新整顿人生方向，两人一同面试加入了大名鼎鼎的IT公司“谷歌”，从实习生做起。他们必须在这个位置上和20岁出头的狡黠的年轻人竞争，目标就是：转正！</p>
+</blockquote>
+
+<blockquote>
+  <p>对于那些谷歌的粉丝来说，本片当然是一窥IT圣地的好机会。而对于热爱烂仔帮喜剧的影迷而言，当谷歌的IT男、技术宅们遇上一对做销售的大龄贱男、老江湖，这样基情四射的故事怎可错过围观？这支预告片很聪明的未过多透露剧情，而是充分展示了两位男主角之间的化学反应。《伴娘》之后喜剧路线走得顺风顺水的美女萝丝·拜恩也在预告中惊喜亮相，此外，威尔·法瑞尔、约翰·古德曼等一众喜剧常客也将助阵。</p>
+</blockquote>
+
+<p>但是从<a href="http://movie.mtime.com/174797/trailer/43194.html">预告片</a>来看，这不就是 Google 宣传片么 ⊙﹏⊙b</p>
+
+<p><img src="http://pikipity.github.com/images/post/The_Internship.jpg" width="550pt" /></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Chrome 卡通一幅]]></title>
+    <link href="http://pikipity.github.com/blog/chrome-cartoon-1.html"/>
+    <updated>2013-02-21T10:28:00+08:00</updated>
+    <id>http://pikipity.github.com/blog/chrome-cartoon-1</id>
+    <content type="html"><![CDATA[<p>创作 <a href="https://plus.google.com/100457805172439613418/posts">Jerry Gonzalez</a>，翻译 <a href="http://www.guao.hk/posts/make-me-your-default-browser-please.html">谷奥</a></p>
+
+<p><img src="http://pikipity.github.com/images/post/chrome_cartoon_1.jpg" width="650pt" /></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Google 眼睛开始公测了?!]]></title>
+    <link href="http://pikipity.github.com/blog/google-glasses.html"/>
+    <updated>2013-02-20T23:59:00+08:00</updated>
+    <id>http://pikipity.github.com/blog/google-glasses</id>
+    <content type="html"><![CDATA[<p>Google 今天悄无声息的突然放出 Google 眼睛专题页面（快点<a href="http://www.google.com/glass/start/">这里</a>），配有各种高平大图、使用介绍、视频介绍，你想要的都有了。</p>
+
+<p>从视频中可以看出是语音控制，先说“OK，glass”然后说你想做的事，比如：</p>
+
+<ul>
+  <li>拍照</li>
+  <li>录像</li>
+  <li>视频分享</li>
+  <li>导航</li>
+  <li>发送信息</li>
+  <li>翻译</li>
+  <li>问答</li>
+  <li>温度、时刻表等信息</li>
+</ul>
+
+<p>硬件方面很是漂亮，五种颜色，还有墨镜版。</p>
+
+<p><img src="http://pikipity.github.com/images/post/Google-Glasses_1.jpg" alt="五种颜色" width="660pt" /></p>
+
+<p><img src="http://pikipity.github.com/images/post/Google-Glasses_2.jpg" alt="墨镜版" width="660pt" /></p>
+
+<p><img src="http://pikipity.github.com/images/post/Google-Glasses_3.jpg" alt="柔韧性很好" width="660pt" /></p>
+
+<p><img src="http://pikipity.github.com/images/post/Google-Glasses_4.jpg" alt="很漂亮(*^◎^*)" width="660pt" /></p>
+
+<p>想得到一个就比较麻烦了。需要</p>
+
+<ul>
+  <li>在Google+或Twitter发一条不超过50字的推，以#ifihadglass标签为开头</li>
+  <li>可以插入5个照片或1段视频</li>
+  <li>内容要写明自己拿到Google眼镜之后想做什么</li>
+  <li>比如年满18岁，并居住在米国</li>
+  <li>一个人最多可提交三个申请</li>
+  <li>1500刀</li>
+</ul>
+
+<p>看来天朝人民只能看<a href="http://www.youtube.com/watch?feature=player_embedded&amp;v=v1uyQZNg2vE">这个视频</a>解解瘾了。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Ubuntu 平板电脑版本]]></title>
+    <link href="http://pikipity.github.com/blog/ubuntu-tablet.html"/>
+    <updated>2013-02-20T23:22:00+08:00</updated>
+    <id>http://pikipity.github.com/blog/ubuntu-tablet</id>
+    <content type="html"><![CDATA[<p><a href="http://www.ubuntu.com/">Ubuntu</a> 在继发布手机版、TV版后终于不出所料的发布了平板电脑版本。当初 Windows 提出的一个一个系统主导全部设备的理想构图现在被所有人使用了，但是貌似只有 Windows 自己家做的最差了，谁让他的系统那么冗杂呢，还是 *inux 是王道啊。</p>
+
+<p>但是 Ubuntu 这样，Ubuntu for TV 也只是发布了一个测试版，BUG不断，Ubuntu for phones 和 Ubuntu for Android 虽然可以使用，但是各个手机的操作系统已经一个比一个精良，谁会闲着没事儿去刷你的ROM。最后只能落得和 Desktop 一样，只能在旧设备里当做喜欢折腾一族的小众玩物而已。虽然预装 Ubunu 电脑已经出现了几台，但定位都是上网本，并且有 Windows 和 Mac OS X 在那里挡着，怎么也比不上人家。但是哪里比不上呢？说到底还是两点：</p>
+
+<ol>
+  <li>平台软件太少</li>
+  <li>没有硬件支持</li>
+</ol>
+
+<p>尤其是第一点，只是硬伤，Linux平台的软件种类、数量和Windows、Mac OS X是没法比的，并且没有一个很好的平台来提供软件的购买与下载。很显然 Ubuntu 也意识到了这点，并在积极改善，为开发者营造良好创作和销售的环境，虽然有点学 Apple 的意味，但是已经很不错了。</p>
+
+<p>据悉，Ubuntu Phone (预装 Ubuntu 的手机）和Ubuntu Tab会在2014年上市，光看视频就很是期待啊，虽然我已经放弃了 Ubuntu 桌面版了（Unity在平板、手机上应该不错吧，桌面上实在太二了，还是传统 Gnome 漂亮啊，仅是个人意见）。</p>
+
+<p>最后，按照惯例给网址：</p>
+
+<ul>
+  <li>点<a href="http://www.ubuntu.com/devices/tablet">这里</a>去看看 Ubuntu 平板，可以在 Galaxy Nexus、Nexus 4、Nexus 7 和 Nexus 10 上安装开发者版本。</li>
+  <li>点<a href="http://www.ubuntu.com/devices/phone">这里</a>去看看 Ubuntu for phones。</li>
+  <li>点<a href="http://baike.baidu.com/view/8965420.htm">这里</a>去看看度娘怎么说 Ubuntu for Android 吧。</li>
+  <li>最后，是<a href="http://www.ubuntu.com/devices/tv">这里</a>看看貌似很酷的 Ubuntu TV 吧。</li>
+</ul>
+
+<p>Ubuntu 中文论坛一位大神成功在手机上安装了 Ubuntu 12.04 桌面版，点<a href="http://forum.ubuntu.org.cn/viewtopic.php?t=384404">这里</a>看看吧。话说 Ubuntu 好久没有更新桌面版了啊。</p>
+
+<p><img src="http://pikipity.github.com/images/post/ubuntu_tablet.png" width="550pt" /></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Google 眼睛到底是什么？]]></title>
+    <link href="http://pikipity.github.com/blog/what-is-google-glasses.html"/>
+    <updated>2013-02-20T16:29:00+08:00</updated>
+    <id>http://pikipity.github.com/blog/what-is-google-glasses</id>
+    <content type="html"><![CDATA[<p>Google 至今为止还是不允许已经上手 Google 眼睛的开发者泄露消息，但是规定就是用来破坏的，据<a href="http://www.quora.com/Soumya-Mohan">工程师 Soumya Mohan</a> 说是这样的，眼睛打开后会在右上角显示东西，菜单白底黑字，菜单很小，有三个选项：</p>
+
+<ul>
+  <li>点击一个图片</li>
+  <li>拍摄一段录像</li>
+  <li>语音电话</li>
+</ul>
+
+<p>头部上下移动就可以纵向滚动菜单，可以用语音或是右侧眼睛腿的触摸区域控制。</p>
+
+<p>本来以为 Google 眼睛会使用视网膜投影，结果只是个小屏幕，有点小失望，如果只是个屏幕的话，用 Google 眼睛来实现实景虚拟现实看来还是不现实的，但是最终版本还没有出来，还是很值得期待的，出来之后不会又是一个高富帅产品才好啊。看来下面影片中的希望破灭地体无完肤了。</p>
+
+<p><a href="http://youtu.be/9c6W4CCU9M4"><img src="http://pikipity.github.com/images/post/Google-Glasses.jpg" width="550pt" /></a></p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[iOS 6.1.2 更新发布]]></title>
+    <link href="http://pikipity.github.com/blog/ios-updata.html"/>
+    <updated>2013-02-20T16:20:00+08:00</updated>
+    <id>http://pikipity.github.com/blog/ios-updata</id>
+    <content type="html"><![CDATA[<p>苹果发布了 iOS 固件更新，修复了 Exchange 日历错误。更新描述如下：</p>
+
+<blockquote>
+  <p>修复了可能导致网络流量上升与电池电量下降的 Exchange 日历错误。</p>
+</blockquote>
+
+<p>与此同时，苹果还将 iTunes 更新至 v11.0.2 版。在视图显示中新增了作曲家视图的设置，并提高了访问大量播放列表时的响应速度。同时还修复了已购买的内容无法在资料库中显示的问题。</p>
+
+<p>此次更新覆盖包括 iPad 2/3/4、iPad mini、iPhone 3GS/4/4S/5、iPod touch 4G/5G 在内的多款 iOS 设备，果迷们可以通过 iOS 系统更新（设置-通用-系统更新）或 iTunes 升级到 iOS 6.1.2 最新固件。</p>
+
+<p>iOS 6.1.2 仍未封堵最新越狱工具所利用到的漏洞，越狱团队 evad3rs 已将 iOS 6.x 完美越狱工具 <a href="http://evasi0n.com/">Evasi0n</a> 更新至v1.4版以应对最新固件。</p>
+
+<p><img src="http://pikipity.github.com/images/post/ios-6.1.2.jpg" width="450pt" /></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Apple 公司发布 Mac 紧急更新]]></title>
+    <link href="http://pikipity.github.com/blog/mac-update.html"/>
+    <updated>2013-02-20T16:09:00+08:00</updated>
+    <id>http://pikipity.github.com/blog/mac-update</id>
+    <content type="html"><![CDATA[<p>Java 浏览器插件又一次躺枪了。在<a href="http://www.reuters.com/article/2013/02/19/us-apple-hackers-idUSBRE91I10920130219">路透社独家报道</a>后，苹果也已经官方确认，公司少数员工的 Mac 电脑受到了来自不明身份的黑客攻击；目前暂时没有发现有任何数据丢失，苹果仍在对此次攻击进行调查。据悉，此次攻击利用的是 Mac 平台上 Java 浏览器插件的一个漏洞。随后，苹果便在第一时间向 Mac 终端用户发布了一个 Java 安全补丁。</p>
+
+<p>大家可以到<a href="http://support.apple.com/kb/DL1572?viewlocale=zh_CN">这里</a>手动下载更新，或者通过 Mac App Store 进行更新</p>
+
+<p><img src="http://pikipity.github.com/images/post/apple_hack.jpg" width="450pt" /></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[苹果公司供应商地图]]></title>
+    <link href="http://pikipity.github.com/blog/apple-supplier-map.html"/>
+    <updated>2013-02-19T23:07:00+08:00</updated>
+    <id>http://pikipity.github.com/blog/apple-supplier-map</id>
+    <content type="html"><![CDATA[<p>网站 <a href="http://www.chinafile.com/">“ChinaFile”</a> 使用 <a href="https://batchgeo.com/">“batchgeo”</a> 根据上个月 Apple 公司发布的<a href="http://images.apple.com/supplierresponsibility/pdf/Apple_SR_2013_Progress_Report.pdf">供应商名单</a>制作了一幅展现全部 Apple 公司供应商的地图。想围观地图请点<a href="https://batchgeo.com/map/92ad350a9800f91f03b3862c64f3593f">这里</a>，围观原文请点<a href="http://www.chinafile.com/who-supplies-apple-it-s-not-just-china-interactive-map">这里</a>。</p>
+
+<p><img src="http://pikipity.github.com/images/post/apple_supplier.jpg" alt="Apple 公司供应商地图" width="650pt" /></p>
+
+<!--more-->
+
+<p>亚洲竟然有 660 个，发展中国家就这样受欺负么？来看看中国的。</p>
+
+<p><img src="http://pikipity.github.com/images/post/apple_supplier_china.jpg" alt="Apple 公司中国供应商地图" width="650pt" /></p>
+
+<p>呵呵，好像把日本韩国也截进来了。江苏、广东躺枪啊，这么多。苏州、上海周边的亲们你们到底给 Apple 公司提供了多少廉价劳动力啊！！</p>
+
+<p><img src="http://pikipity.github.com/images/post/apple_supplier_jiangsu.jpg" alt="江苏、上海周边的劳动力们啊！！" width="650pt" /></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[单 MOSFET 放大器]]></title>
+    <link href="http://pikipity.github.com/blog/single-mos-amp.html"/>
+    <updated>2013-02-18T23:43:00+08:00</updated>
+    <id>http://pikipity.github.com/blog/single-mos-amp</id>
+    <content type="html"><![CDATA[<p>最基本的 MOSFET 放大器就是单 MOSFET 放大器了，也就是只有一个 MOSFET 的放大器，大多数介绍 MOSFET 的资料都会介绍这一部分，但是十分的冗长并且复杂且没有广泛适用价值，这里进行归纳总结。</p>
+
+<!--more-->
+
+<p>说到 MOSFET 组成的放大器，当然前提是假设 MOSFET 已经在 Saturation region，我们重点关注MOSFET在 Small Signal Analysis 下的三个参数，这三个参数为</p>
+
+<ol>
+  <li>Voltage Gain: <script type="math/tex">A_v=\frac{V_{out}}{V_{in}}</script></li>
+  <li>Input Impedence: <script type="math/tex">R_{in}=\frac{V_{in}}{I_{in}}</script> 注意：输出是开路</li>
+  <li>Output Impedence: <script type="math/tex">R_{out}=\frac{V_{out}}{I_{out}}</script> 注意：输入是短路</li>
+</ol>
+
+<p>单 MOSFET 的放大器无非就是三种，接下来就会一一介绍。（下面的电路图中可能会漏掉负载，但是式子中都已经包含负载 $R_L$）</p>
+
+<h3 id="common-source--cs">共源极 (Common Source 简称 CS)</h3>
+
+<p>基本电路图如下</p>
+
+<p><img src="http://pikipity.github.com/images/post/CS.jpg" alt="CS基本电路" width="550pt" /></p>
+
+<p>三个参数为</p>
+
+<script type="math/tex; mode=display">% &lt;![CDATA[
+\begin{array}{rcl}
+A_v&=&-\frac{R_D||R_L}{\frac{1}{g_m}+R_s+\frac{R_s+R_D||R_L}{r_0g_m}}\\
+R_{in}&=&R_G\\
+R_{out}&=&R_D||\left(r_0+r_0R_sg_m+R_s\right)
+\end{array} %]]&gt;</script>
+
+<h3 id="common-gate--cg">共栅极 (Common Gate 简称 CG)</h3>
+
+<p>基本电路图如下</p>
+
+<p><img src="http://pikipity.github.com/images/post/CG.jpg" alt="CG基本电路" width="550pt" /></p>
+
+<p>三个参数为</p>
+
+<script type="math/tex; mode=display">% &lt;![CDATA[
+\begin{array}{rcl}
+A_v&=&\frac{R_1||\left(\frac{\left(\frac{1}{g_m}+\frac{R_D||R_L}{r_0g_m}\right)r_0^2g_m}{r_0^2g_m+1}\right)}{R_s+R_1||\left(\frac{\left(\frac{1}{g_m}+\frac{R_D||R_L}{r_0g_m}\right)r_0^2g_m}{r_0^2g_m+1}\right)}\cdot\frac{\left(R_D||R_L\right)\left(r_0^2g_m+1\right)}{\left(\frac{1}{g_m}+\frac{R_D||R_L}{r_0g_m}\right)r_0^2g_m}\\
+R_{in}&=&R_s+R_1||\left(\frac{\left(\frac{1}{g_m}+\frac{R_D||R_L}{r_0g_m}\right)r_0^2g_m}{r_0^2g_m+1}\right)\\
+R_{out}&=&\left(R_D||R_L\right)||\left[r_0+g_mr_0\left(R_s||R_1\right)+\left(R_s||R_1\right)\right]
+\end{array} %]]&gt;</script>
+
+<h3 id="common-drain--source-follower--cd--sf">共漏极 (Common Drain 或者 Source Follower 简称 CD 或者 SF)</h3>
+
+<p>基本电路如下</p>
+
+<p><img src="http://pikipity.github.com/images/post/CD.jpg" alt="CD基本电路" width="550pt" /></p>
+
+<p>三个参数为</p>
+
+<script type="math/tex; mode=display">% &lt;![CDATA[
+\begin{array}{rcl}
+A_v&=&\frac{r_0||\left(R_s||R_L\right)}{r_0||\left(R_s||R_L\right)+\frac{1}{g_m}}\\
+R_{in}&=&\infty\\
+R_{out}&=&r_0||\frac{1}{g_m}
+\end{array} %]]&gt;</script>
+
+<p>尽管上面的式子看起来都很复杂，但是实际中我们会经常忽略掉一些内容，比如当忽略负载时就令 $R_L$ 为 0 就可以了，当需要忽略 $r_0$ 时就让 $r_0\rightarrow\infty$ 就可以了。</p>
+
+<p>有时 bias current 并不是由一个简单的电阻控制而是由另外的一个由 MOSFET 组成的电流源控制，所以还需要熟悉 MOSFET 各个端口的阻抗值，当遇到这种情况的时候只要等效代替就可以了。MOSFET 各个端口的阻抗值如下：</p>
+
+<ol>
+  <li>栅极阻抗：<script type="math/tex">R_G=\infty</script></li>
+  <li>漏极阻抗：<script type="math/tex">R_D=r_0+g_mr_0R_s+R_s</script></li>
+  <li>源极阻抗：$R_s=r_0||\frac{1}{g_m}$</li>
+</ol>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[我不相信，这是Python么？！]]></title>
+    <link href="http://pikipity.github.com/blog/obfuscated-python.html"/>
+    <updated>2013-02-18T13:37:00+08:00</updated>
+    <id>http://pikipity.github.com/blog/obfuscated-python</id>
+    <content type="html"><![CDATA[<p>如果看了<a href="http://pikipity.github.com/blog/21th-ioccc-winner.html">《别再说你懂C，这才是真正的C》</a>，认为C语言的混乱编程没有什么，那么看看这位 <a href="http://preshing.com/">Jeff Preshing</a> 大神的 <a href="http://en.wikipedia.org/wiki/Python_(programming_language)">Python</a> 混乱编程吧。</p>
+
+<p>大家都知道 <a href="http://en.wikipedia.org/wiki/Python_(programming_language)">Python</a> 对于格式的要求及其严格，经常一段程序就因为开头多了一个空格就连连报错，这位神人就编写了一段代码来讽刺我这种渣渣</p>
+
+<blockquote>
+  <p>Who says you can’t write obfuscated Python?</p>
+</blockquote>
+
+<!--more-->
+
+<p>代码如下</p>
+
+<pre><code>_                                 =\
+                                """if!
+                              1:"e,V=100
+                            0,(0j-1)**-.2;
+                           v,S=.5/  V.real,
+                         [(0,0,4      *e,4*e*
+                       V)];w=1          -v"def!
+                      E(T,A,              B,C):P
+                  ,Q,R=B*w+                A*v,B*w+C
+            *v,A*w+B*v;retur              n[(1,Q,C,A),(1,P
+     ,Q,B),(0,Q,P,A)]*T+[(0,C            ,R,B),(1,R,C,A)]*(1-T)"f
+or!i!in!_[:11]:S       =sum([E          (*x)for       !x!in!S],[])"imp
+  ort!cair               o!as!O;      s=O.Ima               geSurfac
+   e(1,e,e)               ;c=O.Con  text(s);               M,L,G=c.
+     move_to                ,c.line_to,c.s                et_sour
+       ce_rgb                a"def!z(f,a)                :f(-a.
+        imag,a.       real-e-e)"for!T,A,B,C!in[i       !for!i!
+          in!S!if!i[""";exec(reduce(lambda x,i:x.replace(chr
+           (i),"\n "[34-i:]),   range(   35),_+"""0]]:z(M,A
+             );z(L,B);z         (L,C);         c.close_pa
+             th()"G             (.4,.3             ,1);c.
+             paint(             );G(.7             ,.7,1)
+             ;c.fil             l()"fo             r!i!in
+             !range             (9):"!             g=1-i/
+             8;d=i/          4*g;G(d,d,d,          1-g*.8
+             )"!def     !y(f,a):z(f,a+(1+2j)*(     1j**(i
+             /2.))*g)"!for!T,A,B,C!in!S:y(M,C);y(L,A);y(M
+             ,A);y(L,B)"!c.st            roke()"s.write_t
+             o_png('pen                        rose.png')
+             """                                       ))
+</code></pre>
+
+<p>效果是生成一幅 1000×1000 的 <a href="http://en.wikipedia.org/wiki/Penrose_tiling">Penrose tiling</a> 图片，其中包括了 2212 具有3D效果的 Penrose tiles。图像如图</p>
+
+<p><img src="http://pikipity.github.com/images/post/penrose-cropped.jpg" alt="闪瞎眼睛的效果图" width="550pt" /></p>
+
+<p>如果想亲自膜拜，原文在<a href="http://preshing.com/20110822/penrose-tiling-in-obfuscated-python">这里</a>。</p>
+
+<p>随后，这位 <a href="http://preshing.com/">Jeff Preshing</a> 大神为了进一步亮瞎 <a href="http://en.wikipedia.org/wiki/Python_(programming_language)">Python</a> 菜鸟的双眼，又上了一段代码：</p>
+
+<pre><code>_                                      =   (
+                                        255,
+                                      lambda
+                               V       ,B,c
+                             :c   and Y(V*V+B,B,  c
+                               -1)if(abs(V)&lt;6)else
+               (              2+c-4*abs(V)**-0.4)/i
+                 )  ;v,      x=1500,1000;C=range(v*x
+                  );import  struct;P=struct.pack;M,\
+            j  ='&lt;QIIHHHH',open('M.bmp','wb').write
+for X in j('BM'+P(M,v*x*3+26,26,12,v,x,1,24))or C:
+            i  ,Y=_;j(P('BBB',*(lambda T:(T*80+T**9
+                  *i-950*T  **99,T*70-880*T**18+701*
+                 T  **9     ,T*i**(1-T**45*2)))(sum(
+               [              Y(0,(A%3/3.+X%v+(X/v+
+                               A/3/3.-x/2)/1j)*2.5
+                             /x   -2.7,i)**2 for  \
+                               A       in C
+                                      [:9]])
+                                        /9)
+                                       )   )
+</code></pre>
+
+<p>效果是生成一幅 <a href="http://zh.wikipedia.org/wiki/%E6%9B%BC%E5%BE%B7%E5%8D%9A%E9%9B%86%E5%90%88">曼德博集合</a> 的图片。</p>
+
+<p><img src="http://pikipity.github.com/images/post/M-small.jpg" alt="再次亮瞎双眼的效果图" width="550pt" /></p>
+
+<p>原文膜拜请点<a href="http://preshing.com/20110926/high-resolution-mandelbrot-in-obfuscated-python">这里</a>。</p>
+
+<p><a href="http://www.reddit.com/">reddit</a> 上的 <a href="http://www.reddit.com/user/djimbob">djimbob</a> 大神在 <a href="http://www.reddit.com/r/programming/comments/jqi9d/who_says_you_cant_write_obfuscated_python/c2ecprp">这里</a>具体介绍了如何实现 <a href="http://en.wikipedia.org/wiki/Python_(programming_language)">Python</a> 的混乱编程，以及第一个例子的实现方法。好好学，明天菜鸟变大神。+_+</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[MOSFET分析总结]]></title>
+    <link href="http://pikipity.github.com/blog/mosfet.html"/>
+    <updated>2013-02-17T15:05:00+08:00</updated>
+    <id>http://pikipity.github.com/blog/mosfet</id>
+    <content type="html"><![CDATA[<p>在看了很多关于<a href="http://en.wikipedia.org/wiki/MOSFET">MOSFET</a>介绍后发现这些资料都有一个共同的毛病，就是对于PMOS的介绍少的可怜，往往就是一句“和NMOS类似”就一带而过，但是NMOS和PMOS还是有很多不一样的，所以在这里对NMOS和PMOS的Large Signal Analysis和Small Signal Analysis做一下总结归纳。</p>
+
+<!--more-->
+
+<h2 id="large-signal-analysis">Large Signal Analysis</h2>
+
+<p>对于MOSFET的分析，第一步就是通过Large Signal Analysis来确定MOSFET的工作范围，并通过不同工作范围下的电压电流特性来确定Small Signal Analysis下的current gain。MOSFET有三个工作范围：cut-off region, triode region and saturation region。当MOSFET作为开关使用的时候，要控制在triode region；当MOSFET作为放大器使用的时候，要控制在saturation region。</p>
+
+<h3 id="noms">NOMS</h3>
+
+<p>n-channel MOSFET有下面5种符号表示法，分别表示不同种类的NMOS</p>
+
+<p><img src="http://pikipity.github.com/images/post/MOStype.jpg" alt="NMOS不同种类的符号" width="550pt" /></p>
+
+<ol>
+  <li>
+    <p>Cut-off region</p>
+
+    <ul>
+      <li>条件：$V_{GS}&lt;V_{TH}$</li>
+      <li>电压电流特性：$I_D=0$</li>
+    </ul>
+  </li>
+  <li>
+    <p>Triode region</p>
+
+    <ul>
+      <li>条件：$V_{TH}&lt;V_{GD}$</li>
+      <li>电压电流特性：
+<script type="math/tex">I_D=\mu_n C_{ox}\frac{W}{L}\left[\left(V_{GS}-V_{TH}\right)V_{DS}-\frac{1}{2}V_{DS}^2\right]</script>    </li>
+    </ul>
+  </li>
+  <li>
+    <p>Saturation region</p>
+
+    <ul>
+      <li>条件：<script type="math/tex">V_{TH}>V_{GD}</script></li>
+      <li>电压电流特性：<script type="math/tex">I_D=\frac{1}{2}\mu_n C_{ox}\frac{W}{L}\left(V_{GS}-V_{TH}\right)^2\left(1+\lambda V_{DS}\right)</script></li>
+    </ul>
+  </li>
+  <li>
+    <p>Transconductor: 就是Small Signal Analysis中的current gain，<script type="math/tex">g_m=\frac{I_D}{V_{GS}}</script></p>
+
+<script type="math/tex; mode=display">% &lt;![CDATA[
+\begin{array}{rcl}
+g_m&=&\mu_n C_{ox}\frac{W}{L}\left(V_{GS}-V_{TH}\right)\\
+g_m&=&\sqrt{2\mu_nC_{ox}\frac{W}{L}I_D}\\
+g_m&=&\frac{2I_D}{V_{GS}-V_{TH}}
+\end{array} %]]&gt;</script>
+  </li>
+  <li>
+    <p>Output resistor：就是Small Signal Analysis中的<script type="math/tex">r_0</script></p>
+
+<script type="math/tex; mode=display">r_0\approx \frac{1}{\lambda I_D}</script>
+  </li>
+</ol>
+
+<h3 id="pmos">PMOS</h3>
+
+<p>p-channel MOSFET一样有5种符号表示法，分别代表不同种类的PMOS</p>
+
+<p><img src="http://pikipity.github.com/images/post/PMOStype.jpg" alt="PMOS不同种类的符号" width="550pt" /></p>
+
+<ol>
+  <li>
+    <p>Cut-off region</p>
+
+    <ul>
+      <li>条件：<script type="math/tex">V_{GS}>V_{TH}</script></li>
+      <li>电压电流特性：<script type="math/tex">I_D=0</script></li>
+    </ul>
+  </li>
+  <li>
+    <p>Triode region</p>
+
+    <ul>
+      <li>条件：<script type="math/tex">V_{DG}>\left\|V_{TH}\right\|</script></li>
+      <li>电压电流特性：<script type="math/tex">I_D=\mu_p C_{ox}\frac{W}{L}\left[\left(V_{GS}-V_{TH}\right)V_{DS}-\frac{1}{2}V_{DS}^2\right]</script></li>
+    </ul>
+  </li>
+  <li>
+    <p>Saturation region</p>
+
+    <ul>
+      <li>条件：<script type="math/tex">% &lt;![CDATA[
+V_{DG}<\left\| V_{TH}\right\| %]]&gt;</script></li>
+      <li>电压电流特性：<script type="math/tex">I_D=\frac{1}{2}\mu_pC_{ox}\frac{W}{L}\left(V_{GS}-V_{TH}\right)^2\left(1-\lambda V_{DS}\right)</script></li>
+    </ul>
+  </li>
+  <li>
+    <p>Transconductor $g_m$ and output resistance $r_0$: 和NMOS完全一样。</p>
+  </li>
+</ol>
+
+<h2 id="small-signal-analysis">Small Signal Analysis</h2>
+
+<p>Small Signal Analysis是将MOSFET用等效电路代替，来分析AC信号的分析过程。在进行Small Signal Analysis的时候，要将DC电压源看做等效AC短路，将DC电流源看做等效AC断路。</p>
+
+<p>Small Signal Analysis最重要的就是明确MOSFET的等效电路，然后就是电路分析了。NMOS和PMOS的等效电路如图</p>
+
+<p><img src="http://pikipity.github.com/images/post/NMOSequivalentcircuit.jpg" alt="NMOS等效电路" width="450pt" /></p>
+
+<p><img src="http://pikipity.github.com/images/post/PMOSequivalentcircuit.jpg" alt="PMOS等效电路" width="450pt" /></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Proteus和Keil的简单教程]]></title>
+    <link href="http://pikipity.github.com/blog/keil-and-proteus.html"/>
+    <updated>2013-02-16T21:38:00+08:00</updated>
+    <id>http://pikipity.github.com/blog/keil-and-proteus</id>
+    <content type="html"><![CDATA[<p>这篇主要简单介绍一下单片机仿真软件Proteus和单片机编程软件Keil，方便各位读者能够快速的在自己电脑上搭建一个8051单片机的软件仿真平台。</p>
+
+<h3 id="proteus">单片机仿真软件 – Proteus</h3>
+
+<p>如果你在平时的电路仿真中稍微留意一下的你会发现<a href="http://baike.baidu.com/view/1867313.htm">Spice</a>在仿真中都无法仿真单片机系统，所以这里需要介绍一下这个单片机仿真软件<a href="http://baike.baidu.com/view/40936.htm">Proteus</a>。由英国<a href="http://www.labcenter.com/index.cfm">Labcenter electronics公司</a>出品的<a href="http://baike.baidu.com/view/5822.htm">EDA软件</a>，可以很好的仿真一部分单片机及其外围器材。并具有自动布线和智能生成原理图的功能。</p>
+
+<!--more-->
+
+<p>大家可以到<a href="http://pan.baidu.com/share/link?shareid=345198&amp;uk=4080321956">这里</a>下载Proteus Pro v7.8，压缩包内带有序列号生成器，并有安装及破解说明文件，虽然版本比较老，但是亲测可用。</p>
+
+<p>下载并安装完成后，点击<img src="http://pikipity.github.com/images/post/proteus.png" width="50pt" />打开ISIS仿真软件，界面如下</p>
+
+<p><img src="http://pikipity.github.com/images/post/proteus_1.jpg" alt="Proteus仿真界面" width="650pt" /></p>
+
+<p>接下来介绍几点比较重要的使用方法，如果想要更详细一点的教程的话，可以到<a href="http://pan.baidu.com/share/link?shareid=354817&amp;uk=4080321956">这里</a>下载</p>
+
+<ol>
+  <li>
+    <p>添加元件方法：在图纸范围内单机鼠标右键，打开菜单，”Place”中就是可以放置的元件。单片机及外围元件在Component -&gt; From Libraries中搜索就可以了。</p>
+
+    <p><img src="http://pikipity.github.com/images/post/proteus_menu.jpg" alt="右键菜单" width="300pt" /></p>
+
+    <p><img src="http://pikipity.github.com/images/post/proteus_menu_place.jpg" alt="Place菜单" width="450pt" /></p>
+
+    <p><img src="http://pikipity.github.com/images/post/library.jpg" alt="Place -&gt; Component -&gt; From Libraries" width="550pt" /></p>
+
+    <p>如果需要电源和地，则从Terminal中选择POWER或是GND就可以了，系统会根据你选则的单片机自动匹配POWER的电压大小（注意仿真的时候单片机本身不用接<a href="http://pikipity.github.com/blog/scm-principle-1.html">电源电路和时钟电路</a>），如果需要更改POWER电压值，只要右键单击POWER，选择”Edit Properties”，在”String”中输入你需要的电压值就可以了。</p>
+
+    <p><img src="http://pikipity.github.com/images/post/terminal.jpg" alt="Terminal菜单" width="450pt" /></p>
+
+    <p><img src="http://pikipity.github.com/images/post/POWER.jpg" alt="右键单击POWER元件" width="400pt" /></p>
+
+    <p><img src="http://pikipity.github.com/images/post/POWER_edit.jpg" alt="Edit Properties" width="400pt" /></p>
+  </li>
+  <li>
+    <p>连线方法：连线有三种方法，</p>
+
+    <ul>
+      <li>
+        <p>直接连线：用鼠标点击两个节点便会自动连接。注意：当端口对齐的时候，只要连好最上面的第一条线，下面的线只要双击节点就可以自动连接，基本原理就是重复你的上一次动作。</p>
+
+        <p><img src="http://pikipity.github.com/images/post/direct_connect.jpg" alt="直接连线的效果" width="550pt" /></p>
+      </li>
+      <li>
+        <p>间接连线：通过右键菜单中的Terminal中的INPUT和OUTPUT连结两个节点。注意：对应的IMPUT和OUTPUT需要有一样的名字，起名字的方法和编辑POWER电压值的方法一样。</p>
+
+        <p><img src="http://pikipity.github.com/images/post/indirect_connect.jpg" alt="间接连线的效果" width="550pt" /></p>
+      </li>
+      <li>
+        <p>使用BUS连线：在左侧工具栏选择BUS <img src="http://pikipity.github.com/images/post/BUS.jpg" width="50pt" />，就可以画出蓝色BUS线了，注意转折的地方需要点一下鼠标，结束双击鼠标。画完BUS线后，将节点连到BUS线上，然后对BUS设置Label,方法是右键单击BUS线，选择“Place Wrie Label”，Label的输入方式类似于下面效果图，意思是生成A1到A3的Label。再将对应节点的连线改为一样的名字，改名字的方法，和BUS线加Label的方法一样。注意：连线的名字不用一个个输入了，由于之前的BUS已经生成了Label，只要在下拉框内选择就可以了。</p>
+
+        <p><img src="http://pikipity.github.com/images/post/BUS_connect.jpg" alt="BUS连线效果图" width="550pt" /></p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>向单片机内加载生成的Hex文件的方法：左键双击单片机，在”Program File”一栏里填入Hex文件的路径或点击后面文件夹选择Hex文件，”OK”即可。在这个窗口还可以改变时钟周期，在”Clock Frequency”中修改。</p>
+
+    <p><img src="http://pikipity.github.com/images/post/doube_click_scm.jpg" alt="左键双击单片机" width="400pt" /></p>
+  </li>
+</ol>
+
+<h3 id="keil">51系列单片机编程软件 – Keil</h3>
+
+<p><a href="http://baike.baidu.com/view/942051.htm">Keil</a>是美国<a href="http://www.keil.com/">Keil software公司（已被ARM收购）</a>出品的专为51系列单片机进行编程的软件，可以编译C语言和汇编语言，其C语言的编译器Keil C51已经成为一种类似于行业标准一样的存在了。</p>
+
+<p>可以到<a href="http://pan.baidu.com/share/link?shareid=354882&amp;uk=4080321956">这里</a>下载Keil uVision3，或者到<a href="http://www.doyoung.net/data.html">杜洋工作室</a>下载。</p>
+
+<p>下载并安装后，就可以通过<img src="http://pikipity.github.com/images/post/keil.png" width="50pt" />打开了。打开后界面如下图。每次打开都会自动回复上次关闭前最后一次保存的Project。</p>
+
+<p><img src="http://pikipity.github.com/images/post/keil_1.jpg" alt="Keil uVision3 界面" width="650pt" /></p>
+
+<p>建立一个Project一般分为如下几步：</p>
+
+<ol>
+  <li>
+    <p>在菜单栏上选择 Prject -&gt; New Project，并起名字和保存。</p>
+
+    <p><img src="http://pikipity.github.com/images/post/new_project.jpg" alt="New Project" width="650pt" /></p>
+
+    <p><img src="http://pikipity.github.com/images/post/projectname.jpg" alt="Project起名、保存" width="650pt" /></p>
+  </li>
+  <li>
+    <p>选择单片机类型。注意：确定后，会弹出对话框询问是否自动添加启动文件到Project中，一般选择“No”就可以了，因为由Keil提供的单片机启动文件在初学阶段一般不会用到</p>
+
+    <p><img src="http://pikipity.github.com/images/post/scmstyle.jpg" alt="选择单片机类型" width="650pt" /></p>
+
+    <p><img src="http://pikipity.github.com/images/post/startup.jpg" alt="是否添加启动文件" width="450pt" /></p>
+  </li>
+  <li>
+    <p>然后新建一个文件开始编写C或者汇编。注意：保存的时候需要提供后缀名，如C的后缀为.c，汇编的后缀为.asm</p>
+
+    <p><img src="http://pikipity.github.com/images/post/newfile.jpg" alt="新建文件" width="650pt" /></p>
+
+    <p><img src="http://pikipity.github.com/images/post/filename.jpg" alt="保存文件（注意文件名）" width="650pt" /></p>
+  </li>
+  <li>
+    <p>右键单击Project的文件夹，选择”Add Files to Group”，选择你的文件，“OK”，就可以将文件加入到project中</p>
+
+    <p><img src="http://pikipity.github.com/images/post/addtogroup.jpg" alt="将文件加入到project中" width="650pt" /></p>
+  </li>
+  <li>
+    <p>编译的时候，只要按工具栏上的<img src="http://pikipity.github.com/images/post/buildall.jpg" width="50pt" />就可以编译了。如果需要生成Hex文件用来烧录或是仿真，就需要在编译前按工具栏上的<img src="http://pikipity.github.com/images/post/projectproperty.jpg" width="50pt" />，选中”Output”中的”Creat HEX”就可以了。</p>
+
+    <p><img src="http://pikipity.github.com/images/post/creathexornot.jpg" alt="生成Hex选项" width="650pt" /></p>
+  </li>
+</ol>
+
+<p>有了这两个软件，大家就可以进行单片机从硬件到软件的软件仿真了，但是仿真永远是仿真，不代表实物就是如此，所以真正实际是什么样子，还是硬件仿真比较靠谱。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[苹果更新MacBook配置并降低产品价格]]></title>
+    <link href="http://pikipity.github.com/blog/updata-macbook.html"/>
+    <updated>2013-02-16T10:12:00+08:00</updated>
+    <id>http://pikipity.github.com/blog/updata-macbook</id>
+    <content type="html"><![CDATA[<p><img src="http://pikipity.github.com/images/post/macbook_2013_2_16.png" width="550pt" /></p>
+
+<p>13寸配备Retina显示屏及128GB闪存的MacBook Pro降价到10988元，降幅高达1500元</p>
+
+<p>两款15寸的Retina MacBook Pro虽然未降价，但是配置提升。15寸低配处理器从2.3GHz升级到2.4GHz，高配从2.6GHz升级到了2.7GHz并且内存从8GB升级到了16GB。</p>
+
+<p>还有不仅是MacBook Pro，13寸256GB闪存的MacBook Air降价到了10488元</p>
+
+<p>具体购买信息可以在<a href="http://store.apple.com/cn/browse/home/shop_mac/family/macbook_pro?afid=p227%7C450545&amp;cid=AOS-CN-AFF-MACBOOK+PRO">MacBook Pro在线商店</a>和<a href="http://store.apple.com/cn/browse/home/shop_mac/family/macbook_air?afid=p227%7C450545&amp;cid=AOS-CN-AFFC-MACBOOKAIR">MacBook Air在线商店</a>查询</p>
+]]></content>
+  </entry>
+  
+</feed>
