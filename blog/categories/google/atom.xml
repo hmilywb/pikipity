@@ -14,6 +14,21 @@
 
   
   <entry>
+    <title type="html"><![CDATA[谷姐别这样，转的头疼]]></title>
+    <link href="http://pikipity.github.com/blog/do-a-barrel-roll.html"/>
+    <updated>2013-02-28T22:17:00+08:00</updated>
+    <id>http://pikipity.github.com/blog/do-a-barrel-roll</id>
+    <content type="html"><![CDATA[<p>Google 一个很老的彩蛋，当搜索 <a href="http://googlesystem.blogspot.com/2011/11/googles-barrel-roll-easter-egg.html">“do a barrel roll”</a> 的时候，整个搜索页面会旋转起来。</p>
+
+<p>这个彩蛋是很好玩，但是由于<a href="https://support.google.com/websearch/bin/answer.py?hl=zh-Hant&amp;p=settings_instant&amp;answer=186610">即时显示搜索结果</a>这个功能，导致你只要输入 “do a” 页面就会旋转起来，幸好只旋转一周，要是不停地旋转，这个菜单不就成了 Bug 一样的存在。但是也同时说明了广大人民群众最喜闻乐见的活动就是挑逗谷姐了。</p>
+
+<p>解决方法很简单，就是在搜索设定里取消“即时显示搜索结果”，但是必须有 Google 账户并登陆之后才可以设定。</p>
+
+<p><img src="/images/post/do-a-barrel-roll.jpg" width="550pt" /></p>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[这是 Google 宣传片么？]]></title>
     <link href="http://pikipity.github.com/blog/the-internship.html"/>
     <updated>2013-02-21T10:35:00+08:00</updated>
