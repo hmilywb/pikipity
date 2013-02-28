@@ -14,6 +14,68 @@
 
   
   <entry>
+    <title type="html"><![CDATA[Matlab 小技巧：通过 sendmail 来发送信息]]></title>
+    <link href="http://pikipity.github.com/blog/sending-message-with-sendmail.html"/>
+    <updated>2013-02-28T23:01:00+08:00</updated>
+    <id>http://pikipity.github.com/blog/sending-message-with-sendmail</id>
+    <content type="html"><![CDATA[<p>翻译自 <a href="http://matlabgeeks.com/">“Matlab Geeks”</a> 的 <a href="http://matlabgeeks.com/tips-tutorials/sending-messages-with-sendmail/">“Sending messages with sendmail”</a>。</p>
+
+<p>当你运行一段很长的代码的时候，坐在电脑前面看着程序运行是一件非常痛苦的事情。我发现，有时候，如果我不知道这段很长的代码要运行多长时间，或是有错误返回的时候我就会这样做（我还是坐在电脑前面因为我喜欢看猫的 gif 动画和学校破旧的屏幕吧，谁知道呢……）。但是你不需要这样做。当你的电脑正在“突突”运行的时候，离开去做其他事情吧。通过一个很有用的命令 “sendmail”，你就可以通过一些简单的命令发送信息到你的邮箱或是手机上了。通过这篇博文，我会分享几个简单的我通常用来提醒自己程序运行结束或是有错误的 .m 文件。</p>
+
+<p>首先，“sendmail” 需要4个参数：收件人联系信息、email的主题、email的信息和附件。例如，如果你想发送一个email到我们的邮箱 “support@matlabgeeks.com”，这里展示了你应如何做：</p>
+
+<pre><code>&gt;&gt; sendmail('support@matlabgeeks.com','Hello',...
+'Thanks for the awesome email information!');
+</code></pre>
+
+<p>不幸的是，“sendmail” 不是这么简单，这样仅仅会返回一个错误，除非你已经设置了你用来发送的 email 地址和你是用的 SMTP 服务器。</p>
+
+<pre><code>&gt;&gt; setpref('Internet','SMTP_Server','mail.__.com');
+&gt;&gt; setpref('Internet','E_mail','myID@__.com');
+% and/or 
+&gt;&gt; setpref('Internet','SMTP_Username','myID@__.com');
+</code></pre>
+
+<p>并且，如果你的服务器需要，你还必须加入你的账户密码。把你的密码放入明文中会使安全性很脆弱，要小心。</p>
+
+<pre><code>&gt;&gt;setpref('Internet','SMTP_Password',password);
+</code></pre>
+
+<p>现在，你可以发送邮件了！或者，如果你想发送一条短信的话，可以通过修改 “sendmail” 中收件人的部分来实现这个。例如，如果你想发送一条信息到你的 verizon 手机上，你可以用下面的命令：</p>
+
+<pre><code>&gt;&gt; sendmail('55555555555@vtext.com','Hello',...
+'What's going on tonight?');
+</code></pre>
+
+<p>信息可以发送到的手机号码的列表可以在 <a href="http://sms411.net/how-to-send-email-to-a-phone/">“Mr. Tweney’s page”</a> 中找到。</p>
+
+<p>“sendmail” 一个非常好的用处就是当你的程序运行完之后发送信息给你。我已经<a href="http://matlabgeeks.com/wp-content/uploads/2013/02/sendmail_code.zip">附加</a>了一些描述如何做的文件到这篇博文上。正如你将会看到的，我已经封装了一个 try catch 循环在程序中，所以任何错误都会发送 email 给我。比如，尝试用 <code>a=5;</code>、<code>b=[2 3]</code> 或者 <code>b=2</code> 来运行 function</p>
+
+<pre><code>function sample_script(a, b)
+% sample error and completion file
+% what time is it?
+date_time = datestr(now);
+% try to do some type of command
+try C = [a; b];   
+   % if it works, return the time it finished
+   disp(C);
+	e_mail('support@matlabgeeks.com','matlabgeeks','vlugade',PASSWD,...
+   	'Completed',['At : ',date_time]);
+catch err
+   % find the error type
+   errStr = err.identifier;
+   	e_mail('support@matlabgeeks.com','gmail','vlugade',PASSWD,...
+   	'Completed',{['At : ',date_time], ['With error : ', errStr]});
+end
+</code></pre>
+
+<p>你也肯定注意到了，我使用 “e-mail” 这个 function 来发送我的信息。这个 “e-mail.m” 文件已经附加在了这里。总的来说，它和你可以在 “Mathworks” 上找到的非常像，但是可以更方便的修改成你要用的。参数和 “sendmail” 稍微有点不一样，它需要在 email 内容之前提供收件人地址、SMTP 地址、用户名和密码。我们已经尽可能多的提供了 gmail、yahoo 和 matlabgeeks 的设置，但是你的设置有可能不一样。需要注意的是，你不需要为了让 function 工作而用明文保存你的密码，而是最好以一个变量的形式传递它。</p>
+
+<p>再次提供一次<a href="http://matlabgeeks.com/wp-content/uploads/2013/02/sendmail_code.zip">附件</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[谷姐别这样，转的头疼]]></title>
     <link href="http://pikipity.github.com/blog/do-a-barrel-roll.html"/>
     <updated>2013-02-28T22:17:00+08:00</updated>
@@ -1156,123 +1218,6 @@ V_{DG}<\left\| V_{TH}\right\| %]]&gt;</script></li>
 <p><img src="http://pikipity.github.com/images/post/NMOSequivalentcircuit.jpg" alt="NMOS等效电路" width="450pt" /></p>
 
 <p><img src="http://pikipity.github.com/images/post/PMOSequivalentcircuit.jpg" alt="PMOS等效电路" width="450pt" /></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Proteus和Keil的简单教程]]></title>
-    <link href="http://pikipity.github.com/blog/keil-and-proteus.html"/>
-    <updated>2013-02-16T21:38:00+08:00</updated>
-    <id>http://pikipity.github.com/blog/keil-and-proteus</id>
-    <content type="html"><![CDATA[<p>这篇主要简单介绍一下单片机仿真软件Proteus和单片机编程软件Keil，方便各位读者能够快速的在自己电脑上搭建一个8051单片机的软件仿真平台。</p>
-
-<h3 id="proteus">单片机仿真软件 – Proteus</h3>
-
-<p>如果你在平时的电路仿真中稍微留意一下的你会发现<a href="http://baike.baidu.com/view/1867313.htm">Spice</a>在仿真中都无法仿真单片机系统，所以这里需要介绍一下这个单片机仿真软件<a href="http://baike.baidu.com/view/40936.htm">Proteus</a>。由英国<a href="http://www.labcenter.com/index.cfm">Labcenter electronics公司</a>出品的<a href="http://baike.baidu.com/view/5822.htm">EDA软件</a>，可以很好的仿真一部分单片机及其外围器材。并具有自动布线和智能生成原理图的功能。</p>
-
-<!--more-->
-
-<p>大家可以到<a href="http://pan.baidu.com/share/link?shareid=345198&amp;uk=4080321956">这里</a>下载Proteus Pro v7.8，压缩包内带有序列号生成器，并有安装及破解说明文件，虽然版本比较老，但是亲测可用。</p>
-
-<p>下载并安装完成后，点击<img src="http://pikipity.github.com/images/post/proteus.png" width="50pt" />打开ISIS仿真软件，界面如下</p>
-
-<p><img src="http://pikipity.github.com/images/post/proteus_1.jpg" alt="Proteus仿真界面" width="650pt" /></p>
-
-<p>接下来介绍几点比较重要的使用方法，如果想要更详细一点的教程的话，可以到<a href="http://pan.baidu.com/share/link?shareid=354817&amp;uk=4080321956">这里</a>下载</p>
-
-<ol>
-  <li>
-    <p>添加元件方法：在图纸范围内单机鼠标右键，打开菜单，”Place”中就是可以放置的元件。单片机及外围元件在Component -&gt; From Libraries中搜索就可以了。</p>
-
-    <p><img src="http://pikipity.github.com/images/post/proteus_menu.jpg" alt="右键菜单" width="300pt" /></p>
-
-    <p><img src="http://pikipity.github.com/images/post/proteus_menu_place.jpg" alt="Place菜单" width="450pt" /></p>
-
-    <p><img src="http://pikipity.github.com/images/post/library.jpg" alt="Place -&gt; Component -&gt; From Libraries" width="550pt" /></p>
-
-    <p>如果需要电源和地，则从Terminal中选择POWER或是GND就可以了，系统会根据你选则的单片机自动匹配POWER的电压大小（注意仿真的时候单片机本身不用接<a href="http://pikipity.github.com/blog/scm-principle-1.html">电源电路和时钟电路</a>），如果需要更改POWER电压值，只要右键单击POWER，选择”Edit Properties”，在”String”中输入你需要的电压值就可以了。</p>
-
-    <p><img src="http://pikipity.github.com/images/post/terminal.jpg" alt="Terminal菜单" width="450pt" /></p>
-
-    <p><img src="http://pikipity.github.com/images/post/POWER.jpg" alt="右键单击POWER元件" width="400pt" /></p>
-
-    <p><img src="http://pikipity.github.com/images/post/POWER_edit.jpg" alt="Edit Properties" width="400pt" /></p>
-  </li>
-  <li>
-    <p>连线方法：连线有三种方法，</p>
-
-    <ul>
-      <li>
-        <p>直接连线：用鼠标点击两个节点便会自动连接。注意：当端口对齐的时候，只要连好最上面的第一条线，下面的线只要双击节点就可以自动连接，基本原理就是重复你的上一次动作。</p>
-
-        <p><img src="http://pikipity.github.com/images/post/direct_connect.jpg" alt="直接连线的效果" width="550pt" /></p>
-      </li>
-      <li>
-        <p>间接连线：通过右键菜单中的Terminal中的INPUT和OUTPUT连结两个节点。注意：对应的IMPUT和OUTPUT需要有一样的名字，起名字的方法和编辑POWER电压值的方法一样。</p>
-
-        <p><img src="http://pikipity.github.com/images/post/indirect_connect.jpg" alt="间接连线的效果" width="550pt" /></p>
-      </li>
-      <li>
-        <p>使用BUS连线：在左侧工具栏选择BUS <img src="http://pikipity.github.com/images/post/BUS.jpg" width="50pt" />，就可以画出蓝色BUS线了，注意转折的地方需要点一下鼠标，结束双击鼠标。画完BUS线后，将节点连到BUS线上，然后对BUS设置Label,方法是右键单击BUS线，选择“Place Wrie Label”，Label的输入方式类似于下面效果图，意思是生成A1到A3的Label。再将对应节点的连线改为一样的名字，改名字的方法，和BUS线加Label的方法一样。注意：连线的名字不用一个个输入了，由于之前的BUS已经生成了Label，只要在下拉框内选择就可以了。</p>
-
-        <p><img src="http://pikipity.github.com/images/post/BUS_connect.jpg" alt="BUS连线效果图" width="550pt" /></p>
-      </li>
-    </ul>
-  </li>
-  <li>
-    <p>向单片机内加载生成的Hex文件的方法：左键双击单片机，在”Program File”一栏里填入Hex文件的路径或点击后面文件夹选择Hex文件，”OK”即可。在这个窗口还可以改变时钟周期，在”Clock Frequency”中修改。</p>
-
-    <p><img src="http://pikipity.github.com/images/post/doube_click_scm.jpg" alt="左键双击单片机" width="400pt" /></p>
-  </li>
-</ol>
-
-<h3 id="keil">51系列单片机编程软件 – Keil</h3>
-
-<p><a href="http://baike.baidu.com/view/942051.htm">Keil</a>是美国<a href="http://www.keil.com/">Keil software公司（已被ARM收购）</a>出品的专为51系列单片机进行编程的软件，可以编译C语言和汇编语言，其C语言的编译器Keil C51已经成为一种类似于行业标准一样的存在了。</p>
-
-<p>可以到<a href="http://pan.baidu.com/share/link?shareid=354882&amp;uk=4080321956">这里</a>下载Keil uVision3，或者到<a href="http://www.doyoung.net/data.html">杜洋工作室</a>下载。</p>
-
-<p>下载并安装后，就可以通过<img src="http://pikipity.github.com/images/post/keil.png" width="50pt" />打开了。打开后界面如下图。每次打开都会自动回复上次关闭前最后一次保存的Project。</p>
-
-<p><img src="http://pikipity.github.com/images/post/keil_1.jpg" alt="Keil uVision3 界面" width="650pt" /></p>
-
-<p>建立一个Project一般分为如下几步：</p>
-
-<ol>
-  <li>
-    <p>在菜单栏上选择 Prject -&gt; New Project，并起名字和保存。</p>
-
-    <p><img src="http://pikipity.github.com/images/post/new_project.jpg" alt="New Project" width="650pt" /></p>
-
-    <p><img src="http://pikipity.github.com/images/post/projectname.jpg" alt="Project起名、保存" width="650pt" /></p>
-  </li>
-  <li>
-    <p>选择单片机类型。注意：确定后，会弹出对话框询问是否自动添加启动文件到Project中，一般选择“No”就可以了，因为由Keil提供的单片机启动文件在初学阶段一般不会用到</p>
-
-    <p><img src="http://pikipity.github.com/images/post/scmstyle.jpg" alt="选择单片机类型" width="650pt" /></p>
-
-    <p><img src="http://pikipity.github.com/images/post/startup.jpg" alt="是否添加启动文件" width="450pt" /></p>
-  </li>
-  <li>
-    <p>然后新建一个文件开始编写C或者汇编。注意：保存的时候需要提供后缀名，如C的后缀为.c，汇编的后缀为.asm</p>
-
-    <p><img src="http://pikipity.github.com/images/post/newfile.jpg" alt="新建文件" width="650pt" /></p>
-
-    <p><img src="http://pikipity.github.com/images/post/filename.jpg" alt="保存文件（注意文件名）" width="650pt" /></p>
-  </li>
-  <li>
-    <p>右键单击Project的文件夹，选择”Add Files to Group”，选择你的文件，“OK”，就可以将文件加入到project中</p>
-
-    <p><img src="http://pikipity.github.com/images/post/addtogroup.jpg" alt="将文件加入到project中" width="650pt" /></p>
-  </li>
-  <li>
-    <p>编译的时候，只要按工具栏上的<img src="http://pikipity.github.com/images/post/buildall.jpg" width="50pt" />就可以编译了。如果需要生成Hex文件用来烧录或是仿真，就需要在编译前按工具栏上的<img src="http://pikipity.github.com/images/post/projectproperty.jpg" width="50pt" />，选中”Output”中的”Creat HEX”就可以了。</p>
-
-    <p><img src="http://pikipity.github.com/images/post/creathexornot.jpg" alt="生成Hex选项" width="650pt" /></p>
-  </li>
-</ol>
-
-<p>有了这两个软件，大家就可以进行单片机从硬件到软件的软件仿真了，但是仿真永远是仿真，不代表实物就是如此，所以真正实际是什么样子，还是硬件仿真比较靠谱。</p>
 ]]></content>
   </entry>
   
