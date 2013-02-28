@@ -97,7 +97,7 @@
       <li>
         <p>80H ~ FFH：特殊功能寄存器（SFR）。8051 本事已经内置了很多的功能，在<a href="http://pikipity.github.com/blog/scm-principle-1.html">第一章</a>的8051单片机结构中就可以看到，有计时/计数器、中断、UART串口等等，这些特殊功能需要通过设置这一部分的 SFR 的参数来控制。在讲解各个特殊功能的时候会讲解如何设置参数，和这些参数代表什么意思。下面是一幅AT89系列的 SFR 地址分配表，将来可以对照、理解。</p>
 
-        <p><img src="http://pikipity.github.com/images/post/scm-principle-2-3.jpg" alt="当 EA 接地时，程式记忆体的地址分配" width="550pt" /></p>
+        <p><img src="http://pikipity.github.com/images/post/scm-principle-2-3.jpg" alt="AT89系列的 SFR 地址分配表" width="550pt" /></p>
 
         <p>注意：</p>
 
