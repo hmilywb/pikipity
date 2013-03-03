@@ -14,6 +14,61 @@
 
   
   <entry>
+    <title type="html"><![CDATA[在 Matlab 中如何做傅里叶变换]]></title>
+    <link href="http://pikipity.github.com/blog/fft-in-matlab.html"/>
+    <updated>2013-03-03T11:09:00+08:00</updated>
+    <id>http://pikipity.github.com/blog/fft-in-matlab</id>
+    <content type="html"><![CDATA[<p>翻译自<a href="http://matlabgeeks.com/">Matlab Geeks</a>的 <a href="http://matlabgeeks.com/tips-tutorials/how-to-do-a-fourier-transform-in-matlab/">“How to Do a Fourier Transform in Matlab”</a>。</p>
+
+<p>傅里叶变换是一个在很多科学和工程领域都非常有用的数学工具。傅里叶变换在信号处理、物理、通信、地质学、天文学、光学等很多领域都有应用。这个技术将一个函数或是一组数据从时域或是取样域变换到频域。这意味着，傅里叶变换可以展示一组时间序列数据的频率分量。离散傅里叶变换是将取样域的离散数据转化到频域。快速傅里叶变换是一种高效进行离散傅里叶变换的方法，并且存在很多种方法来完成快速傅里叶变换。Matlab 使用快速傅里叶变换来得到离散数据的频域分量</p>
+
+<p>下面是一个在 Matlab 中如何用快速傅里叶变换来分析音频文件的例子。这个例子中的文件是记录在 note A4 （怎么翻译？不会啊）上的音叉录音。这个展示了傅里叶变换如何进行和如何在 Matlab 中使用这项技术。</p>
+
+<pre><code>%Fourier Transform of Sound File
+
+%Load File
+file = 'C:\MATLAB7\work\tuning_fork_A4';
+[y,Fs,bits] = wavread(file);
+
+Nsamps = length(y);
+t = (1/Fs)*(1:Nsamps)          %Prepare time data for plot
+
+%Do Fourier Transform
+y_fft = abs(fft(y));            %Retain Magnitude
+y_fft = y_fft(1:Nsamps/2);      %Discard Half of Points
+f = Fs*(0:Nsamps/2-1)/Nsamps;   %Prepare freq data for plot
+
+%Plot Sound File in Time Domain
+figure
+plot(t, y)
+xlabel('Time (s)')
+ylabel('Amplitude')
+title('Tuning Fork A4 in Time Domain')
+
+%Plot Sound File in Frequency Domain
+figure
+plot(f, y_fft)
+xlim([0 1000])
+xlabel('Frequency (Hz)')
+ylabel('Amplitude')
+title('Frequency Response of Tuning Fork A4')
+</code></pre>
+
+<p>音频文件 <a href="http://matlabgeeks.com/wp-content/uploads/2010/12/tuning_fork_A4.wav">“tuning_fork_A4”</a> 用 wavread 函数打开，这个函数返回文件的采样数据 “y”、采样频率 “Fs” 和 A/D 转换器使用的比特数 “bits”。注意，文件的扩展名 “.wav” 不需要在使用函数的时候特别指定。就像下面将会展示的，采样频率在重建数据的时候非常重要。</p>
+
+<p>快速傅里叶变换用 “fft” 函数执行。Matlab 没有 “dft” 函数因为快速傅里叶变换实际上就是计算的离散傅里叶变换。尽管快速傅里叶变换的角度在很多应用中非常中央，但是只有快速傅里叶变换的大小被保存了。“fft” 函数允许指定一个快速傅里叶变换的输出点数，但是在这个例子中，我们使用与输入点数一样数目的输出点数。在下一行，快速傅里叶变换的一半数据被舍弃了。为了这个例子的目的所以这样做了，但是在很多应用中，整个波谱都会用到（译者注：我认为这里舍弃一半的点是因为FFT是关于采样频率的一半对称的，所以只要看一半就可以了）。接下来的一行，将会用于横坐标的数据通过使用采样频率和时遇采样数量准备好了。这一步对于确定包含在音频文件的实际频率是很重要的。</p>
+
+<p>接下来，原始数据在时域上被画了下来，快速傅里叶变换的数据也被画了出来。为了展示在峰值的频率上的更多详情，在这个画中，x轴被限定在了 [0,1000] 的范围中。注意，在大约440Hz处，频率响应有一个峰值，这个就是 “note A4” 的频率。在其他频率也有一些很小东西，这些估计是音叉了。对于其他乐器比如吉他，在频率响应的峰值的整数倍上都可以看见谐波。</p>
+
+<p><img src="http://matlabgeeks.com/wp-content/uploads/2010/12/tunforktime.jpg" width="550pt" /></p>
+
+<p><img src="http://matlabgeeks.com/wp-content/uploads/2010/12/tunforkfreq.jpg" width="550pt" /></p>
+
+<p>傅里叶变换在很多不同的领域都是很有用的工具。二维的傅里叶变换也常常用在图像上。尝试一下上面的代码，看看你能不能得到一样的结果。</p>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[Matlab 小技巧：通过 sendmail 来发送信息]]></title>
     <link href="http://pikipity.github.com/blog/sending-message-with-sendmail.html"/>
     <updated>2013-02-28T23:01:00+08:00</updated>
@@ -1107,117 +1162,6 @@ for X in j('BM'+P(M,v*x*3+26,26,12,v,x,1,24))or C:
 <p>原文膜拜请点<a href="http://preshing.com/20110926/high-resolution-mandelbrot-in-obfuscated-python">这里</a>。</p>
 
 <p><a href="http://www.reddit.com/">reddit</a> 上的 <a href="http://www.reddit.com/user/djimbob">djimbob</a> 大神在 <a href="http://www.reddit.com/r/programming/comments/jqi9d/who_says_you_cant_write_obfuscated_python/c2ecprp">这里</a>具体介绍了如何实现 <a href="http://en.wikipedia.org/wiki/Python_(programming_language)">Python</a> 的混乱编程，以及第一个例子的实现方法。好好学，明天菜鸟变大神。+_+</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[MOSFET分析总结]]></title>
-    <link href="http://pikipity.github.com/blog/mosfet.html"/>
-    <updated>2013-02-17T15:05:00+08:00</updated>
-    <id>http://pikipity.github.com/blog/mosfet</id>
-    <content type="html"><![CDATA[<p>在看了很多关于<a href="http://en.wikipedia.org/wiki/MOSFET">MOSFET</a>介绍后发现这些资料都有一个共同的毛病，就是对于PMOS的介绍少的可怜，往往就是一句“和NMOS类似”就一带而过，但是NMOS和PMOS还是有很多不一样的，所以在这里对NMOS和PMOS的Large Signal Analysis和Small Signal Analysis做一下总结归纳。</p>
-
-<!--more-->
-
-<h2 id="large-signal-analysis">Large Signal Analysis</h2>
-
-<p>对于MOSFET的分析，第一步就是通过Large Signal Analysis来确定MOSFET的工作范围，并通过不同工作范围下的电压电流特性来确定Small Signal Analysis下的current gain。MOSFET有三个工作范围：cut-off region, triode region and saturation region。当MOSFET作为开关使用的时候，要控制在triode region；当MOSFET作为放大器使用的时候，要控制在saturation region。</p>
-
-<h3 id="noms">NOMS</h3>
-
-<p>n-channel MOSFET有下面5种符号表示法，分别表示不同种类的NMOS</p>
-
-<p><img src="http://pikipity.github.com/images/post/MOStype.jpg" alt="NMOS不同种类的符号" width="550pt" /></p>
-
-<ol>
-  <li>
-    <p>Cut-off region</p>
-
-    <ul>
-      <li>条件：$V_{GS}&lt;V_{TH}$</li>
-      <li>电压电流特性：$I_D=0$</li>
-    </ul>
-  </li>
-  <li>
-    <p>Triode region</p>
-
-    <ul>
-      <li>条件：$V_{TH}&lt;V_{GD}$</li>
-      <li>电压电流特性：
-<script type="math/tex">I_D=\mu_n C_{ox}\frac{W}{L}\left[\left(V_{GS}-V_{TH}\right)V_{DS}-\frac{1}{2}V_{DS}^2\right]</script>    </li>
-    </ul>
-  </li>
-  <li>
-    <p>Saturation region</p>
-
-    <ul>
-      <li>条件：<script type="math/tex">V_{TH}>V_{GD}</script></li>
-      <li>电压电流特性：<script type="math/tex">I_D=\frac{1}{2}\mu_n C_{ox}\frac{W}{L}\left(V_{GS}-V_{TH}\right)^2\left(1+\lambda V_{DS}\right)</script></li>
-    </ul>
-  </li>
-  <li>
-    <p>Transconductor: 就是Small Signal Analysis中的current gain，<script type="math/tex">g_m=\frac{I_D}{V_{GS}}</script></p>
-
-<script type="math/tex; mode=display">% &lt;![CDATA[
-\begin{array}{rcl}
-g_m&=&\mu_n C_{ox}\frac{W}{L}\left(V_{GS}-V_{TH}\right)\\
-g_m&=&\sqrt{2\mu_nC_{ox}\frac{W}{L}I_D}\\
-g_m&=&\frac{2I_D}{V_{GS}-V_{TH}}
-\end{array} %]]&gt;</script>
-  </li>
-  <li>
-    <p>Output resistor：就是Small Signal Analysis中的<script type="math/tex">r_0</script></p>
-
-<script type="math/tex; mode=display">r_0\approx \frac{1}{\lambda I_D}</script>
-  </li>
-</ol>
-
-<h3 id="pmos">PMOS</h3>
-
-<p>p-channel MOSFET一样有5种符号表示法，分别代表不同种类的PMOS</p>
-
-<p><img src="http://pikipity.github.com/images/post/PMOStype.jpg" alt="PMOS不同种类的符号" width="550pt" /></p>
-
-<ol>
-  <li>
-    <p>Cut-off region</p>
-
-    <ul>
-      <li>条件：<script type="math/tex">V_{GS}>V_{TH}</script></li>
-      <li>电压电流特性：<script type="math/tex">I_D=0</script></li>
-    </ul>
-  </li>
-  <li>
-    <p>Triode region</p>
-
-    <ul>
-      <li>条件：<script type="math/tex">V_{DG}>\left\|V_{TH}\right\|</script></li>
-      <li>电压电流特性：<script type="math/tex">I_D=\mu_p C_{ox}\frac{W}{L}\left[\left(V_{GS}-V_{TH}\right)V_{DS}-\frac{1}{2}V_{DS}^2\right]</script></li>
-    </ul>
-  </li>
-  <li>
-    <p>Saturation region</p>
-
-    <ul>
-      <li>条件：<script type="math/tex">% &lt;![CDATA[
-V_{DG}<\left\| V_{TH}\right\| %]]&gt;</script></li>
-      <li>电压电流特性：<script type="math/tex">I_D=\frac{1}{2}\mu_pC_{ox}\frac{W}{L}\left(V_{GS}-V_{TH}\right)^2\left(1-\lambda V_{DS}\right)</script></li>
-    </ul>
-  </li>
-  <li>
-    <p>Transconductor $g_m$ and output resistance $r_0$: 和NMOS完全一样。</p>
-  </li>
-</ol>
-
-<h2 id="small-signal-analysis">Small Signal Analysis</h2>
-
-<p>Small Signal Analysis是将MOSFET用等效电路代替，来分析AC信号的分析过程。在进行Small Signal Analysis的时候，要将DC电压源看做等效AC短路，将DC电流源看做等效AC断路。</p>
-
-<p>Small Signal Analysis最重要的就是明确MOSFET的等效电路，然后就是电路分析了。NMOS和PMOS的等效电路如图</p>
-
-<p><img src="http://pikipity.github.com/images/post/NMOSequivalentcircuit.jpg" alt="NMOS等效电路" width="450pt" /></p>
-
-<p><img src="http://pikipity.github.com/images/post/PMOSequivalentcircuit.jpg" alt="PMOS等效电路" width="450pt" /></p>
 ]]></content>
   </entry>
   
