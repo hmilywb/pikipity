@@ -14,6 +14,35 @@
 
   
   <entry>
+    <title type="html"><![CDATA[关于“红酒”的那点事]]></title>
+    <link href="http://pikipity.github.com/blog/wine.html"/>
+    <updated>2013-03-04T19:45:00+08:00</updated>
+    <id>http://pikipity.github.com/blog/wine</id>
+    <content type="html"><![CDATA[<p>这一篇当然不是介绍真的红酒了，而是一个允许 Linux 和 Mac 系统运行 Windows 的软件。</p>
+
+<p>“Wine” 是 “Wine Is Not an Emulator” 的缩写。从全称上就可以看出 “Wine” 的想法并不是像虚拟机或是模拟器那样模仿一个 Windows 的逻辑来运行软件。而是将 Windows API 翻译成动态 <a href="http://zh.wikipedia.org/wiki/POSIX">POSIX</a> 来调用，说得简单一点，就是将 Windows 的程序变为原生的 Linux 或是 Mac（实际是类 Unix）程序，这样就避免了虚拟机或是模拟器那样大量的内存占用，并能让 Windows 程序比较干净的整合到你的类 Unix 系统中。</p>
+
+<!--more-->
+
+<p>看了上面的介绍，你可能会问了，这么好的东西为什么大家不用，都去用 “VirtualBox” 或是 “Parallel Desk” 那样的虚拟机呢？我认为，原因很简单，“Wine”并不是很易用。正如上面提到的，Wine 是将 Windows 的 API 之间转换为 POSIX，但是并不能保证这个转换一定是正确的、可用的。很多软件在 Wine上的运行都会出现一些很奇怪的问题，比如突然一个窗口啦，标题错位啦，明明打开了但是鼠标不见啦等等问题，而这些问题往往不是一个外行可以通过度娘或是谷姐就能解决的。需要到官网报告 Bug，然后等待下一次的更新来修正这个错误。而且常常这一个 Wine 的版本可以正常运行的软件，下个版本就无法正常运行了，于是各种苦恼、各种无奈。</p>
+
+<p>而且 Windows 公司虽然没有明确表示抵制 Wine 计划，但是却一直都在阻挠 Wine 计划。不时的出一出更新，说是防止盗版，但是就是阻止 Wine 用户更新程序。也是，由于 Wine 本身是开源、自由的软件，大多数使用者在 Wine上使用的软件也都是盗版，这也无怪乎 Windows 公司不断地阻挠了。</p>
+
+<p>大家可以到<a href="http://wiki.winehq.org/">这里</a>看 Wine 的Wiki，虽然打开是中文的，但是大部分有营养的东西还是英文的，当个中国人难，当个喜欢折腾的中国人更难。</p>
+
+<p>Linux 用户可以到<a href="http://www.winehq.org/download/">这里</a>下载，或是直接用自己系统自带的包管理器下载并安装。Mac用户就比较麻烦了，由于 Wine 没有提供官方的 Mac 安装包，所以只能用第三方的了，而且那些装着 PowerPc 的老 Mac 无法使用，只有 Intel Mac 可以使用。你可以使用MacPorts 或是 Homebrew 来下载 Wine 的源码并编译安装，具体做法<a href="http://www.iiiphone.com/blog/read.php/39.htm">这里</a>有写，你也可以到下载<a href="http://winebottler.kronenberg.org/">WineBotter</a>，这个的安装是图形化的，很方便，并且管理 Wine 的软件也比较方便。</p>
+
+<p>具体的使用可以看 <a href="http://linfan.info/blog/2012/03/01/wine-mac/">“linfan’s blog”</a>，强烈建议在安装任何软件之前到 <a href="http://appdb.winehq.org/">AppDB</a> 里来看看别人的测试结果。</p>
+
+<p>最后补充一点，高富帅们可以考虑购买 <a href="http://www.codeweavers.com/products/">CodeWeavers</a> 据说极其稳定的好用。</p>
+
+<p>最后的最后，赠送给大家一个 Wine 的游戏 – <a href="http://pan.baidu.com/share/link?shareid=393478&amp;uk=4080321956">《火炬之光（一）》</a>。谢谢。</p>
+
+<p><img src="http://pikipity.github.com/images/post/wine-software.png" width="550pt" /></p>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[在 Matlab 中如何做傅里叶变换]]></title>
     <link href="http://pikipity.github.com/blog/fft-in-matlab.html"/>
     <updated>2013-03-03T11:09:00+08:00</updated>
@@ -1072,96 +1101,6 @@ R_{out}&=&r_0||\frac{1}{g_m}
   <li>漏极阻抗：<script type="math/tex">R_D=r_0+g_mr_0R_s+R_s</script></li>
   <li>源极阻抗：$R_s=r_0||\frac{1}{g_m}$</li>
 </ol>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[我不相信，这是Python么？！]]></title>
-    <link href="http://pikipity.github.com/blog/obfuscated-python.html"/>
-    <updated>2013-02-18T13:37:00+08:00</updated>
-    <id>http://pikipity.github.com/blog/obfuscated-python</id>
-    <content type="html"><![CDATA[<p>如果看了<a href="http://pikipity.github.com/blog/21th-ioccc-winner.html">《别再说你懂C，这才是真正的C》</a>，认为C语言的混乱编程没有什么，那么看看这位 <a href="http://preshing.com/">Jeff Preshing</a> 大神的 <a href="http://en.wikipedia.org/wiki/Python_(programming_language)">Python</a> 混乱编程吧。</p>
-
-<p>大家都知道 <a href="http://en.wikipedia.org/wiki/Python_(programming_language)">Python</a> 对于格式的要求及其严格，经常一段程序就因为开头多了一个空格就连连报错，这位神人就编写了一段代码来讽刺我这种渣渣</p>
-
-<blockquote>
-  <p>Who says you can’t write obfuscated Python?</p>
-</blockquote>
-
-<!--more-->
-
-<p>代码如下</p>
-
-<pre><code>_                                 =\
-                                """if!
-                              1:"e,V=100
-                            0,(0j-1)**-.2;
-                           v,S=.5/  V.real,
-                         [(0,0,4      *e,4*e*
-                       V)];w=1          -v"def!
-                      E(T,A,              B,C):P
-                  ,Q,R=B*w+                A*v,B*w+C
-            *v,A*w+B*v;retur              n[(1,Q,C,A),(1,P
-     ,Q,B),(0,Q,P,A)]*T+[(0,C            ,R,B),(1,R,C,A)]*(1-T)"f
-or!i!in!_[:11]:S       =sum([E          (*x)for       !x!in!S],[])"imp
-  ort!cair               o!as!O;      s=O.Ima               geSurfac
-   e(1,e,e)               ;c=O.Con  text(s);               M,L,G=c.
-     move_to                ,c.line_to,c.s                et_sour
-       ce_rgb                a"def!z(f,a)                :f(-a.
-        imag,a.       real-e-e)"for!T,A,B,C!in[i       !for!i!
-          in!S!if!i[""";exec(reduce(lambda x,i:x.replace(chr
-           (i),"\n "[34-i:]),   range(   35),_+"""0]]:z(M,A
-             );z(L,B);z         (L,C);         c.close_pa
-             th()"G             (.4,.3             ,1);c.
-             paint(             );G(.7             ,.7,1)
-             ;c.fil             l()"fo             r!i!in
-             !range             (9):"!             g=1-i/
-             8;d=i/          4*g;G(d,d,d,          1-g*.8
-             )"!def     !y(f,a):z(f,a+(1+2j)*(     1j**(i
-             /2.))*g)"!for!T,A,B,C!in!S:y(M,C);y(L,A);y(M
-             ,A);y(L,B)"!c.st            roke()"s.write_t
-             o_png('pen                        rose.png')
-             """                                       ))
-</code></pre>
-
-<p>效果是生成一幅 1000×1000 的 <a href="http://en.wikipedia.org/wiki/Penrose_tiling">Penrose tiling</a> 图片，其中包括了 2212 具有3D效果的 Penrose tiles。图像如图</p>
-
-<p><img src="http://pikipity.github.com/images/post/penrose-cropped.jpg" alt="闪瞎眼睛的效果图" width="550pt" /></p>
-
-<p>如果想亲自膜拜，原文在<a href="http://preshing.com/20110822/penrose-tiling-in-obfuscated-python">这里</a>。</p>
-
-<p>随后，这位 <a href="http://preshing.com/">Jeff Preshing</a> 大神为了进一步亮瞎 <a href="http://en.wikipedia.org/wiki/Python_(programming_language)">Python</a> 菜鸟的双眼，又上了一段代码：</p>
-
-<pre><code>_                                      =   (
-                                        255,
-                                      lambda
-                               V       ,B,c
-                             :c   and Y(V*V+B,B,  c
-                               -1)if(abs(V)&lt;6)else
-               (              2+c-4*abs(V)**-0.4)/i
-                 )  ;v,      x=1500,1000;C=range(v*x
-                  );import  struct;P=struct.pack;M,\
-            j  ='&lt;QIIHHHH',open('M.bmp','wb').write
-for X in j('BM'+P(M,v*x*3+26,26,12,v,x,1,24))or C:
-            i  ,Y=_;j(P('BBB',*(lambda T:(T*80+T**9
-                  *i-950*T  **99,T*70-880*T**18+701*
-                 T  **9     ,T*i**(1-T**45*2)))(sum(
-               [              Y(0,(A%3/3.+X%v+(X/v+
-                               A/3/3.-x/2)/1j)*2.5
-                             /x   -2.7,i)**2 for  \
-                               A       in C
-                                      [:9]])
-                                        /9)
-                                       )   )
-</code></pre>
-
-<p>效果是生成一幅 <a href="http://zh.wikipedia.org/wiki/%E6%9B%BC%E5%BE%B7%E5%8D%9A%E9%9B%86%E5%90%88">曼德博集合</a> 的图片。</p>
-
-<p><img src="http://pikipity.github.com/images/post/M-small.jpg" alt="再次亮瞎双眼的效果图" width="550pt" /></p>
-
-<p>原文膜拜请点<a href="http://preshing.com/20110926/high-resolution-mandelbrot-in-obfuscated-python">这里</a>。</p>
-
-<p><a href="http://www.reddit.com/">reddit</a> 上的 <a href="http://www.reddit.com/user/djimbob">djimbob</a> 大神在 <a href="http://www.reddit.com/r/programming/comments/jqi9d/who_says_you_cant_write_obfuscated_python/c2ecprp">这里</a>具体介绍了如何实现 <a href="http://en.wikipedia.org/wiki/Python_(programming_language)">Python</a> 的混乱编程，以及第一个例子的实现方法。好好学，明天菜鸟变大神。+_+</p>
 ]]></content>
   </entry>
   
