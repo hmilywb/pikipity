@@ -49,7 +49,10 @@
 <ol>
   <li><a href="http://crawl.develz.org/wordpress/downloads">Dungeon Crawl of Stone soup</a></li>
   <li><a href="http://pan.baidu.com/share/link?shareid=393536&amp;uk=4080321956">《黑暗史诗》（Fate）Mac版</a></li>
+  <li><a href="http://www.gamersky.com/Soft/200808/15447.shtml">《黑暗史诗》(Fate) Windows版</a></li>
   <li><a href="http://pan.baidu.com/share/link?shareid=393478&amp;uk=4080321956">《火炬之光(一)》Mac版</a></li>
+  <li><a href="http://bbs.maiyadi.com/thread-877042-1-1.html">《火炬之光（二）》Mac版</a></li>
+  <li><a href="http://www.gamersky.com/Soft/201209/39814.shtml">《火炬之光（二）》Windows版</a></li>
 </ol>
 ]]></content>
   </entry>
@@ -227,8 +230,8 @@ end
 <p>记忆体主要分为两种：</p>
 
 <ol>
-  <li>只读记忆体（ROM）：资料一旦存储就不能删除或是修改（既不能重新写入），且内容不会因为断电而消失。一般来说，我们可以认为你所编写的程式就存储在 8051 的 ROM 中，当然现在的新科技已经允许通过一定的手段来从新修改 ROM 上的内容了，所以你可以向你的 8051 芯片中重新写入程式，但是重新写入的次数是有限，但是这个次数非常大，所以不用担心。</li>
-  <li>随即存储存储器（RAM）：可以随时将数据存入记忆体的任意位置，但是断电后数据会消失。一般来说，我们可以认为程式临时数据就是存储在 8051 的 RAM 中的。</li>
+  <li>只读记忆体（ROM）：资料一旦存储就不能删除或是修改（既不能重新写入），且内容不会因为断电而消失。一般来说，我们可以认为你所编写的程式就存储在 8051 的 ROM 中，当然现在的新科技已经允许通过一定的手段来从新修改 ROM 上的内容了，所以你可以向你的 8051 芯片中重新写入程式，但是重新写入的次数是有限，但是这个次数非常大，所以不用担心。8051 内部 ROM 容量为 4K Byte，最大可扩充到 64K Byte。8052 内部 ROM 容量为 8K Byte，最大可扩充到 64K Byte</li>
+  <li>随即存储存储器（RAM）：可以随时将数据存入记忆体的任意位置，但是断电后数据会消失。一般来说，我们可以认为程式临时数据就是存储在 8051 的 RAM 中的。8051 内部 RAM 容量为 128 Byte，最大可扩充到 64K Byte。8052 内部 RAM 容量为 256 Byte，最大可扩充到 64K Byte。</li>
 </ol>
 
 <!--more-->
