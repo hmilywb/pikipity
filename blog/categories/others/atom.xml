@@ -14,6 +14,36 @@
 
   
   <entry>
+    <title type="html"><![CDATA[喂，写日记啦！]]></title>
+    <link href="http://pikipity.github.com/blog/ohlife.html"/>
+    <updated>2013-03-06T23:53:00+08:00</updated>
+    <id>http://pikipity.github.com/blog/ohlife</id>
+    <content type="html"><![CDATA[<p>今天推荐一个专门用来记日记的网站 <a href="http://ohlife.com/">“OhLife”</a>。虽然已经有很多的用来记日记、记笔记的网站，但是它们都有一个共病，就是花在研究“怎么用”的时间常常多余“写什么”的时间，而且每次写日记还要到它的网站或是打开客户端，很麻烦。而像人人或是 Facebook 一样的社交网络则面临写的东西别人都会看到的苦恼，想写点私人的东西都很困难。这个网站同时解决了这两个困难，非常好用。</p>
+
+<p><img src="/images/post/OhLife_1.jpg" width="550pt" /></p>
+
+<p>“OhLife” 有两个刚好弥补上面两大缺点的特点：</p>
+
+<ol>
+  <li>操作简单。网站每天会给你指定的邮箱发送一封邮件，你如果要记日记，就把你要记录的内容放在邮件里面，回复给他就可以了，附件就是插图，很方便。每天定时督促，让你养成写日记的好习惯。</li>
+  <li>私密。没有公开或是隐私的设置，所有日记均为隐私，要想看日记，需要登录网站，然后登陆用户在可以看见此用户的日记。</li>
+</ol>
+
+<p>你的所有日记会在 “OhLife” 网站自动生成一个类似于 Blog 的页面，小清新风格，很漂亮。如果你想将日记转移，一键 “export”，很简单。</p>
+
+<p><img src="/images/post/OhLife_2.jpg" width="550pt" /></p>
+
+<p>每一篇日记都可以进行再编辑，调整时间、添加照片、修改内容，简单明了。</p>
+
+<p><img src="/images/post/OhLife_3.jpg" width="550pt" /></p>
+
+<p>“Setting” 里面的内容也极其简单，设置一下你的当地时间、发送提醒邮件的频率、你的邮箱和 “OhLife” 的密码，就这么几个，完全没有上手难度。完全是居家旅行必备良药啊。</p>
+
+<p><img src="/images/post/OhLife_4.jpg" width="550pt" /></p>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[腐女的哲学]]></title>
     <link href="http://pikipity.github.com/blog/game-pole-pit-father-s-philosophy.html"/>
     <updated>2013-02-21T23:24:00+08:00</updated>
@@ -163,39 +193,6 @@ for X in j('BM'+P(M,v*x*3+26,26,12,v,x,1,24))or C:
 
 <p>什么是<a href="http://minecraft.net/"><img src="/images/post/Minecraft_logo.png" width="150pt" /></a>呢？这是一款已经风靡世界很久了的沙盒建造游戏，点击这里进入<a href="http://minecraft.net/">官方网站</a>，这里是<a href="http://zh.minecraftwiki.net/wiki/Minecraft_Wiki">中文wiki</a>，不要以为只是个将2D像素3D化的游戏，看看官方网站上的宣传视频吧，看完你就想玩了，是个超好玩的游戏。还有<a href="http://www.bilibili.tv/">bilibili</a>上有很多很多<a href="http://www.bilibili.tv/search?keyword=minecraft+%40%E6%B8%B8%E6%88%8F&amp;orderby=">大神的攻略和讲解</a>，还有讲怎么破解后<a href="http://www.bilibili.tv/video/av435230/">如何搭建自己的mod</a>的，暴强。</p>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[别再说你懂C，这才是真正的C]]></title>
-    <link href="http://pikipity.github.com/blog/21th-ioccc-winner.html"/>
-    <updated>2013-02-12T11:19:00+08:00</updated>
-    <id>http://pikipity.github.com/blog/21th-ioccc-winner</id>
-    <content type="html"><![CDATA[<p>第二十一届<a href="http://www.ioccc.org/index.html">混乱编码大赛（IOCCC）</a>已经过去很久很久了，下一届可能还要等上一段时间吧，让我们来回顾一下那些大神们的C语言艺术。:-O 全部都可编译成功 :-O</p>
-
-<p>最具隐蔽性奖：美国 Don Yang（看这名字像华裔）</p>
-
-<p><img src="/images/post/12_IOCCC_3.jpg" alt="nyaruko.c" width="550pt" /></p>
-
-<!--more-->
-
-<p>最强大功能奖：美国 John Tromp</p>
-
-<p><img src="/images/post/12_IOCCC_2.jpg" alt="tromp.c" width="550pt" /></p>
-
-<p>最有用混乱代码奖：中国 侯启明（候大神也是20届IOCCC的获奖者之一），“跟我签订契约成为魔法少女吧！”</p>
-
-<p><img src="/images/post/12_IOCCC_4.jpg" alt="hou.c" width="550pt" /></p>
-
-<p>铜奖作品 最佳Cocoa应用：美国 Daniel Vik</p>
-
-<p><img src="/images/post/12_IOCCC_5.jpg" alt="vik.c" width="550pt" /></p>
-
-<p>银奖作品 最基础C语言应用 ：日本 Tsukasa Hamano，鸟叔，呵呵</p>
-
-<p><img src="/images/post/12_IOCCC_6.jpg" alt="hamano.c" width="550pt" /></p>
-
-<p>更多请点<a href="http://www.ioccc.org/years.html#2012_hamano">这里</a></p>
 ]]></content>
   </entry>
   
