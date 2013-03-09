@@ -14,6 +14,18 @@
 
   
   <entry>
+    <title type="html"><![CDATA[别说你知道超级玛丽]]></title>
+    <link href="http://pikipity.github.com/blog/super-mario.html"/>
+    <updated>2013-03-09T20:02:00+08:00</updated>
+    <id>http://pikipity.github.com/blog/super-mario</id>
+    <content type="html"><![CDATA[<p>其实超级玛丽是武当出身，使得一手的好梯云纵……</p>
+
+<embed src="http://player.ku6.com/refer/j9ROVzCQYS2Xu4g7rTk1MQ../v.swf" width="480" height="400" allowscriptaccess="always" allowfullscreen="true" type="application/x-shockwave-flash" flashvars="from=ku6" />
+
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[到底有多大？来见识“三星共和国”的另一面]]></title>
     <link href="http://pikipity.github.com/blog/samsung-kindom.html"/>
     <updated>2013-03-08T16:49:00+08:00</updated>
@@ -259,23 +271,6 @@ for X in j('BM'+P(M,v*x*3+26,26,12,v,x,1,24))or C:
 <p>原文膜拜请点<a href="http://preshing.com/20110926/high-resolution-mandelbrot-in-obfuscated-python">这里</a>。</p>
 
 <p><a href="http://www.reddit.com/">reddit</a> 上的 <a href="http://www.reddit.com/user/djimbob">djimbob</a> 大神在 <a href="http://www.reddit.com/r/programming/comments/jqi9d/who_says_you_cant_write_obfuscated_python/c2ecprp">这里</a>具体介绍了如何实现 <a href="http://en.wikipedia.org/wiki/Python_(programming_language)">Python</a> 的混乱编程，以及第一个例子的实现方法。好好学，明天菜鸟变大神。+_+</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[左脑 VS. 右脑]]></title>
-    <link href="http://pikipity.github.com/blog/brain-function.html"/>
-    <updated>2013-02-12T12:41:00+08:00</updated>
-    <id>http://pikipity.github.com/blog/brain-function</id>
-    <content type="html"><![CDATA[<p><img src="/images/post/brain_function_1.jpg" width="550pt" /></p>
-
-<!--more-->
-
-<p><img src="/images/post/brain_function_2.jpg" width="550pt" /></p>
-
-<p><img src="/images/post/brain_function_3.jpg" width="550pt" /></p>
-
-<p><a href="http://ipc.me.feedsportal.com/c/34214/f/621336/s/24fab781/l/0L0Sipc0Bme0Czuo0Enao0Evs0Eyou0Enao0Bhtml/story01.htm">原文</a></p>
 ]]></content>
   </entry>
   
