@@ -14,6 +14,129 @@
 
   
   <entry>
+    <title type="html"><![CDATA[向 Github 添加 SSH 公匙]]></title>
+    <link href="http://pikipity.github.com/blog/ssh-public-key.html"/>
+    <updated>2013-03-12T20:03:00+08:00</updated>
+    <id>http://pikipity.github.com/blog/ssh-public-key</id>
+    <content type="html"><![CDATA[<p>今天用 octopress 遇到一点小问题，在向 Github 发布自己的 post 的时候出现错误：</p>
+
+<pre><code>Permission denied (publickey). fatal: The remote end hung up unexpectedly
+</code></pre>
+
+<p>看到 publickey，我突然想到我好想忘了向 Github 添加我自己的公匙了，问了一下谷姐，看到<a href="http://stackoverflow.com/questions/3617113/github-newbie-problems-permission-denied-publickey-fatal-the-remote-end">这里</a>的解答，果然是这个原因。我想如果重新设定一下 octopress 的github 登陆设置应该也是可以的，但是如果每次重启电脑都要这样来一次也太麻烦了，于是果断还是去添加一次吧，一劳永逸（最好还是先到<a href="https://help.github.com/articles/error-permission-denied-publickey">这里</a>按照步骤检查一下）。</p>
+
+<p>Mac 设置方法见<a href="https://help.github.com/articles/generating-ssh-keys#platform-mac">这里</a>，Windows 设置方法见<a href="https://help.github.com/articles/generating-ssh-keys#platform-windows">这里</a>（Windows 需要在 Git Bash 里使用下面的命令），Linux 见<a href="https://help.github.com/articles/generating-ssh-keys#platform-linux">这里</a>，三者大同小异，唯一的区别应该就是复制 ssh key 的时候使用的命令不一样吧。步骤如下：</p>
+
+<ol>
+  <li>
+    <p>检查是否存在 .ssh 文件夹</p>
+
+    <pre><code> $ cd ~/.ssh
+</code></pre>
+
+    <p>如果没有这个文件夹，跳到第三步，如果有，则继续</p>
+  </li>
+  <li>
+    <p>备份一下当前已有的 ssh 秘钥</p>
+
+    <pre><code> $ ls
+ $ mkdir key_backup
+ $ cp id_rsa* key_backup
+ $ rm id_rsa*
+</code></pre>
+  </li>
+  <li>
+    <p>产生新的 ssh 秘钥</p>
+
+    <pre><code> $ ssh-keygen -t rsa -C "your_email@example.com"
+</code></pre>
+
+    <p>“your_email@example.com”就是github上你用来上传的邮箱，如果你没修改过就是你用来注册账户的那个邮箱，输入上面的命令并回车后会引导你生成你的 RSA 秘钥对，如下：</p>
+
+    <pre><code> Enter file in which to save the key (/Users/you/.ssh/id_rsa): [按回车]
+ Enter passphrase (empty for no passphrase): [输入一个通关密语]
+ Enter same passphrase again: [把通关密语再输一遍]
+</code></pre>
+
+    <p>通关密语一般建议输入一个10到30字元的字符串（别输中文），这关系到你将来传输信息的保密性。成功后你会看到<strong>如</strong>下内容</p>
+
+    <pre><code> Your identification has been saved in /Users/you/.ssh/id_rsa.
+ Your public key has been saved in /Users/you/.ssh/id_rsa.pub.
+ The key fingerprint is:
+ 01:0f:f4:3b:ca:85:d6:17:a1:7d:f0:68:9d:f0:a2:db your_email@example.com
+</code></pre>
+  </li>
+  <li>
+    <p>将我们的 ssh 秘钥添加到 Github。首先复制我们的公匙，Mac 用下面的命令：</p>
+
+    <pre><code> $ pbcopy &lt; ~/.ssh/id_rsa.pub
+</code></pre>
+
+    <p>Linux 用下面的命令（如果没有 xclip，先安装一下吧，很好用，<code>sudo apt-get install xclip</code>）：</p>
+
+    <pre><code> $ xclip -sel clip &lt; ~/.ssh/id_rsa.pub
+</code></pre>
+
+    <p>Windows 用下面的命令：</p>
+
+    <pre><code> $ clip &lt; ~/.ssh/id_rsa.pub
+</code></pre>
+
+    <p>然后就是到 Github 网站把公匙粘贴过去。步骤如下：</p>
+
+    <ul>
+      <li>
+        <p>到你的<a href="https://github.com/settings">账户设定</a>中</p>
+
+        <p><img src="https://github-images.s3.amazonaws.com/help/userbar-account-settings.png" width="350pt" /></p>
+      </li>
+      <li>
+        <p>点击左栏中的 <a href="https://github.com/settings/ssh">“SSH Keys”</a></p>
+
+        <p><img src="https://github-images.s3.amazonaws.com/help/settings-sidebar-ssh-keys.png" width="350pt" /></p>
+      </li>
+      <li>
+        <p>点击 “Add SSH key”</p>
+
+        <p><img src="https://github-images.s3.amazonaws.com/help/ssh-add-ssh-key.png" width="350pt" /></p>
+      </li>
+      <li>
+        <p>在 “Key” 的输入框中粘贴</p>
+
+        <p><img src="https://github-images.s3.amazonaws.com/help/ssh-key-paste.png" width="350pt" /></p>
+      </li>
+      <li>
+        <p>点击 “Add key”</p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>现在你可以测试一下了，用下面命令</p>
+
+    <pre><code> $ ssh -T git@github.com
+</code></pre>
+
+    <p>你会得到下面信息：</p>
+
+    <pre><code> The authenticity of host 'github.com (207.97.227.239)' can't be established.
+ RSA key fingerprint is 16:27:ac:a5:76:28:2d:36:63:1b:56:4d:eb:df:a6:48.
+ Are you sure you want to continue connecting (yes/no)?
+</code></pre>
+
+    <p>输入 “yes”，回车，你会看到下面信息：</p>
+
+    <pre><code> Hi username! You've successfully authenticated, but GitHub does not provide shell access.
+</code></pre>
+
+    <p>如果 “username” 正确，那么就 OK 了。</p>
+  </li>
+</ol>
+
+<p>如果你看到 “access denied”，请考虑使用 <a href="https://help.github.com/articles/set-up-git">HTTPS</a>。</p>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[此 “Fate” 非彼 “Fate”]]></title>
     <link href="http://pikipity.github.com/blog/this-fate-is-not-that-fate.html"/>
     <updated>2013-03-05T18:21:00+08:00</updated>
@@ -117,23 +240,6 @@
 <p>呵呵，好像把日本韩国也截进来了。江苏、广东躺枪啊，这么多。苏州、上海周边的亲们你们到底给 Apple 公司提供了多少廉价劳动力啊！！</p>
 
 <p><img src="/images/post/apple_supplier_jiangsu.jpg" alt="江苏、上海周边的劳动力们啊！！" width="650pt" /></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[苹果更新MacBook配置并降低产品价格]]></title>
-    <link href="http://pikipity.github.com/blog/updata-macbook.html"/>
-    <updated>2013-02-16T10:12:00+08:00</updated>
-    <id>http://pikipity.github.com/blog/updata-macbook</id>
-    <content type="html"><![CDATA[<p><img src="/images/post/macbook_2013_2_16.png" width="550pt" /></p>
-
-<p>13寸配备Retina显示屏及128GB闪存的MacBook Pro降价到10988元，降幅高达1500元</p>
-
-<p>两款15寸的Retina MacBook Pro虽然未降价，但是配置提升。15寸低配处理器从2.3GHz升级到2.4GHz，高配从2.6GHz升级到了2.7GHz并且内存从8GB升级到了16GB。</p>
-
-<p>还有不仅是MacBook Pro，13寸256GB闪存的MacBook Air降价到了10488元</p>
-
-<p>具体购买信息可以在<a href="http://store.apple.com/cn/browse/home/shop_mac/family/macbook_pro?afid=p227%7C450545&amp;cid=AOS-CN-AFF-MACBOOK+PRO">MacBook Pro在线商店</a>和<a href="http://store.apple.com/cn/browse/home/shop_mac/family/macbook_air?afid=p227%7C450545&amp;cid=AOS-CN-AFFC-MACBOOKAIR">MacBook Air在线商店</a>查询</p>
 ]]></content>
   </entry>
   
