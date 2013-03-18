@@ -14,6 +14,31 @@
 
   
   <entry>
+    <title type="html"><![CDATA[可能真的是我们被 Google 宠坏了]]></title>
+    <link href="http://pikipity.github.com/blog/google-reader-user.html"/>
+    <updated>2013-03-18T10:04:00+08:00</updated>
+    <id>http://pikipity.github.com/blog/google-reader-user</id>
+    <content type="html"><![CDATA[<p>转自<a href="http://www.guao.hk/">“谷奥”</a> Kunkka 的<a href="http://www.guao.hk/posts/is-google-doing-evil-for-closing-google-reader.html">“关闭 Google Reader 是作恶之举？”</a>。</p>
+
+<p>Google Reader将要被关闭，大家都很不爽，因为又一个好服务即将离我们而去。</p>
+
+<p>可是惋惜归惋惜，我只是觉得，人应该要感恩，毕竟Google做的已经够多了：它已经无偿地为大家运营了这么一个服务8年。8年了，这个服务没从大家手中拿过一分钱！说白了，就是Google不欠大家什么，即使它关闭Google Reader这个举动再不高明，它还是不欠用户们什么东西。</p>
+
+<p>但是看到那么多人，甚至包括站长也说关闭Google Reader就是作恶，我瞬间就不淡定了。这都啥跟啥嘛，难道粉了Google这么多年的人，连这种基本东西都没搞清楚吗？虽然Google Reader被关闭，确实值得惋惜，但是这跟“作恶”有什么关系吗？是不是弄得你不爽了，就是Google作恶了？</p>
+
+<p>举个简单的例子就是：关闭Google Reader，在我看来，几乎就跟楼下大街上生意不红火的小吃店关门大吉一般，正常的不能再正常。人们可以因为再吃不到既便宜牛肉又给得多的牛肉面而惋惜，但是人们却不会（也不应该）因为老板不再为他们提供这么良心的牛肉面而去谴责老板。</p>
+
+<p>另外，Google自己说的“不作恶”，从来就是指的，赚钱不必作恶；从来就是指的，他们不会对竞争对手用下三滥的手段；从来就是指的，他们不会像别的公司那样，用欺骗，用劫持流量的办法来赚钱。关于这段，<a href="http://www.google.com/about/company/philosophy/">可以看官方页面的第6条</a>。</p>
+
+<p>那么，关闭Google Reader从哪里能说的上是作恶？难道关闭Google Reader这服务就是一种下三滥手段，就是用来排挤竞争对手，就是用来赚亏心钱的？</p>
+
+<p>我一直认为Google是一家有道德，有些许理想主义，有些许天马行空的公司。这是我一直热爱Google的原因。而从关闭GR这事来看，Google提供数据导出方案，提供缓冲时间让用户过渡。我看不出这些做法哪里不道德。这个关闭行动之中，Google的行为合乎法律、合乎情理、合乎道德。虽然关闭GR让我不爽，但是我没法说服自己改变对Google的看法，因为道德还在，理想主义与天马行空依然。</p>
+
+<p>Google还是那个Google，它没变，变的只是人心，被宠坏的人心。</p>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[Google Reader 将死，我们要何去何从？]]></title>
     <link href="http://pikipity.github.com/blog/google-reader-die.html"/>
     <updated>2013-03-16T23:15:00+08:00</updated>
@@ -1792,36 +1817,6 @@ $ bundle install
   <li><code>rake new_page[filename]</code>：在 <code>source/(filename)/index.markdown</code> 中生成一个新页面</li>
   <li><code>rake preview</code>：预览站点，默认在浏览器打开 <code>localhost:4000</code> 就可以预览</li>
 </ul>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[腐女的哲学]]></title>
-    <link href="http://pikipity.github.com/blog/game-pole-pit-father-s-philosophy.html"/>
-    <updated>2013-02-21T23:24:00+08:00</updated>
-    <id>http://pikipity.github.com/blog/game-pole-pit-father-s-philosophy</id>
-    <content type="html"><![CDATA[<p>今天被一个学妹这么说自己的 Blog：</p>
-
-<blockquote>
-  <p>他写的没有一个我不知道…或者说我怎么觉得那些个话我都在别的地儿看过。。。</p>
-</blockquote>
-
-<p>呵呵，原来大家都这么好学，想看别的地方没看过的，呵呵，这个网易专题应该没有了，希望零星看我 Blog 的读者喜欢 (*^◎^*)</p>
-
-<p>《极坑爹的哲学小游戏》，呵呵，下载在<a href="http://pan.baidu.com/share/link?shareid=377738&amp;uk=4080321956">这里</a>，攻略在下面，呵呵。为什么这么多”呵呵”，看攻略吧。</p>
-
-<ol>
-  <li><a href="http://player.youku.com/player.php/sid/XNTEzNTIxOTI4/v.swf">END1</a></li>
-  <li><a href="http://player.youku.com/player.php/sid/XNTEzNTI3NzY0/v.swf">END2</a></li>
-  <li><a href="http://player.youku.com/player.php/sid/XNTEzNTMzOTI4/v.swf">END3</a></li>
-  <li><a href="http://player.youku.com/player.php/sid/XNTEzNTM0NjIw/v.swf">END4</a></li>
-  <li><a href="http://player.youku.com/player.php/sid/XNTEzNTM2NzYw/v.swf">END5</a></li>
-  <li><a href="http://player.youku.com/player.php/sid/XNTEzNTM4MzQ4/v.swf">END6</a></li>
-  <li><a href="http://player.youku.com/player.php/sid/XNTEzNTQxMjI4/v.swf">END7</a></li>
-  <li><a href="http://player.youku.com/player.php/sid/XNTEzNTQxOTA0/v.swf">END8</a></li>
-</ol>
-
-<p><img src="http://pikipity.github.com/images/post/Boy_Game.jpg" width="550pt" /></p>
 ]]></content>
   </entry>
   
