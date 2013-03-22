@@ -14,6 +14,31 @@
 
   
   <entry>
+    <title type="html"><![CDATA[环保？文明？我们的地狱？]]></title>
+    <link href="http://pikipity.github.com/blog/2013-earth-hour.html"/>
+    <updated>2013-03-22T18:51:00+08:00</updated>
+    <id>http://pikipity.github.com/blog/2013-earth-hour</id>
+    <content type="html"><![CDATA[<p><img src="http://pikipity.github.com/images/post/60+CN_logo.jpg" width="550pt" /></p>
+
+<p>2013年2月23日星期六，晚上8:30到9:30是一年一度的<a href="http://earthhour.wwf.org.hk/">“地球一小时”</a>活动，<a href="https://zh.wikipedia.org/wiki/%E5%9C%B0%E7%90%83%E4%B8%80%E5%B0%8F%E6%97%B6">“Wiki”</a> 上是这么说的:</p>
+
+<blockquote>
+  <p>地球一小时（英语：Earth Hour）是一个全球性节能活动，提倡于每年三月的最后一个星期六当地时间晚上20:30，家庭及商界用户关上不必要的电灯及耗电产品一小时。希望借此活动推动电源管理，减少能源消耗，唤起人们以实际行动应对全球变暖的意识。</p>
+
+  <p>该活动最初由环保团体世界自然基金会澳洲及悉尼晨锋报合作发起，并于澳洲悉尼当地时间2007年3月31日，晚上8:30至9:30期间举行了第一次活动。地球一小时2007有近220万人参与，相信节省了当天悉尼市市电电源的2.2%至10.2%。2008年，该活动被推广到世界各地，全球40多个城市，近380个城镇接力执行该活动。</p>
+</blockquote>
+
+<p>玩过《海岛大亨》的同学们都知道，环保主义者什么的最讨厌了~~~~~~。我当然不是反对环保，但是人类文明的进步本身就是对环境掠夺的过程，当这种掠夺超过环境承受能力，那么就被我们称为“破坏生态环境”。但是人类发展如此迅速，怎么不可能超过环境的限制。更何况科技发展到今天，电力带来的污染已经可以说是一直在降低了，更重要的是其他污染因素。其实我想吐槽的是下面的视频，一小时发电厂产生的污染如果和生产你们用的那些荧光灯里的纽扣电池的污染比起来可以说是小巫见大巫了，这样真的“大丈夫”？</p>
+
+<iframe width="560" height="315" src="http://www.youtube.com/embed/2UywrjnOaUE" frameborder="0" allowfullscreen=""></iframe>
+
+<p>不管怎么说，还是要宣传一下环保的，从小事做起就好了，下面是<a href="http://www.earthhour.org.cn/index.php">“我做绿V客”</a>的宣传海报，这个活动还是不错的</p>
+
+<p><img src="http://pikipity.github.com/images/post/print-ad.jpg" width="550pt" /></p>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[海盗湾里最老的种子]]></title>
     <link href="http://pikipity.github.com/blog/thepiratebay-ten-years-old.html"/>
     <updated>2013-03-18T20:49:00+08:00</updated>
@@ -1509,122 +1534,6 @@ end
 
 <p>影片如果无法播放，请点<a href="http://v.youku.com/v_show/id_XNDM0NjM3MjM2.html">这里</a></p>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[ kramdown 语法文档翻译（一）]]></title>
-    <link href="http://pikipity.github.com/blog/kramdown-syntax-chinese-1.html"/>
-    <updated>2013-02-23T17:14:00+08:00</updated>
-    <id>http://pikipity.github.com/blog/kramdown-syntax-chinese-1</id>
-    <content type="html"><![CDATA[<p>这是 《kramdown Syntax》的中文翻译系列，英文、中文都不好，翻译过来为大家方便查询与学习，原文在<a href="http://kramdown.rubyforge.org/syntax.html#attribute-list-definitions">这里</a>。</p>
-
-<p><img src="http://pikipity.github.com/images/post/overview_kramdown.png" width="550pt" /></p>
-
-<p>kramdown 语法是基于 Markdown 语法建立并加入了一些其他 Markdown 扩展版本（例如，<a href="http://maruku.rubyforge.org/">Maruku</a>、<a href="http://michelf.com/projects/php-markdown/extra/">PHP Markdown Extra</a> 和 <a href="http://johnmacfarlane.net/pandoc/">Pandoc</a>）所具有的特性。不仅如此，它努力去提供一个包括明确规则的严格的语法，所以它不可能完全符合 Markdown 语法。尽管如此，大多数用 Markdown 编写的文档依然可以用 kramdown 很好地解析。下面所有和 Markdown 语法存在不一样的地方的 kranmdown 语法都用高亮指出了。</p>
-
-<p>下面是所有 kramdown 所支持元素的语法定义，同时还有告诉你 kramdown 通过一个可用的编译器转换之后你将得到什么样的文档。</p>
-
-<!--more-->
-
-<h2 id="section">源文件文本格式</h2>
-
-<p>一个 kramdown 文本可以支持多种编码格式，比如 ASCII、UTF-8 和 ISO-8859-1，并且会将他们转化为和你源文件同样的编码格式。</p>
-
-<p>文件包括两种元素：块级元素 (block-level elements) 和跨度级元素 (span-level elements)</p>
-
-<ul>
-  <li>块级元素定义了内容的主体部分，比如，哪块文字是一个段落，哪块是一个列表，哪块是一个引用文字等等</li>
-  <li>跨度级元素标记了一些小的文字块，比如，强调文字或是链接</li>
-</ul>
-
-<p>因此，跨度级元素只能出现在块级元素或是另一个跨度级元素之内。</p>
-
-<p>在对于块级元素的描述中，你会经常发现以“第一行”或是一个块级元素的某一行的“第一个字”作为参照的叫法。这种参照仅仅是相对于当前的缩进级别。因为有的块级元素中会出现一个新的缩进级别（例如，引用文字）。一个 kramdown 文件总是开始于以文本第一行为开始的默认缩进。</p>
-
-<h3 id="section-1">自动换行</h3>
-
-<p>一些轻量级的语法不能很好地在强制断行的换行环境中使用，例如，很多的 email 程序中。但是，kramdown 允许内容比如段落或是引用中使用强制断行的换行形式，比如行之间的中断。这个有时被称为“懒语法”，因为对于连续行来说，文本第一行的缩进或是行首标记并不需要。</p>
-
-<p>当下面条件满足时，块级元素的一行结束：</p>
-
-<ul>
-  <li>一个空行，一条具有 EOB 标记的行，一条空的内联属性列表或是文本结束</li>
-  <li>或是 HTML 块</li>
-</ul>
-
-<p>在 krandom 的文件中支持自动换行，但是还是有一些块级元素不支持强制断行：</p>
-
-<ul>
-  <li>标题: 因为标题一般只有一行，所以在大多数情况下没有问题。如果标题一行太长，你需要用 HTML 语法代替</li>
-  <li>独立的程序代码块：一个独立代码块的分界线不支持强制断行，因为在分界线之间的东西都被当做独立代码块的内容。</li>
-  <li>定义：每一个定义项必须出现在一个单独的行里面。强制断行将会引入一个新的定义项。</li>
-  <li>表格：因为 kramdown 表格的每一行代表表格的一行或是两个表格之间的分割，所以表格不可能支持强制断行</li>
-</ul>
-
-<p><strong>注意</strong>：并不是建议使用懒语法来书写 kramdown 文档。因为自动换行所提供的 kramdown 语法的灵活性会影响易读性，所以不应该使用。</p>
-
-<h3 id="tab-">Tab 的使用</h3>
-
-<p>krandown 定义 tab 是四个空格，当在在列表的行首空格使用 tab 的时候，这点非常重要。并且，tab 只可以在行首使用，不可以用来代替空格，否则结果不可预测。</p>
-
-<h3 id="section-2">自动和手动逃逸</h3>
-
-<p>根据输出的形式，有一些常用字符需要特别对待，比如，当将一个 kramdowmn 文档转化为 HTML 的时候，需要特别注意“&lt;”、“&gt;”和“&amp;”字符。为了放别对这些特殊字符的处理，它们会正确地自动根据输出方式逃逸。</p>
-
-<p>比如，你可以直接在 kramdown 文档中使用“&lt;”、“&gt;”和“&amp;”字符，而不必去考虑它们在 HTML 中的使用。并且，如果你以 HTML 语言的形式或是 HTML 标签的形式使用使用这些字符的话，结果一样是正确的。</p>
-
-<p>因为 kramdown 也是用了一些字符去标记文本，所以这里有一种方法去实现这种字符的逃逸，这样它们就是自己本来的意思了。这是使用反斜杠逃逸。比如，你可以类似这样来使用单引号：</p>
-
-<pre><code>This \`is not a code\` span!
-</code></pre>
-
-<p>下面是一个包含全部可以逃逸的字符的列表</p>
-
-<pre><code>\         反斜线
-.         点号
-*         星号
-_         下划线
-+         加号
--         减号
-=         等号
-`         撇号
-()[]{}&lt;&gt;  小、中、大括号、单书名号
-#         井号
-!         感叹号
-&lt;&lt;        双小于
-&gt;&gt;        双大于
-:         冒号
-|         单竖杠
-"         双引号
-'         单引号
-$         钱的符号
-</code></pre>
-
-<h3 id="section-3">块边界</h3>
-
-<p>一些块级元素必须以块边界来开始或是结束。这里有两种情况来使块边界发挥作用：</p>
-
-<ul>
-  <li>如果块级元素必须以块边界来开始，那么它必须是一个空行，一个 EOB 标记，或是一个断掉的 IAL 或者它就是第一个元素</li>
-  <li>如果块级元素必须以块边界结束，那么它必须跟一个空行，一个 EOB 标记，或是一个断掉的 IAL 或者它就是最后元素</li>
-</ul>
-
-<h2 id="section-4">结构元素</h2>
-
-<p>所有的结构元素都是块级元素，并且它们用来构成整个内容。它们可以标记很多文本，比如一个简单的段落，一段引用或是一个列表等</p>
-
-<h3 id="section-5">空行</h3>
-
-<p>在 kramdown 中，任何一行只包含空字符例如空格或是 tab 就被认为是一个空行。一个或是多个连续的空行被认为是一个空行。空行被用来分割块级元素和其他部分，所以没有语义上的意思。但是，这里还是有一些空行有寓意的情况：</p>
-
-<ul>
-  <li>在标题使用时</li>
-  <li>在代码块中使用时</li>
-  <li>在列表中使用时</li>
-  <li>在数学快中使用时</li>
-  <li>在用来做一些元素的块边界的时候</li>
-</ul>
 ]]></content>
   </entry>
   

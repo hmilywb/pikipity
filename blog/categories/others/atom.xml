@@ -14,6 +14,31 @@
 
   
   <entry>
+    <title type="html"><![CDATA[环保？文明？我们的地狱？]]></title>
+    <link href="http://pikipity.github.com/blog/2013-earth-hour.html"/>
+    <updated>2013-03-22T18:51:00+08:00</updated>
+    <id>http://pikipity.github.com/blog/2013-earth-hour</id>
+    <content type="html"><![CDATA[<p><img src="/images/post/60+CN_logo.jpg" width="550pt" /></p>
+
+<p>2013年2月23日星期六，晚上8:30到9:30是一年一度的<a href="http://earthhour.wwf.org.hk/">“地球一小时”</a>活动，<a href="https://zh.wikipedia.org/wiki/%E5%9C%B0%E7%90%83%E4%B8%80%E5%B0%8F%E6%97%B6">“Wiki”</a> 上是这么说的:</p>
+
+<blockquote>
+  <p>地球一小时（英语：Earth Hour）是一个全球性节能活动，提倡于每年三月的最后一个星期六当地时间晚上20:30，家庭及商界用户关上不必要的电灯及耗电产品一小时。希望借此活动推动电源管理，减少能源消耗，唤起人们以实际行动应对全球变暖的意识。</p>
+
+  <p>该活动最初由环保团体世界自然基金会澳洲及悉尼晨锋报合作发起，并于澳洲悉尼当地时间2007年3月31日，晚上8:30至9:30期间举行了第一次活动。地球一小时2007有近220万人参与，相信节省了当天悉尼市市电电源的2.2%至10.2%。2008年，该活动被推广到世界各地，全球40多个城市，近380个城镇接力执行该活动。</p>
+</blockquote>
+
+<p>玩过《海岛大亨》的同学们都知道，环保主义者什么的最讨厌了~~~~~~。我当然不是反对环保，但是人类文明的进步本身就是对环境掠夺的过程，当这种掠夺超过环境承受能力，那么就被我们称为“破坏生态环境”。但是人类发展如此迅速，怎么不可能超过环境的限制。更何况科技发展到今天，电力带来的污染已经可以说是一直在降低了，更重要的是其他污染因素。其实我想吐槽的是下面的视频，一小时发电厂产生的污染如果和生产你们用的那些荧光灯里的纽扣电池的污染比起来可以说是小巫见大巫了，这样真的“大丈夫”？</p>
+
+<iframe width="560" height="315" src="http://www.youtube.com/embed/2UywrjnOaUE" frameborder="0" allowfullscreen=""></iframe>
+
+<p>不管怎么说，还是要宣传一下环保的，从小事做起就好了，下面是<a href="http://www.earthhour.org.cn/index.php">“我做绿V客”</a>的宣传海报，这个活动还是不错的</p>
+
+<p><img src="/images/post/print-ad.jpg" width="550pt" /></p>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[别说你知道超级玛丽]]></title>
     <link href="http://pikipity.github.com/blog/super-mario.html"/>
     <updated>2013-03-09T20:02:00+08:00</updated>
@@ -181,96 +206,6 @@
 </ol>
 
 <p><img src="/images/post/Boy_Game.jpg" width="550pt" /></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[我不相信，这是Python么？！]]></title>
-    <link href="http://pikipity.github.com/blog/obfuscated-python.html"/>
-    <updated>2013-02-18T13:37:00+08:00</updated>
-    <id>http://pikipity.github.com/blog/obfuscated-python</id>
-    <content type="html"><![CDATA[<p>如果看了<a href="/blog/21th-ioccc-winner.html">《别再说你懂C，这才是真正的C》</a>，认为C语言的混乱编程没有什么，那么看看这位 <a href="http://preshing.com/">Jeff Preshing</a> 大神的 <a href="http://en.wikipedia.org/wiki/Python_(programming_language)">Python</a> 混乱编程吧。</p>
-
-<p>大家都知道 <a href="http://en.wikipedia.org/wiki/Python_(programming_language)">Python</a> 对于格式的要求及其严格，经常一段程序就因为开头多了一个空格就连连报错，这位神人就编写了一段代码来讽刺我这种渣渣</p>
-
-<blockquote>
-  <p>Who says you can’t write obfuscated Python?</p>
-</blockquote>
-
-<!--more-->
-
-<p>代码如下</p>
-
-<pre><code>_                                 =\
-                                """if!
-                              1:"e,V=100
-                            0,(0j-1)**-.2;
-                           v,S=.5/  V.real,
-                         [(0,0,4      *e,4*e*
-                       V)];w=1          -v"def!
-                      E(T,A,              B,C):P
-                  ,Q,R=B*w+                A*v,B*w+C
-            *v,A*w+B*v;retur              n[(1,Q,C,A),(1,P
-     ,Q,B),(0,Q,P,A)]*T+[(0,C            ,R,B),(1,R,C,A)]*(1-T)"f
-or!i!in!_[:11]:S       =sum([E          (*x)for       !x!in!S],[])"imp
-  ort!cair               o!as!O;      s=O.Ima               geSurfac
-   e(1,e,e)               ;c=O.Con  text(s);               M,L,G=c.
-     move_to                ,c.line_to,c.s                et_sour
-       ce_rgb                a"def!z(f,a)                :f(-a.
-        imag,a.       real-e-e)"for!T,A,B,C!in[i       !for!i!
-          in!S!if!i[""";exec(reduce(lambda x,i:x.replace(chr
-           (i),"\n "[34-i:]),   range(   35),_+"""0]]:z(M,A
-             );z(L,B);z         (L,C);         c.close_pa
-             th()"G             (.4,.3             ,1);c.
-             paint(             );G(.7             ,.7,1)
-             ;c.fil             l()"fo             r!i!in
-             !range             (9):"!             g=1-i/
-             8;d=i/          4*g;G(d,d,d,          1-g*.8
-             )"!def     !y(f,a):z(f,a+(1+2j)*(     1j**(i
-             /2.))*g)"!for!T,A,B,C!in!S:y(M,C);y(L,A);y(M
-             ,A);y(L,B)"!c.st            roke()"s.write_t
-             o_png('pen                        rose.png')
-             """                                       ))
-</code></pre>
-
-<p>效果是生成一幅 1000×1000 的 <a href="http://en.wikipedia.org/wiki/Penrose_tiling">Penrose tiling</a> 图片，其中包括了 2212 具有3D效果的 Penrose tiles。图像如图</p>
-
-<p><img src="/images/post/penrose-cropped.jpg" alt="闪瞎眼睛的效果图" width="550pt" /></p>
-
-<p>如果想亲自膜拜，原文在<a href="http://preshing.com/20110822/penrose-tiling-in-obfuscated-python">这里</a>。</p>
-
-<p>随后，这位 <a href="http://preshing.com/">Jeff Preshing</a> 大神为了进一步亮瞎 <a href="http://en.wikipedia.org/wiki/Python_(programming_language)">Python</a> 菜鸟的双眼，又上了一段代码：</p>
-
-<pre><code>_                                      =   (
-                                        255,
-                                      lambda
-                               V       ,B,c
-                             :c   and Y(V*V+B,B,  c
-                               -1)if(abs(V)&lt;6)else
-               (              2+c-4*abs(V)**-0.4)/i
-                 )  ;v,      x=1500,1000;C=range(v*x
-                  );import  struct;P=struct.pack;M,\
-            j  ='&lt;QIIHHHH',open('M.bmp','wb').write
-for X in j('BM'+P(M,v*x*3+26,26,12,v,x,1,24))or C:
-            i  ,Y=_;j(P('BBB',*(lambda T:(T*80+T**9
-                  *i-950*T  **99,T*70-880*T**18+701*
-                 T  **9     ,T*i**(1-T**45*2)))(sum(
-               [              Y(0,(A%3/3.+X%v+(X/v+
-                               A/3/3.-x/2)/1j)*2.5
-                             /x   -2.7,i)**2 for  \
-                               A       in C
-                                      [:9]])
-                                        /9)
-                                       )   )
-</code></pre>
-
-<p>效果是生成一幅 <a href="http://zh.wikipedia.org/wiki/%E6%9B%BC%E5%BE%B7%E5%8D%9A%E9%9B%86%E5%90%88">曼德博集合</a> 的图片。</p>
-
-<p><img src="/images/post/M-small.jpg" alt="再次亮瞎双眼的效果图" width="550pt" /></p>
-
-<p>原文膜拜请点<a href="http://preshing.com/20110926/high-resolution-mandelbrot-in-obfuscated-python">这里</a>。</p>
-
-<p><a href="http://www.reddit.com/">reddit</a> 上的 <a href="http://www.reddit.com/user/djimbob">djimbob</a> 大神在 <a href="http://www.reddit.com/r/programming/comments/jqi9d/who_says_you_cant_write_obfuscated_python/c2ecprp">这里</a>具体介绍了如何实现 <a href="http://en.wikipedia.org/wiki/Python_(programming_language)">Python</a> 的混乱编程，以及第一个例子的实现方法。好好学，明天菜鸟变大神。+_+</p>
 ]]></content>
   </entry>
   
