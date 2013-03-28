@@ -14,6 +14,37 @@
 
   
   <entry>
+    <title type="html"><![CDATA[贫嘴的鞋子]]></title>
+    <link href="http://pikipity.github.com/blog/talking-shoe.html"/>
+    <updated>2013-03-29T02:24:00+08:00</updated>
+    <id>http://pikipity.github.com/blog/talking-shoe</id>
+    <content type="html"><![CDATA[<p>Google在SXSW 2013大会上展示了叫做 “Talking Shoe” 的运动鞋，下面是一个宣传视频。</p>
+
+<embed src="http://player.youku.com/player.php/sid/XNTI0NjM0NzQw/v.swf" allowfullscreen="true" quality="high" width="480" height="400" align="middle" allowscriptaccess="always" type="application/x-shockwave-flash" />
+
+<p>有没有发现，神烦啊，我穿个鞋子而已，做什么，记录我的一举一动，还要发微博？不，我相信，那一定不是微博，那一定是 Google+，绝对是。听听那怪蜀黍一样的怪异声音（要是谷歌娘的声音我就不发出来吐槽了）：</p>
+
+<ul>
+  <li>在你站着不动的时候他会说：如果站着不动也是项运动的话，你丫肯定是世界冠军了！</li>
+  <li>在你坐着不对的时候他会说：真他娘的无聊啊！</li>
+  <li>在你走起来的时候他会说：开始带点感了啊！</li>
+  <li>在你小跑起来的时候他会说：我喜欢这种威风吹过脸庞的感觉！</li>
+  <li>在探测到你走入街头篮球场的时候他会说：上啊！</li>
+  <li>当你完全运动起来的时候他会说：快打119啊你丫太火了！</li>
+  <li>在你运动完休息的时候他会说：重新穿上我让咱们再战一场啊！</li>
+</ul>
+
+<p>相信我，即使倒贴我钱我也不会要这样鞋子的，因为它会永远只说一句话:</p>
+
+<blockquote>
+  <p>This is super boring !</p>
+</blockquote>
+
+<p>但是相信我，不是我 boring，是 Google 你闲着没事干了。</p>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[震动的 ipad，你可以想象么？]]></title>
     <link href="http://pikipity.github.com/blog/vibrator-ipad.html"/>
     <updated>2013-03-29T01:53:00+08:00</updated>
@@ -1352,21 +1383,6 @@ end
 <p>你也肯定注意到了，我使用 “e-mail” 这个 function 来发送我的信息。这个 “e-mail.m” 文件已经附加在了这里。总的来说，它和你可以在 “Mathworks” 上找到的非常像，但是可以更方便的修改成你要用的。参数和 “sendmail” 稍微有点不一样，它需要在 email 内容之前提供收件人地址、SMTP 地址、用户名和密码。我们已经尽可能多的提供了 gmail、yahoo 和 matlabgeeks 的设置，但是你的设置有可能不一样。需要注意的是，你不需要为了让 function 工作而用明文保存你的密码，而是最好以一个变量的形式传递它。</p>
 
 <p>再次提供一次<a href="http://matlabgeeks.com/wp-content/uploads/2013/02/sendmail_code.zip">附件</a></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[谷姐别这样，转的头疼]]></title>
-    <link href="http://pikipity.github.com/blog/do-a-barrel-roll.html"/>
-    <updated>2013-02-28T22:17:00+08:00</updated>
-    <id>http://pikipity.github.com/blog/do-a-barrel-roll</id>
-    <content type="html"><![CDATA[<p>Google 一个很老的彩蛋，当搜索 <a href="http://googlesystem.blogspot.com/2011/11/googles-barrel-roll-easter-egg.html">“do a barrel roll”</a> 的时候，整个搜索页面会旋转起来。</p>
-
-<p>这个彩蛋是很好玩，但是由于<a href="https://support.google.com/websearch/bin/answer.py?hl=zh-Hant&amp;p=settings_instant&amp;answer=186610">即时显示搜索结果</a>这个功能，导致你只要输入 “do a” 页面就会旋转起来，幸好只旋转一周，要是不停地旋转，这个菜单不就成了 Bug 一样的存在。但是也同时说明了广大人民群众最喜闻乐见的活动就是挑逗谷姐了。</p>
-
-<p>解决方法很简单，就是在搜索设定里取消“即时显示搜索结果”，但是必须有 Google 账户并登陆之后才可以设定。</p>
-
-<p><img src="http://pikipity.github.com/images/post/do-a-barrel-roll.jpg" width="550pt" /></p>
 ]]></content>
   </entry>
   
