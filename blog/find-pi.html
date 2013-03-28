@@ -3,12 +3,12 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>Google要成立博物馆了？ - 折腾来折腾去</title>
+	<title>通过几何概型来估算&pi; - 折腾来折腾去</title>
 	<meta name="author" content="pikipity">
 
 	
-	<meta name="description" content="Google要成立博物馆了？ Posted by pikipity
-&nbsp; 2013年03月27日 Google 今天在网上搜索 “Google project” 竟然发现了这样的一个网站 – “Art Project”。 里面共收录214个博物馆中8366位艺术家的39859件作品的照片 &hellip;">
+	<meta name="description" content="通过几何概型来估算&pi; Posted by pikipity
+&nbsp; 2013年03月28日 Matlab 被涛神要求帮着写了一个通过模拟几何概型实验来估算 π 的 Matlab 函数。这个几何概型的实验是这样的：在一个二维直角坐标系中，存在一个以原点为中心，以1为半径的圆， &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -108,7 +108,7 @@
 	<div id="content" class="inner"><div>
 <article class="post">
 	
-	<h2 class="title">Google要成立博物馆了？</h2>
+	<h2 class="title">通过几何概型来估算&pi;</h2>
 	<div class="meta">
 	       <div class="author" style="float:left;">
   
@@ -127,33 +127,83 @@
   
 
 
-<time datetime="2013-03-27T23:24:00+08:00" pubdate data-updated="true">2013年03月27日</time></div>
+<time datetime="2013-03-28T07:52:00+08:00" pubdate data-updated="true">2013年03月28日</time></div>
 		<div class="tags" style="float:left;">
 
 
-	<a class='category' href='/blog/categories/google/'>Google</a>
+	<a class='category' href='/blog/categories/matlab/'>Matlab</a>
 
 
 </div>
 		
 	</div>
-	<div class="entry-content" style="clear:both;"><p>今天在网上搜索 <a href="https://www.google.com/search?q=google+project+glass&amp;aq=0&amp;oq=google+project&amp;aqs=chrome.0.0j57j65l3j0.4384&amp;sourceid=chrome&amp;ie=UTF-8#hl=en&amp;safe=active&amp;sclient=psy-ab&amp;q=google+project&amp;oq=google+project&amp;gs_l=serp.3..0i20j0l3.615.2967.0.4103.8.8.0.0.0.1.1619.3694.3j1j1j8-2.7.0...0.0...1c.1.7.psy-ab.EQaeD3OJNhU&amp;pbx=1&amp;bav=on.2,or.r_cp.r_qf.&amp;bvm=bv.44342787,d.aGc&amp;fp=f7d9c8fbbb7e8602&amp;biw=1280&amp;bih=728">“Google project”</a> 竟然发现了这样的一个网站 – <a href="http://www.googleartproject.com/zh-cn/collections/">“Art Project”</a>。</p>
+	<div class="entry-content" style="clear:both;"><p><img src="/images/post/find_pi.jpg" alt="几何概型估算&pi;" width="550pt" /></p>
 
-<p><img src="/images/post/googleartproject.jpg" alt="Google Art Project" width="550pt" /></p>
+<p>被涛神要求帮着写了一个通过模拟几何概型实验来估算 π 的 Matlab 函数。这个几何概型的实验是这样的：在一个二维直角坐标系中，存在一个以原点为中心，以1为半径的圆，和一个以原点为中心，边长为2的正方形（如图），向圆中随机投放点，计算此点在圆内的概率（忽略边线）我们可以得到如下公式，</p>
 
-<p>里面共收录214个博物馆中8366位艺术家的39859件作品的照片，最让我惊异的是我看到了<strong>“湖南省博物馆”</strong>，但是貌似只有这一个中国博物馆而已，里面的展品也只有50件。</p>
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{array}{rcl}
+P&=&\frac{S_{circle}}{S_{square}}\\
+&=&\frac{\pi r^2}{\left( 2r\right)^2}\\
+&=&\frac{\pi}{4}
+\end{array} %]]></script>
 
-<p><img src="/images/post/googleartproject_1.jpg" alt="名单中的湖南省博物馆" width="550pt" /></p>
+<p>所以我们只要将上面得到的概率乘以4，就可以估算出 π 的值。很明显，既然是概率实验，那么存在一次试验中使用点的个数问题，使用的点越多，理论上得到的 π 的值应该越接近真实值。</p>
 
-<p>侧边条允许“查找”、“添加到陈列室”（就是添加到自己账户的收藏里）、“分享”和“幻灯片演示”。“分享”仅支持”Google+”、“Facebook”、“Twitter”和“电子邮件”，中国人常用的社交网络就没有了，但是可以直接分享页面网址（这有个毛用，要网址我直接在地址栏里复制就好了，干嘛还要点你的侧边栏）。</p>
+<p>涛神希望这个函数实现下面几点要求：</p>
 
-<p><img src="/images/post/googleartproject_2.jpg" alt="侧边栏" width="350pt" /></p>
+<ol>
+  <li>可以一次性通过一个矩阵输入多次实验，每次实验中使用的点数不一样。</li>
+  <li>将多次实验所得到的 π 的值放在一个矩阵里进行输出。</li>
+  <li>使用 <code>rand</code> 函数。</li>
+  <li>不使用循环。</li>
+</ol>
 
-<p>点进艺术品后可以放大，但是仅仅就是放大图片而已，如果图片不清晰，放大也就不清晰了。还可以查看“详细资料”，但是我看了三四个，都是什么都没有，哎，就这样吧，可怜兮兮的。</p>
+<p>由于 <code>rand</code> 的函数无法一次性产生多个二维随机数矩阵，又由于不能使用循环，使得这个函数的编写比较麻烦（吐槽一下，即使可以产生多个二维随机数矩阵我也没法进行后续操作啊！！）。于是我的想法如下：</p>
 
-<p><img src="/images/post/googleartproject_3.jpg" alt="香港艺术博物馆的 Crisp air in mountains and lakes（还是有高清大图的）" width="550pt" /></p>
+<ol>
+  <li>根据最大的点数，用 <code>rand</code> 函数产生一个三维矩阵，前两个维度分别表示每个点的横纵坐标，最后一个维度表示第几次实验。例如，如果进行三次试验，每次试验的实验点数为1，10，100，那么就用 <code>rand</code> 生成一个100*2*3的随机矩阵。</li>
+  <li>根据所需要的不同实验中不同的点数对实验结果进行取样。继续上面的举例，我们就在第一个试验的结果（如果结果存在矩阵 <code>a</code> 中，那么实验一的结果也就是 <code>a(:,:,1)</code>）中只使用第一组数据，在第二个实验的结果中只使用前10组数据，在第三个实验的结果中只使用前100组数据。</li>
+  <li>通过上面的理论公式，计算得到结果，并输出。</li>
+  <li>在整个过程中，使用 <code>reshape</code> 函数进行二维和三维矩阵之间的转化。</li>
+</ol>
 
-<p>总的来看这个 “Google Art Project” 要想获得广泛认可和认知还需要点时间，但是既然 Google 连 Reader 都杀了，说不定这个玩意儿哪天也就没了，趁着还在，上去看看那些艺术品吧，尽管只是照片而已。</p>
+<p>程序如下：</p>
+
+<pre><code>function y=find_pi(n)
+%y=find_pi(n)
+%input: n, a array for number of experiments, like [10 100 1000]
+%output: y, the approximate value of pi for every experiment
+
+%generate the matrix that will be used to sample results
+sample=triu(ones(max(n),max(n)),0);
+sample=sample(1:end,[n;n]);
+sample=reshape(sample,max(n),2,length(n));
+%generate the data matrix
+total_number_exp=length(n);
+maximum=max(n);
+all_experiment=rand(maximum,2,total_number_exp);
+%sample results
+all_experiment=all_experiment.*sample;
+%calculate value of pi
+final_experiment=(all_experiment.*2-1);
+final_result=sum(final_experiment.^2,2);
+y=sum(final_result&lt;1)./reshape(n,1,1,length(n));
+y=reshape(y,[1,length(y)]).*4;
+</code></pre>
+
+<p>主要用到下面几个常用函数：</p>
+
+<ol>
+  <li><code>triu(ones(n,n),0)</code>: 生成一个单位矩阵的上三角矩阵，其中 <code>n</code> 必须是一个正整数。</li>
+  <li><code>reshape</code>: 根据需要将矩阵重建为与原矩阵不同维数的矩阵。</li>
+  <li><code>rand</code>: 从0到1中抽取随机数生成矩阵。</li>
+  <li><code>sum</code>: 求和，可以根据括号中的条件计算符合条件的点的个数。</li>
+</ol>
+
+<p>用 <code>y=find_pi([100 1 10 1000])</code> 进行四次测试，结果为 <code>[3.0800 0 3.6000 3.0800]</code>，<code>[3.3200 4.0000 3.2000 3.2240]</code>, <code>[3.3200 4.0000 3.2000 3.1640]</code> 和 <code>[3.3200 4.0000 2.8000 3.0880]</code>，运行正常，结果看起来是真确的啦。</p>
+
+<p>存在一个问题，当运行实验点数较多的情况，比如10000次的时候，函数会卡死，但是把函数语句单独提出来使用一切正常，只是会有小卡顿，看来是我的小 MBP 内存不够了。但是问题还是很明显的，不论最小的点数是多少，都要至少产生两个以最大点数为基础的大矩阵来运算，实在是太浪费了，但是不让使用循环，浪费就浪费吧。函数已放在<a href="https://github.com/pikipity/Find-pi">我的 Github</a>，欢迎来 Fork 我，谢谢。</p>
 </div>
 
 
@@ -199,19 +249,17 @@ var jiathis_config={
   
 
 
-<time datetime="2013-03-27T23:24:00+08:00" pubdate data-updated="true">2013年03月27日</time></p>
+<time datetime="2013-03-28T07:52:00+08:00" pubdate data-updated="true">2013年03月28日</time></p>
 </footer>
 
 <section>
 <ul id="left-right">
 <span style="float:left">
 	
-        <a class="basic-alignment left" href="/blog/2013-earth-hour.html" title="Previous Post: 环保？文明？我们的地狱？"><font face=Wingdings>&#239;</font> 环保？文明？我们的地狱？</a>
+        <a class="basic-alignment left" href="/blog/googleartproject.html" title="Previous Post: Google要成立博物馆了？"><font face=Wingdings>&#239;</font> Google要成立博物馆了？</a>
         </span>
 <span style="float:right">
-	
-        <a class="basic-alignment right" href="/blog/find-pi.html" title="next Post: 通过几何概型来估算&pi;">通过几何概型来估算&pi; <font face=Wingdings>&#240;</font></a>
-       </span>
+	 </span>
 </ul>
 </section>
 
@@ -328,8 +376,8 @@ var jiathis_config={
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://pikipity.github.com/blog/googleartproject.html';
-        var disqus_url = 'http://pikipity.github.com/blog/googleartproject.html';
+        var disqus_identifier = 'http://pikipity.github.com/blog/find-pi.html';
+        var disqus_url = 'http://pikipity.github.com/blog/find-pi.html';
         var disqus_script = 'embed.js';
       
     (function () {
