@@ -14,6 +14,42 @@
 
   
   <entry>
+    <title type="html"><![CDATA[你真的懂 Excel 么？]]></title>
+    <link href="http://pikipity.github.com/blog/excel-game.html"/>
+    <updated>2013-03-31T11:46:00+08:00</updated>
+    <id>http://pikipity.github.com/blog/excel-game</id>
+    <content type="html"><![CDATA[<p><img src="https://lh5.googleusercontent.com/-UlxnYCvwxMM/UVe59_pmBZI/AAAAAAAAAnc/Wmuz-QC1iBI/s550/5153b5fd15930.png" alt="Excel RPG" width="550pt" /></p>
+
+<p>是的，你没有看错，一名加拿大会计师 Cary Walkin 用 Excel 做了一个 RPG 游戏 Arena.Xlsm。可在 Excel 2007、Excel 2010、Excel 2013 版本中运行，游戏虽然不大，只有 1M 大小，但是内容并不输给一般的 RPG 游戏：</p>
+
+<ul>
+  <li>超过 2000 种随机生成的敌人；</li>
+  <li>超过 1000 种物品可组成39种物品组合；</li>
+  <li>8 个 BOSS,4个不同的结局；</li>
+  <li>4 个区域供玩家探索；</li>
+  <li>31 种法术技能；</li>
+  <li>15 种独特物品，具有独一无二的属性；</li>
+  <li>36 项成就。</li>
+</ul>
+
+<p>看着就很想玩了吧，可以到<a href="http://pan.baidu.com/share/link?shareid=428267&amp;uk=4080321956">这里</a>下载。我认为这件事可以告诉我们两点：</p>
+
+<ol>
+  <li>编程什么的貌似谁都可以学会嘛！</li>
+  <li>学会计的貌似很闲嘛！</li>
+</ol>
+
+<p><img src="https://lh3.googleusercontent.com/-hO807qyDQoY/UVe1xV7uKPI/AAAAAAAAAm4/RRZ626Cn6cw/s520/Screen%2520Shot%25202013-03-31%2520at%252012.02.57%2520PM.png" alt="Excel 三国杀" width="550pt" /></p>
+
+<p><img src="https://lh4.googleusercontent.com/-8krewItCKJU/UVe1xeyvn5I/AAAAAAAAAm0/P7PrgT_re08/s523/Screen%2520Shot%25202013-03-31%2520at%252012.03.36%2520PM.png" alt="Excel 三国杀" width="550pt" /></p>
+
+<p>另外一个是已经很出名的 Excel 三国杀，已经有了PC、Android、IOS 三个版本，快点下载来试试吧。点<a href="http://www.mafengwoo.com/">这里</a>去官网。</p>
+
+<p>所以说，不要再说你会 Excel 了，山外有山，人外有人。现在用 Latex 用的，打开 Word 都不晓得怎么用了，更不要说 Excel 了，我还是研究研究怎么用 Python 读取和写入 Excel 比较靠谱吧。</p>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[贫嘴的鞋子]]></title>
     <link href="http://pikipity.github.com/blog/talking-shoe.html"/>
     <updated>2013-03-29T02:24:00+08:00</updated>
@@ -1321,68 +1357,6 @@ title('Frequency Response of Tuning Fork A4')
 <p><img src="http://matlabgeeks.com/wp-content/uploads/2010/12/tunforkfreq.jpg" width="550pt" /></p>
 
 <p>傅里叶变换在很多不同的领域都是很有用的工具。二维的傅里叶变换也常常用在图像上。尝试一下上面的代码，看看你能不能得到一样的结果。</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Matlab 小技巧：通过 sendmail 来发送信息]]></title>
-    <link href="http://pikipity.github.com/blog/sending-message-with-sendmail.html"/>
-    <updated>2013-02-28T23:01:00+08:00</updated>
-    <id>http://pikipity.github.com/blog/sending-message-with-sendmail</id>
-    <content type="html"><![CDATA[<p>翻译自 <a href="http://matlabgeeks.com/">“Matlab Geeks”</a> 的 <a href="http://matlabgeeks.com/tips-tutorials/sending-messages-with-sendmail/">“Sending messages with sendmail”</a>。</p>
-
-<p>当你运行一段很长的代码的时候，坐在电脑前面看着程序运行是一件非常痛苦的事情。我发现，有时候，如果我不知道这段很长的代码要运行多长时间，或是有错误返回的时候我就会这样做（我还是坐在电脑前面因为我喜欢看猫的 gif 动画和学校破旧的屏幕吧，谁知道呢……）。但是你不需要这样做。当你的电脑正在“突突”运行的时候，离开去做其他事情吧。通过一个很有用的命令 “sendmail”，你就可以通过一些简单的命令发送信息到你的邮箱或是手机上了。通过这篇博文，我会分享几个简单的我通常用来提醒自己程序运行结束或是有错误的 .m 文件。</p>
-
-<p>首先，“sendmail” 需要4个参数：收件人联系信息、email的主题、email的信息和附件。例如，如果你想发送一个email到我们的邮箱 “support@matlabgeeks.com”，这里展示了你应如何做：</p>
-
-<pre><code>&gt;&gt; sendmail('support@matlabgeeks.com','Hello',...
-'Thanks for the awesome email information!');
-</code></pre>
-
-<p>不幸的是，“sendmail” 不是这么简单，这样仅仅会返回一个错误，除非你已经设置了你用来发送的 email 地址和你是用的 SMTP 服务器。</p>
-
-<pre><code>&gt;&gt; setpref('Internet','SMTP_Server','mail.__.com');
-&gt;&gt; setpref('Internet','E_mail','myID@__.com');
-% and/or 
-&gt;&gt; setpref('Internet','SMTP_Username','myID@__.com');
-</code></pre>
-
-<p>并且，如果你的服务器需要，你还必须加入你的账户密码。把你的密码放入明文中会使安全性很脆弱，要小心。</p>
-
-<pre><code>&gt;&gt;setpref('Internet','SMTP_Password',password);
-</code></pre>
-
-<p>现在，你可以发送邮件了！或者，如果你想发送一条短信的话，可以通过修改 “sendmail” 中收件人的部分来实现这个。例如，如果你想发送一条信息到你的 verizon 手机上，你可以用下面的命令：</p>
-
-<pre><code>&gt;&gt; sendmail('55555555555@vtext.com','Hello',...
-'What's going on tonight?');
-</code></pre>
-
-<p>信息可以发送到的手机号码的列表可以在 <a href="http://sms411.net/how-to-send-email-to-a-phone/">“Mr. Tweney’s page”</a> 中找到。</p>
-
-<p>“sendmail” 一个非常好的用处就是当你的程序运行完之后发送信息给你。我已经<a href="http://matlabgeeks.com/wp-content/uploads/2013/02/sendmail_code.zip">附加</a>了一些描述如何做的文件到这篇博文上。正如你将会看到的，我已经封装了一个 try catch 循环在程序中，所以任何错误都会发送 email 给我。比如，尝试用 <code>a=5;</code>、<code>b=[2 3]</code> 或者 <code>b=2</code> 来运行 function</p>
-
-<pre><code>function sample_script(a, b)
-% sample error and completion file
-% what time is it?
-date_time = datestr(now);
-% try to do some type of command
-try C = [a; b];   
-   % if it works, return the time it finished
-   disp(C);
-	e_mail('support@matlabgeeks.com','matlabgeeks','vlugade',PASSWD,...
-   	'Completed',['At : ',date_time]);
-catch err
-   % find the error type
-   errStr = err.identifier;
-   	e_mail('support@matlabgeeks.com','gmail','vlugade',PASSWD,...
-   	'Completed',{['At : ',date_time], ['With error : ', errStr]});
-end
-</code></pre>
-
-<p>你也肯定注意到了，我使用 “e-mail” 这个 function 来发送我的信息。这个 “e-mail.m” 文件已经附加在了这里。总的来说，它和你可以在 “Mathworks” 上找到的非常像，但是可以更方便的修改成你要用的。参数和 “sendmail” 稍微有点不一样，它需要在 email 内容之前提供收件人地址、SMTP 地址、用户名和密码。我们已经尽可能多的提供了 gmail、yahoo 和 matlabgeeks 的设置，但是你的设置有可能不一样。需要注意的是，你不需要为了让 function 工作而用明文保存你的密码，而是最好以一个变量的形式传递它。</p>
-
-<p>再次提供一次<a href="http://matlabgeeks.com/wp-content/uploads/2013/02/sendmail_code.zip">附件</a></p>
 ]]></content>
   </entry>
   
