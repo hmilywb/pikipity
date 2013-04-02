@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[categories: Life | 折腾来折腾去]]></title>
+  <link href="http://pikipity.github.com/blog/categories/life/atom.xml" rel="self"/>
+  <link href="http://pikipity.github.com/"/>
+  <updated>2013-01-30T00:00:00+08:00</updated>
+  <id>http://pikipity.github.com/</id>
+  <author>
+    <name><![CDATA[pikipity]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[只有程序员才会相信的黄历 -- 程序员老黄历]]></title>
+    <link href="http://pikipity.github.com/blog/huang-li-of-programmers.html"/>
+    <updated>2013-04-02T20:27:00+08:00</updated>
+    <id>http://pikipity.github.com/blog/huang-li-of-programmers</id>
+    <content type="html"><![CDATA[<p>今天在逛 <a href="http://gurudigger.com/">Guru Diger</a> 的时候看到了<a href="http://gurudigger.com/ideas/573">这样</a>一个创意 – <a href="http://sandbox.runjs.cn/show/ydp3it7b">程序员老黄历</a>，非常有趣。（等等，我看看，我想在朝向是东76度，那个今天不变成了？貌似永远不会出现这个方向编程Bug最少(╯▽╰)）</p>
+
+<p><img src="https://lh3.googleusercontent.com/-wtsyR-2zlPI/UVrQv7m9U0I/AAAAAAAAAo4/shdNiBLxR0E/s512/Screen%2520Shot%25202013-04-02%2520at%25208.32.23%2520PM.png" width="480" alt="程序员老黄历" /></p>
+
+<p>我认为是个不错的 CSS 编程范例，直接右键看源代码就可以了。</p>
+]]></content>
+  </entry>
+  
+</feed>
