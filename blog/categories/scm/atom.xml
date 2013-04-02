@@ -14,6 +14,26 @@
 
   
   <entry>
+    <title type="html"><![CDATA[在 Proteus 中使用 UART串口与PC进行互动仿真]]></title>
+    <link href="http://pikipity.github.com/blog/use-uart-in-proteus.html"/>
+    <updated>2013-04-02T22:26:00+08:00</updated>
+    <id>http://pikipity.github.com/blog/use-uart-in-proteus</id>
+    <content type="html"><![CDATA[<p>在 Proteus 中进行单片机仿真的时候，可能会需要进行 UART 串口的仿真，当然我们可以通过 “Virtual Terminal” 来仿真 UART 串口的输入和输出，但是有时候是需要单片机与电脑连同后，由电脑上的软件通过 UART 串口进行数据的收发，这个时候如果再用 “Virtual Terminal” 的话并不能很好的仿真出软件与单片机之间的通信结果。</p>
+
+<p><img src="https://lh4.googleusercontent.com/-0QW99JxJmok/UVsMhdpHWjI/AAAAAAAAApw/c7DoTmnOUG0/s800/Virtual_terminal.gif" width="950pt" alt="Proteus 中的 Virtual Terminal" /></p>
+
+<p>于是，我决定用虚拟端口工具，在 Windows 中模拟两个端口直接连接在一起的情况。我使用的虚拟端口软件是 “Configure Virtual Serial Port Driver” （简称 “VSPD”）。这个软件可以虚拟出任意两个 COM 口（也就是串列口）之间的连接，设置也很简单，只要选择要连接的两个端口，然后点击“添加端口”就可以了，要取消的话，只要点击“重置端口”，你设置的端口就全部取消了。大家可以到这里下载<a href="http://pan.baidu.com/share/link?shareid=443416&amp;uk=4080321956">破解汉化版</a>。</p>
+
+<p><img src="https://lh4.googleusercontent.com/-0iOkN3SazmU/UVsWic47b6I/AAAAAAAAAqE/x28t6nHYFGU/s800/VSPD.gif" width="VSPD 设置" /></p>
+
+<p>有了这个软件我们就可以在 Proteus 中与 PC 进行单片机的 UART 串口通信仿真了。首先在 Proteus 中右键，在 Library 中找到搜索 “COMPIM” 就可以找到 UART 串口接头，将其和单片机相连，TXD对TXD，RXD对RXD，然后双击 “COMPIM”，设置波特率和将要使用的 COM 口，然后设置 VSPD，将对应的 COM 口和需要的 COM 相连就可以了。</p>
+
+<p><img src="https://lh5.googleusercontent.com/-5LeyirS6M3E/UVsWYJjBMxI/AAAAAAAAAqA/kiNOxjZ1a1k/s800/COMPIM.gif" width="Proteus 中的 COMPIM" /></p>
+
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[单片机原理及程序设计 第五章 中断]]></title>
     <link href="http://pikipity.github.com/blog/scm-priciple-5.html"/>
     <updated>2013-03-12T18:18:00+08:00</updated>
@@ -521,123 +541,6 @@ MOV R0,A
     </li>
   </ol>
 </div>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Proteus和Keil的简单教程]]></title>
-    <link href="http://pikipity.github.com/blog/keil-and-proteus.html"/>
-    <updated>2013-02-16T21:38:00+08:00</updated>
-    <id>http://pikipity.github.com/blog/keil-and-proteus</id>
-    <content type="html"><![CDATA[<p>这篇主要简单介绍一下单片机仿真软件Proteus和单片机编程软件Keil，方便各位读者能够快速的在自己电脑上搭建一个8051单片机的软件仿真平台。</p>
-
-<h3 id="proteus">单片机仿真软件 – Proteus</h3>
-
-<p>如果你在平时的电路仿真中稍微留意一下的你会发现<a href="http://baike.baidu.com/view/1867313.htm">Spice</a>在仿真中都无法仿真单片机系统，所以这里需要介绍一下这个单片机仿真软件<a href="http://baike.baidu.com/view/40936.htm">Proteus</a>。由英国<a href="http://www.labcenter.com/index.cfm">Labcenter electronics公司</a>出品的<a href="http://baike.baidu.com/view/5822.htm">EDA软件</a>，可以很好的仿真一部分单片机及其外围器材。并具有自动布线和智能生成原理图的功能。</p>
-
-<!--more-->
-
-<p>大家可以到<a href="http://pan.baidu.com/share/link?shareid=345198&amp;uk=4080321956">这里</a>下载Proteus Pro v7.8，压缩包内带有序列号生成器，并有安装及破解说明文件，虽然版本比较老，但是亲测可用。</p>
-
-<p>下载并安装完成后，点击<img src="/images/post/proteus.png" width="50pt" />打开ISIS仿真软件，界面如下</p>
-
-<p><img src="/images/post/proteus_1.jpg" alt="Proteus仿真界面" width="650pt" /></p>
-
-<p>接下来介绍几点比较重要的使用方法，如果想要更详细一点的教程的话，可以到<a href="http://pan.baidu.com/share/link?shareid=354817&amp;uk=4080321956">这里</a>下载</p>
-
-<ol>
-  <li>
-    <p>添加元件方法：在图纸范围内单机鼠标右键，打开菜单，”Place”中就是可以放置的元件。单片机及外围元件在Component -&gt; From Libraries中搜索就可以了。</p>
-
-    <p><img src="/images/post/proteus_menu.jpg" alt="右键菜单" width="300pt" /></p>
-
-    <p><img src="/images/post/proteus_menu_place.jpg" alt="Place菜单" width="450pt" /></p>
-
-    <p><img src="/images/post/library.jpg" alt="Place -&gt; Component -&gt; From Libraries" width="550pt" /></p>
-
-    <p>如果需要电源和地，则从Terminal中选择POWER或是GND就可以了，系统会根据你选则的单片机自动匹配POWER的电压大小（注意仿真的时候单片机本身不用接<a href="/blog/scm-principle-1.html">电源电路和时钟电路</a>），如果需要更改POWER电压值，只要右键单击POWER，选择”Edit Properties”，在”String”中输入你需要的电压值就可以了。</p>
-
-    <p><img src="/images/post/terminal.jpg" alt="Terminal菜单" width="450pt" /></p>
-
-    <p><img src="/images/post/POWER.jpg" alt="右键单击POWER元件" width="400pt" /></p>
-
-    <p><img src="/images/post/POWER_edit.jpg" alt="Edit Properties" width="400pt" /></p>
-  </li>
-  <li>
-    <p>连线方法：连线有三种方法，</p>
-
-    <ul>
-      <li>
-        <p>直接连线：用鼠标点击两个节点便会自动连接。注意：当端口对齐的时候，只要连好最上面的第一条线，下面的线只要双击节点就可以自动连接，基本原理就是重复你的上一次动作。</p>
-
-        <p><img src="/images/post/direct_connect.jpg" alt="直接连线的效果" width="550pt" /></p>
-      </li>
-      <li>
-        <p>间接连线：通过右键菜单中的Terminal中的INPUT和OUTPUT连结两个节点。注意：对应的IMPUT和OUTPUT需要有一样的名字，起名字的方法和编辑POWER电压值的方法一样。</p>
-
-        <p><img src="/images/post/indirect_connect.jpg" alt="间接连线的效果" width="550pt" /></p>
-      </li>
-      <li>
-        <p>使用BUS连线：在左侧工具栏选择BUS <img src="/images/post/BUS.jpg" width="50pt" />，就可以画出蓝色BUS线了，注意转折的地方需要点一下鼠标，结束双击鼠标。画完BUS线后，将节点连到BUS线上，然后对BUS设置Label,方法是右键单击BUS线，选择“Place Wrie Label”，Label的输入方式类似于下面效果图，意思是生成A1到A3的Label。再将对应节点的连线改为一样的名字，改名字的方法，和BUS线加Label的方法一样。注意：连线的名字不用一个个输入了，由于之前的BUS已经生成了Label，只要在下拉框内选择就可以了。</p>
-
-        <p><img src="/images/post/BUS_connect.jpg" alt="BUS连线效果图" width="550pt" /></p>
-      </li>
-    </ul>
-  </li>
-  <li>
-    <p>向单片机内加载生成的Hex文件的方法：左键双击单片机，在”Program File”一栏里填入Hex文件的路径或点击后面文件夹选择Hex文件，”OK”即可。在这个窗口还可以改变时钟周期，在”Clock Frequency”中修改。</p>
-
-    <p><img src="/images/post/doube_click_scm.jpg" alt="左键双击单片机" width="400pt" /></p>
-  </li>
-</ol>
-
-<h3 id="keil">51系列单片机编程软件 – Keil</h3>
-
-<p><a href="http://baike.baidu.com/view/942051.htm">Keil</a>是美国<a href="http://www.keil.com/">Keil software公司（已被ARM收购）</a>出品的专为51系列单片机进行编程的软件，可以编译C语言和汇编语言，其C语言的编译器Keil C51已经成为一种类似于行业标准一样的存在了。</p>
-
-<p>可以到<a href="http://pan.baidu.com/share/link?shareid=354882&amp;uk=4080321956">这里</a>下载Keil uVision3，或者到<a href="http://www.doyoung.net/data.html">杜洋工作室</a>下载。</p>
-
-<p>下载并安装后，就可以通过<img src="/images/post/keil.png" width="50pt" />打开了。打开后界面如下图。每次打开都会自动回复上次关闭前最后一次保存的Project。</p>
-
-<p><img src="/images/post/keil_1.jpg" alt="Keil uVision3 界面" width="650pt" /></p>
-
-<p>建立一个Project一般分为如下几步：</p>
-
-<ol>
-  <li>
-    <p>在菜单栏上选择 Prject -&gt; New Project，并起名字和保存。</p>
-
-    <p><img src="/images/post/new_project.jpg" alt="New Project" width="650pt" /></p>
-
-    <p><img src="/images/post/projectname.jpg" alt="Project起名、保存" width="650pt" /></p>
-  </li>
-  <li>
-    <p>选择单片机类型。注意：确定后，会弹出对话框询问是否自动添加启动文件到Project中，一般选择“No”就可以了，因为由Keil提供的单片机启动文件在初学阶段一般不会用到</p>
-
-    <p><img src="/images/post/scmstyle.jpg" alt="选择单片机类型" width="650pt" /></p>
-
-    <p><img src="/images/post/startup.jpg" alt="是否添加启动文件" width="450pt" /></p>
-  </li>
-  <li>
-    <p>然后新建一个文件开始编写C或者汇编。注意：保存的时候需要提供后缀名，如C的后缀为.c，汇编的后缀为.asm</p>
-
-    <p><img src="/images/post/newfile.jpg" alt="新建文件" width="650pt" /></p>
-
-    <p><img src="/images/post/filename.jpg" alt="保存文件（注意文件名）" width="650pt" /></p>
-  </li>
-  <li>
-    <p>右键单击Project的文件夹，选择”Add Files to Group”，选择你的文件，“OK”，就可以将文件加入到project中</p>
-
-    <p><img src="/images/post/addtogroup.jpg" alt="将文件加入到project中" width="650pt" /></p>
-  </li>
-  <li>
-    <p>编译的时候，只要按工具栏上的<img src="/images/post/buildall.jpg" width="50pt" />就可以编译了。如果需要生成Hex文件用来烧录或是仿真，就需要在编译前按工具栏上的<img src="/images/post/projectproperty.jpg" width="50pt" />，选中”Output”中的”Creat HEX”就可以了。</p>
-
-    <p><img src="/images/post/creathexornot.jpg" alt="生成Hex选项" width="650pt" /></p>
-  </li>
-</ol>
-
-<p>有了这两个软件，大家就可以进行单片机从硬件到软件的软件仿真了，但是仿真永远是仿真，不代表实物就是如此，所以真正实际是什么样子，还是硬件仿真比较靠谱。</p>
 ]]></content>
   </entry>
   

@@ -14,6 +14,26 @@
 
   
   <entry>
+    <title type="html"><![CDATA[在 Proteus 中使用 UART串口与PC进行互动仿真]]></title>
+    <link href="http://pikipity.github.com/blog/use-uart-in-proteus.html"/>
+    <updated>2013-04-02T22:26:00+08:00</updated>
+    <id>http://pikipity.github.com/blog/use-uart-in-proteus</id>
+    <content type="html"><![CDATA[<p>在 Proteus 中进行单片机仿真的时候，可能会需要进行 UART 串口的仿真，当然我们可以通过 “Virtual Terminal” 来仿真 UART 串口的输入和输出，但是有时候是需要单片机与电脑连同后，由电脑上的软件通过 UART 串口进行数据的收发，这个时候如果再用 “Virtual Terminal” 的话并不能很好的仿真出软件与单片机之间的通信结果。</p>
+
+<p><img src="https://lh4.googleusercontent.com/-0QW99JxJmok/UVsMhdpHWjI/AAAAAAAAApw/c7DoTmnOUG0/s800/Virtual_terminal.gif" width="950pt" alt="Proteus 中的 Virtual Terminal" /></p>
+
+<p>于是，我决定用虚拟端口工具，在 Windows 中模拟两个端口直接连接在一起的情况。我使用的虚拟端口软件是 “Configure Virtual Serial Port Driver” （简称 “VSPD”）。这个软件可以虚拟出任意两个 COM 口（也就是串列口）之间的连接，设置也很简单，只要选择要连接的两个端口，然后点击“添加端口”就可以了，要取消的话，只要点击“重置端口”，你设置的端口就全部取消了。大家可以到这里下载<a href="http://pan.baidu.com/share/link?shareid=443416&amp;uk=4080321956">破解汉化版</a>。</p>
+
+<p><img src="https://lh4.googleusercontent.com/-0iOkN3SazmU/UVsWic47b6I/AAAAAAAAAqE/x28t6nHYFGU/s800/VSPD.gif" width="VSPD 设置" /></p>
+
+<p>有了这个软件我们就可以在 Proteus 中与 PC 进行单片机的 UART 串口通信仿真了。首先在 Proteus 中右键，在 Library 中找到搜索 “COMPIM” 就可以找到 UART 串口接头，将其和单片机相连，TXD对TXD，RXD对RXD，然后双击 “COMPIM”，设置波特率和将要使用的 COM 口，然后设置 VSPD，将对应的 COM 口和需要的 COM 相连就可以了。</p>
+
+<p><img src="https://lh5.googleusercontent.com/-5LeyirS6M3E/UVsWYJjBMxI/AAAAAAAAAqA/kiNOxjZ1a1k/s800/COMPIM.gif" width="Proteus 中的 COMPIM" /></p>
+
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[地图投影和球体点距相关]]></title>
     <link href="http://pikipity.github.com/blog/di-tu-tou-ying-he-qiu-ti-dian-ju-xiang-guan.html"/>
     <updated>2013-04-02T21:03:00+08:00</updated>
@@ -1308,36 +1328,6 @@ MOV R0,A
 </ol>
 
 <p>为了方便大家进行二进制、十进制和十六进制之间的转换，我用 Python 编写了一个小程序，下载在<a href="http://pikipity.github.com/Binary-Converter/">这里</a>，如果发现有什么 Bug，欢迎指正，谢谢。</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[喂，写日记啦！]]></title>
-    <link href="http://pikipity.github.com/blog/ohlife.html"/>
-    <updated>2013-03-06T23:53:00+08:00</updated>
-    <id>http://pikipity.github.com/blog/ohlife</id>
-    <content type="html"><![CDATA[<p>今天推荐一个专门用来记日记的网站 <a href="http://ohlife.com/">“OhLife”</a>。虽然已经有很多的用来记日记、记笔记的网站，但是它们都有一个共病，就是花在研究“怎么用”的时间常常多余“写什么”的时间，而且每次写日记还要到它的网站或是打开客户端，很麻烦。而像人人或是 Facebook 一样的社交网络则面临写的东西别人都会看到的苦恼，想写点私人的东西都很困难。这个网站同时解决了这两个困难，非常好用。</p>
-
-<p><img src="http://pikipity.github.com/images/post/OhLife_1.jpg" width="550pt" /></p>
-
-<p>“OhLife” 有两个刚好弥补上面两大缺点的特点：</p>
-
-<ol>
-  <li>操作简单。网站每天会给你指定的邮箱发送一封邮件，你如果要记日记，就把你要记录的内容放在邮件里面，回复给他就可以了，附件就是插图，很方便。每天定时督促，让你养成写日记的好习惯。</li>
-  <li>私密。没有公开或是隐私的设置，所有日记均为隐私，要想看日记，需要登录网站，然后登陆用户在可以看见此用户的日记。</li>
-</ol>
-
-<p>你的所有日记会在 “OhLife” 网站自动生成一个类似于 Blog 的页面，小清新风格，很漂亮。如果你想将日记转移，一键 “export”，很简单。</p>
-
-<p><img src="http://pikipity.github.com/images/post/OhLife_2.jpg" width="550pt" /></p>
-
-<p>每一篇日记都可以进行再编辑，调整时间、添加照片、修改内容，简单明了。</p>
-
-<p><img src="http://pikipity.github.com/images/post/OhLife_3.jpg" width="550pt" /></p>
-
-<p>“Setting” 里面的内容也极其简单，设置一下你的当地时间、发送提醒邮件的频率、你的邮箱和 “OhLife” 的密码，就这么几个，完全没有上手难度。完全是居家旅行必备良药啊。</p>
-
-<p><img src="http://pikipity.github.com/images/post/OhLife_4.jpg" width="550pt" /></p>
 ]]></content>
   </entry>
   
