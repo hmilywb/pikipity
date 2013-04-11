@@ -8,7 +8,7 @@
 
 	
 	<meta name="description" content="第六章 计时器/计数器 Posted by pikipity
-&nbsp; 2013年04月04日 Assembly, SCM 计时器与计数器使用的寄存器和它们的工作原理是一样的，当计时时脉从“0”变为“1”的时候，内部的累加器加一，当累加器溢出的时候，检查中断，如果中断置能，便进入中断， &hellip;">
+&nbsp; 2013年04月04日 Assembly, SCM Comments 计时器与计数器使用的寄存器和它们的工作原理是一样的，当计时时脉从“0”变为“1”的时候，内部的累加器加一，当累加器溢出的时候，检查中断，如果中断置能， &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -135,6 +135,8 @@
 
 
 </div>
+		
+			<span class="comments"><a href="#com_target">Comments</a></span>
 		
 	</div>
 	<div class="entry-content" style="clear:both;"><p>计时器与计数器使用的寄存器和它们的工作原理是一样的，当计时时脉从“0”变为“1”的时候，内部的累加器加一，当累加器溢出的时候，检查中断，如果中断置能，便进入中断，否则重新开始计数。它们唯一的不同就是使用的计时时脉不一样，计时器使用的是内部时脉，因为内部时脉很稳定，所以可以用来计算时间；计数器使用的是从 T1 或者 T0 口输入的外部时脉，如果这个外部时脉的信号代表一个事件发生的次数，那么计时/计数器就是在计算这个事件发生的次数。8051中有两个计时/计数器– Timer0 和 Timer1。</p>
@@ -283,8 +285,6 @@ var jiathis_config={
 
 	
 
-	
-
 <footer>
 <p class="meta">
   
@@ -319,17 +319,30 @@ var jiathis_config={
 </ul>
 </section>
 
-	
-        <section>
+        
+        <section imagesd="comment">
 	<br>
 	<br>
         <h1>Comments</h1>
 	<br>
 	<p></p>
-        <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-</div>
-        </section>
+        <!-- Duoshuo Comment BEGIN -->
+	<div class="ds-thread"></div>
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"pikipity"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = 'http://static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		|| document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- Duoshuo Comment END -->
+       </section>
        
+
 </article>
 </div>
 
@@ -1062,22 +1075,6 @@ $(function(){
 })(jQuery);
 </script> <!-- Delete or comment this line to disable Fancybox -->
 
-
-<script type="text/javascript">
-      var disqus_shortname = 'pikipityblog';
-      
-        
-        // var disqus_developer = 1;
-        var disqus_identifier = 'http://pikipity.github.com/blog/scm-priciple-6.html';
-        var disqus_url = 'http://pikipity.github.com/blog/scm-priciple-6.html';
-        var disqus_script = 'embed.js';
-      
-    (function () {
-      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
-      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    }());
-</script>
 
 
 

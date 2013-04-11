@@ -8,7 +8,7 @@
 
 	
 	<meta name="description" content="单片机原理及程序设计 第五章 中断 Posted by pikipity
-&nbsp; 2013年03月12日 SCM 中断是单片机中一个非常重要的服务。中断是指由于接收到外围硬件的异步信号或是软件的同步信号，而进行的相应的软件或是硬件上的处理。发出这样的信号被称为中断请求， &hellip;">
+&nbsp; 2013年03月12日 SCM Comments 中断是单片机中一个非常重要的服务。中断是指由于接收到外围硬件的异步信号或是软件的同步信号，而进行的相应的软件或是硬件上的处理。发出这样的信号被称为中断请求， &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -135,6 +135,8 @@
 
 
 </div>
+		
+			<span class="comments"><a href="#com_target">Comments</a></span>
 		
 	</div>
 	<div class="entry-content" style="clear:both;"><p>中断是单片机中一个非常重要的服务。中断是指由于接收到外围硬件的异步信号或是软件的同步信号，而进行的相应的软件或是硬件上的处理。发出这样的信号被称为中断请求，发出中断请求的硬件或是软件被称为中断源。当中断源产生了中断请求，相应的中断旗标（就是对应的寄存器的一个 bit）便会置“1”，8051的 CPU 每个机械周期里都会去检查这些中断旗标，若发现中断旗标置“1”，CPU便会在执行完当前指令后，将当前的执行状态（以程序计数器和程序状态字等寄存器信息为主）塞入堆叠中保存，然后跳到相应的程序内存地址（这个程序内存地址叫做中断向量）执行那里的中断副程序，直到执行到 “RETI” 指令后结束附程序，将塞入堆叠的执行状态取出，回到之前的主程序继续执行。</p>
@@ -330,8 +332,6 @@ var jiathis_config={
 
 	
 
-	
-
 <footer>
 <p class="meta">
   
@@ -366,17 +366,30 @@ var jiathis_config={
 </ul>
 </section>
 
-	
-        <section>
+        
+        <section imagesd="comment">
 	<br>
 	<br>
         <h1>Comments</h1>
 	<br>
 	<p></p>
-        <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-</div>
-        </section>
+        <!-- Duoshuo Comment BEGIN -->
+	<div class="ds-thread"></div>
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"pikipity"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = 'http://static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		|| document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- Duoshuo Comment END -->
+       </section>
        
+
 </article>
 </div>
 
@@ -1109,22 +1122,6 @@ $(function(){
 })(jQuery);
 </script> <!-- Delete or comment this line to disable Fancybox -->
 
-
-<script type="text/javascript">
-      var disqus_shortname = 'pikipityblog';
-      
-        
-        // var disqus_developer = 1;
-        var disqus_identifier = 'http://pikipity.github.com/blog/scm-priciple-5.html';
-        var disqus_url = 'http://pikipity.github.com/blog/scm-priciple-5.html';
-        var disqus_script = 'embed.js';
-      
-    (function () {
-      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
-      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    }());
-</script>
 
 
 
