@@ -14,6 +14,186 @@
 
   
   <entry>
+    <title type="html"><![CDATA[Python 下用 Tkinter 制作 GUI]]></title>
+    <link href="http://pikipity.github.com/blog/python-tkinter.html"/>
+    <updated>2013-04-11T00:36:00+08:00</updated>
+    <id>http://pikipity.github.com/blog/python-tkinter</id>
+    <content type="html"><![CDATA[<h3 id="gui">什么是 GUI</h3>
+
+<p>既然要制作 GUI，那么就要先明确什么是 GUI。<a href="http://zh.wikipedia.org/wiki/%E5%9B%BE%E5%BD%A2%E7%94%A8%E6%88%B7%E7%95%8C%E9%9D%A2">wiki</a>上是这么说的:</p>
+
+<blockquote>
+  <p>图形用户界面（Graphical User Interface，简称 GUI）是指采用图形方式显示的计算机操作用户接口。</p>
+</blockquote>
+
+<p>曾经有个同学这么跟我说，“MATLAB 有个 GUI 的功能，貌似很强大啊”，听完我就凌乱了，图形用户界面什么时候成了 MATLAB 的专属功能了？我平常用的 Windows 或者 Linux、Mac 都是在图形用户界面下进行操作的，如果想看一看命令行界面，Windows 可以在“运行”中输入 <code>cmd</code> 然后回车，Linux下可以直接 <code>alt+F1</code>（切换回来用 <code>alt+F7</code>）。简单来说，GUI 提供给用户一种更加直白的图形化的人机交互界面。</p>
+
+<p><img src="http://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/X-Window-System.png/720px-X-Window-System.png" width="480" alt="1990年代早期Unix 平台上运行的 X Window System" /></p>
+
+<h3 id="python--gui-">Python 中的 GUI 工具包</h3>
+
+<p>如果想用 Python 语言制作出一个程序的 GUI，不仅仅可以用 Tkinter 一个包，最常见的还有 wxPython 和 PyQt，还有很多很多（我不熟悉啊 (╯▽╰)）。</p>
+
+<ol>
+  <li>
+    <p>wxPython：wxPython 创建的是 wxWidgets。它的好处是，可以通过简单的命令就创建出比较漂亮的界面，并且在中国的使用人数挺多，遇到问题在网上找起答案来比较轻松。缺点是并不是 Python 的标准工具包，还需要另外安装。官网在<a href="http://www.wxpython.org/">这里</a>，官网提供的英文教程在<a href="http://wiki.wxpython.org/Getting%20Started">这里</a></p>
+
+    <p><img src="https://lh3.googleusercontent.com/-lckWJC8vAoc/UWYhrAqM7kI/AAAAAAAAAqw/UTu3LsfWLXA/s640/wxPython.jpg" width="480" alt="wxPython" /></p>
+  </li>
+  <li>
+    <p>PyQt：和名字一样，创建的是 Qt 的 GUI。Qt 的 GUI 当然是漂亮的不能再漂亮了。优点是，创建出的 GUI 很漂亮，且有图形化的 GUI 设计软件 Qt Designer 来使整个设计过程简单化。缺点：同样不是 Python 的标准工具包，还需要另外安装，如果手工输入 GUI 代码习惯了，有时候图形化的 GUI 设计软件反而不习惯。官网在<a href="http://www.riverbankcomputing.co.uk/software/pyqt/intro">这里</a>，<a href="http://blog.csdn.net/wescom/article/details/4727114">这里</a>有一个比较不错的中文教程，主要讲的是 Qt Designer 的入门使用，很不错。</p>
+
+    <p><img src="https://lh6.googleusercontent.com/-mCcMvwpzwqQ/UWYhrOvfVpI/AAAAAAAAAqs/plQq7BcSrwU/s640/QtPy.png" width="480" alt="Qt Designer" /></p>
+  </li>
+  <li>
+    <p>Tkinter: 从名字可以看出，创建的是 Tk 的GUI。优点很明显，是一个已经半官方化的工具包，可以直接使用，无需安装，并且教程众多，几乎所有介绍 Python 入门的书，只要提及 GUI 设计都会讲 Tkinter。缺点一样明显，设计出的 GUI 很难看，要问多难看，你自己看看 Python 的那个 IDLE 就好了，土的掉渣啊，而且元件一样很少，如果只是编写一些小程序的话还可以，如果编写大程序要用到比较复杂的元件的话，就需要从提供的元件里找一些替代品了，手工输入代码，有时候很累啊。但是我认为用 Tkinter 来入门 GUI 设计是很好的，因为思路清晰，代码简单，这也就是为什么我在这里只介绍 Tkinter 的原因。一个英文教程在<a href="http://www.pythonware.com/library/tkinter/introduction/index.htm">这里</a>，由于我不想记住所有元件的方法，所以用到的话就来这里查询，很方便。</p>
+
+    <p><img src="https://lh3.googleusercontent.com/-mTq-K8KM-Tk/UWYhrLi4D2I/AAAAAAAAAq0/bRsZe5macLk/s512/Tkinter.png" width="480" alt="Tkinter" /></p>
+  </li>
+</ol>
+
+<h3 id="gui-">GUI 的设计基本思路</h3>
+
+<p>但你开始学习 Python 的时候，所有都会考诉你，Python 是 <a href="http://zh.wikipedia.org/wiki/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1">OOP（面向对象程序设计）</a>的程序语言，但是我认为“类”的概念对于初学者是非常难以理解的，而且也没有人规定在 Python 中必须使用“类”，所以我下面的例子，都不是以定义“类”的形式出现，而是以简单的定义“函数”的形式出现，使代码简单、易懂。</p>
+
+<p>对于 GUI 的设计，我认为是“不要着急，不要着急”。先确保实现主要功能的函数正常运行再来考虑 GUI 也不迟。GUI 的设计主要包括下面三个步骤：</p>
+
+<ol>
+  <li>创建主窗体</li>
+  <li>创建元件</li>
+  <li>显示元件</li>
+  <li>进入窗体的主循环</li>
+</ol>
+
+<p>下面是一个简单的例子：</p>
+
+<pre><code>import Tkinter
+
+root=Tkinter.Tk()  %创建主窗体
+MainLabel=Tkinter.Label(root,text="I am so ugly. -- Tkinter",font="Times 16 bold")  %创建元件
+MainLabel.pack()  %显示元件
+root.mainloop()  %进入窗体的主循环
+</code></pre>
+
+<p>这个例子中，只包含一个元件是 <code>Label</code>，最后效果就是</p>
+
+<p><img src="https://lh6.googleusercontent.com/-W2YkdsudA-8/UWYmD-s8nDI/AAAAAAAAArE/zVuwNeJgLeA/s230/Screen%2520Shot%25202013-04-11%2520at%252010.53.57%2520AM.png" width="200" /></p>
+
+<p>根据需要，可以在主窗口中创建多个元件，每一个元件所拥有的参数不同，但是有一点是一样的，就是第一个参数一定是其所属的窗口的变量名。上面的例子中，元件 <code>Label</code>就是隶属于 <code>root</code>，所以在调用 <code>pack</code> 方法之后，这个元件就会在 <code>root</code> 窗口中显示了，只与显示的位置和显示的样子，需要调整 <code>pack</code> 方法的参数，我这里使用默认值，所以什么参数也没有，具体 <code>pack</code> 的用法可以参照<a href="http://www.360doc.com/content/12/0922/02/3234041_237501468.shtml">这里</a>。</p>
+
+<p>这三步其实就是 Tkinter GUI 设计的全部了，剩下的就是每个元件的位置、样子、显示的文字、显示的图像、调用的函数等等元件参数上的设定了，这就涉及到每个元件包含哪些参数、每个参数是什么意思的问题了，这个可以通过查询<a href="http://www.pythonware.com/library/tkinter/introduction/index.htm">我提到的那个网站</a>来得到。</p>
+
+<p>在 GUI 设计中有以下几点需要注意（<strong>持续更新中</strong>）：</p>
+
+<ol>
+  <li>
+    <p>对于元件函数的调用，有两种方式：直接绑定和间接绑定。直接绑定就是在元件 <code>Button</code> 中的参数 <code>command</code> 中设定回调的函数名称，如下：</p>
+
+    <pre><code>ButtonInput=Tkinter.Button(root,text="Input",command=InputString)
+</code></pre>
+
+    <p>间接绑定是用 <code>bind</code> 方法，对于所有元件都有这个方法，形式如下：</p>
+
+    <pre><code>ButtonInput.bind('&lt;Return&gt;',InputString)
+</code></pre>
+
+    <p><code>bind</code> 需要指定一种触发方式，这里的触发方式就不再仅仅局限于 <code>Button</code> 的左键单击了，键盘输入、鼠标点击都是可以的，我这里的触发方式是 <code>&lt;Return&gt;</code>，也就是回车。但是要注意的是，<code>bind</code> 是绑定在一个元件上的，也就是说，当焦点在这个元件上的时候触发才有用，而且回调的函数必须要要有一个 <code>event</code> 作为输入参数，如果没有就直接 <code>None</code> 好了，如下：</p>
+
+    <pre><code>def InputString(event=None):
+   …
+   …
+   …
+</code></pre>
+
+    <p>这两种方法使用的时候有一个共同需要注意的地方就是，回调函数不要出现参数，下面这种就是错误的：</p>
+
+    <pre><code>ButtonInput=Tkinter.Button(root,text="Input",command=InputString())
+</code></pre>
+
+    <p>如果这样，程序就会直接调用函数 <code>InputString()</code>，而不是等到用户点击按钮的时候再调用了，如果一定要向回调的函数中加入参数的话，就用 <code>lambda</code> 吧，如下：</p>
+
+    <pre><code>ButtonInput=Tkinter.Button(root,text="Input",command=lambda x: InputString(x))
+</code></pre>
+  </li>
+  <li>显示元件的方法不仅仅有 <code>pack()</code>，还有 <code>grid()</code>，如果元件排列需要很整齐，可以用 <code>grid()</code>，通过输入行数和列数来控制元件的显示位置，两者的比较和使用，可以参见<a href="http://purpen.iteye.com/blog/74830">这里</a>。</li>
+  <li>创建主窗口用 <code>Tkinter.Tk()</code>，但是有的时候需要有一些子窗口，可以用 <code>Tkinter.Toplevel()</code> 来创建，保证子窗口一创建出来就在所有窗口的最前面。当运行完某个回调函数需要找回焦点的时候可以用所有元件都有的方法 <code>focus()</code>，来得到某个元件的焦点。</li>
+  <li>
+    <p>窗口退出的时候，可以用方法 <code>quit()</code>，也可以用 <code>destroy()</code>，比如：</p>
+
+    <pre><code>root.quit()
+</code></pre>
+  </li>
+  <li>
+    <p>如果某个元件需要更新，比如图片刷新，可以先调用 <code>destroy()</code> 这个方法摧毁掉这个元件，再将这个元件重建。如果只是 <code>Label</code> 元件的文字上的变动（比如状态栏的文字变化），可以用 <code>StringVar()</code>，需要输入什么直接调用 <code>set()</code> 方法就可以了，如下：</p>
+
+    <pre><code>v = Tkinter.StringVar()
+Tkinter.Label(master, textvariable=v).pack()
+v.set("New Text!")
+</code></pre>
+  </li>
+  <li>
+    <p>菜单栏的创建比较麻烦，如下：</p>
+
+    <pre><code> from Tkinter import *
+ root = Tk()
+
+ def hello():
+     print('hello')
+
+ def about():
+     print('我是开发者')
+
+ menubar = Menu(root)
+
+ #创建下拉菜单File，然后将其加入到顶级的菜单栏中
+ filemenu = Menu(menubar,tearoff=0)
+ filemenu.add_command(label="Open", command=hello)
+ filemenu.add_command(label="Save", command=hello)
+ filemenu.add_separator()
+ filemenu.add_command(label="Exit", command=root.quit)
+ menubar.add_cascade(label="File", menu=filemenu)
+
+ #创建另一个下拉菜单Edit
+ editmenu = Menu(menubar, tearoff=0)
+ editmenu.add_command(label="Cut", command=hello)
+ editmenu.add_command(label="Copy", command=hello)
+ editmenu.add_command(label="Paste", command=hello)
+ menubar.add_cascade(label="Edit",menu=editmenu)
+ #创建下拉菜单Help
+ helpmenu = Menu(menubar, tearoff=0)
+ helpmenu.add_command(label="About", command=about)
+ menubar.add_cascade(label="Help", menu=helpmenu)
+
+ #显示菜单
+ root.config(menu=menubar)
+
+ mainloop()
+</code></pre>
+
+    <p>其中 <code>tearoff=0</code> 就是下拉菜单和窗口是一体的，不能独立形成一个窗口，效果如下：</p>
+
+    <p><img src="http://pic002.cnblogs.com/images/2012/370835/2012102220205355.png" width="200" /></p>
+
+    <p>如果 <code>tearoff=1</code>，则效果如下，点击那个虚线会形成一个新的窗口。</p>
+
+    <p><img src="http://pic002.cnblogs.com/images/2012/370835/2012102220204555.png" width="200" /></p>
+  </li>
+  <li>简单的提示窗口（比如报错之类的），可以直接调用 <code>tkMessageBox</code> 库，具体用法可以参见<a href="http://www.pythonware.com/library/tkinter/introduction/standard-dialogs.htm">这里</a>。简单的数字输入、文件选取、颜色选取，可以直接调用 <code>tkSimpleDialog</code> 库，具体用法可以参见<a href="http://www.pythonware.com/library/tkinter/introduction/x1164-data-entry.htm">这里</a></li>
+  <li>
+    <p>Tkinter 自带的下拉框元件 <code>Listbox</code> 很不好用，可以使用 <code>ttk</code> 库中的 <code>Combobox</code> 元件，使用如下：</p>
+
+    <pre><code>boudrate=Tkinter.StringVar()
+boudrate.set("9600")
+manul_boudrate=ttk.Combobox(root,text=boudrate,values=["2400","9600","12900"])
+</code></pre>
+
+    <p>需要得到 <code>Combobox</code> 中选中的字符串的时候，直接 <code>boudrate.get()</code> 就可以了。</p>
+  </li>
+</ol>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[今天开始可以登记结婚了]]></title>
     <link href="http://pikipity.github.com/blog/22-years-old.html"/>
     <updated>2013-04-07T10:52:00+08:00</updated>
@@ -1144,105 +1324,6 @@ MAIN:
 
 <embed src="http://player.ku6.com/refer/j9ROVzCQYS2Xu4g7rTk1MQ../v.swf" width="480" height="400" allowscriptaccess="always" allowfullscreen="true" type="application/x-shockwave-flash" flashvars="from=ku6" />
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[到底有多大？来见识“三星共和国”的另一面]]></title>
-    <link href="http://pikipity.github.com/blog/samsung-kindom.html"/>
-    <updated>2013-03-08T16:49:00+08:00</updated>
-    <id>http://pikipity.github.com/blog/samsung-kindom</id>
-    <content type="html"><![CDATA[<p>转自 <a href="http://www.cnbeta.com/index.php">“中文业界资讯站”</a>，原文在<a href="http://www.cnbeta.com/articles/228672.htm">这里</a>。</p>
-
-<p>三星有多大？每次看到新闻上说苹果要被三星超越了，总会让人想到这个问题。虽然维基百科、百度百科还有三星官网上都有不同的解答，而且还有三星财报可以看，但是看文字多没意思。同行泡泡网就此在网上搜索了一番，越搜越感觉这简直就是个坑啊。</p>
-
-<p>从建筑搜到了军事，又从军事搜到了化工，然后从化工搜到了金融，又从金融搜到了时尚，甚至还搜到了游乐场和医院，到处都可以看到三星的影子。这个时候我们应该明白做为宇宙第一强国思密达族人的心情了，这哪是大韩民国啊？这就是三星大韩共和国。</p>
-
-<p>今天就让我们抛开三星的电子产品，看看在消费电子领域已经排名世界第一、世界500强排名第20位的三星电子之外，三星到底有多大。</p>
-
-<p>三星是怎样发迹的？大家就不必说啥市场经济优胜劣汰了，这里是东亚，儒家思想还是有根基的，所以三星的发迹很类似当年的红顶商人。</p>
-
-<p>1938年，李秉喆创建三星，并在日本侵略和朝鲜战争中得到了李承晚政权的扶持，并由此走上了快速发展的道路。</p>
-
-<p>1961年，朴正熙发动政变干掉了李承晚之后，觉得应该摆脱美帝的控制，让韩国也成为一个制造业强国。于是就选择了三星、现代、大宇等几家之前与李承晚颇有渊源的企业，并摒弃了之前的称政治因素。韩国经济，由此开始腾飞，而朴正熙也一手缔造了“汉江奇迹”，三星、现代、大宇、LG、海力士等等，开始与日本企业并驾齐驱。嗯，前天刚上任的韩国总统朴槿惠，就是朴正熙的女儿。</p>
-
-<p>而李秉喆的儿子李健熙在接手三星之后，也充分利用政治的庇佑，比如2008年就曾有报道，三星内部存在一个2亿美元的贿赂基金，专门用来打点政府官员，于是你看看上面这张图，当三星掌门李健熙步入会场之后，李明博总统温顺地低下了头。</p>
-
-<p>你说，三星有多大？下面我们就来欣赏一下小弟这几天在网上搜到的图片。再强调一点，不包括三星电子哦，我们只看三星的另一面。</p>
-
-<p><img src="http://pikipity.github.com/images/post/samsung/1008010479808576.jpg" width="550pt" /></p>
-
-<p><img src="http://pikipity.github.com/images/post/samsung/10080112123076784.jpg" alt="三星物产，2011年世界五百强排名第492名" width="550pt" /></p>
-
-<!--more-->
-
-<p><img src="http://pikipity.github.com/images/post/samsung/10080121994090317.jpg" alt="台北101，台湾本地人的念法是101，不是咱们说的幺零幺" width="550pt" /></p>
-
-<p><img src="http://pikipity.github.com/images/post/samsung/1008013661729490.jpg" alt="迪拜哈里法塔" width="550pt" /></p>
-
-<p><img src="http://pikipity.github.com/images/post/samsung/1008014816964185.jpg" alt="除了这个核电站之外，三星物产还拿下了阿联酋阿布扎比Shuweihat 电力公司的S2建造订单" width="550pt" /></p>
-
-<p><img src="http://pikipity.github.com/images/post/samsung/1008025248814449.jpg" alt="三星重工，以造船、太阳能、风能和发电厂建设为主。其中造船是最大的一块业务。" width="550pt" /></p>
-
-<p><img src="http://pikipity.github.com/images/post/samsung/1008026411133697.jpg" alt="三星造船厂是当前全球订单数量最多的造船厂之一。" width="550pt" /></p>
-
-<p><img src="http://pikipity.github.com/images/post/samsung/1008027723092110.jpg" alt="三星重工在山东威海和浙江宁波，均有造船厂。" width="550pt" /></p>
-
-<p><img src="http://pikipity.github.com/images/post/samsung/10080281334628196.jpg" alt="三星TECHWIN，三星下属这个公司的产品线，算的上是距离老百姓最遥远的了。从安防监控，再到坦克火炮，最后还有航空服务。" width="550pt" /></p>
-
-<p><img src="http://pikipity.github.com/images/post/samsung/1008029637653742.jpg" alt="装甲车和自行火炮，是三星TECHWIN的招牌产品。" width="550pt" /></p>
-
-<p><img src="http://pikipity.github.com/images/post/samsung/10080210369955372.jpg" alt="三星K9自行榴弹炮，据称是当前世界上最先进的自行榴弹炮。只是，在延坪岛炮战中，貌似韩国军队装备的这货出了故障，搞得被朝鲜火炮狠揍了一顿。" width="550pt" /></p>
-
-<p><img src="http://pikipity.github.com/images/post/samsung/100802111000979522.jpg" alt="有点模仿俄罗斯雅克130的味道。当然天朝L15教练机也是模仿的雅克130。" width="550pt" /></p>
-
-<p><img src="http://pikipity.github.com/images/post/samsung/100803121673665418.jpg" alt="这个真不错，有点西科斯基的海王直升机的感觉。" width="550pt" /></p>
-
-<p><img src="http://pikipity.github.com/images/post/samsung/10080313730193648.jpg" alt="三星TECHWIN的航空服务，机队机型非常齐全。" width="550pt" /></p>
-
-<p><img src="http://pikipity.github.com/images/post/samsung/100803141641805330.jpg" alt="直升机、公务机，各种机型一应俱全。" width="550pt" /></p>
-
-<p><img src="http://pikipity.github.com/images/post/samsung/101112151468661597.jpg" alt="当然也少不了波音、空客这样的大飞机。" width="550pt" /></p>
-
-<p><img src="http://pikipity.github.com/images/post/samsung/101112161276175383.jpg" alt="当初李健熙觉得汽车才是集科技成果于大成的产品，于是组建了三星汽车。只是，面对丰田、通用、大众这样的对手，甚至在面对大宇、现代这样的对手时，三星汽车还是有点资历尚浅。最终，雷诺收购了三星汽车70%的股份，成立了雷诺三星汽车。" width="550pt" /></p>
-
-<p><img src="http://pikipity.github.com/images/post/samsung/10111217859015335.jpg" alt="虽然雷诺占据主导位置，但是三星要想收回这些股份，可以说是易如反掌吧。" width="550pt" /></p>
-
-<p><img src="http://pikipity.github.com/images/post/samsung/101112181522279939.jpg" alt="三星Q5，就是雷诺科雷傲的韩国版本。" width="550pt" /></p>
-
-<p><img src="http://pikipity.github.com/images/post/samsung/10111219595613773.jpg" alt="三星SM7，同时销售的还有三星SM3、SM5，总计三款车型。" width="550pt" /></p>
-
-<p><img src="http://pikipity.github.com/images/post/samsung/101112201827578774.jpg" alt="三星的化工企业，更加庞杂。从我们喝水的杯子，到我们吃药的胶囊，甚至还有农业用的化肥，统统都在三星化工的生产范畴之内。" width="550pt" /></p>
-
-<p><img src="http://pikipity.github.com/images/post/samsung/101421211430894886.jpg" alt="除了自己的研发，三星化工还联手了道达尔、BP等公司，成立了三星道达尔、三星BP等公司，与三星自己的三星精密化工、三星石油化工等，共同组成了三星化工帝国。" width="550pt" /></p>
-
-<p><img src="http://pikipity.github.com/images/post/samsung/10142122229992146.jpg" alt="三星化工的产品线，几乎涵盖了当前全世界所有的工农业领域，由此我们也可看出三星化工的实力。" width="550pt" /></p>
-
-<p><img src="http://photocdn.sohu.com/20130306/Img367932586.jpeg" alt="这几天在网上有一篇名为《亚洲九大权势美貌富婆》八卦文中，有韩国第一毛织董事长李叙显的介绍。那，李叙显是谁呢？她就是三星掌门李健熙的女儿。而第一毛织，则是三星旗下韩国最大的服装厂商。旗下BEAN POLE更是一款流行世界的市场品牌。" width="550pt" /></p>
-
-<p><img src="http://pikipity.github.com/images/post/samsung/10145224540117087.jpg" alt="这几个明星，看海报上写的，是2IN1，只熟悉硬盘里那几部电影的小弟我不认识哈。" width="550pt" /></p>
-
-<p><img src="http://pikipity.github.com/images/post/samsung/10145225240788886.jpg" alt="米帅也代言BEAN POLE了，上面那个花样美男是谁？长的挺俊俏！" width="550pt" /></p>
-
-<p><img src="http://pikipity.github.com/images/post/samsung/101452261849862297.jpg" alt="三星在韩国首尔市中心，拥有一家五星级的酒店，同时也是韩国曾经最豪华的酒店，这就是三星首尔新罗酒店。" width="550pt" /></p>
-
-<p><img src="http://pikipity.github.com/images/post/samsung/101452271114465686.jpg" alt="除了在首尔，三星在韩国旅游胜地济州岛也拥有一间新罗酒店。" width="550pt" /></p>
-
-<p><img src="http://pikipity.github.com/images/post/samsung/101452282129990328.jpg" alt="近年来新罗酒店走出韩国，例如在苏州就开办了金鸡湖新罗酒店。" width="550pt" /></p>
-
-<p><img src="http://pikipity.github.com/images/post/samsung/10145229517305127.jpg" alt="三星爱宝乐园，据说是亚洲第四韩国第一，号称韩国的迪斯尼。" width="550pt" /></p>
-
-<p><img src="http://pikipity.github.com/images/post/samsung/10145230247394712.jpg" alt="好像花市一样，似乎在努力营造一种童话的感觉。" width="550pt" /></p>
-
-<p><img src="http://pikipity.github.com/images/post/samsung/101801311358926914.jpg" alt="说句实话，这游乐园不要说跟迪斯尼比了，就连深圳的欢乐谷都差太远。几盆花、光秃秃的山，弄个摩天轮，这跟县城的市民文化广场倒是差不多。" width="550pt" /></p>
-
-<p><img src="http://pikipity.github.com/images/post/samsung/101801321691395429.jpg" alt="当然，我上一页只是看图说话哈，这是三星爱宝乐园的导游图，有兴趣的玩家可以去韩国京畿道龙仁市体验一把。" width="550pt" /></p>
-
-<p><img src="http://pikipity.github.com/images/post/samsung/101801331823035907.jpg" width="550pt" /></p>
-
-<p>除了上面我们介绍的，三星还有很多产业，但是限于篇幅，我也就懒得再去搜图片了。知道一点就好了，在世界500强的企业中，数码科技类的企业排名最高的就是三星电子，位列第20名，而其后的富士康位列43，苹果更是只列第55名。其他方面，三星生命保险，排名274，而三星物产，排名492。</p>
-
-<p>看完了三星的另一面，估计你会明白为什么华盛顿邮报当年会写出“韩国三星共和国”这样标题的文章。嗯，多看另一面，总会有发现。就像我们现在看微博，朴槿惠被说是独裁者的女儿，但是却没人去说朴正熙所创造的“汉江奇迹”。当然，朴正熙掌权韩国18年，也确实长了点，但总比某些世袭好多了吧？</p>
 ]]></content>
   </entry>
   
