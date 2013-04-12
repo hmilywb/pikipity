@@ -3,12 +3,12 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>在 Matlab 中如何做傅里叶变换 - 折腾来折腾去</title>
+	<title>将 Google Scholar 上的搜索结果导出为 BibTex - 折腾来折腾去</title>
 	<meta name="author" content="pikipity">
 
 	
-	<meta name="description" content="在 Matlab 中如何做傅里叶变换 Posted by pikipity
-&nbsp; 2013年03月03日 Matlab Comments 翻译自Matlab Geeks的 “How to Do a Fourier Transform in Matlab”。 &hellip;">
+	<meta name="description" content="将 Google Scholar 上的搜索结果导出为 BibTex Posted by pikipity
+&nbsp; 2013年04月12日 Google Comments BibTex 是一种用于管理文献、产生文献目录的格式，主要用于 LaTex 的参考书目的管理，但是格式要求很严格， &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -108,7 +108,7 @@
 	<div id="content" class="inner"><div>
 <article class="post">
 	
-	<h2 class="title">在 Matlab 中如何做傅里叶变换</h2>
+	<h2 class="title">将 Google Scholar 上的搜索结果导出为 BibTex</h2>
 	<div class="meta">
 	       <div class="author" style="float:left;">
   
@@ -127,11 +127,11 @@
   
 
 
-<time datetime="2013-03-03T11:09:00+08:00" pubdate data-updated="true">2013年03月03日</time></div>
+<time datetime="2013-04-12T18:20:00+08:00" pubdate data-updated="true">2013年04月12日</time></div>
 		<div class="tags" style="float:left;">
 
 
-	<a class='category' href='/blog/categories/matlab/'>Matlab</a>
+	<a class='category' href='/blog/categories/google/'>Google</a>
 
 
 </div>
@@ -139,53 +139,26 @@
 			<span class="comments"><a href="#com_target">Comments</a></span>
 		
 	</div>
-	<div class="entry-content" style="clear:both;"><p>翻译自<a href="http://matlabgeeks.com/">Matlab Geeks</a>的 <a href="http://matlabgeeks.com/tips-tutorials/how-to-do-a-fourier-transform-in-matlab/">“How to Do a Fourier Transform in Matlab”</a>。</p>
+	<div class="entry-content" style="clear:both;"><p><img src="https://lh5.googleusercontent.com/-2ut2cDCgHbk/UWfg8TuUpOI/AAAAAAAAAvc/w2pTgBXwvBc/s621/Screen%2520Shot%25202013-04-12%2520at%25206.24.30%2520PM.png" width="480" /></p>
 
-<p>傅里叶变换是一个在很多科学和工程领域都非常有用的数学工具。傅里叶变换在信号处理、物理、通信、地质学、天文学、光学等很多领域都有应用。这个技术将一个函数或是一组数据从时域或是取样域变换到频域。这意味着，傅里叶变换可以展示一组时间序列数据的频率分量。离散傅里叶变换是将取样域的离散数据转化到频域。快速傅里叶变换是一种高效进行离散傅里叶变换的方法，并且存在很多种方法来完成快速傅里叶变换。Matlab 使用快速傅里叶变换来得到离散数据的频域分量</p>
+<p>BibTex 是一种用于管理文献、产生文献目录的格式，主要用于 LaTex 的参考书目的管理，但是格式要求很严格，而且英文文献管理时到底每个条目对应的是什么，让人很头疼。今天在 <a href="http://scholar.google.com/">Google Scholar</a> 上搜索论文的时候发现每个条目底下都有一个 “Cite” 按钮：</p>
 
-<p>下面是一个在 Matlab 中如何用快速傅里叶变换来分析音频文件的例子。这个例子中的文件是记录在 note A4 （怎么翻译？不会啊）上的音叉录音。这个展示了傅里叶变换如何进行和如何在 Matlab 中使用这项技术。</p>
+<p><img src="https://lh4.googleusercontent.com/-UTz8Uw-kwGQ/UWfghmcarGI/AAAAAAAAAvQ/RTIRPc8aaUY/s718/Screen%2520Shot%25202013-04-12%2520at%25204.01.45%2520PM.png" width="480" /></p>
 
-<pre><code>%Fourier Transform of Sound File
+<p>点了之后发现竟然可以把文献的引用直接导出为 BibTex 格式：</p>
 
-%Load File
-file = 'C:\MATLAB7\work\tuning_fork_A4';
-[y,Fs,bits] = wavread(file);
+<p><img src="https://lh3.googleusercontent.com/-sj9krf4OAf4/UWfgh6zE-lI/AAAAAAAAAvI/TwmuUiIWPNM/s800/Screen%2520Shot%25202013-04-12%2520at%25204.01.55%2520PM.png" width="480" /></p>
 
-Nsamps = length(y);
-t = (1/Fs)*(1:Nsamps)          %Prepare time data for plot
+<p>瞬间有了一种遇到神器的感觉，热泪盈眶啊…………。如果将上图下面的方框选中的话，以后再进行搜索，每个搜索结果下面就会直接出现 “Import to BibTex” 的选项，真是太好用了。</p>
 
-%Do Fourier Transform
-y_fft = abs(fft(y));            %Retain Magnitude
-y_fft = y_fft(1:Nsamps/2);      %Discard Half of Points
-f = Fs*(0:Nsamps/2-1)/Nsamps;   %Prepare freq data for plot
+<p><img src="https://lh6.googleusercontent.com/-lGp1PQIQntw/UWfgh-uPU7I/AAAAAAAAAvA/mX1NIyr4lXI/s716/Screen%2520Shot%25202013-04-12%2520at%25204.04.02%2520PM.png" width="480" /></p>
 
-%Plot Sound File in Time Domain
-figure
-plot(t, y)
-xlabel('Time (s)')
-ylabel('Amplitude')
-title('Tuning Fork A4 in Time Domain')
+<p>和我一样觉得 <a href="http://scholar.google.com/">Google Scholar</a> 好用的，可以再试试 Chrome 上的这两个插件：</p>
 
-%Plot Sound File in Frequency Domain
-figure
-plot(f, y_fft)
-xlim([0 1000])
-xlabel('Frequency (Hz)')
-ylabel('Amplitude')
-title('Frequency Response of Tuning Fork A4')
-</code></pre>
-
-<p>音频文件 <a href="http://matlabgeeks.com/wp-content/uploads/2010/12/tuning_fork_A4.wav">“tuning_fork_A4”</a> 用 wavread 函数打开，这个函数返回文件的采样数据 “y”、采样频率 “Fs” 和 A/D 转换器使用的比特数 “bits”。注意，文件的扩展名 “.wav” 不需要在使用函数的时候特别指定。就像下面将会展示的，采样频率在重建数据的时候非常重要。</p>
-
-<p>快速傅里叶变换用 “fft” 函数执行。Matlab 没有 “dft” 函数因为快速傅里叶变换实际上就是计算的离散傅里叶变换。尽管快速傅里叶变换的角度在很多应用中非常中央，但是只有快速傅里叶变换的大小被保存了。“fft” 函数允许指定一个快速傅里叶变换的输出点数，但是在这个例子中，我们使用与输入点数一样数目的输出点数。在下一行，快速傅里叶变换的一半数据被舍弃了。为了这个例子的目的所以这样做了，但是在很多应用中，整个波谱都会用到（译者注：我认为这里舍弃一半的点是因为FFT是关于采样频率的一半对称的，所以只要看一半就可以了）。接下来的一行，将会用于横坐标的数据通过使用采样频率和时遇采样数量准备好了。这一步对于确定包含在音频文件的实际频率是很重要的。</p>
-
-<p>接下来，原始数据在时域上被画了下来，快速傅里叶变换的数据也被画了出来。为了展示在峰值的频率上的更多详情，在这个画中，x轴被限定在了 [0,1000] 的范围中。注意，在大约440Hz处，频率响应有一个峰值，这个就是 “note A4” 的频率。在其他频率也有一些很小东西，这些估计是音叉了。对于其他乐器比如吉他，在频率响应的峰值的整数倍上都可以看见谐波。</p>
-
-<p><img src="http://matlabgeeks.com/wp-content/uploads/2010/12/tunforktime.jpg" width="550pt" /></p>
-
-<p><img src="http://matlabgeeks.com/wp-content/uploads/2010/12/tunforkfreq.jpg" width="550pt" /></p>
-
-<p>傅里叶变换在很多不同的领域都是很有用的工具。二维的傅里叶变换也常常用在图像上。尝试一下上面的代码，看看你能不能得到一样的结果。</p>
+<ol>
+  <li><a href="https://chrome.google.com/webstore/detail/scholar-search/iaoheikkcfcbplmldmgogdooknbbbcnf">Scholar search</a>: 在 Chrome 扩展栏上添加一个图标，点击图标就可以搜索了。</li>
+  <li><a href="https://chrome.google.com/webstore/detail/google-scholar-context-me/enmmfafpcihjfbkeoncplhjjkglkhdff">Google Scholar Context Menu</a>：当在Chrome 中选中一段文本再点右键的时候，菜单中会出现 “Search Google Scholar for “……”“的选项。</li>
+</ol>
 </div>
 
 
@@ -229,19 +202,17 @@ var jiathis_config={
   
 
 
-<time datetime="2013-03-03T11:09:00+08:00" pubdate data-updated="true">2013年03月03日</time></p>
+<time datetime="2013-04-12T18:20:00+08:00" pubdate data-updated="true">2013年04月12日</time></p>
 </footer>
 
 <section>
 <ul id="left-right">
 <span style="float:left">
 	
-        <a class="basic-alignment left" href="/blog/sending-message-with-sendmail.html" title="Previous Post: Matlab 小技巧：通过 sendmail 来发送信息"><font face=Wingdings>&#239;</font> Matlab 小技巧：通过 sendmail 来发送信息</a>
+        <a class="basic-alignment left" href="/blog/money-man.html" title="Previous Post: 中国的富二代"><font face=Wingdings>&#239;</font> 中国的富二代</a>
         </span>
 <span style="float:right">
-	
-        <a class="basic-alignment right" href="/blog/wine.html" title="next Post: 关于“红酒”的那点事">关于“红酒”的那点事 <font face=Wingdings>&#240;</font></a>
-       </span>
+	 </span>
 </ul>
 </section>
 
