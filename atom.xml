@@ -14,6 +14,41 @@
 
   
   <entry>
+    <title type="html"><![CDATA[中国的富二代]]></title>
+    <link href="http://pikipity.github.com/blog/money-man.html"/>
+    <updated>2013-04-12T15:01:00+08:00</updated>
+    <id>http://pikipity.github.com/blog/money-man</id>
+    <content type="html"><![CDATA[<p>中国的富二代到底是什么样的呢？他们到底过着怎样的生活呢？老外好像比我们更想知道，于是 BBC 拍摄了一部纪录片《外国人眼中的中国富二代》来告诉你中国的富二代们在做些什么。</p>
+
+<embed src="http://player.youku.com/player.php/sid/XNDI3MjYyMDU2/v.swf" quality="high" width="480" height="400" align="middle" allowscriptaccess="sameDomain" allowfullscreen="true" type="application/x-shockwave-flash" />
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[双面中国人]]></title>
+    <link href="http://pikipity.github.com/blog/double-face-chinese.html"/>
+    <updated>2013-04-12T14:59:00+08:00</updated>
+    <id>http://pikipity.github.com/blog/double-face-chinese</id>
+    <content type="html"><![CDATA[<p>好听又有趣的一首歌。</p>
+
+<embed src="http://player.youku.com/player.php/sid/XNTM5NjExNjY4/v.swf" quality="high" width="480" height="400" align="middle" allowscriptaccess="sameDomain" allowfullscreen="true" type="application/x-shockwave-flash" />
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Github 五岁了]]></title>
+    <link href="http://pikipity.github.com/blog/github-5-years-old.html"/>
+    <updated>2013-04-12T14:48:00+08:00</updated>
+    <id>http://pikipity.github.com/blog/github-5-years-old</id>
+    <content type="html"><![CDATA[<p>感谢 Tom Preston-Werner、Chris Wanstrath和PJ Hyett 创建这样一个资源共享、合作平台，收集了一些 Github 章鱼猫的图片，可以到<a href="http://pan.baidu.com/share/link?shareid=472164&amp;uk=4080321956">这里</a>下载合集（共28张）</p>
+
+<p><img src="https://lh3.googleusercontent.com/-GtUg-uGWQqM/UWevcsehRSI/AAAAAAAAAtc/kLS-HYQ3bOo/s224/images%2520%25287%2529.jpeg" width="200" /><img src="https://lh5.googleusercontent.com/-xIBU5KTBVcI/UWevbE4xKAI/AAAAAAAAAsY/E-TE4XsxJgw/s224/images%2520%25282%2529.jpeg" width="200" /><img src="https://lh6.googleusercontent.com/-B9FrMxvY9oM/UWevdOl2eWI/AAAAAAAAAtY/0OzTMCCARKE/s224/images%2520%25289%2529.jpeg" width="200" /><img src="https://lh3.googleusercontent.com/-GhzQ2PNotbI/UWevacnK2rI/AAAAAAAAAuI/ud_BkEGqWTk/s235/images%2520%252817%2529.jpeg" width="200" /><img src="https://lh3.googleusercontent.com/-VkRkffqG3p0/UWevYtjxHLI/AAAAAAAAAts/vkcrXe-KnZw/s512/founding-father.jpg" width="200" /><img src="https://lh6.googleusercontent.com/-0BwtaQ5bB_I/UWevZOsK-YI/AAAAAAAAAtw/m31AKo0PS30/s224/images%2520%252811%2529.jpeg" width="200" /></p>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[Python 下用 Tkinter 制作 GUI]]></title>
     <link href="http://pikipity.github.com/blog/python-tkinter.html"/>
     <updated>2013-04-11T00:36:00+08:00</updated>
@@ -1013,317 +1048,6 @@ y=reshape(y,[1,length(y)]).*4;
 <p>最后留张图纪念一下，别了，Google Reader，一路走好</p>
 
 <p><img src="http://pikipity.github.com/images/post/googlereader.jpg" width="650pt" /></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[向 Github 添加 SSH 公匙]]></title>
-    <link href="http://pikipity.github.com/blog/ssh-public-key.html"/>
-    <updated>2013-03-12T20:03:00+08:00</updated>
-    <id>http://pikipity.github.com/blog/ssh-public-key</id>
-    <content type="html"><![CDATA[<p>今天用 octopress 遇到一点小问题，在向 Github 发布自己的 post 的时候出现错误：</p>
-
-<pre><code>Permission denied (publickey). fatal: The remote end hung up unexpectedly
-</code></pre>
-
-<p>看到 publickey，我突然想到我好想忘了向 Github 添加我自己的公匙了，问了一下谷姐，看到<a href="http://stackoverflow.com/questions/3617113/github-newbie-problems-permission-denied-publickey-fatal-the-remote-end">这里</a>的解答，果然是这个原因。我想如果重新设定一下 octopress 的github 登陆设置应该也是可以的，但是如果每次重启电脑都要这样来一次也太麻烦了，于是果断还是去添加一次吧，一劳永逸（最好还是先到<a href="https://help.github.com/articles/error-permission-denied-publickey">这里</a>按照步骤检查一下）。</p>
-
-<p>Mac 设置方法见<a href="https://help.github.com/articles/generating-ssh-keys#platform-mac">这里</a>，Windows 设置方法见<a href="https://help.github.com/articles/generating-ssh-keys#platform-windows">这里</a>（Windows 需要在 Git Bash 里使用下面的命令），Linux 见<a href="https://help.github.com/articles/generating-ssh-keys#platform-linux">这里</a>，三者大同小异，唯一的区别应该就是复制 ssh key 的时候使用的命令不一样吧。步骤如下：</p>
-
-<ol>
-  <li>
-    <p>检查是否存在 .ssh 文件夹</p>
-
-    <pre><code> $ cd ~/.ssh
-</code></pre>
-
-    <p>如果没有这个文件夹，跳到第三步，如果有，则继续</p>
-  </li>
-  <li>
-    <p>备份一下当前已有的 ssh 秘钥</p>
-
-    <pre><code> $ ls
- $ mkdir key_backup
- $ cp id_rsa* key_backup
- $ rm id_rsa*
-</code></pre>
-  </li>
-  <li>
-    <p>产生新的 ssh 秘钥</p>
-
-    <pre><code> $ ssh-keygen -t rsa -C "your_email@example.com"
-</code></pre>
-
-    <p>“your_email@example.com”就是github上你用来上传的邮箱，如果你没修改过就是你用来注册账户的那个邮箱，输入上面的命令并回车后会引导你生成你的 RSA 秘钥对，如下：</p>
-
-    <pre><code> Enter file in which to save the key (/Users/you/.ssh/id_rsa): [按回车]
- Enter passphrase (empty for no passphrase): [输入一个通关密语]
- Enter same passphrase again: [把通关密语再输一遍]
-</code></pre>
-
-    <p>通关密语一般建议输入一个10到30字元的字符串（别输中文），这关系到你将来传输信息的保密性。成功后你会看到<strong>如</strong>下内容</p>
-
-    <pre><code> Your identification has been saved in /Users/you/.ssh/id_rsa.
- Your public key has been saved in /Users/you/.ssh/id_rsa.pub.
- The key fingerprint is:
- 01:0f:f4:3b:ca:85:d6:17:a1:7d:f0:68:9d:f0:a2:db your_email@example.com
-</code></pre>
-  </li>
-  <li>
-    <p>将我们的 ssh 秘钥添加到 Github。首先复制我们的公匙，Mac 用下面的命令：</p>
-
-    <pre><code> $ pbcopy &lt; ~/.ssh/id_rsa.pub
-</code></pre>
-
-    <p>Linux 用下面的命令（如果没有 xclip，先安装一下吧，很好用，<code>sudo apt-get install xclip</code>）：</p>
-
-    <pre><code> $ xclip -sel clip &lt; ~/.ssh/id_rsa.pub
-</code></pre>
-
-    <p>Windows 用下面的命令：</p>
-
-    <pre><code> $ clip &lt; ~/.ssh/id_rsa.pub
-</code></pre>
-
-    <p>然后就是到 Github 网站把公匙粘贴过去。步骤如下：</p>
-
-    <ul>
-      <li>
-        <p>到你的<a href="https://github.com/settings">账户设定</a>中</p>
-
-        <p><img src="https://github-images.s3.amazonaws.com/help/userbar-account-settings.png" width="350pt" /></p>
-      </li>
-      <li>
-        <p>点击左栏中的 <a href="https://github.com/settings/ssh">“SSH Keys”</a></p>
-
-        <p><img src="https://github-images.s3.amazonaws.com/help/settings-sidebar-ssh-keys.png" width="350pt" /></p>
-      </li>
-      <li>
-        <p>点击 “Add SSH key”</p>
-
-        <p><img src="https://github-images.s3.amazonaws.com/help/ssh-add-ssh-key.png" width="350pt" /></p>
-      </li>
-      <li>
-        <p>在 “Key” 的输入框中粘贴</p>
-
-        <p><img src="https://github-images.s3.amazonaws.com/help/ssh-key-paste.png" width="350pt" /></p>
-      </li>
-      <li>
-        <p>点击 “Add key”</p>
-      </li>
-    </ul>
-  </li>
-  <li>
-    <p>现在你可以测试一下了，用下面命令</p>
-
-    <pre><code> $ ssh -T git@github.com
-</code></pre>
-
-    <p>你会得到下面信息：</p>
-
-    <pre><code> The authenticity of host 'github.com (207.97.227.239)' can't be established.
- RSA key fingerprint is 16:27:ac:a5:76:28:2d:36:63:1b:56:4d:eb:df:a6:48.
- Are you sure you want to continue connecting (yes/no)?
-</code></pre>
-
-    <p>输入 “yes”，回车，你会看到下面信息：</p>
-
-    <pre><code> Hi username! You've successfully authenticated, but GitHub does not provide shell access.
-</code></pre>
-
-    <p>如果 “username” 正确，那么就 OK 了。</p>
-  </li>
-</ol>
-
-<p>如果你看到 “access denied”，请考虑使用 <a href="https://help.github.com/articles/set-up-git">HTTPS</a>。</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[单片机原理及程序设计 第五章 中断]]></title>
-    <link href="http://pikipity.github.com/blog/scm-priciple-5.html"/>
-    <updated>2013-03-12T18:18:00+08:00</updated>
-    <id>http://pikipity.github.com/blog/scm-priciple-5</id>
-    <content type="html"><![CDATA[<p>中断是单片机中一个非常重要的服务。中断是指由于接收到外围硬件的异步信号或是软件的同步信号，而进行的相应的软件或是硬件上的处理。发出这样的信号被称为中断请求，发出中断请求的硬件或是软件被称为中断源。当中断源产生了中断请求，相应的中断旗标（就是对应的寄存器的一个 bit）便会置“1”，8051的 CPU 每个机械周期里都会去检查这些中断旗标，若发现中断旗标置“1”，CPU便会在执行完当前指令后，将当前的执行状态（以程序计数器和程序状态字等寄存器信息为主）塞入堆叠中保存，然后跳到相应的程序内存地址（这个程序内存地址叫做中断向量）执行那里的中断副程序，直到执行到 “RETI” 指令后结束附程序，将塞入堆叠的执行状态取出，回到之前的主程序继续执行。</p>
-
-<h3 id="section">中断分类</h3>
-
-<p>8051中的中断可分为2两种：</p>
-
-<ol>
-  <li>不可屏蔽中断：无法通过在中断屏蔽寄存器中设定位掩码来关闭，典型例子是时钟中断（时钟中断不是指的计时/计数器 Timer0 或是 Timer1，而是一个硬件时钟，其会以恒定频率，如12MHz，发出中断）。</li>
-  <li>可屏蔽中断：可通过在中断屏蔽寄存器中设定位掩码来关闭。</li>
-</ol>
-
-<p>不可屏蔽中断无法控制，是单片机工作的基础，所以不作介绍。只介绍可以控制的可屏蔽中断。</p>
-
-<h3 id="section-1">中断源</h3>
-
-<p>8051提供了五个中断源。中断源、中断向量、中断旗标及中断旗标所属寄存器都列在下表中：</p>
-
-<table>
-  <thead>
-    <tr>
-      <th style="text-align: center">中断源</th>
-      <th style="text-align: center">中断向量</th>
-      <th style="text-align: center">中断旗标</th>
-      <th style="text-align: center">中断旗标所属寄存器</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align: center">INT0</td>
-      <td style="text-align: center">0003H</td>
-      <td style="text-align: center">IE0</td>
-      <td style="text-align: center">TCON.1</td>
-    </tr>
-    <tr>
-      <td style="text-align: center">Timer0</td>
-      <td style="text-align: center">000BH</td>
-      <td style="text-align: center">TF0</td>
-      <td style="text-align: center">TCON.5</td>
-    </tr>
-    <tr>
-      <td style="text-align: center">INT1</td>
-      <td style="text-align: center">0013H</td>
-      <td style="text-align: center">IE1</td>
-      <td style="text-align: center">TCON.3</td>
-    </tr>
-    <tr>
-      <td style="text-align: center">Timer1</td>
-      <td style="text-align: center">001BH</td>
-      <td style="text-align: center">TF1</td>
-      <td style="text-align: center">TCON.7</td>
-    </tr>
-    <tr>
-      <td style="text-align: center">UART (TXD)</td>
-      <td style="text-align: center">0023H</td>
-      <td style="text-align: center">TI</td>
-      <td style="text-align: center">SCON.1</td>
-    </tr>
-    <tr>
-      <td style="text-align: center">UART (RXD)</td>
-      <td style="text-align: center">0023H</td>
-      <td style="text-align: center">RI</td>
-      <td style="text-align: center">SCON.0</td>
-    </tr>
-  </tbody>
-</table>
-
-<p>具体满足什么条件会产生中断请求会在介绍各个中断源的时候详细介绍。需要注意的就是串列口 UART 的输入输出中断的中断向量都是 0023H，在使用的时候要判断到底是输入还是输出。</p>
-
-<h3 id="section-2">中断置能</h3>
-
-<p>8051在重置之后会关闭所有可屏蔽中断，所以在使用中断之前需要打开需要的中断功能，也就是中断置能。中断功能打开关闭通过中断置能寄存器（IE，地址为 A8H，允许按位寻址）管理。下面是中断置能寄存器各个 bit 的意思（“1”为使能，“0”为关闭）：</p>
-
-<pre><code>EA  --  --  ES  ET1  EX1  ET0  EX0
-</code></pre>
-
-<ol>
-  <li>EA: 相当于中断的总开关。置“0”就关闭所有中断。置“1”再根据下面的 bit 来看这个中断是否置能。</li>
-  <li>ES：串列口（UART）中断使能位。</li>
-  <li>ET1：计时/计数器 Timer1 使能</li>
-  <li>EX1：外部中断 INT1 使能</li>
-  <li>ET0: 计时/计数器 Timer0 使能</li>
-  <li>EX0：外部中断 INT0 使能</li>
-</ol>
-
-<h3 id="section-3">中断优先级</h3>
-
-<p>当多个中断旗标同时存在时，就会有一个先执行哪个中断向量的问题，8051内置了一个中断优先级，优先级高的先执行，优先级如下（顺序其实是按照中断向量排列的）：</p>
-
-<ol>
-  <li>外部中断 INT0</li>
-  <li>计时/计数器 Timer0</li>
-  <li>外部中断 INT1</li>
-  <li>计时/计数器 Timer1</li>
-  <li>串列口（UART）</li>
-</ol>
-
-<p>8051允许用户设置两层优先级，8051会先执行高层优先级中的中断，同一层中的中断优先顺序则按照上面的排序来进行。两层优先级的归属问题通过中断优先级寄存器（IP，地址为 B8H，允许位元定址）来设定。IP 每一个 bit 代表的意义如下（“1”代表高优先级，“0”代表低优先级）：</p>
-
-<pre><code>--  --  --  PS  PT1  PX1  PT0  PX0
-</code></pre>
-
-<ol>
-  <li>PS：串列口（UART）优先级</li>
-  <li>PT1：计时/计数器 Timer1 优先级</li>
-  <li>PX1：外部中断 INT1 优先级</li>
-  <li>PT0: 计时/计数器 Timer0 优先级</li>
-  <li>PX0：外部中断 INT0 优先级</li>
-</ol>
-
-<h3 id="assembly-">Assembly 程序设计</h3>
-
-<p>一个需要使用中断的 Assembly 程序设计的时候需要注意以下几点：</p>
-
-<ol>
-  <li>
-    <p>由于中断向量都在程序记忆体的开始部分，所以主程序要注意回避中断向量的位置，所以一开始一般通过一个跳跃跳到主程序，例如</p>
-
-    <pre><code>     ORG 00H
-     JMP MAIN
-        .
-        .
-        .
-	     
-     ORG 30H
- MAIN:
-        .
-        .
-        .
-     END
-</code></pre>
-  </li>
-  <li>
-    <p>两个中断向量之间的空间很短，一般无法放下整个附程序，所以一般在中断向量处通过一个跳跃到其他位置来执行副程序，例如</p>
-
-    <pre><code>     ORG 00H
-     JMP MAIN
-	
-     ORG 03H
-     JMP INT0
-	
-     ORG 0BH
-     JMP TIMER0
-	    
-     ORG 30H
- INT0:
-        .
-        .
-        .
-     RETI
-	    
- TIMER0:
-         .
-         .
-         .
-      RETI
-        
-MAIN:
-       .
-       .
-       .
-     END    
-</code></pre>
-  </li>
-  <li>ORG 声明程序内存地址的时候要按照程序内存的顺序摆放，比如不可以出现 <code>ORG 05H</code> 在 <code>ORG 03H</code> 前面的情况</li>
-  <li>在执行中断副程序之前记得保存之间需要保护的变量（填入堆叠就可以了）。结束之后记得把保护的变量提取出来。</li>
-  <li>有的时候再执行一个中断的时候不希望其他中断来打扰，记得在执行中断副程序之前关闭中断（ <code>CLR EA</code> ），在执行结束后记得打开中断（ <code>SETB EA</code>）。</li>
-  <li>在执行一个中断副程序的时候，如果其中断旗标再次置起，不会重新跳回中断向量。</li>
-</ol>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[别说你知道超级玛丽]]></title>
-    <link href="http://pikipity.github.com/blog/super-mario.html"/>
-    <updated>2013-03-09T20:02:00+08:00</updated>
-    <id>http://pikipity.github.com/blog/super-mario</id>
-    <content type="html"><![CDATA[<p>其实超级玛丽是武当出身，使得一手的好梯云纵……</p>
-
-<embed src="http://player.ku6.com/refer/j9ROVzCQYS2Xu4g7rTk1MQ../v.swf" width="480" height="400" allowscriptaccess="always" allowfullscreen="true" type="application/x-shockwave-flash" flashvars="from=ku6" />
-
 ]]></content>
   </entry>
   
