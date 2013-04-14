@@ -14,6 +14,43 @@
 
   
   <entry>
+    <title type="html"><![CDATA[电路在线仿真 CircuitLab]]></title>
+    <link href="http://pikipity.github.com/blog/circuit-lab.html"/>
+    <updated>2013-04-14T14:26:00+08:00</updated>
+    <id>http://pikipity.github.com/blog/circuit-lab</id>
+    <content type="html"><![CDATA[<p><img src="https://lh6.googleusercontent.com/-deTm3UpSJbU/UWpMuGoHUWI/AAAAAAAAAwE/vfk_yAcBGrU/s912/Screen%2520Shot%25202013-04-14%2520at%25202.28.09%2520PM.png" width="480" alt="CircuitLab" /></p>
+
+<p>今天推荐一个在线电路仿真平台 – <a href="https://www.circuitlab.com/">CircuitLab</a>。我推荐它主要有以下三点理由：</p>
+
+<ol>
+  <li>
+    <p>界面友好、漂亮。下面的图片就是仿真界面，整个界面干净、简洁，每一部分是干什么的一目了然，基本就是即看即会，没有学习难度。仿真表达式、元件参数、仿真类型和 Spice 如出一辙，会用 Spice 就会用它。</p>
+
+    <p><img src="https://lh4.googleusercontent.com/-roXJUk8YEhE/UWpMt56alSI/AAAAAAAAAv8/xOdU3O3Id-s/s800/Screen%2520Shot%25202013-04-14%2520at%25202.28.33%2520PM.png" width="480" /></p>
+  </li>
+  <li>
+    <p>功能齐全。直流仿真、直流扫描、时域扫描、频域扫描一应俱全，结果和 Pspice 仿真结果对比，基本没有差别。元件也很齐全，不仅有MOSFET、BJT等模拟信号元件，还有如 Flip-flop、AND gate 等数字信号元件，允许混合仿真。仿真结果并不是只有图像输出，可以直接输出为数据的形式，很方便。</p>
+
+    <p><img src="https://lh6.googleusercontent.com/-9bcBNFfIMTk/UWpQvprpvPI/AAAAAAAAAwg/SsBnHI5b9sY/s912/download.png" width="480" alt="Turn off time of 1N4007 diode" /></p>
+
+    <p><img src="https://lh6.googleusercontent.com/-vSwD5cf2tlU/UWpQvaLCJgI/AAAAAAAAAwk/Pnf4UJ6-Xd0/s912/download%2520%25281%2529.png" width="480" alt="Turn off time of 1N4007 diode" /></p>
+  </li>
+  <li>
+    <p>分享非常方便。保存电路图之后可以直接导出为多种主流图片格式，尤其是可以直接导出为 eps，插入到 $\LaTex{}$ 中很是方便。也可以生成多种链接格式，在论坛、网页上插入很是方便、快捷。<a href="https://www.circuitlab.com/circuit/f6ex5x/diode-full-wave-rectifier/">这里</a>是一个 Diode full-wave rectifier，大家可以看一看。</p>
+
+    <p><img src="https://lh3.googleusercontent.com/-2N9eayuom1c/UWpQvu52HcI/AAAAAAAAAwc/oCm6MvtAxSo/s396/Screen%2520Shot%25202013-04-14%2520at%25202.45.41%2520PM.png" width="380" alt="可生成的链接种类" /></p>
+  </li>
+</ol>
+
+<p>这个在线电路仿真工具实在是居家旅行的必备神器啊。下面是一个官方介绍、演示视频。</p>
+
+<iframe width="560" height="315" src="http://www.youtube.com/embed/f52GV1IpwVk" frameborder="0" allowfullscreen=""></iframe>
+
+<p>网站在<a href="https://www.circuitlab.com/">这里</a>。喜欢的话，可以下载<a href="https://chrome.google.com/webstore/detail/circuitlab/haghanbgfkfpmepoohpigmglbfejljoj?utm_source=chrome-ntp-icon">这个</a>下载对应的 Chrome 插件，这样就不用每次打开编辑器都等待载入了。</p>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[将 Google Scholar 上的搜索结果导出为 BibTex]]></title>
     <link href="http://pikipity.github.com/blog/bibtex-in-google-scholar.html"/>
     <updated>2013-04-12T18:20:00+08:00</updated>
@@ -776,31 +813,6 @@ y=reshape(y,[1,length(y)]).*4;
 
 <embed src="http://www.tudou.com/v/Nbz3C92uFuQ/&amp;resourceId=0_05_02_99&amp;tid=0/v.swf" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" wmode="opaque" width="480" height="400" />
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[可能真的是我们被 Google 宠坏了]]></title>
-    <link href="http://pikipity.github.com/blog/google-reader-user.html"/>
-    <updated>2013-03-18T10:04:00+08:00</updated>
-    <id>http://pikipity.github.com/blog/google-reader-user</id>
-    <content type="html"><![CDATA[<p>转自<a href="http://www.guao.hk/">“谷奥”</a> Kunkka 的<a href="http://www.guao.hk/posts/is-google-doing-evil-for-closing-google-reader.html">“关闭 Google Reader 是作恶之举？”</a>。</p>
-
-<p>Google Reader将要被关闭，大家都很不爽，因为又一个好服务即将离我们而去。</p>
-
-<p>可是惋惜归惋惜，我只是觉得，人应该要感恩，毕竟Google做的已经够多了：它已经无偿地为大家运营了这么一个服务8年。8年了，这个服务没从大家手中拿过一分钱！说白了，就是Google不欠大家什么，即使它关闭Google Reader这个举动再不高明，它还是不欠用户们什么东西。</p>
-
-<p>但是看到那么多人，甚至包括站长也说关闭Google Reader就是作恶，我瞬间就不淡定了。这都啥跟啥嘛，难道粉了Google这么多年的人，连这种基本东西都没搞清楚吗？虽然Google Reader被关闭，确实值得惋惜，但是这跟“作恶”有什么关系吗？是不是弄得你不爽了，就是Google作恶了？</p>
-
-<p>举个简单的例子就是：关闭Google Reader，在我看来，几乎就跟楼下大街上生意不红火的小吃店关门大吉一般，正常的不能再正常。人们可以因为再吃不到既便宜牛肉又给得多的牛肉面而惋惜，但是人们却不会（也不应该）因为老板不再为他们提供这么良心的牛肉面而去谴责老板。</p>
-
-<p>另外，Google自己说的“不作恶”，从来就是指的，赚钱不必作恶；从来就是指的，他们不会对竞争对手用下三滥的手段；从来就是指的，他们不会像别的公司那样，用欺骗，用劫持流量的办法来赚钱。关于这段，<a href="http://www.google.com/about/company/philosophy/">可以看官方页面的第6条</a>。</p>
-
-<p>那么，关闭Google Reader从哪里能说的上是作恶？难道关闭Google Reader这服务就是一种下三滥手段，就是用来排挤竞争对手，就是用来赚亏心钱的？</p>
-
-<p>我一直认为Google是一家有道德，有些许理想主义，有些许天马行空的公司。这是我一直热爱Google的原因。而从关闭GR这事来看，Google提供数据导出方案，提供缓冲时间让用户过渡。我看不出这些做法哪里不道德。这个关闭行动之中，Google的行为合乎法律、合乎情理、合乎道德。虽然关闭GR让我不爽，但是我没法说服自己改变对Google的看法，因为道德还在，理想主义与天马行空依然。</p>
-
-<p>Google还是那个Google，它没变，变的只是人心，被宠坏的人心。</p>
 ]]></content>
   </entry>
   
