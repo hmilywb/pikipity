@@ -14,6 +14,196 @@
 
   
   <entry>
+    <title type="html"><![CDATA[第八章 串口通信]]></title>
+    <link href="http://pikipity.github.com/blog/scm-priciple-8.html"/>
+    <updated>2013-04-27T17:41:00+08:00</updated>
+    <id>http://pikipity.github.com/blog/scm-priciple-8</id>
+    <content type="html"><![CDATA[<p>串口通信是CPU与周边其他设备传递数据的一种方式。8051单片机使用一组<a href="http://baike.baidu.com/view/15524.htm">全双工</a>的<a href="http://zh.wikipedia.org/wiki/UART">UART</a>，进行资料传输</p>
+
+<h2 id="uart">UART的传输结构</h2>
+
+<p>UART在传输一个字节（8个位元）的时候会在开始加入一个起始位元（一般为0），在末尾加上一个结束位元（一般为1），资料的传输如下：</p>
+
+<pre><code>起始位元(0)  bit0 bit1 bit2 bit3 bit4 bit5 bit6 bit7 结束位元(1)
+</code></pre>
+
+<p>UART的接受端没有资料的时候为高电平（1），当检测到出现0时，开始接受数据，接收完8位数据之后，结束。注意：一个字节的数据是从最低位开始发送的。</p>
+
+<p>这种传输方式也被计作<code>8N1</code>，第一个数字代表传输的符号数（此处为一个字节，8位，所以为”8”），第二个是是否根据数据中1的个数来进行验错（此处为”N”，意思是不验错，还可以为”E”，代表1的个数为偶数，”O”代表1的个数位奇数），最后一个数字是结束位元（此处结束位元为“1”）</p>
+
+<h2 id="section">传输速度</h2>
+
+<p>由于传输的数据很简单，所以通常以波特率来衡量传输速度，波特率指的是一秒钟传输的符号的个数，一般UART常用的波特率为1200、2400、4800、9600及19200等。</p>
+
+<p>注意：不要和<a href="https://zh.wikipedia.org/wiki/%E6%B3%A2%E7%89%B9%E7%8E%87">比特率</a>混淆，波特率指的是一秒钟传输的符号的个数，根据不同的调制形式，一个符号上可负载多个比特信息。比特率指的是1秒传输的比特数。</p>
+
+<p>一般发射和接受端的波特率必须一样，否则会出现误传，但是如果波特率相差不是很大的话，错误率亦不会很大。</p>
+
+<h2 id="uart-1">8051中UART工作机制</h2>
+
+<p>当UART串口检测到有信号传入时，便将8位信号全部存到<code>SBUF</code>寄存器中，然后接受中断旗标置一，进入中断向量。</p>
+
+<p>当向<code>SBUF</code>中移入数据的时候，UART便会将其发送出去，发送结束后，发送中断旗标置一，进入中断向量。</p>
+
+<p>在发送和接受的过程中会使用 <code>Timer1</code> 来控制传输速率（波特率）</p>
+
+<p>注意：尽管中断旗标不一样，但是中断向量却是同一个，都是 <code>23H</code>，所以在中断向量要判断到底是哪一个旗标让程序进入中断的。</p>
+
+<h2 id="uart-2">UART设置</h2>
+
+<p>由于UART要设置<code>Timer1</code>来控制波特率，所以设置比较复杂。需要用到<code>PCON</code>、<code>SCON</code>和<code>TMOD</code>、<code>TH1</code>、<code>TL1</code>。</p>
+
+<h3 id="pcon">PCON</h3>
+
+<p>不可位元寻址</p>
+
+<pre><code>SMOD  -  -  -  GF1  GF0  PD  IDL
+</code></pre>
+
+<p>和UART有关的就是<code>SMOD</code>位，在后面的波特率计算公式中会出现。</p>
+
+<h3 id="scon">SCON</h3>
+
+<p>可位元寻址</p>
+
+<pre><code>SM0  SM1  SM2  REN  TB8  RB8  TI  RI
+</code></pre>
+
+<ul>
+  <li>
+    <p>SM0与SM1：传输模式选择位</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th style="text-align: center">SM0</th>
+          <th style="text-align: center">SM1</th>
+          <th style="text-align: center">模式</th>
+          <th style="text-align: center">描述</th>
+          <th style="text-align: center">波特率</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="text-align: center">0</td>
+          <td style="text-align: center">0</td>
+          <td style="text-align: center">0</td>
+          <td style="text-align: center"><a href="http://elearning.stut.edu.tw/mechelec/ch8.htm">一般用于I/O扩充</a></td>
+          <td style="text-align: center"><script type="math/tex">\frac{f_{os}}{12}</script></td>
+        </tr>
+        <tr>
+          <td style="text-align: center">0</td>
+          <td style="text-align: center">1</td>
+          <td style="text-align: center">1</td>
+          <td style="text-align: center">8位元 UART</td>
+          <td style="text-align: center"><script type="math/tex">\frac{2^{SMOD}}{32}\times\frac{f_{os}}{12(256-TH1)}</script></td>
+        </tr>
+        <tr>
+          <td style="text-align: center">1</td>
+          <td style="text-align: center">0</td>
+          <td style="text-align: center">2</td>
+          <td style="text-align: center">9位元 UART</td>
+          <td style="text-align: center"><script type="math/tex">\frac{2^{SMOD}}{64}f_{os}</script></td>
+        </tr>
+        <tr>
+          <td style="text-align: center">1</td>
+          <td style="text-align: center">1</td>
+          <td style="text-align: center">3</td>
+          <td style="text-align: center">9位元 UART</td>
+          <td style="text-align: center"><script type="math/tex">\frac{2^{SMOD}}{32}\times\frac{f_{os}}{12(256-TH1)}</script></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>一般使用模式1就可以了。</p>
+  </li>
+  <li>SM2: 在模式2和3中使能通信特性，一般不用。</li>
+  <li>REN：使能接受，置一就是允许接受，置零就是不允许接收。</li>
+  <li>TB8：在模式2和3中设定传输的第九位。</li>
+  <li>RB8：在模式2和3中设定接受的第九位。</li>
+  <li>TI：发送中断旗标。不能硬件置零。</li>
+  <li>RI：接受中断旗标。不能硬件置零。</li>
+</ul>
+
+<h3 id="timer1">Timer1的设定</h3>
+
+<p>一般选择8位自动重载模式就可以了，根据上面的波特率就可以计算出<code>TH1</code>中应该重载的数值。下面是一张设置对应表。</p>
+
+<p><img src="https://lh4.googleusercontent.com/-IwsFV34WlVM/UXvO5DQs7qI/AAAAAAAAAww/nKiVKocEdsI/s912/%25E5%25B1%258F%25E5%25B9%2595%25E5%25BF%25AB%25E7%2585%25A7%25202013-04-27%2520%25E4%25B8%258B%25E5%258D%25889.12.41.png" alt="UART设置对应表" width="450" /></p>
+
+<h3 id="section-1">设置举例</h3>
+
+<pre><code>;PCON设置
+ANL PCON,#01111111B ;这里为SMOD=0，如果SMOD=1，就 ORL PCON,#10000000B
+;设置传输模式
+CLR SM0
+SETB SM1
+CLR SM2
+;设置允许接受
+SETB REN
+;设置波特率
+MOV TMOD,#00100000B ;Timer1 8位自动重载
+MOV TH1,#0FDH       ;9600bps
+SETB TR1            ;Timer1开始计时
+;使能中断
+SETB ES
+SETB EA
+</code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[第七章 外部中断]]></title>
+    <link href="http://pikipity.github.com/blog/scm-priciple-7.html"/>
+    <updated>2013-04-27T17:13:00+08:00</updated>
+    <id>http://pikipity.github.com/blog/scm-priciple-7</id>
+    <content type="html"><![CDATA[<p>8051单片机提供两个外部中断口，当从这两个外部中断口接收到外部中断信号时程序就会跳到对应的中断向量的位置。这两个外部中断使用的是<code>P3.2/INT0</code>和<code>P3.3/INT1</code>两个口。<code>INT0</code>对应的中断向量为<code>03H</code>，<code>INT1</code>对应的中断向量为<code>13H</code>。</p>
+
+<h3 id="section">外部中断的设置</h3>
+
+<p>外部中断的设置使用的是可位元寻址的<code>TCON</code>的后四位，<code>TCON</code>各位的分布为（已在<a href="http://pikipity.github.com/blog/scm-priciple-6.html">第六章 计时器/计数器</a>中提过）:</p>
+
+<pre><code>TF1 TR1 TF0 TR0 IE1 IT1 IE0 IT0
+</code></pre>
+
+<ul>
+  <li>IE1与IE0: 当检测到外部中断信号的边沿时，硬件置1；进入外部中断后，硬件置零。与软件无关</li>
+  <li>IT0与IT1: 由软件置一或清零，控制外部中断的触发类型。置一则为下降沿除法（检测到下降沿就进入中断）。置零则为低电平触发（检测到低电平就进入中断）</li>
+</ul>
+
+<h3 id="section-1">触发方式的选择</h3>
+
+<p>一般外部中断都是作为按键使用，由上面的设置可以看出，8051有两种外部中断触发方式，选择哪一种就成为了问题，两种各有优缺点：</p>
+
+<ul>
+  <li>下降沿触发：
+    <ul>
+      <li>
+        <p>优点：程序编写简单，不会出现按键按下后就不断的触发中断的情况。设置方法如下：</p>
+
+        <pre><code>SETB EX0
+SETB IT0
+SETB EX1
+SETB IT1
+SETB EA
+</code></pre>
+      </li>
+      <li>
+        <p>缺点：仅限于仿真中应用，实际应用中，无法防止误触按键的情况。并且按键只能局限于一下一下的按，不能出现长短按键的形式</p>
+      </li>
+    </ul>
+  </li>
+  <li>下降沿除法：
+    <ul>
+      <li>优点：通过软件的编写可以防止实际生活中误触按键的情况。基本思路就是在进入中断后先等待，一段时间后再次检测，看是否还是低电平，如果还是，就可以确定不是误触。可以通过程序编写出现长短按键的情况</li>
+      <li>缺点：程序编写复杂，容易出现连续触发同一中断的情况</li>
+    </ul>
+  </li>
+</ul>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[可曾记得那个叫渚的女孩]]></title>
     <link href="http://pikipity.github.com/blog/ke-ceng-ji-de-na-ge-jiao-zhu-de-nu-hai.html"/>
     <updated>2013-04-15T22:17:00+08:00</updated>
@@ -748,56 +938,6 @@ y=reshape(y,[1,length(y)]).*4;
 <p>用 <code>y=find_pi([100 1 10 1000])</code> 进行四次测试，结果为 <code>[3.0800 0 3.6000 3.0800]</code>，<code>[3.3200 4.0000 3.2000 3.2240]</code>, <code>[3.3200 4.0000 3.2000 3.1640]</code> 和 <code>[3.3200 4.0000 2.8000 3.0880]</code>，运行正常，结果看起来是真确的啦。</p>
 
 <p>存在一个问题，当运行实验点数较多的情况，比如10000次的时候，函数会卡死，但是把函数语句单独提出来使用一切正常，只是会有小卡顿，看来是我的小 MBP 内存不够了。但是问题还是很明显的，不论最小的点数是多少，都要至少产生两个以最大点数为基础的大矩阵来运算，实在是太浪费了，但是不让使用循环，浪费就浪费吧。函数已放在<a href="https://github.com/pikipity/Find-pi">我的 Github</a>，欢迎来 Fork 我，谢谢。</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Google要成立博物馆了？]]></title>
-    <link href="http://pikipity.github.com/blog/googleartproject.html"/>
-    <updated>2013-03-27T23:24:00+08:00</updated>
-    <id>http://pikipity.github.com/blog/googleartproject</id>
-    <content type="html"><![CDATA[<p>今天在网上搜索 <a href="https://www.google.com/search?q=google+project+glass&amp;aq=0&amp;oq=google+project&amp;aqs=chrome.0.0j57j65l3j0.4384&amp;sourceid=chrome&amp;ie=UTF-8#hl=en&amp;safe=active&amp;sclient=psy-ab&amp;q=google+project&amp;oq=google+project&amp;gs_l=serp.3..0i20j0l3.615.2967.0.4103.8.8.0.0.0.1.1619.3694.3j1j1j8-2.7.0...0.0...1c.1.7.psy-ab.EQaeD3OJNhU&amp;pbx=1&amp;bav=on.2,or.r_cp.r_qf.&amp;bvm=bv.44342787,d.aGc&amp;fp=f7d9c8fbbb7e8602&amp;biw=1280&amp;bih=728">“Google project”</a> 竟然发现了这样的一个网站 – <a href="http://www.googleartproject.com/zh-cn/collections/">“Art Project”</a>。</p>
-
-<p><img src="http://pikipity.github.com/images/post/googleartproject.jpg" alt="Google Art Project" width="550pt" /></p>
-
-<p>里面共收录214个博物馆中8366位艺术家的39859件作品的照片，最让我惊异的是我看到了<strong>“湖南省博物馆”</strong>，但是貌似只有这一个中国博物馆而已，里面的展品也只有50件。</p>
-
-<p><img src="http://pikipity.github.com/images/post/googleartproject_1.jpg" alt="名单中的湖南省博物馆" width="550pt" /></p>
-
-<p>侧边条允许“查找”、“添加到陈列室”（就是添加到自己账户的收藏里）、“分享”和“幻灯片演示”。“分享”仅支持”Google+”、“Facebook”、“Twitter”和“电子邮件”，中国人常用的社交网络就没有了，但是可以直接分享页面网址（这有个毛用，要网址我直接在地址栏里复制就好了，干嘛还要点你的侧边栏）。</p>
-
-<p><img src="http://pikipity.github.com/images/post/googleartproject_2.jpg" alt="侧边栏" width="350pt" /></p>
-
-<p>点进艺术品后可以放大，但是仅仅就是放大图片而已，如果图片不清晰，放大也就不清晰了。还可以查看“详细资料”，但是我看了三四个，都是什么都没有，哎，就这样吧，可怜兮兮的。</p>
-
-<p><img src="http://pikipity.github.com/images/post/googleartproject_3.jpg" alt="香港艺术博物馆的 Crisp air in mountains and lakes（还是有高清大图的）" width="550pt" /></p>
-
-<p>总的来看这个 “Google Art Project” 要想获得广泛认可和认知还需要点时间，但是既然 Google 连 Reader 都杀了，说不定这个玩意儿哪天也就没了，趁着还在，上去看看那些艺术品吧，尽管只是照片而已。</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[环保？文明？我们的地狱？]]></title>
-    <link href="http://pikipity.github.com/blog/2013-earth-hour.html"/>
-    <updated>2013-03-22T18:51:00+08:00</updated>
-    <id>http://pikipity.github.com/blog/2013-earth-hour</id>
-    <content type="html"><![CDATA[<p><img src="http://pikipity.github.com/images/post/60+CN_logo.jpg" width="550pt" /></p>
-
-<p>2013年2月23日星期六，晚上8:30到9:30是一年一度的<a href="http://earthhour.wwf.org.hk/">“地球一小时”</a>活动，<a href="https://zh.wikipedia.org/wiki/%E5%9C%B0%E7%90%83%E4%B8%80%E5%B0%8F%E6%97%B6">“Wiki”</a> 上是这么说的:</p>
-
-<blockquote>
-  <p>地球一小时（英语：Earth Hour）是一个全球性节能活动，提倡于每年三月的最后一个星期六当地时间晚上20:30，家庭及商界用户关上不必要的电灯及耗电产品一小时。希望借此活动推动电源管理，减少能源消耗，唤起人们以实际行动应对全球变暖的意识。</p>
-
-  <p>该活动最初由环保团体世界自然基金会澳洲及悉尼晨锋报合作发起，并于澳洲悉尼当地时间2007年3月31日，晚上8:30至9:30期间举行了第一次活动。地球一小时2007有近220万人参与，相信节省了当天悉尼市市电电源的2.2%至10.2%。2008年，该活动被推广到世界各地，全球40多个城市，近380个城镇接力执行该活动。</p>
-</blockquote>
-
-<p>玩过《海岛大亨》的同学们都知道，环保主义者什么的最讨厌了~~~~~~。我当然不是反对环保，但是人类文明的进步本身就是对环境掠夺的过程，当这种掠夺超过环境承受能力，那么就被我们称为“破坏生态环境”。但是人类发展如此迅速，怎么不可能超过环境的限制。更何况科技发展到今天，电力带来的污染已经可以说是一直在降低了，更重要的是其他污染因素。其实我想吐槽的是下面的视频，一小时发电厂产生的污染如果和生产你们用的那些荧光灯里的纽扣电池的污染比起来可以说是小巫见大巫了，这样真的“大丈夫”？</p>
-
-<iframe width="560" height="315" src="http://www.youtube.com/embed/2UywrjnOaUE" frameborder="0" allowfullscreen=""></iframe>
-
-<p>不管怎么说，还是要宣传一下环保的，从小事做起就好了，下面是<a href="http://www.earthhour.org.cn/index.php">“我做绿V客”</a>的宣传海报，这个活动还是不错的</p>
-
-<p><img src="http://pikipity.github.com/images/post/print-ad.jpg" width="550pt" /></p>
 ]]></content>
   </entry>
   
