@@ -14,6 +14,18 @@
 
   
   <entry>
+    <title type="html"><![CDATA[“扫雷”其实是一件燃到爆的游戏]]></title>
+    <link href="http://pikipity.github.com/blog/saolei.html"/>
+    <updated>2013-04-27T23:29:00+08:00</updated>
+    <id>http://pikipity.github.com/blog/saolei</id>
+    <content type="html"><![CDATA[<p>看完这个我才知道，原来“扫雷”还是这样<strong>燃</strong>的一个游戏。有兴趣的可以到这个<a href="http://saolei.net/">传说中的地方</a>看看，吓死人了。其实我是今天看了 <a href="https://zh.wikipedia.org/wiki/%E8%B8%A9%E5%9C%B0%E9%9B%B7">wikipedia</a> 才知道了这个<strong>燃到爆</strong>的游戏到底怎么玩。</p>
+
+<embed src="http://17173.tv.sohu.com/playercs2008.swf?Flvid=1577735" quality="high" width="500" height="395" align="middle" allowscriptaccess="always" allowfullscreen="true" mode="transparent" type="application/x-shockwave-flash" />
+
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[第八章 串口通信]]></title>
     <link href="http://pikipity.github.com/blog/scm-priciple-8.html"/>
     <updated>2013-04-27T17:41:00+08:00</updated>
@@ -863,81 +875,6 @@ MOV TL0,#(256-x)
 
 <embed src="http://player.youku.com/player.php/sid/XNTI4OTAwMTc2/v.swf" allowfullscreen="true" quality="high" width="480" height="400" align="middle" allowscriptaccess="always" type="application/x-shockwave-flash" />
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[通过几何概型来估算&pi;]]></title>
-    <link href="http://pikipity.github.com/blog/find-pi.html"/>
-    <updated>2013-03-28T07:52:00+08:00</updated>
-    <id>http://pikipity.github.com/blog/find-pi</id>
-    <content type="html"><![CDATA[<p><img src="http://pikipity.github.com/images/post/find_pi.jpg" alt="几何概型估算&pi;" width="550pt" /></p>
-
-<p>被涛神要求帮着写了一个通过模拟几何概型实验来估算 π 的 Matlab 函数。这个几何概型的实验是这样的：在一个二维直角坐标系中，存在一个以原点为中心，以1为半径的圆，和一个以原点为中心，边长为2的正方形（如图），向圆中随机投放点，计算此点在圆内的概率（忽略边线）我们可以得到如下公式，</p>
-
-<script type="math/tex; mode=display">% &lt;![CDATA[
-\begin{array}{rcl}
-P&=&\frac{S_{circle}}{S_{square}}\\
-&=&\frac{\pi r^2}{\left( 2r\right)^2}\\
-&=&\frac{\pi}{4}
-\end{array} %]]&gt;</script>
-
-<p>所以我们只要将上面得到的概率乘以4，就可以估算出 π 的值。很明显，既然是概率实验，那么存在一次试验中使用点的个数问题，使用的点越多，理论上得到的 π 的值应该越接近真实值。</p>
-
-<p>涛神希望这个函数实现下面几点要求：</p>
-
-<ol>
-  <li>可以一次性通过一个矩阵输入多次实验，每次实验中使用的点数不一样。</li>
-  <li>将多次实验所得到的 π 的值放在一个矩阵里进行输出。</li>
-  <li>使用 <code>rand</code> 函数。</li>
-  <li>不使用循环。</li>
-</ol>
-
-<p>由于 <code>rand</code> 的函数无法一次性产生多个二维随机数矩阵，又由于不能使用循环，使得这个函数的编写比较麻烦（吐槽一下，即使可以产生多个二维随机数矩阵我也没法进行后续操作啊！！）。于是我的想法如下：</p>
-
-<ol>
-  <li>根据最大的点数，用 <code>rand</code> 函数产生一个三维矩阵，前两个维度分别表示每个点的横纵坐标，最后一个维度表示第几次实验。例如，如果进行三次试验，每次试验的实验点数为1，10，100，那么就用 <code>rand</code> 生成一个100*2*3的随机矩阵。</li>
-  <li>根据所需要的不同实验中不同的点数对实验结果进行取样。继续上面的举例，我们就在第一个试验的结果（如果结果存在矩阵 <code>a</code> 中，那么实验一的结果也就是 <code>a(:,:,1)</code>）中只使用第一组数据，在第二个实验的结果中只使用前10组数据，在第三个实验的结果中只使用前100组数据。</li>
-  <li>通过上面的理论公式，计算得到结果，并输出。</li>
-  <li>在整个过程中，使用 <code>reshape</code> 函数进行二维和三维矩阵之间的转化。</li>
-</ol>
-
-<p>程序如下：</p>
-
-<pre><code>function y=find_pi(n)
-%y=find_pi(n)
-%input: n, a array for number of experiments, like [10 100 1000]
-%output: y, the approximate value of pi for every experiment
-
-%generate the matrix that will be used to sample results
-sample=triu(ones(max(n),max(n)),0);
-sample=sample(1:end,[n;n]);
-sample=reshape(sample,max(n),2,length(n));
-%generate the data matrix
-total_number_exp=length(n);
-maximum=max(n);
-all_experiment=rand(maximum,2,total_number_exp);
-%sample results
-all_experiment=all_experiment.*sample;
-%calculate value of pi
-final_experiment=(all_experiment.*2-1);
-final_result=sum(final_experiment.^2,2);
-y=sum(final_result&lt;1)./reshape(n,1,1,length(n));
-y=reshape(y,[1,length(y)]).*4;
-</code></pre>
-
-<p>主要用到下面几个常用函数：</p>
-
-<ol>
-  <li><code>triu(ones(n,n),0)</code>: 生成一个单位矩阵的上三角矩阵，其中 <code>n</code> 必须是一个正整数。</li>
-  <li><code>reshape</code>: 根据需要将矩阵重建为与原矩阵不同维数的矩阵。</li>
-  <li><code>rand</code>: 从0到1中抽取随机数生成矩阵。</li>
-  <li><code>sum</code>: 求和，可以根据括号中的条件计算符合条件的点的个数。</li>
-</ol>
-
-<p>用 <code>y=find_pi([100 1 10 1000])</code> 进行四次测试，结果为 <code>[3.0800 0 3.6000 3.0800]</code>，<code>[3.3200 4.0000 3.2000 3.2240]</code>, <code>[3.3200 4.0000 3.2000 3.1640]</code> 和 <code>[3.3200 4.0000 2.8000 3.0880]</code>，运行正常，结果看起来是真确的啦。</p>
-
-<p>存在一个问题，当运行实验点数较多的情况，比如10000次的时候，函数会卡死，但是把函数语句单独提出来使用一切正常，只是会有小卡顿，看来是我的小 MBP 内存不够了。但是问题还是很明显的，不论最小的点数是多少，都要至少产生两个以最大点数为基础的大矩阵来运算，实在是太浪费了，但是不让使用循环，浪费就浪费吧。函数已放在<a href="https://github.com/pikipity/Find-pi">我的 Github</a>，欢迎来 Fork 我，谢谢。</p>
 ]]></content>
   </entry>
   

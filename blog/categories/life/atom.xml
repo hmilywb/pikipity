@@ -14,6 +14,18 @@
 
   
   <entry>
+    <title type="html"><![CDATA[“扫雷”其实是一件燃到爆的游戏]]></title>
+    <link href="http://pikipity.github.com/blog/saolei.html"/>
+    <updated>2013-04-27T23:29:00+08:00</updated>
+    <id>http://pikipity.github.com/blog/saolei</id>
+    <content type="html"><![CDATA[<p>看完这个我才知道，原来“扫雷”还是这样<strong>燃</strong>的一个游戏。有兴趣的可以到这个<a href="http://saolei.net/">传说中的地方</a>看看，吓死人了。其实我是今天看了 <a href="https://zh.wikipedia.org/wiki/%E8%B8%A9%E5%9C%B0%E9%9B%B7">wikipedia</a> 才知道了这个<strong>燃到爆</strong>的游戏到底怎么玩。</p>
+
+<embed src="http://17173.tv.sohu.com/playercs2008.swf?Flvid=1577735" quality="high" width="500" height="395" align="middle" allowscriptaccess="always" allowfullscreen="true" mode="transparent" type="application/x-shockwave-flash" />
+
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[中国的富二代]]></title>
     <link href="http://pikipity.github.com/blog/money-man.html"/>
     <updated>2013-04-12T15:01:00+08:00</updated>
@@ -96,19 +108,6 @@
 
 <p>最后不禁想吐嘈一下：为什么高中地理是文科学科？众所周知，地理这块到了大学就是纯理的学科，尤其是GIS. 当时分科时笔者挥泪阔别了喜爱多年的地理学科（从小拆地球仪做平面地图的伤不起.）, 地理这东西完全不该和政治历史放在一起称作什么“政史地”啊~~，请让理科的课回到理科生的怀抱中吧！ </p>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[只有程序员才会相信的黄历 -- 程序员老黄历]]></title>
-    <link href="http://pikipity.github.com/blog/huang-li-of-programmers.html"/>
-    <updated>2013-04-02T20:27:00+08:00</updated>
-    <id>http://pikipity.github.com/blog/huang-li-of-programmers</id>
-    <content type="html"><![CDATA[<p>今天在逛 <a href="http://gurudigger.com/">Guru Diger</a> 的时候看到了<a href="http://gurudigger.com/ideas/573">这样</a>一个创意 – <a href="http://sandbox.runjs.cn/show/ydp3it7b">程序员老黄历</a>，非常有趣。（等等，我看看，我想在朝向是东76度，那个今天不变成了？貌似永远不会出现这个方向编程Bug最少(╯▽╰)）</p>
-
-<p><img src="https://lh3.googleusercontent.com/-wtsyR-2zlPI/UVrQv7m9U0I/AAAAAAAAAo4/shdNiBLxR0E/s512/Screen%2520Shot%25202013-04-02%2520at%25208.32.23%2520PM.png" width="480" alt="程序员老黄历" /></p>
-
-<p>我认为是个不错的 CSS 编程范例，直接右键看源代码就可以了。</p>
 ]]></content>
   </entry>
   
