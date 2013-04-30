@@ -14,6 +14,26 @@
 
   
   <entry>
+    <title type="html"><![CDATA[看 Fedora 19 Alpha，长知识]]></title>
+    <link href="http://pikipity.github.com/blog/fedora19-alpha.html"/>
+    <updated>2013-04-30T12:52:00+08:00</updated>
+    <id>http://pikipity.github.com/blog/fedora19-alpha</id>
+    <content type="html"><![CDATA[<p>Fedora 19 的版本代号为 “Schrödinger’s Cat”，最近薛定谔躺着也中枪，让我们来看看到底薛定谔的这只“胖次”给我们带了哪些新的玩物？</p>
+
+<p><a href="http://fedoraproject.org/zh_CN/get-prerelease"><img src="https://lh6.googleusercontent.com/-X7BDIQYkShQ/UX9PhH6qR-I/AAAAAAAAAxA/5nibeeLBO8o/s200/f19alpha.png" alt="下载Fedora 19 Alpha" width="400" /></a></p>
+
+<ul>
+  <li>开发者助手：采用直观的一条龙方式帮助首次使用 Linux 作为开发环境的用户部署指定语言的开发环境、模板、样例，且允许创建和 Github 的链接。没啥好说的，对于用 Linux 开发的新手来说很实用</li>
+  <li><a href="http://zh.wikipedia.org/wiki/%E4%B8%89%E7%BB%B4%E6%89%93%E5%8D%B0">3D 建模及打印</a>：增加对 OpenSCAD、Skeinforge、SFACT、Printrun 和 RepetierHost 等 3D 建模及打印工具的软件包。最近 3D 打印真的火起来了，虽然 4D 打印（材料的性质会随时间的变化而变化）已经开始研发，但是 3D 打印的实际应用和生活化还需要一段时间。</li>
+  <li><a href="http://zh.wikipedia.org/wiki/Node.js">node.js</a>：增加流行的服务器端 JavaScript 实现 Node.js，以及其使用的包管理工具 npm。</li>
+  <li><a href="http://zh.wikipedia.org/wiki/Ruby">Ruby</a> 2.0.0：增加新发布的 2.0.0 支持，已将保持提供对 1.9.3 的向后兼容。</li>
+  <li>[Scratch](http://en.wikipedia.org/wiki/Scratch_(programming_language)：一个新的图形化的编程语言，主要用于计算机教学使用。是一个非常适合变成初学者玩的编程语言，非常有意思，只是在中国的推广比较弱，官网在<a href="http://info.scratch.mit.edu/">这里</a>，有中文文档下载。</li>
+  <li>加入 Gnome 3.8、KDE 4.10 和 <a href="http://zh.wikipedia.org/wiki/MATE">MATE desktop</a> 1.6 的支持，这样一来主流桌面一应俱全了，很开心啊。说实话，当时刚换 Gnome 3 的时候各种不习惯，但是用惯了的话还是很有趣的。MATE desktop 的 Gnome 2 风格现在看起来还是丑了一点啊</li>
+</ul>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[“扫雷”其实是一件燃到爆的游戏]]></title>
     <link href="http://pikipity.github.com/blog/saolei.html"/>
     <updated>2013-04-27T23:29:00+08:00</updated>
@@ -855,26 +875,6 @@ MOV TL0,#(256-x)
 <p><img src="https://lh5.googleusercontent.com/-DTf1MOTRZAM/UVSCpxhpReI/AAAAAAAAAmQ/dbgBi8aqPe4/s800/6a0120a5580826970c017ee99cdc4b970d-800wi.jpg" width="550pt" /></p>
 
 <p>但是让 ipad 震动起来真的大丈夫？不会震坏么（我是说桌子 (╯﹏╰) ）？那么大的玩意在桌子上如果真的震起来会不会和发生地震一样啊？我很好奇 ( ⊙o⊙ ) ~~~~~~~~</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[那年我还是个纯真的小男孩 -- 《唐老鸭大冒险》]]></title>
-    <link href="http://pikipity.github.com/blog/duck-tales-2.html"/>
-    <updated>2013-03-28T22:38:00+08:00</updated>
-    <id>http://pikipity.github.com/blog/duck-tales-2</id>
-    <content type="html"><![CDATA[<p><img src="http://pikipity.github.com/images/post/DuckTales2.jpg" alt="唐老鸭大冒险 2" width="350pt" /></p>
-
-<p>听到这个名字好像回忆不起来是什么了，但是看了上面的截图你要是再想不起来，就真的是没有童年了，当年红白机（也就是小霸王啦）上无敌好玩的解密游戏。玩家控制唐纳德在五个不同的地域寻找宝藏，每个地图可以重复进出，最终目标是找齐隐藏地图，打败最终 BOSS，其中包含了大量的解密元素和隐藏要素，不是对地图超级熟悉经常在里面迷路，如果说一个大型迷宫可以迷路也就算了，一个横版过关也可以迷路，这个游戏真的是逆天的无敌有没有。小时后无限手残啊，一个地图打一天都过不了啊，很是怀念啊。</p>
-
-<p>为什么今天突然拿出这个来说呢，因为我看到《唐老鸭大冒险》竟然要出复刻版了，预计会在今年夏季登陆Wii U、XBOX360 以及 PS3 平台。先看一下宣传视频吧，很是期待啊，貌似多了很多关卡啊。</p>
-
-<embed src="http://player.youku.com/player.php/sid/XNTMwOTUyOTI0/v.swf" quality="high" width="480" height="400" align="middle" allowscriptaccess="sameDomain" allowfullscreen="true" type="application/x-shockwave-flash" />
-
-<p>没关系，对于我们这些没有高端设备的人，可以下个红白机虚拟器在电脑上玩一下老版，回一下童年也是很不错的嘛。对于我们这些手残党，也可以看一下<a href="http://space.bilibili.tv/374377">“岚少”</a>的视频娱乐一下嘛，日文全翻译，很好的。</p>
-
-<embed src="http://player.youku.com/player.php/sid/XNTI4OTAwMTc2/v.swf" allowfullscreen="true" quality="high" width="480" height="400" align="middle" allowscriptaccess="always" type="application/x-shockwave-flash" />
-
 ]]></content>
   </entry>
   
