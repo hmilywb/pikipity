@@ -73,7 +73,7 @@
 
 <p>基本电路图如下</p>
 
-<p><img src="/images/post/CS.jpg" alt="CS基本电路" width="550pt" /></p>
+<p><a href="https://www.circuitlab.com/circuit/emg7yb/cs/"><img src="https://www.circuitlab.com/circuit/emg7yb/screenshot/540x405/" alt="CS" /></a></p>
 
 <p>三个参数为</p>
 
@@ -88,22 +88,22 @@ R_{out}&=&R_D||\left(r_0+r_0R_sg_m+R_s\right)
 
 <p>基本电路图如下</p>
 
-<p><img src="/images/post/CG.jpg" alt="CG基本电路" width="550pt" /></p>
+<p><a href="https://www.circuitlab.com/circuit/xasasu/mosfet-common-gate/"><img src="https://www.circuitlab.com/circuit/xasasu/screenshot/540x405/" alt="CG" /></a></p>
 
 <p>三个参数为</p>
 
 <script type="math/tex; mode=display">% &lt;![CDATA[
 \begin{array}{rcl}
-A_v&=&\frac{R_1||\left(\frac{\left(\frac{1}{g_m}+\frac{R_D||R_L}{r_0g_m}\right)r_0^2g_m}{r_0^2g_m+1}\right)}{R_s+R_1||\left(\frac{\left(\frac{1}{g_m}+\frac{R_D||R_L}{r_0g_m}\right)r_0^2g_m}{r_0^2g_m+1}\right)}\cdot\frac{\left(R_D||R_L\right)\left(r_0^2g_m+1\right)}{\left(\frac{1}{g_m}+\frac{R_D||R_L}{r_0g_m}\right)r_0^2g_m}\\
-R_{in}&=&R_s+R_1||\left(\frac{\left(\frac{1}{g_m}+\frac{R_D||R_L}{r_0g_m}\right)r_0^2g_m}{r_0^2g_m+1}\right)\\
-R_{out}&=&\left(R_D||R_L\right)||\left[r_0+g_mr_0\left(R_s||R_1\right)+\left(R_s||R_1\right)\right]
+A_v&=&\frac{\frac{1}{r_0}+g_m}{\frac{1}{r_0}+\frac{1}{R_D||R_L}}\\
+R_{in}&=&\frac{R_D||R_L+r_0}{1+g_mr_0}\\
+R_{out}&=&R_D||R_L||r_0
 \end{array} %]]&gt;</script>
 
 <h3 id="common-drain--source-follower--cd--sf">共漏极 (Common Drain 或者 Source Follower 简称 CD 或者 SF)</h3>
 
 <p>基本电路如下</p>
 
-<p><img src="/images/post/CD.jpg" alt="CD基本电路" width="550pt" /></p>
+<p><a href="https://www.circuitlab.com/circuit/nv6nv2/source-follower/"><img src="https://www.circuitlab.com/circuit/nv6nv2/screenshot/540x405/" alt="CD" /></a></p>
 
 <p>三个参数为</p>
 
@@ -111,7 +111,7 @@ R_{out}&=&\left(R_D||R_L\right)||\left[r_0+g_mr_0\left(R_s||R_1\right)+\left(R_s
 \begin{array}{rcl}
 A_v&=&\frac{r_0||\left(R_s||R_L\right)}{r_0||\left(R_s||R_L\right)+\frac{1}{g_m}}\\
 R_{in}&=&\infty\\
-R_{out}&=&r_0||\frac{1}{g_m}
+R_{out}&=&r_0||\frac{1}{g_m}||R_s||R_L
 \end{array} %]]&gt;</script>
 
 <p>尽管上面的式子看起来都很复杂，但是实际中我们会经常忽略掉一些内容，比如当忽略负载时就令 $R_L$ 为 0 就可以了，当需要忽略 $r_0$ 时就让 $r_0\rightarrow\infty$ 就可以了。</p>
@@ -120,8 +120,32 @@ R_{out}&=&r_0||\frac{1}{g_m}
 
 <ol>
   <li>栅极阻抗：<script type="math/tex">R_G=\infty</script></li>
-  <li>漏极阻抗：<script type="math/tex">R_D=r_0+g_mr_0R_s+R_s</script></li>
-  <li>源极阻抗：$R_s=r_0||\frac{1}{g_m}$</li>
+  <li>
+    <p>漏极阻抗：<script type="math/tex">R_D=r_0+g_mr_0R_s+R_s</script></p>
+
+    <p><a href="https://www.circuitlab.com/circuit/ekkd7q/drain-resistor/"><img src="https://www.circuitlab.com/circuit/ekkd7q/screenshot/540x405/" alt="漏极阻抗" /></a></p>
+  </li>
+  <li>
+    <p>源极阻抗：<script type="math/tex">R_s=\frac{R_D+r_0}{1+g_mr_0}</script></p>
+
+    <p><a href="https://www.circuitlab.com/circuit/ra9a4h/source-resistor/"><img src="https://www.circuitlab.com/circuit/ra9a4h/screenshot/540x405/" alt="源极阻抗" /></a></p>
+  </li>
+  <li>
+    <p>两种特殊的 bias 的情况：</p>
+
+    <ul>
+      <li>
+<script type="math/tex; mode=display">R_1=\frac{1}{g_m}\|r_0</script>
+
+        <p><a href="https://www.circuitlab.com/circuit/59xk9n/special_1/"><img src="https://www.circuitlab.com/circuit/59xk9n/screenshot/540x405/" alt="特殊的 bias 的情况 1" /></a></p>
+      </li>
+      <li>
+<script type="math/tex; mode=display">R_2=\frac{R_D}{1-\frac{\frac{1}{R_D}-g_m}{\frac{1}{r_0}+\frac{1}{R_D}}}</script>
+
+        <p><a href="https://www.circuitlab.com/circuit/97y63v/special_2/"><img src="https://www.circuitlab.com/circuit/97y63v/screenshot/540x405/" alt="特殊的 bias 的情况 2" /></a></p>
+      </li>
+    </ul>
+  </li>
 </ol>
 ]]></content>
   </entry>
