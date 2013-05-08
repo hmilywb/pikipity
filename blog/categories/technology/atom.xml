@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[categories: Technology | 折腾来折腾去]]></title>
+  <link href="http://pikipity.github.com/blog/categories/technology/atom.xml" rel="self"/>
+  <link href="http://pikipity.github.com/"/>
+  <updated>2013-01-30T00:00:00+08:00</updated>
+  <id>http://pikipity.github.com/</id>
+  <author>
+    <name><![CDATA[pikipity]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[电子发烧友《医疗电子特刊》]]></title>
+    <link href="http://pikipity.github.com/blog/medical-elecfans-2013.html"/>
+    <updated>2013-05-08T09:12:00+08:00</updated>
+    <id>http://pikipity.github.com/blog/medical-elecfans-2013</id>
+    <content type="html"><![CDATA[<p><a href="http://www.elecfans.com/">电子发烧友</a>出了一期《<a href="http://www.elecfans.com/tt/act2013/medical/?utm_source=banner&amp;utm_medium=email&amp;utm_campaign=tekan20130507">医疗电子特刊》</a>，还是很不错的，以后想从事医疗电子方面的可以看一下，了解一下现在医疗电子的发展局势。网址在<a href="https://docs.google.com/file/d/0B8AjE9xqZzSiOG5LVHdkYmd2T2s/edit?usp=sharing">这里</a></p>
+
+<p><a href="https://docs.google.com/file/d/0B8AjE9xqZzSiOG5LVHdkYmd2T2s/edit?usp=sharing"><img src="https://lh5.googleusercontent.com/-JPg0luhQPyw/UYmn2p7RrlI/AAAAAAAAAyE/Wh-q37m8o7w/s500/fengmian.jpg" alt="电子发烧友《医疗电子特刊》" /></a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[可全方位移动机器人]]></title>
+    <link href="http://pikipity.github.com/blog/tapikema.html"/>
+    <updated>2013-05-08T08:54:00+08:00</updated>
+    <id>http://pikipity.github.com/blog/tapikema</id>
+    <content type="html"><![CDATA[<p><img src="https://lh6.googleusercontent.com/-PfSqIt_Jo2U/UYmktnAyCHI/AAAAAAAAAx0/vwc7mb-5Pno/s450/1706864258774701006.jpg" alt="攻壳特工队" /></p>
+
+<p>今天看到这样一个视频，总感觉这玩意在哪见过，最后恍然大悟，这不就是<a href="http://section9.seezone.net/index.php">《攻壳特工队》</a>里的<a href="http://baike.baidu.com/view/1512717.htm">“塔奇克马”</a>么？日本人的科技实力绝对不是盖的。( ⊙ o ⊙ )</p>
+
+<iframe height="498" width="510" src="http://player.youku.com/embed/XMzMzOTE2MDI0" frameborder="0" allowfullscreen=""></iframe>
+]]></content>
+  </entry>
+  
+</feed>
