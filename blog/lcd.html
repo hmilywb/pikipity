@@ -3,12 +3,12 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>汇编实战之乘除法 - 折腾来折腾去</title>
+	<title>第十章 LCD - 折腾来折腾去</title>
 	<meta name="author" content="pikipity">
 
 	
-	<meta name="description" content="汇编实战之乘除法 Posted by pikipity
-&nbsp; 2013年02月08日 Assembly Comments 上一篇《汇编实战之加减法》中介绍了加减法的考虑方法，接下来将会介绍稍微难一点乘除法的思考与实现方法。 一个16位二进制乘以一个8位二进制 算法 乘法还是很简单的， &hellip;">
+	<meta name="description" content="第十章 LCD Posted by pikipity
+&nbsp; 2013年05月11日 SCM Comments 什么是LCD LCD 就是液晶显示器，维基百科的解释在这里，以前的小液晶显示器没有背光，但是现在大多数 LCD 都会加入背光来使得显示器在没有外界光线的情况下也可以使用， &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -108,7 +108,7 @@
 	<div id="content" class="inner"><div>
 <article class="post">
 	
-	<h2 class="title">汇编实战之乘除法</h2>
+	<h2 class="title">第十章 LCD</h2>
 	<div class="meta">
 	       <div class="author" style="float:left;">
   
@@ -127,11 +127,11 @@
   
 
 
-<time datetime="2013-02-08T09:35:00+08:00" pubdate data-updated="true">2013年02月08日</time></div>
+<time datetime="2013-05-11T09:08:00+08:00" pubdate data-updated="true">2013年05月11日</time></div>
 		<div class="tags" style="float:left;">
 
 
-	<a class='category' href='/blog/categories/assembly/'>Assembly</a>
+	<a class='category' href='/blog/categories/scm/'>SCM</a>
 
 
 </div>
@@ -139,167 +139,341 @@
 			<span class="comments"><a href="#com_target">Comments</a></span>
 		
 	</div>
-	<div class="entry-content" style="clear:both;"><p>上一篇<a href="/blog/assembly-application-1.html">《汇编实战之加减法》</a>中介绍了加减法的考虑方法，接下来将会介绍稍微难一点乘除法的思考与实现方法。</p>
+	<div class="entry-content" style="clear:both;"><h3 id="lcd">什么是LCD</h3>
+
+<p>LCD 就是液晶显示器，维基百科的解释在<a href="https://zh.wikipedia.org/wiki/%E6%B6%B2%E6%99%B6%E6%98%BE%E7%A4%BA%E5%99%A8">这里</a>，以前的小液晶显示器没有背光，但是现在大多数 LCD 都会加入背光来使得显示器在没有外界光线的情况下也可以使用，但是背光的加入就让能耗上升了。</p>
+
+<p>一般分为下面三种类型：</p>
+
+<ul>
+  <li>文字型：内部存储器中内建有文字图形，输入对应的 ASCII code 就可以显示文字了。</li>
+  <li>绘图型：内部存储器无内建文字图形，所有显示的图形都必须按照 LCD 所对应的格式进行存储。</li>
+  <li>文字绘图两用型：可在上面两种形式下自由切换。</li>
+</ul>
+
+<p>下面介绍最简单的文字型 <a href="https://docs.google.com/file/d/0B8AjE9xqZzSiNDhUMWNGdE1VMW8/edit?usp=sharing">LCD1602</a> 为例进行介绍。LCD1602 共两行，每行可以显示16个字符。液晶显示器本身的控制非常复杂，所以我们需要外加一个芯片对其进行控制，一般情况下，在市面上买到的液晶显示器已经内置了这个控制芯片。对于字符型，一般使用 <a href="https://docs.google.com/file/d/0B8AjE9xqZzSiM09lbkVrQzJ0dDQ/edit?usp=sharing">HD44780</a> 控制芯片来进行控制。</p>
 
 <!--more-->
 
-<h2 id="section">一个16位二进制乘以一个8位二进制</h2>
+<h3 id="lcd1602-">LCD1602 接脚示意</h3>
 
-<h3 id="section-1">算法</h3>
+<p><img src="https://lh6.googleusercontent.com/-TwNOURsoWgc/UY2e9twOMKI/AAAAAAAAAyk/V3-F2RomnuA/s720/SMK1632_LCD1602_3.jpg" alt="LCD1602" /></p>
 
-<p>乘法还是很简单的，和加减法没有太大的不同，但要注意得数的范围。同样的，先看8051的汇编指令表，其中已经提供了一个用来做两个8位二进制之间的乘法的指令：</p>
+<p>按照上图从左到右的顺序，每个接脚的意义为：</p>
 
-<pre><code>MUL AB
+<ul>
+  <li>GND：接地</li>
+  <li>Vcc: 电源（5V）</li>
+  <li>V0：LCD亮度控制，一般用一个变阻器分压的方式来控制这个接脚的电压，一次来调节 LCD 显示的亮度，0V最亮</li>
+  <li>RS：暂存器选择接脚。接高为资料暂存器，接低为指令暂存器</li>
+  <li>R/W：读写选择接脚。接高为读，接低为写。</li>
+  <li>E：致能 LCD 接脚</li>
+  <li>D0~D7：资料线，传输数据</li>
+  <li>Vcc: 背光电源，可以串连一个330Ω的电阻，然后之间连接到5V电源</li>
+  <li>GND：背光地</li>
+</ul>
+
+<h3 id="section">控制方法</h3>
+
+<p>LCD内部寄存器分为指令寄存器和资料寄存器。指令寄存器就是用来写入你要 LCD 执行的指令的地方，例如控制游标的移动，，控制游标的显示方式，读取忙碌旗标等等，当一条命令写入之后，LCD便会执行这条命令。资料寄存器就是用来写入希望LCD显示内容的地方，在资料输入前，必须先指定资料存储的地址，然后再输入资料的内容。</p>
+
+<p>在控制的过程中要注意两点：</p>
+
+<ol>
+  <li>控制 E 来置能 LCD，要根据时序图来控制，简单来说就是：在读写前先拉低 E，再拉高 E，创造一个上升沿，读写结束后，要拉低 E。</li>
+  <li>
+    <p>LCD 对于数据的处理速度非常慢，所以数据是否读写完毕是一个非常重要的问题，有下面两种方法可以判断数据是否读写完毕：</p>
+
+    <ol>
+      <li>R/W 接脚接地，一直保持写的状态，每次写完数据之后预留出足够长的时间给LCD处理信号。虽然程序和电路简单，但是预留时间长短难以控制。</li>
+      <li>R/W 不接地，通过读取 LCD 的忙碌旗标来判断数据是否读取完毕。虽然程序和电路复杂，但是不用考虑预留时间的长短。</li>
+    </ol>
+  </li>
+</ol>
+
+<h3 id="lcd-1">LCD模组命令</h3>
+
+<p>下面的命令从左到右分别对应的接脚为</p>
+
+<pre><code>RS  R/W  D7  D6  D5  D4  D3  D2  D1  D0
 </code></pre>
 
-<p>这条指令同时对累加器Acc与累乘器B作用，将Acc与B中的数值相乘以后，高8位到B中，低八位到Acc中。那么还是依照加法算法的思考路线，我们就可以这样了：</p>
+<ol>
+  <li>
+    <p>向指令寄存器中写入的指令: 游标指示的就是如果未重新指定资料存放的地址，新写入的资料就会在游标处显示。</p>
 
-<script type="math/tex; mode=display">% <![CDATA[
-\begin{array}{rcl}
-c&=&a*b\\
-&=&\left([a_{15}\cdots a_8]\times256+[a_7\cdots a_0]\right)*[b_7\cdots b_0]\\
-[c_{15}\cdots c_8]\times 256+[c_7\cdots c_0]&=&\left([a_{15}\cdots a_8]*[b_7\cdots b_0]\right)\times256+\left([a_7\cdots a_0]*[b_7\cdots b_0]\right)
-\end{array} %]]></script>
+    <ul>
+      <li>
+        <p>功能设定:</p>
 
-<p>在上面的式子中，我用“$*$”标记需要用MUL指令来做乘法的地方，用”$\times$”来标记需要移位的地方。低八位相乘会产生一个16位的二进制数，高八位相乘再移位后会产生一个24位的二进制数，所以至少我们需要3个地址来存放得数。</p>
-
-<p>那么还需不需要考虑低八位乘积的16位数与高八位乘积的24位数相加的进位呢？由于16位二进制最大换算成十进制是65536，而八进制是255，所以得数最大是16777216，也就是说会刚好超出24位，所以得数还需要一个C来存放进位。这样就可以开始编程了。</p>
-
-<h3 id="section-2">汇编子程序</h3>
-
-<pre><code>;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;Multiplication of unsigned number
-;input: 16 bits: 7CH 7DH
-;        8 bits:     7FH
-;output 24 bits: C 60H 61H 62H
-;REG:A(have been protected), B(have been protected), 63H, C
-Multi:
-	PUSH Acc   ;protect Acc
-	PUSH B     ;protect B
-	;Multiply low 8 bits
-	MOV A,7DH
-	MOV B,A
-	MOV A,7FH
-	MUL AB
-	MOV 62H,A
-	MOV A,B
-	MOV 61H,A
-	;Multiply high 8 bits
-	MOV A,7CH
-	MOV B,A
-	MOV A,7FH
-	MUL AB
-	MOV 63H,A
-	MOV A,B
-	MOV 60H,A
-	;Summation center 8 bits
-	CLR C
-	MOV A,63H
-	ADD	A,61H
-	MOV 61H,A
-	;Add C and high 8 bits
-	MOV A,60H
-	ADDC A,#0
-	MOV 60H,A
-	;
-	POP B      ;back B
-	POP Acc    ;back Acc
-	RET
+        <pre><code>0 0 0 0 1 DL N F X X
 </code></pre>
 
-<h2 id="section-3">一个16位二进制除以一个8位二进制</h2>
+        <p>DL: 资料长度。DL=0，高4位。DL=1,8位</p>
 
-<h3 id="section-4">算法</h3>
+        <p>N: 可以显示的行数。N=0，一行。N=1，两行。</p>
 
-<p>通过查汇编指令表，我们可以发现，和乘法一样8051也提供了一个8位二进制的除法指令：</p>
+        <p>F: 字形设定。F=0，5*7点阵。F=1，5*10点阵。</p>
+      </li>
+      <li>
+        <p>显示器控制：</p>
 
-<pre><code>DIV AB
+        <pre><code>0 0 0 0 0 0 1 D C B
 </code></pre>
 
-<p>还是对Acc与B作用，商到Acc中，余数到B中。但是除法比较特殊，当我们通过与上面乘法类似的算法考虑的时候，会得到下面的式子：</p>
+        <p>D: 显示器开关</p>
 
-<script type="math/tex; mode=display">% <![CDATA[
-\begin{array}{rcl}
-c&=&\frac{a}{b}\\
-&=&\left(a\mbox{的高八位与}b\mbox{的商}\times256+a\mbox{的低八位与}b\mbox{的商}\right)\\
-&&+\left(\frac{a\mbox{的高八位与}b\mbox{的余数}\times256+a\mbox{的低八位与}b\mbox{的余数}}{b}\right)
-\end{array} %]]></script>
+        <p>C：是否用游标显示位元位置</p>
 
-<p>最终得到，商的高八位就是$a$的高八位与$b$的商，商的低八位就是$a$的低八位与$b$的商，余数的高八位就是$a$的高八位与$b$的余数，余数的低八位就是$a$的低八位与$b$的余数。但是经过测试，这是不正确的，为什么呢？再次观察我们最后的结论就会发现问题，式子本身没有问题，<strong><em>问题在于进位</em></strong>。尽管$a$的高八位与$b$的余数和$a$的低八位与$b$的余数分别与$b$做除法的时候无法再出现非0商了，但是两者加起来却有可能大于$b$，在与$b$做除法的时候就会出现非0商，如果单纯按照上面的方法做，我们就会少考虑这个由余数产生出来的商的进位。所以上面的算法行不通。</p>
+        <p>B：是否让游标闪烁</p>
+      </li>
+      <li>
+        <p>输入模式设定：</p>
 
-<p>最终我采用的是移位的方法，原理类似与笔算除法。基本流程如下</p>
+        <pre><code>0 0 0 0 0 0 0 1 I/D S
+</code></pre>
 
-<p><img src="/images/post/assembly-application-2.png" width="400pt" alt="除法流程图" /></p>
+        <table>
+          <thead>
+            <tr>
+              <th style="text-align: center">S</th>
+              <th style="text-align: center">I/D</th>
+              <th style="text-align: center">动作</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="text-align: center">0</td>
+              <td style="text-align: center">0</td>
+              <td style="text-align: center">字元不动，游标左移</td>
+            </tr>
+            <tr>
+              <td style="text-align: center">0</td>
+              <td style="text-align: center">1</td>
+              <td style="text-align: center">字元不动，游标右移</td>
+            </tr>
+            <tr>
+              <td style="text-align: center">1</td>
+              <td style="text-align: center">0</td>
+              <td style="text-align: center">游标不动，字元右移</td>
+            </tr>
+            <tr>
+              <td style="text-align: center">1</td>
+              <td style="text-align: center">1</td>
+              <td style="text-align: center">游标不动，字元左移</td>
+            </tr>
+          </tbody>
+        </table>
+      </li>
+      <li>
+        <p>清除显示（显示屏清零，游标回归左上角）：</p>
 
-<h3 id="section-5">汇编子程序</h3>
+        <pre><code>0 0 0 0 0 0 0 0 0 1
+</code></pre>
+      </li>
+      <li>
+        <p>游标归位（资料不变，仅将游标移至左上角位置）：</p>
 
-<pre><code>;;;;;;;;;;;;;;;;;;;;;;;;;
-;Division for unsigned integer
-;input: 16 bits: 64H 65H
-;        8 bits: 66H
-;output: quotient: 67H 68H
-;        remainder: 69H
-;Reg: A(has been protected), B(has been protected), C, 6AH
-division:
-	PUSH Acc   ;protect Acc
-	PUSH B     ;protect B
-	CLR C      ;clear C
-	;clear result
-	MOV 67H,#0
-	MOV 68H,#0
-	MOV 69H,#0
-	MOV 70H,#0
-	MOV 6BH,#0
-	;division for high 8 bits
-	MOV A,66H
-	MOV B,A
-	MOV A,64H
-	DIV AB
-	;quotient go to high quotient of final result
-	MOV 67H,A
-	;remiander go to remainder of final result
-	MOV A,B
-	MOV 69H,A
-	;begin 8 times of loop
-	MOV 6AH,#8
-division_loop:
-	;rotate 65H left with C
-	MOV A,65H
-	RLC A
-	MOV 65H,A
-	;rotate 69H left with C
-	MOV A,69H
-	RLC A
-	MOV 69H,A    ;result -&gt; rotate 69H and 65H left together with C
-	;69H - 66H
-	CLR C
-	MOV A,69H
-	SUBB A,66H   ;if negative C=1, otherwise C=0. Result in A
-	;
-	JC division_quotient_set_0   ;if C=1, go to division_quotient_set_0
-division_quotient_set_1:    ;if C=0, go down
-	MOV 69H,A     ;sub result go to 69H
-	;most right bit of 68H set 1
-	SETB C
-	MOV A,68H
-	RLC A
-	MOV 68H,A
-	;go to dicision
-	JMP division_loop_dicision
-division_quotient_set_0:    ;if C=1, go down
-	;most right bit of 68H set 0
-	CLR C
-	MOV A,68H
-	RLC A
-	MOV 68H,A
-division_loop_dicision:
-	DEC 6AH
-	MOV A,6AH
-	CJNE A,#0,division_loop
-	;
-	POP B      ;get back B
-	POP Acc    ;get back Acc
-	RET
+        <pre><code>0 0 0 0 0 0 0 0 1 X
+</code></pre>
+      </li>
+      <li>
+        <p>游标移位控制：</p>
+
+        <pre><code>0 0 0 0 0 1 S/C R/L X X
+</code></pre>
+
+        <table>
+          <thead>
+            <tr>
+              <th style="text-align: center">S/C</th>
+              <th style="text-align: center">R/L</th>
+              <th style="text-align: center">动作</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="text-align: center">0</td>
+              <td style="text-align: center">0</td>
+              <td style="text-align: center">游标左移</td>
+            </tr>
+            <tr>
+              <td style="text-align: center">0</td>
+              <td style="text-align: center">1</td>
+              <td style="text-align: center">游标右移</td>
+            </tr>
+            <tr>
+              <td style="text-align: center">1</td>
+              <td style="text-align: center">0</td>
+              <td style="text-align: center">整屏左移</td>
+            </tr>
+            <tr>
+              <td style="text-align: center">1</td>
+              <td style="text-align: center">1</td>
+              <td style="text-align: center">整屏右移</td>
+            </tr>
+          </tbody>
+        </table>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>从指令寄存器读取忙碌旗标</p>
+
+    <pre><code>0 1 BF A6 A5 A4 A3 A2 A1 A0
+</code></pre>
+
+    <p>BF: 忙碌旗标</p>
+
+    <p>A0~A6: 游标所在位置</p>
+  </li>
+  <li>
+    <p>向资料寄存器写入资料：资料寄存器分为两个 – CGRAM 和 DDRAM。在写入资料之前要先判断两件事：</p>
+
+    <ol>
+      <li>
+        <p>现在游标所在的位置是否是下一笔数据要显示的位置。如果是，就直接向 DDRAM 写入资料就可以了；如果不是就移动游标到需要的位置或是从新指定 DDRAM 的地址。两行每行8个字的地址如下：</p>
+
+        <p>第一行：从<code>0x00</code>到<code>0x0F</code></p>
+
+        <p>第二行：从<code>0x40</code>到<code>0x4F</code></p>
+      </li>
+      <li>
+        <p>要显示的字符在 ASCII 码中是否有对应。如果有，直接写入对应的 ASCII 码就可以了；如果没有就需要先在 CGRAM 中将这个字符造出来，造字分为两步，首先，指定这个新字符在 CGRAM 中存放的地址，然后向这个地址中写入要造的字符就可以了。每一个字符都是一个8*8的点阵，也就是说，你要连续写入8次数据。需要注意的是，左边三列有空出来，一般为了美观，最下面一行要空出来，下面是一个笑脸的造字示意图</p>
+
+        <p><img src="https://lh3.googleusercontent.com/-k6OQiaSfv1A/UY2w9DI1x6I/AAAAAAAAAy0/-xuEFMzKUsk/s614/%25E5%25B1%258F%25E5%25B9%2595%25E5%25BF%25AB%25E7%2585%25A7%25202013-05-11%2520%25E4%25B8%258A%25E5%258D%258810.45.34.png" alt="存放在```0x40```的一个笑脸" /></p>
+
+        <p>可以用来存放新字符的 CGRAM 的地址如下：<code>0x40</code>，<code>0x48</code>，<code>0x50</code>，<code>0x58</code>，<code>0x68</code>，<code>0x70</code>，<code>0x78</code>。要使用的时候，就和写入 ASCII 码一样，直接向 DDRAM 中写入 CGRAM 的地址就可以了。</p>
+      </li>
+    </ol>
+
+    <p>写入资料的时候，先写入地址（如果地址就是光标位置就不用写入地址了），然后写入资料就可以了。</p>
+
+    <p>命令如下：</p>
+
+    <ul>
+      <li>
+        <p>CGRAM 地址写入（由于地址的高四位至少也是4，所以A7=0，A6=1）</p>
+
+        <pre><code>0 0 0 1 A5 A4 A3 A2 A1 A0
+</code></pre>
+      </li>
+      <li>
+        <p>DDRAM 地址写入（A7必须是1，后面的7位按照提到的方法确定）</p>
+
+        <pre><code>0 0 1 A6 A5 A4 A3 A2 A1 A0
+</code></pre>
+      </li>
+      <li>
+        <p>向 DDRAM 和 CGRAM 中写入资料：</p>
+
+        <pre><code>1 0 D7 D6 D5 D4 D3 D2 D1 D0
+</code></pre>
+      </li>
+      <li>
+        <p>读取 DDRAM 和 CGRAM 中的资料：</p>
+
+        <pre><code>1 1 D7 D6 D5 D4 D3 D2 D1 D0
+</code></pre>
+      </li>
+    </ul>
+  </li>
+</ol>
+
+<h3 id="section-1">例程</h3>
+
+<p>为了方便，这里用C语言编写例程，我们只要把命令放入一个.h头文件中，在需要的时候调用这个头文件里的函数就可以。我这里电路接法:</p>
+
+<p><img src="https://lh5.googleusercontent.com/-gswQOTl2dNU/UY27DOjDqgI/AAAAAAAAAzE/rOD-GyLHY2U/s321/%25E5%25B1%258F%25E5%25B9%2595%25E5%25BF%25AB%25E7%2585%25A7%25202013-05-11%2520%25E4%25B8%258A%25E5%258D%258811.28.45.png" alt="LCD1602例程接法" /></p>
+
+<p>ADDR0就是P1.0，ADDR1就是P1.1，ENLCD1就是P1.5，DB0~DB7就是P0.0~P0.7。头文件 LCD.h 如下</p>
+
+<pre><code>#ifndef _LCD_H_
+#define _LCD_H_
+
+sbit ADDR0=P1^0;
+sbit ADDR1=P1^1;
+sbit ENCLD1=P1^5;
+sbit DB0=P0^0;
+sbit DB1=P0^1;
+sbit DB2=P0^2;
+sbit DB3=P0^3;
+sbit DB4=P0^4;
+sbit DB5=P0^5;
+sbit DB6=P0^6;
+sbit DB7=P0^7;
+
+void waiting()
+{
+	P0=0xFF;
+	while(DB7)
+	{
+		ENLCD1=0;
+		ADDR0=0;
+		ADDR1=1;
+		ENLCD1=1;
+	}
+	ENLCD1=0;
+}
+
+void write_cmd(unsigned char cmd)
+{
+	waiting();
+	ENLCD1=0;
+	ADDR0=0;
+	ADDR1=0;
+	P0=cmd;
+	ENLCD1=1;
+	ENLCD1=0;
+}
+
+void write_data(unsigned char dat)
+{
+	waiting();
+	ENLCD1=0;
+	ADDR0=1;
+	ADDR1=0;
+	P0=dat;
+	ENLCD1=1;
+	ENLCD1=0;
+}
+
+void write_string(unsigned char addr,unsigned char *p)
+{
+	addr=addr|0x80;
+	write_cmd(addr);
+	while(*p!='\0')
+	{
+		write_data(*p++);
+	}
+}
+
+void LCD_init()
+{
+	write_cmd(0x38);
+	write_cmd(0x0C);
+	write_cmd(0x06);
+	write_cmd(0x01);
+}
+
+#endif
+</code></pre>
+
+<p>如果要输出一句”Hello World!”的话，主程序可以这样写:</p>
+
+<pre><code>#include &lt;REG52.h&gt;
+#include &lt;LCD.h&gt;
+#include &lt;intrins.h&gt; 
+
+unsigned char code World[]={"Hello World!"};
+
+void main()
+{
+	LCD_init();
+	write_string(0x00,World);
+	write_string(0x42,World);
+	while(1);
+}
 </code></pre>
 </div>
 
@@ -344,19 +518,17 @@ var jiathis_config={
   
 
 
-<time datetime="2013-02-08T09:35:00+08:00" pubdate data-updated="true">2013年02月08日</time></p>
+<time datetime="2013-05-11T09:08:00+08:00" pubdate data-updated="true">2013年05月11日</time></p>
 </footer>
 
 <section>
 <ul id="left-right">
 <span style="float:left">
 	
-        <a class="basic-alignment left" href="/blog/assembly-application-1.html" title="Previous Post: 汇编实战之加减法"><font face=Wingdings>&#239;</font> 汇编实战之加减法</a>
+        <a class="basic-alignment left" href="/blog/summer-vacation-2013.html" title="Previous Post: 暑假开始 O(∩_∩)O"><font face=Wingdings>&#239;</font> 暑假开始 O(∩_∩)O</a>
         </span>
 <span style="float:right">
-	
-        <a class="basic-alignment right" href="/blog/assembly-application-3.html" title="next Post: 汇编实战之LED数码管">汇编实战之LED数码管 <font face=Wingdings>&#240;</font></a>
-       </span>
+	 </span>
 </ul>
 </section>
 
