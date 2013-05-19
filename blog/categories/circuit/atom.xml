@@ -167,7 +167,7 @@ R_{out}&=&r_0||\frac{1}{g_m}||R_s||R_L
 
 <p>n-channel MOSFET有下面5种符号表示法，分别表示不同种类的NMOS</p>
 
-<p><img src="{{root_url}}/images/post/MOStype.jpg" alt="NMOS不同种类的符号" width="550pt" /></p>
+<p><img src="/images/post/MOStype.jpg" alt="NMOS不同种类的符号" width="550pt" /></p>
 
 <ol>
   <li>
@@ -216,7 +216,7 @@ g_m&=&\frac{2I_D}{V_{GS}-V_{TH}}
 
 <p>p-channel MOSFET一样有5种符号表示法，分别代表不同种类的PMOS</p>
 
-<p><img src="{{root_url}}/images/post/PMOStype.jpg" alt="PMOS不同种类的符号" width="550pt" /></p>
+<p><img src="/images/post/PMOStype.jpg" alt="PMOS不同种类的符号" width="550pt" /></p>
 
 <ol>
   <li>
@@ -255,9 +255,9 @@ V_{DG}<\left\| V_{TH}\right\| %]]&gt;</script></li>
 
 <p>Small Signal Analysis最重要的就是明确MOSFET的等效电路，然后就是电路分析了。NMOS和PMOS的等效电路如图</p>
 
-<p><img src="{{root_url}}/images/post/NMOSequivalentcircuit.jpg" alt="NMOS等效电路" width="450pt" /></p>
+<p><img src="/images/post/NMOSequivalentcircuit.jpg" alt="NMOS等效电路" width="450pt" /></p>
 
-<p><img src="{{root_url}}/images/post/PMOSequivalentcircuit.jpg" alt="PMOS等效电路" width="450pt" /></p>
+<p><img src="/images/post/PMOSequivalentcircuit.jpg" alt="PMOS等效电路" width="450pt" /></p>
 ]]></content>
   </entry>
   

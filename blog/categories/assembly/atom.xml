@@ -190,17 +190,17 @@ MOV TL0,#(256-x)
       <li>
         <p>内部 RAM 内数据的移动</p>
 
-        <p><img src="{{root_url}}/images/post/MOV.jpg" width="550pt" /></p>
+        <p><img src="/images/post/MOV.jpg" width="550pt" /></p>
       </li>
       <li>
         <p>外部 RAM 内数据读取与写入</p>
 
-        <p><img src="{{root_url}}/images/post/MOVX.jpg" width="350pt" /></p>
+        <p><img src="/images/post/MOVX.jpg" width="350pt" /></p>
       </li>
       <li>
         <p>程序内存数据读取</p>
 
-        <p><img src="{{root_url}}/images/post/MOVC.jpg" width="350pt" /></p>
+        <p><img src="/images/post/MOVC.jpg" width="350pt" /></p>
       </li>
     </ul>
 
@@ -220,24 +220,24 @@ MOV R0,A
   <li>
     <p>计算：</p>
 
-    <p><img src="{{root_url}}/images/post/MATH.jpg" width="550pt" /></p>
+    <p><img src="/images/post/MATH.jpg" width="550pt" /></p>
   </li>
   <li>
     <p>逻辑运算：</p>
 
-    <p><img src="{{root_url}}/images/post/ANL_A.jpg" width="550pt" /></p>
+    <p><img src="/images/post/ANL_A.jpg" width="550pt" /></p>
   </li>
   <li>
     <p>布尔运算和判断：</p>
 
-    <p><img src="{{root_url}}/images/post/ANL_C.jpg" width="350pt" /></p>
+    <p><img src="/images/post/ANL_C.jpg" width="350pt" /></p>
   </li>
   <li>
     <p>跳转：</p>
 
-    <p><img src="{{root_url}}/images/post/JUMP_1.jpg" width="550pt" /></p>
+    <p><img src="/images/post/JUMP_1.jpg" width="550pt" /></p>
 
-    <p><img src="{{root_url}}/images/post/JUMP_2.jpg" width="350pt" /></p>
+    <p><img src="/images/post/JUMP_2.jpg" width="350pt" /></p>
   </li>
 </ol>
 
@@ -265,7 +265,7 @@ MOV R0,A
 
 <p>从二进制到十进制有一种特殊的转换方法，就是BCD转换方法，先将二进制4位为一部分的分开然后在进行转化，下面的例子展示了如何进行转化。</p>
 
-<p><img src="{{root_url}}/images/post/scm-principle-3_1.jpg" alt="BCD转化举例" width="200pt" /></p>
+<p><img src="/images/post/scm-principle-3_1.jpg" alt="BCD转化举例" width="200pt" /></p>
 
 <p>注意：BCD转化出来的一定是十进制，不要与16进制搞混，虽然看上去一样，但是表示的大小则完全不一样。</p>
 
@@ -285,7 +285,7 @@ MOV R0,A
 
 <p>定点小数的小数位数是固定的，定点小数表示简单，我们可以随意设定自己这个程序里面小数定点小数的表示方法，比如，我们可以规定我们的小数为8位，小数点前的数为7位，最前面还有一个符号位，那么我们的小数就表示如下图所示：</p>
 
-<p><img src="{{root_url}}/images/post/scm-principle-3_2.jpg" alt="定点小数表示" width="250pt" /></p>
+<p><img src="/images/post/scm-principle-3_2.jpg" alt="定点小数表示" width="250pt" /></p>
 
 <p>定点小数的好处是表示简单、计算方便。缺点也很明显，无法表示拥有很多的小数位数的数，所以我们需要浮点小数。</p>
 
@@ -351,7 +351,7 @@ MOV R0,A
   <li>
     <p>不是纯小数，就可以把数字分为两部分，整数部分和小数部分，整数部分就按照普通的方法转换就可以了，小数部分可以通过下面的方法转换：</p>
 
-    <p><img src="{{root_url}}/images/post/scm-principle-3_3.jpg" alt="十进制小数部分转化方法" width="350pt" /></p>
+    <p><img src="/images/post/scm-principle-3_3.jpg" alt="十进制小数部分转化方法" width="350pt" /></p>
 
     <p>然后将转化出来的二进制数的小数部分和整数部分组合在一起，左移小数点直到整数部分只剩一个1为止，小数部分取左起23位就是尾数位，将小数点移动的位数加127，转化为二进制就是阶码位。</p>
   </li>
@@ -373,7 +373,7 @@ MOV R0,A
     <link href="http://pikipity.github.com/blog/assembly-application-3.html"/>
     <updated>2013-02-08T21:25:00+08:00</updated>
     <id>http://pikipity.github.com/blog/assembly-application-3</id>
-    <content type="html"><![CDATA[<p>之前已经讲述了如何用汇编来实现<a href="{{ root_url }}/blog/assembly-application-1.html">加减</a><a href="{{root_url}}/blog/assembly-application-2.html">乘除</a>的实现方法，但是只是做运算是远远不够的，还需要将运算后的数字显示出来，那么如何显示呢，这篇讲述如何用时钟中断以尽量少的I/O口的数量来实现LED数码管的显示。</p>
+    <content type="html"><![CDATA[<p>之前已经讲述了如何用汇编来实现<a href="/blog/assembly-application-1.html">加减</a><a href="/blog/assembly-application-2.html">乘除</a>的实现方法，但是只是做运算是远远不够的，还需要将运算后的数字显示出来，那么如何显示呢，这篇讲述如何用时钟中断以尽量少的I/O口的数量来实现LED数码管的显示。</p>
 
 <!--more-->
 
@@ -392,7 +392,7 @@ MOV R0,A
 
 <h3 id="section-1">电路图</h3>
 
-<p><img src="{{root_url}}/images/post/assembly-application-3.png" alt="数码管显示电路图" /></p>
+<p><img src="/images/post/assembly-application-3.png" alt="数码管显示电路图" /></p>
 
 <p>主要原件如下：</p>
 
@@ -402,7 +402,7 @@ MOV R0,A
   <li>
     <p>用来选择数码管的38译码器 74HC138，这样就可以只用三个引脚就可以最多从8个数码管中选择一个了。74HC138的真值表如下</p>
 
-    <p><img src="{{root_url}}/images/post/assembly-application-3-table.png" alt="74HC138真值表" /></p>
+    <p><img src="/images/post/assembly-application-3-table.png" alt="74HC138真值表" /></p>
   </li>
 </ol>
 
@@ -517,7 +517,7 @@ STOP:
 
 <p>将速度放慢后的仿真效果是这样的：</p>
 
-<p><img src="{{root_url}}/images/post/assembly-application-3-result.gif" alt="仿真效果" /></p>
+<p><img src="/images/post/assembly-application-3-result.gif" alt="仿真效果" /></p>
 
 <p>注意：由于仿真软件只是显示仿真的计算效果，可能会由于时间调整不恰当，出现不合适的仿真结果，建议可能的话，还是用实物比较靠谱</p>
 ]]></content>
@@ -528,7 +528,7 @@ STOP:
     <link href="http://pikipity.github.com/blog/assembly-application-2.html"/>
     <updated>2013-02-08T09:35:00+08:00</updated>
     <id>http://pikipity.github.com/blog/assembly-application-2</id>
-    <content type="html"><![CDATA[<p>上一篇<a href="{{ root_url }}/blog/assembly-application-1.html">《汇编实战之加减法》</a>中介绍了加减法的考虑方法，接下来将会介绍稍微难一点乘除法的思考与实现方法。</p>
+    <content type="html"><![CDATA[<p>上一篇<a href="/blog/assembly-application-1.html">《汇编实战之加减法》</a>中介绍了加减法的考虑方法，接下来将会介绍稍微难一点乘除法的思考与实现方法。</p>
 
 <!--more-->
 
@@ -618,7 +618,7 @@ c&=&\frac{a}{b}\\
 
 <p>最终我采用的是移位的方法，原理类似与笔算除法。基本流程如下</p>
 
-<p><img src="{{ root_url }}/images/post/assembly-application-2.png" width="400pt" alt="除法流程图" /></p>
+<p><img src="/images/post/assembly-application-2.png" width="400pt" alt="除法流程图" /></p>
 
 <h3 id="section-5">汇编子程序</h3>
 
