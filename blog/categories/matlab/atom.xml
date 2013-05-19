@@ -18,7 +18,7 @@
     <link href="http://pikipity.github.com/blog/find-pi.html"/>
     <updated>2013-03-28T07:52:00+08:00</updated>
     <id>http://pikipity.github.com/blog/find-pi</id>
-    <content type="html"><![CDATA[<p><img src="/images/post/find_pi.jpg" alt="几何概型估算&pi;" width="550pt" /></p>
+    <content type="html"><![CDATA[<p><img src="{{root_url}}/images/post/find_pi.jpg" alt="几何概型估算&pi;" width="550pt" /></p>
 
 <p>被涛神要求帮着写了一个通过模拟几何概型实验来估算 π 的 Matlab 函数。这个几何概型的实验是这样的：在一个二维直角坐标系中，存在一个以原点为中心，以1为半径的圆，和一个以原点为中心，边长为2的正方形（如图），向圆中随机投放点，计算此点在圆内的概率（忽略边线）我们可以得到如下公式，</p>
 
