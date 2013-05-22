@@ -14,6 +14,52 @@
 
   
   <entry>
+    <title type="html"><![CDATA['今天晚上吃神马？' 基本完成]]></title>
+    <link href="http://pikipity.github.com/blog/what-to-eat-v1-dot-0-publish.html"/>
+    <updated>2013-05-22T11:00:00+08:00</updated>
+    <id>http://pikipity.github.com/blog/what-to-eat-v1-dot-0-publish</id>
+    <content type="html"><![CDATA[<p>“今天晚上吃神马？” Version 1.0 完成。可以到<a href="http://pikipity.github.io/what-to-eat/">项目主页</a>下载。下载下来之后，源码、打包之后的程序都在其中，主程序在 “dist” 文件夹中，双击即可使用（注意路径中不要有中文）。</p>
+
+<p>Python 编写，Tkinter 做 GUI，预想中的功能都已经实现：</p>
+
+<ol>
+  <li>
+    <p>从 <a href="http://takeaway.happymacao.com/">take away Macao</a> 自动抓取餐厅信息，包括：</p>
+
+    <ol>
+      <li>餐厅名</li>
+      <li>电话</li>
+      <li>附注</li>
+      <li>营业时间</li>
+      <li>餐厅地址</li>
+      <li>菜单网址（点击，从浏览器直接打开）</li>
+    </ol>
+  </li>
+  <li>随机抽取一个餐厅</li>
+  <li>可以设置自己所在地区，根据所在地区抓取不同的餐厅</li>
+</ol>
+
+<p>下一步需要改善的地方：</p>
+
+<ol>
+  <li>找到一种能够释放内存的方法：连续多次点击之后，由于开启过多进程导致内存占用过大</li>
+  <li>找到一种抓取图片的好方法，直接抓取菜单并显示（不用打开浏览器了），抓取餐厅标志并显示</li>
+  <li>还要改善一下难看的界面</li>
+</ol>
+
+<p>难看的界面：</p>
+
+<p><img src="https://lh6.googleusercontent.com/-0LOtRStfxr0/UZwyBbsQVkI/AAAAAAAAA1M/PIMFjt78Kgc/s493/%25E5%25B1%258F%25E5%25B9%2595%25E5%25BF%25AB%25E7%2585%25A7%25202013-05-22%2520%25E4%25B8%258A%25E5%258D%258810.46.25.png" alt="主界面" /></p>
+
+<p><img src="https://lh5.googleusercontent.com/-a2Oi-gBpdlA/UZwyBUl35AI/AAAAAAAAA1U/fN6xmErUDyE/s495/%25E5%25B1%258F%25E5%25B9%2595%25E5%25BF%25AB%25E7%2585%25A7%25202013-05-22%2520%25E4%25B8%258A%25E5%258D%258810.47.07.png" alt="选定停手" /></p>
+
+<p><img src="https://lh3.googleusercontent.com/-NGCLPdiXNts/UZwyBt50H0I/AAAAAAAAA1Y/bnrhcwGZ9cQ/s594/%25E5%25B1%258F%25E5%25B9%2595%25E5%25BF%25AB%25E7%2585%25A7%25202013-05-22%2520%25E4%25B8%258A%25E5%258D%258810.47.30.png" alt="设定界面" /></p>
+
+<p><img src="https://lh3.googleusercontent.com/-41jnXgPFCN0/UZwyB5nHiJI/AAAAAAAAA1c/cNVfhZjztZ0/s571/%25E5%25B1%258F%25E5%25B9%2595%25E5%25BF%25AB%25E7%2585%25A7%25202013-05-22%2520%25E4%25B8%258A%25E5%258D%258810.47.42.png" alt="关于我" /></p>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[kramdown 语法文档翻译（二）]]></title>
     <link href="http://pikipity.github.com/blog/kramdown-syntax-chinese-2.html"/>
     <updated>2013-05-19T10:42:00+08:00</updated>
@@ -1032,18 +1078,6 @@ SETB EA
   <li><a href="https://chrome.google.com/webstore/detail/scholar-search/iaoheikkcfcbplmldmgogdooknbbbcnf">Scholar search</a>: 在 Chrome 扩展栏上添加一个图标，点击图标就可以搜索了。</li>
   <li><a href="https://chrome.google.com/webstore/detail/google-scholar-context-me/enmmfafpcihjfbkeoncplhjjkglkhdff">Google Scholar Context Menu</a>：当在Chrome 中选中一段文本再点右键的时候，菜单中会出现 “Search Google Scholar for “……”“的选项。</li>
 </ol>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[中国的富二代]]></title>
-    <link href="http://pikipity.github.com/blog/money-man.html"/>
-    <updated>2013-04-12T15:01:00+08:00</updated>
-    <id>http://pikipity.github.com/blog/money-man</id>
-    <content type="html"><![CDATA[<p>中国的富二代到底是什么样的呢？他们到底过着怎样的生活呢？老外好像比我们更想知道，于是 BBC 拍摄了一部纪录片《外国人眼中的中国富二代》来告诉你中国的富二代们在做些什么。</p>
-
-<embed src="http://player.youku.com/player.php/sid/XNDI3MjYyMDU2/v.swf" quality="high" width="480" height="400" align="middle" allowscriptaccess="sameDomain" allowfullscreen="true" type="application/x-shockwave-flash" />
-
 ]]></content>
   </entry>
   

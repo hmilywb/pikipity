@@ -3,12 +3,12 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>汇编实战之乘除法 - 折腾来折腾去</title>
+	<title>'今天晚上吃神马？' 基本完成 - 折腾来折腾去</title>
 	<meta name="author" content="pikipity">
 
 	
-	<meta name="description" content="汇编实战之乘除法 Posted by pikipity
-&nbsp; 2013年02月08日 Assembly Comments 上一篇《汇编实战之加减法》中介绍了加减法的考虑方法，接下来将会介绍稍微难一点乘除法的思考与实现方法。 一个16位二进制乘以一个8位二进制 算法 乘法还是很简单的， &hellip;">
+	<meta name="description" content="'今天晚上吃神马？' 基本完成 Posted by pikipity
+&nbsp; 2013年05月22日 Life, Python Comments “今天晚上吃神马？” Version 1.0 完成。可以到项目主页下载。下载下来之后，源码、打包之后的程序都在其中，主程序在 “dist” &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -108,7 +108,7 @@
 	<div id="content" class="inner"><div>
 <article class="post">
 	
-	<h2 class="title">汇编实战之乘除法</h2>
+	<h2 class="title">'今天晚上吃神马？' 基本完成</h2>
 	<div class="meta">
 	       <div class="author" style="float:left;">
   
@@ -127,11 +127,11 @@
   
 
 
-<time datetime="2013-02-08T09:35:00+08:00" pubdate data-updated="true">2013年02月08日</time></div>
+<time datetime="2013-05-22T11:00:00+08:00" pubdate data-updated="true">2013年05月22日</time></div>
 		<div class="tags" style="float:left;">
 
 
-	<a class='category' href='/blog/categories/assembly/'>Assembly</a>
+	<a class='category' href='/blog/categories/life/'>Life</a>, <a class='category' href='/blog/categories/python/'>Python</a>
 
 
 </div>
@@ -139,168 +139,44 @@
 			<span class="comments"><a href="#com_target">Comments</a></span>
 		
 	</div>
-	<div class="entry-content" style="clear:both;"><p>上一篇<a href="/blog/assembly-application-1.html">《汇编实战之加减法》</a>中介绍了加减法的考虑方法，接下来将会介绍稍微难一点乘除法的思考与实现方法。</p>
+	<div class="entry-content" style="clear:both;"><p>“今天晚上吃神马？” Version 1.0 完成。可以到<a href="http://pikipity.github.io/what-to-eat/">项目主页</a>下载。下载下来之后，源码、打包之后的程序都在其中，主程序在 “dist” 文件夹中，双击即可使用（注意路径中不要有中文）。</p>
 
-<!--more-->
+<p>Python 编写，Tkinter 做 GUI，预想中的功能都已经实现：</p>
 
-<h2 id="section">一个16位二进制乘以一个8位二进制</h2>
+<ol>
+  <li>
+    <p>从 <a href="http://takeaway.happymacao.com/">take away Macao</a> 自动抓取餐厅信息，包括：</p>
 
-<h3 id="section-1">算法</h3>
+    <ol>
+      <li>餐厅名</li>
+      <li>电话</li>
+      <li>附注</li>
+      <li>营业时间</li>
+      <li>餐厅地址</li>
+      <li>菜单网址（点击，从浏览器直接打开）</li>
+    </ol>
+  </li>
+  <li>随机抽取一个餐厅</li>
+  <li>可以设置自己所在地区，根据所在地区抓取不同的餐厅</li>
+</ol>
 
-<p>乘法还是很简单的，和加减法没有太大的不同，但要注意得数的范围。同样的，先看8051的汇编指令表，其中已经提供了一个用来做两个8位二进制之间的乘法的指令：</p>
+<p>下一步需要改善的地方：</p>
 
-<pre><code>MUL AB
-</code></pre>
+<ol>
+  <li>找到一种能够释放内存的方法：连续多次点击之后，由于开启过多进程导致内存占用过大</li>
+  <li>找到一种抓取图片的好方法，直接抓取菜单并显示（不用打开浏览器了），抓取餐厅标志并显示</li>
+  <li>还要改善一下难看的界面</li>
+</ol>
 
-<p>这条指令同时对累加器Acc与累乘器B作用，将Acc与B中的数值相乘以后，高8位到B中，低八位到Acc中。那么还是依照加法算法的思考路线，我们就可以这样了：</p>
+<p>难看的界面：</p>
 
-<script type="math/tex; mode=display">% <![CDATA[
-\begin{array}{rcl}
-c&=&a*b\\
-&=&\left([a_{15}\cdots a_8]\times256+[a_7\cdots a_0]\right)*[b_7\cdots b_0]\\
-[c_{15}\cdots c_8]\times 256+[c_7\cdots c_0]&=&\left([a_{15}\cdots a_8]*[b_7\cdots b_0]\right)\times256+\left([a_7\cdots a_0]*[b_7\cdots b_0]\right)
-\end{array} %]]></script>
+<p><img src="https://lh6.googleusercontent.com/-0LOtRStfxr0/UZwyBbsQVkI/AAAAAAAAA1M/PIMFjt78Kgc/s493/%25E5%25B1%258F%25E5%25B9%2595%25E5%25BF%25AB%25E7%2585%25A7%25202013-05-22%2520%25E4%25B8%258A%25E5%258D%258810.46.25.png" alt="主界面" /></p>
 
-<p>在上面的式子中，我用“$*$”标记需要用MUL指令来做乘法的地方，用”$\times$”来标记需要移位的地方。低八位相乘会产生一个16位的二进制数，高八位相乘再移位后会产生一个24位的二进制数，所以至少我们需要3个地址来存放得数。</p>
+<p><img src="https://lh5.googleusercontent.com/-a2Oi-gBpdlA/UZwyBUl35AI/AAAAAAAAA1U/fN6xmErUDyE/s495/%25E5%25B1%258F%25E5%25B9%2595%25E5%25BF%25AB%25E7%2585%25A7%25202013-05-22%2520%25E4%25B8%258A%25E5%258D%258810.47.07.png" alt="选定停手" /></p>
 
-<p>那么还需不需要考虑低八位乘积的16位数与高八位乘积的24位数相加的进位呢？由于16位二进制最大换算成十进制是65536，而八进制是255，所以得数最大是16777216，也就是说会刚好超出24位，所以得数还需要一个C来存放进位。这样就可以开始编程了。</p>
+<p><img src="https://lh3.googleusercontent.com/-NGCLPdiXNts/UZwyBt50H0I/AAAAAAAAA1Y/bnrhcwGZ9cQ/s594/%25E5%25B1%258F%25E5%25B9%2595%25E5%25BF%25AB%25E7%2585%25A7%25202013-05-22%2520%25E4%25B8%258A%25E5%258D%258810.47.30.png" alt="设定界面" /></p>
 
-<h3 id="section-2">汇编子程序</h3>
-
-<pre><code>;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;Multiplication of unsigned number
-;input: 16 bits: 7CH 7DH
-;        8 bits:     7FH
-;output 24 bits: C 60H 61H 62H
-;REG:A(have been protected), B(have been protected), 63H, C
-Multi:
-	PUSH Acc   ;protect Acc
-	PUSH B     ;protect B
-	;Multiply low 8 bits
-	MOV A,7DH
-	MOV B,A
-	MOV A,7FH
-	MUL AB
-	MOV 62H,A
-	MOV A,B
-	MOV 61H,A
-	;Multiply high 8 bits
-	MOV A,7CH
-	MOV B,A
-	MOV A,7FH
-	MUL AB
-	MOV 63H,A
-	MOV A,B
-	MOV 60H,A
-	;Summation center 8 bits
-	CLR C
-	MOV A,63H
-	ADD	A,61H
-	MOV 61H,A
-	;Add C and high 8 bits
-	MOV A,60H
-	ADDC A,#0
-	MOV 60H,A
-	;
-	POP B      ;back B
-	POP Acc    ;back Acc
-	RET
-</code></pre>
-
-<h2 id="section-3">一个16位二进制除以一个8位二进制</h2>
-
-<h3 id="section-4">算法</h3>
-
-<p>通过查汇编指令表，我们可以发现，和乘法一样8051也提供了一个8位二进制的除法指令：</p>
-
-<pre><code>DIV AB
-</code></pre>
-
-<p>还是对Acc与B作用，商到Acc中，余数到B中。但是除法比较特殊，当我们通过与上面乘法类似的算法考虑的时候，会得到下面的式子：</p>
-
-<script type="math/tex; mode=display">% <![CDATA[
-\begin{array}{rcl}
-c&=&\frac{a}{b}\\
-&=&\left(a\mbox{的高八位与}b\mbox{的商}\times256+a\mbox{的低八位与}b\mbox{的商}\right)\\
-&&+\left(\frac{a\mbox{的高八位与}b\mbox{的余数}\times256+a\mbox{的低八位与}b\mbox{的余数}}{b}\right)
-\end{array} %]]></script>
-
-<p>最终得到，商的高八位就是$a$的高八位与$b$的商，商的低八位就是$a$的低八位与$b$的商，余数的高八位就是$a$的高八位与$b$的余数，余数的低八位就是$a$的低八位与$b$的余数。但是经过测试，这是不正确的，为什么呢？再次观察我们最后的结论就会发现问题，式子本身没有问题，<strong><em>问题在于进位</em></strong>。尽管$a$的高八位与$b$的余数和$a$的低八位与$b$的余数分别与$b$做除法的时候无法再出现非0商了，但是两者加起来却有可能大于$b$，在与$b$做除法的时候就会出现非0商，如果单纯按照上面的方法做，我们就会少考虑这个由余数产生出来的商的进位。所以上面的算法行不通。</p>
-
-<p>最终我采用的是移位的方法，原理类似与笔算除法。基本流程如下</p>
-
-<p><img src="/images/post/assembly-application-2.png" width="400pt" alt="除法流程图" /></p>
-
-<h3 id="section-5">汇编子程序</h3>
-
-<pre><code>;;;;;;;;;;;;;;;;;;;;;;;;;
-;Division for unsigned integer
-;input: 16 bits: 64H 65H
-;        8 bits: 66H
-;output: quotient: 67H 68H
-;        remainder: 69H
-;Reg: A(has been protected), B(has been protected), C, 6AH
-division:
-	PUSH Acc   ;protect Acc
-	PUSH B     ;protect B
-	CLR C      ;clear C
-	;clear result
-	MOV 67H,#0
-	MOV 68H,#0
-	MOV 69H,#0
-	MOV 70H,#0
-	MOV 6BH,#0
-	;division for high 8 bits
-	MOV A,66H
-	MOV B,A
-	MOV A,64H
-	DIV AB
-	;quotient go to high quotient of final result
-	MOV 67H,A
-	;remiander go to remainder of final result
-	MOV A,B
-	MOV 69H,A
-	;begin 8 times of loop
-	MOV 6AH,#8
-division_loop:
-	;rotate 65H left with C
-	MOV A,65H
-	RLC A
-	MOV 65H,A
-	;rotate 69H left with C
-	MOV A,69H
-	RLC A
-	MOV 69H,A    ;result -&gt; rotate 69H and 65H left together with C
-	;69H - 66H
-	CLR C
-	MOV A,69H
-	SUBB A,66H   ;if negative C=1, otherwise C=0. Result in A
-	;
-	JC division_quotient_set_0   ;if C=1, go to division_quotient_set_0
-division_quotient_set_1:    ;if C=0, go down
-	MOV 69H,A     ;sub result go to 69H
-	;most right bit of 68H set 1
-	SETB C
-	MOV A,68H
-	RLC A
-	MOV 68H,A
-	;go to dicision
-	JMP division_loop_dicision
-division_quotient_set_0:    ;if C=1, go down
-	;most right bit of 68H set 0
-	CLR C
-	MOV A,68H
-	RLC A
-	MOV 68H,A
-division_loop_dicision:
-	DEC 6AH
-	MOV A,6AH
-	CJNE A,#0,division_loop
-	;
-	POP B      ;get back B
-	POP Acc    ;get back Acc
-	RET
-</code></pre>
+<p><img src="https://lh3.googleusercontent.com/-41jnXgPFCN0/UZwyB5nHiJI/AAAAAAAAA1c/cNVfhZjztZ0/s571/%25E5%25B1%258F%25E5%25B9%2595%25E5%25BF%25AB%25E7%2585%25A7%25202013-05-22%2520%25E4%25B8%258A%25E5%258D%258810.47.42.png" alt="关于我" /></p>
 </div>
 
 
@@ -344,19 +220,17 @@ var jiathis_config={
   
 
 
-<time datetime="2013-02-08T09:35:00+08:00" pubdate data-updated="true">2013年02月08日</time></p>
+<time datetime="2013-05-22T11:00:00+08:00" pubdate data-updated="true">2013年05月22日</time></p>
 </footer>
 
 <section>
 <ul id="left-right">
 <span style="float:left">
 	
-        <a class="basic-alignment left" href="/blog/assembly-application-1.html" title="Previous Post: 汇编实战之加减法"><font face=Wingdings>&#239;</font> 汇编实战之加减法</a>
+        <a class="basic-alignment left" href="/blog/kramdown-syntax-chinese-2.html" title="Previous Post: kramdown 语法文档翻译（二）"><font face=Wingdings>&#239;</font> kramdown 语法文档翻译（二）</a>
         </span>
 <span style="float:right">
-	
-        <a class="basic-alignment right" href="/blog/assembly-application-3.html" title="next Post: 汇编实战之LED数码管">汇编实战之LED数码管 <font face=Wingdings>&#240;</font></a>
-       </span>
+	 </span>
 </ul>
 </section>
 
