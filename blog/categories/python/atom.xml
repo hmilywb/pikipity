@@ -14,6 +14,18 @@
 
   
   <entry>
+    <title type="html"><![CDATA[字符动画转化器]]></title>
+    <link href="http://pikipity.github.com/blog/video-to-txt.html"/>
+    <updated>2013-05-30T20:45:00+08:00</updated>
+    <id>http://pikipity.github.com/blog/video-to-txt</id>
+    <content type="html"><![CDATA[<p>这是一个字符动画转化器，可以将普通视频转换成字符动画并播放。软件主页在<a href="http://pikipity.github.io/video-to-txt">这里</a>。图包在<a href="http://pan.baidu.com/share/link?shareid=552715&amp;uk=4080321956">这里</a>。</p>
+
+<embed height="452" width="544" quality="high" allowfullscreen="true" type="application/x-shockwave-flash" src="http://static.hdslb.com/miniloader.swf" flashvars="aid=584094&amp;page=1" pluginspage="http://www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash" />
+
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA['今天晚上吃神马？' 基本完成]]></title>
     <link href="http://pikipity.github.com/blog/what-to-eat-v1-dot-0-publish.html"/>
     <updated>2013-05-22T11:00:00+08:00</updated>
