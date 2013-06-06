@@ -3,12 +3,12 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>单 MOSFET 放大器 - 折腾来折腾去</title>
+	<title>一起调戏谷歌娘 - 折腾来折腾去</title>
 	<meta name="author" content="pikipity">
 
 	
-	<meta name="description" content="单 MOSFET 放大器 Posted by pikipity
-&nbsp; 2013年02月18日 Circuit Comments 最基本的 MOSFET 放大器就是单 MOSFET 放大器了，也就是只有一个 MOSFET 的放大器，大多数介绍 MOSFET 的资料都会介绍这一部分， &hellip;">
+	<meta name="description" content="一起调戏谷歌娘 Posted by pikipity
+&nbsp; 2013年06月06日 Google, Python Comments 最近发现谷歌娘的声音真的是好有爱啊，但是下载的时候太麻烦了。在谷歌翻译里，为了下载一段谷歌娘的声音，还需要打开开发者工具去找对应的 requirment ， &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -108,7 +108,7 @@
 	<div id="content" class="inner"><div>
 <article class="post">
 	
-	<h2 class="title">单 MOSFET 放大器</h2>
+	<h2 class="title">一起调戏谷歌娘</h2>
 	<div class="meta">
 	       <div class="author" style="float:left;">
   
@@ -127,11 +127,11 @@
   
 
 
-<time datetime="2013-02-18T23:43:00+08:00" pubdate data-updated="true">2013年02月18日</time></div>
+<time datetime="2013-06-06T15:23:00+08:00" pubdate data-updated="true">2013年06月06日</time></div>
 		<div class="tags" style="float:left;">
 
 
-	<a class='category' href='/blog/categories/circuit/'>Circuit</a>
+	<a class='category' href='/blog/categories/google/'>Google</a>, <a class='category' href='/blog/categories/python/'>Python</a>
 
 
 </div>
@@ -139,98 +139,17 @@
 			<span class="comments"><a href="#com_target">Comments</a></span>
 		
 	</div>
-	<div class="entry-content" style="clear:both;"><p>最基本的 MOSFET 放大器就是单 MOSFET 放大器了，也就是只有一个 MOSFET 的放大器，大多数介绍 MOSFET 的资料都会介绍这一部分，但是十分的冗长并且复杂且没有广泛适用价值，这里进行归纳总结。</p>
+	<div class="entry-content" style="clear:both;"><p>最近发现谷歌娘的声音真的是好有爱啊，但是下载的时候太麻烦了。在<a href="https://translate.google.com.hk/?hl=en&amp;tab=wT">谷歌翻译</a>里，为了下载一段谷歌娘的声音，还需要打开开发者工具去找对应的 requirment ，麻烦死了。这种重复性工作还是交给软件自己来完成吧，于是写了这样一个软件，用来自动下载谷歌娘“甜美、可人”的声音。</p>
 
-<!--more-->
+<p>可以在 Windows, Linux, Mac OS X 上运行，对于 Linux 和 Mac OS X，直接在解压目录下打开终端，运行 <code>python ./main.py</code> 即可。Windows 用户也可以直接用 “setup.exe” 安装或是直接点击 “dist” 文件夹下面的 “main.exe” 直接运行程序。</p>
 
-<p>说到 MOSFET 组成的放大器，当然前提是假设 MOSFET 已经在 Saturation region，我们重点关注MOSFET在 Small Signal Analysis 下的三个参数，这三个参数为</p>
+<p>你可以到<a href="http://pikipity.github.io/Download-Google-Voice">这里</a>下载程序。下面是程序截图：</p>
 
-<ol>
-  <li>Voltage Gain: <script type="math/tex">A_v=\frac{V_{out}}{V_{in}}</script></li>
-  <li>Input Impedence: <script type="math/tex">R_{in}=\frac{V_{in}}{I_{in}}</script> 注意：输出是开路</li>
-  <li>Output Impedence: <script type="math/tex">R_{out}=\frac{V_{out}}{I_{out}}</script> 注意：输入是短路</li>
-</ol>
+<p><img src="http://i1302.photobucket.com/albums/ag140/pikipity/5C4F5E555FEB71672013-06-064E0B534832532_zps2b24e890.png" border="0" alt="Download-Google-Voice for Mac" /></p>
 
-<p>单 MOSFET 的放大器无非就是三种，接下来就会一一介绍。（下面的电路图中可能会漏掉负载，但是式子中都已经包含负载 $R_L$）</p>
+<p><img src="http://i1302.photobucket.com/albums/ag140/pikipity/5C4F5E555FEB71672013-06-064E0B534833026_zps8f4eb922.png" border="0" alt="Download-Google-Voice for Windows" /></p>
 
-<h3 id="common-source--cs">共源极 (Common Source 简称 CS)</h3>
-
-<p>基本电路图如下</p>
-
-<p><a href="https://www.circuitlab.com/circuit/emg7yb/cs/"><img src="https://www.circuitlab.com/circuit/emg7yb/screenshot/540x405/" alt="CS" /></a></p>
-
-<p>三个参数为</p>
-
-<script type="math/tex; mode=display">% <![CDATA[
-\begin{array}{rcl}
-A_v&=&-\frac{R_D||R_L}{\frac{1}{g_m}+R_s+\frac{R_s+R_D||R_L}{r_0g_m}}\\
-R_{in}&=&R_G\\
-R_{out}&=&R_D||\left(r_0+r_0R_sg_m+R_s\right)
-\end{array} %]]></script>
-
-<h3 id="common-gate--cg">共栅极 (Common Gate 简称 CG)</h3>
-
-<p>基本电路图如下</p>
-
-<p><a href="https://www.circuitlab.com/circuit/xasasu/mosfet-common-gate/"><img src="https://www.circuitlab.com/circuit/xasasu/screenshot/540x405/" alt="CG" /></a></p>
-
-<p>三个参数为</p>
-
-<script type="math/tex; mode=display">% <![CDATA[
-\begin{array}{rcl}
-A_v&=&\frac{\frac{1}{r_0}+g_m}{\frac{1}{r_0}+\frac{1}{R_D||R_L}}\\
-R_{in}&=&\frac{R_D||R_L+r_0}{1+g_mr_0}\\
-R_{out}&=&R_D||R_L||r_0
-\end{array} %]]></script>
-
-<h3 id="common-drain--source-follower--cd--sf">共漏极 (Common Drain 或者 Source Follower 简称 CD 或者 SF)</h3>
-
-<p>基本电路如下</p>
-
-<p><a href="https://www.circuitlab.com/circuit/nv6nv2/source-follower/"><img src="https://www.circuitlab.com/circuit/nv6nv2/screenshot/540x405/" alt="CD" /></a></p>
-
-<p>三个参数为</p>
-
-<script type="math/tex; mode=display">% <![CDATA[
-\begin{array}{rcl}
-A_v&=&\frac{r_0||\left(R_s||R_L\right)}{r_0||\left(R_s||R_L\right)+\frac{1}{g_m}}\\
-R_{in}&=&\infty\\
-R_{out}&=&r_0||\frac{1}{g_m}||R_s||R_L
-\end{array} %]]></script>
-
-<p>尽管上面的式子看起来都很复杂，但是实际中我们会经常忽略掉一些内容，比如当忽略负载时就令 $R_L$ 为 0 就可以了，当需要忽略 $r_0$ 时就让 $r_0\rightarrow\infty$ 就可以了。</p>
-
-<p>有时 bias current 并不是由一个简单的电阻控制而是由另外的一个由 MOSFET 组成的电流源控制，所以还需要熟悉 MOSFET 各个端口的阻抗值，当遇到这种情况的时候只要等效代替就可以了。MOSFET 各个端口的阻抗值如下：</p>
-
-<ol>
-  <li>栅极阻抗：<script type="math/tex">R_G=\infty</script></li>
-  <li>
-    <p>漏极阻抗：<script type="math/tex">R_D=r_0+g_mr_0R_s+R_s</script></p>
-
-    <p><a href="https://www.circuitlab.com/circuit/ekkd7q/drain-resistor/"><img src="https://www.circuitlab.com/circuit/ekkd7q/screenshot/540x405/" alt="漏极阻抗" /></a></p>
-  </li>
-  <li>
-    <p>源极阻抗：<script type="math/tex">R_s=\frac{R_D+r_0}{1+g_mr_0}</script></p>
-
-    <p><a href="https://www.circuitlab.com/circuit/ra9a4h/source-resistor/"><img src="https://www.circuitlab.com/circuit/ra9a4h/screenshot/540x405/" alt="源极阻抗" /></a></p>
-  </li>
-  <li>
-    <p>两种特殊的 bias 的情况：</p>
-
-    <ul>
-      <li>
-<script type="math/tex; mode=display">R_1=\frac{1}{g_m}\|r_0</script>
-
-        <p><a href="https://www.circuitlab.com/circuit/59xk9n/special_1/"><img src="https://www.circuitlab.com/circuit/59xk9n/screenshot/540x405/" alt="特殊的 bias 的情况 1" /></a></p>
-      </li>
-      <li>
-<script type="math/tex; mode=display">R_2=\frac{R_D}{1-\frac{\frac{1}{R_D}-g_m}{\frac{1}{r_0}+\frac{1}{R_D}}}</script>
-
-        <p><a href="https://www.circuitlab.com/circuit/97y63v/special_2/"><img src="https://www.circuitlab.com/circuit/97y63v/screenshot/540x405/" alt="特殊的 bias 的情况 2" /></a></p>
-      </li>
-    </ul>
-  </li>
-</ol>
+<p>PS: 英文语音的谷歌娘变成大叔音了~~~~~  o(&gt;﹏&lt;)o  +_+  /(ㄒoㄒ)/</p>
 </div>
 
 
@@ -274,19 +193,17 @@ var jiathis_config={
   
 
 
-<time datetime="2013-02-18T23:43:00+08:00" pubdate data-updated="true">2013年02月18日</time></p>
+<time datetime="2013-06-06T15:23:00+08:00" pubdate data-updated="true">2013年06月06日</time></p>
 </footer>
 
 <section>
 <ul id="left-right">
 <span style="float:left">
 	
-        <a class="basic-alignment left" href="/blog/obfuscated-python.html" title="Previous Post: 我不相信，这是Python么？！"><font face=Wingdings>&#239;</font> 我不相信，这是Python么？！</a>
+        <a class="basic-alignment left" href="/blog/video-to-txt.html" title="Previous Post: 字符动画转化器"><font face=Wingdings>&#239;</font> 字符动画转化器</a>
         </span>
 <span style="float:right">
-	
-        <a class="basic-alignment right" href="/blog/apple-supplier-map.html" title="next Post: 苹果公司供应商地图">苹果公司供应商地图 <font face=Wingdings>&#240;</font></a>
-       </span>
+	 </span>
 </ul>
 </section>
 

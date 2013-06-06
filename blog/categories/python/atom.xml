@@ -14,6 +14,25 @@
 
   
   <entry>
+    <title type="html"><![CDATA[一起调戏谷歌娘]]></title>
+    <link href="http://pikipity.github.com/blog/download-google-voice.html"/>
+    <updated>2013-06-06T15:23:00+08:00</updated>
+    <id>http://pikipity.github.com/blog/download-google-voice</id>
+    <content type="html"><![CDATA[<p>最近发现谷歌娘的声音真的是好有爱啊，但是下载的时候太麻烦了。在<a href="https://translate.google.com.hk/?hl=en&amp;tab=wT">谷歌翻译</a>里，为了下载一段谷歌娘的声音，还需要打开开发者工具去找对应的 requirment ，麻烦死了。这种重复性工作还是交给软件自己来完成吧，于是写了这样一个软件，用来自动下载谷歌娘“甜美、可人”的声音。</p>
+
+<p>可以在 Windows, Linux, Mac OS X 上运行，对于 Linux 和 Mac OS X，直接在解压目录下打开终端，运行 <code>python ./main.py</code> 即可。Windows 用户也可以直接用 “setup.exe” 安装或是直接点击 “dist” 文件夹下面的 “main.exe” 直接运行程序。</p>
+
+<p>你可以到<a href="http://pikipity.github.io/Download-Google-Voice">这里</a>下载程序。下面是程序截图：</p>
+
+<p><img src="http://i1302.photobucket.com/albums/ag140/pikipity/5C4F5E555FEB71672013-06-064E0B534832532_zps2b24e890.png" border="0" alt="Download-Google-Voice for Mac" /></p>
+
+<p><img src="http://i1302.photobucket.com/albums/ag140/pikipity/5C4F5E555FEB71672013-06-064E0B534833026_zps8f4eb922.png" border="0" alt="Download-Google-Voice for Windows" /></p>
+
+<p>PS: 英文语音的谷歌娘变成大叔音了~~~~~  o(&gt;﹏&lt;)o  +_+  /(ㄒoㄒ)/</p>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[字符动画转化器]]></title>
     <link href="http://pikipity.github.com/blog/video-to-txt.html"/>
     <updated>2013-05-30T20:45:00+08:00</updated>
