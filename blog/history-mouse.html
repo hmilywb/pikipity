@@ -3,12 +3,12 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>用Octopress 和 Github 建立自己的 Blog - 折腾来折腾去</title>
+	<title>鼠标发明人道格拉斯·恩杰尔巴特去世 - 折腾来折腾去</title>
 	<meta name="author" content="pikipity">
 
 	
-	<meta name="description" content="用Octopress 和 Github 建立自己的 Blog Posted by pikipity
-&nbsp; 2013年02月22日 Github, Octopress Comments 这个 Blog 就是在使用 Octopress 和 Github 建立起来的。基本思路如下，首先用 &hellip;">
+	<meta name="description" content="鼠标发明人道格拉斯·恩杰尔巴特去世 Posted by pikipity
+&nbsp; 2013年07月04日 Technology Comments 鼠标发明人道格拉斯·恩杰尔巴特(Douglas C. Engelbart)本周二去世，享年88岁。你不知道它是谁？其实我也不知道，总的来说， &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -110,7 +110,7 @@
 	<div id="content" class="inner"><div>
 <article class="post">
 	
-	<h2 class="title">用Octopress 和 Github 建立自己的 Blog</h2>
+	<h2 class="title">鼠标发明人道格拉斯·恩杰尔巴特去世</h2>
 	<div class="meta">
 	       <div class="author" style="float:left;">
   
@@ -129,11 +129,11 @@
   
 
 
-<time datetime="2013-02-22T08:44:00+08:00" pubdate data-updated="true">2013年02月22日</time></div>
+<time datetime="2013-07-04T21:41:00+08:00" pubdate data-updated="true">2013年07月04日</time></div>
 		<div class="tags" style="float:left;">
 
 
-	<a class='category' href='/blog/categories/github/'>Github</a>, <a class='category' href='/blog/categories/octopress/'>Octopress</a>
+	<a class='category' href='/blog/categories/technology/'>Technology</a>
 
 
 </div>
@@ -141,217 +141,17 @@
 			<span class="comments"><a href="#com_target">Comments</a></span>
 		
 	</div>
-	<div class="entry-content" style="clear:both;"><p>这个 Blog 就是在使用 Octopress 和 Github 建立起来的。基本思路如下，首先用 Markdown 语言迅速成文，然后由 Octopress 生成站点文件并上传到 Github，利用 Github 的 Pages 功能，就可以直接通过访问 Github 提供的二级域名访问到你的站点了。</p>
+	<div class="entry-content" style="clear:both;"><p>鼠标发明人道格拉斯·恩杰尔巴特(Douglas C. Engelbart)本周二去世，享年88岁。你不知道它是谁？其实我也不知道，总的来说，就是下面这个老人。他发明了鼠标，却没有从这项发明中得到任何好处，斯坦福研究院申请了鼠标的专利，并授权给了苹果电脑，而这个老人从来就没有出现在人们的眼界之中，不曾记住，也就无法提及忘却。</p>
 
-<p><img src="/images/post/octopress.jpg" width="550pt" /></p>
+<p><a href="http://s1302.photobucket.com/user/pikipity/media/U5388P2DT20130704083317_zps4d2a037b.jpg.html" target="_blank"><img src="http://i1302.photobucket.com/albums/ag140/pikipity/U5388P2DT20130704083317_zps4d2a037b.jpg" border="0" alt="道格拉斯·恩杰尔巴特" /></a></p>
 
-<!--more-->
+<p>下面是一段当年道格拉斯·恩杰尔巴特第一次做鼠标演示时的视频:</p>
 
-<h3 id="octopress">为什么用 Octopress</h3>
+<iframe src="http://edge.v.iask.com.sinastorage.com/108819463.mp4" frameborder="0" allowfullscreen=""></iframe>
 
-<p>有很多人看到就会吐槽了，为什么不用 WordPress 呢？那么下面就做一下 Octopress 和 WordPress 的对比好了。</p>
+<p>最后回忆一下那些我们听说过、见过、用过和梦想过的鼠标吧！！ &gt;_&lt;</p>
 
-<table>
-  <thead>
-    <tr>
-      <th style="text-align: center"> </th>
-      <th style="text-align: center">Octopress</th>
-      <th style="text-align: center">WordPress</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align: center">使用的脚本语言</td>
-      <td style="text-align: center">Ruby</td>
-      <td style="text-align: center">PHP</td>
-    </tr>
-    <tr>
-      <td style="text-align: center">生成网页</td>
-      <td style="text-align: center">静态网页</td>
-      <td style="text-align: center">动态网页</td>
-    </tr>
-    <tr>
-      <td style="text-align: center">外挂、主题数量</td>
-      <td style="text-align: center">少</td>
-      <td style="text-align: center">多</td>
-    </tr>
-    <tr>
-      <td style="text-align: center">速度</td>
-      <td style="text-align: center">快</td>
-      <td style="text-align: center">慢</td>
-    </tr>
-    <tr>
-      <td style="text-align: center">易用性</td>
-      <td style="text-align: center">起点比较高</td>
-      <td style="text-align: center">简单</td>
-    </tr>
-  </tbody>
-</table>
-
-<p>其实准确的说 Octopress 并不是只能生成静态网页，但是这里介绍的是 Octopress 和 Github 联合使用，由于 Github 并不是一个服务器代理商，Pages本身只是为简单的项目主页准备的，所以没有数据库，每次打开网页都是一个新生成的过程，所以只能支持静态网页。</p>
-
-<p>从上面的表格就可以看出两者各有优缺点，我选择 Octopress 的原因很简单：</p>
-
-<ol>
-  <li>需要折腾</li>
-  <li>可改动性大</li>
-  <li>markdown 语法直接成文，舒服</li>
-</ol>
-
-<p>但是由于 Octopress 本身刚起步，国内教程、论坛都少的可怜，所以大部分的学习只能去看外国的网站，或是直接去 Github 上拉别人的网页来研究。下面就是如何在自己的电脑上安装 Octopress 和利用 Github 来搭建 Blog 了。下面的安装和使用都以 Mac OS X 10.8 为基础，我想 Linux 应该也是差不多的，Windows 应该比较麻烦，请看<a href="http://yanping.me/cn/blog/2011/12/26/octopress-on-windows/">这里</a></p>
-
-<h3 id="section">前期准备</h3>
-
-<p>首先你要具备一点 *nix 命令行的知识和 html 语言的知识。下面提供三个网址可以先看一下：</p>
-
-<ul>
-  <li><a href="http://www.douban.com/note/75797151/">Mac 终端命令</a></li>
-  <li><a href="http://www.linuxguide.it/command_line/linux_commands_cn.html">Linux 终端命令</a></li>
-  <li><a href="http://www.w3schools.com/html/default.asp">html 语言教程</a></li>
-</ul>
-
-<p>接下来就要做一些 Octopress 安装前的准备工作了。由于 Octopress 需要 Ruby 1.9.2，运行</p>
-
-<pre><code>$ ruby -v
-</code></pre>
-
-<p>检查一下版本号是否正确，如果正确，就可以直接安装 Octopress 了，如果版本不对就还是按照下面的步骤走一遍吧。</p>
-
-<ol>
-  <li>安装 GCC。如果已经安装了 Xcode，就可以不必安装了，由于后面的安装会需要源文件编译，所以需要安装 GCC 来提供支持，可以到<a href="https://github.com/kennethreitz/osx-gcc-installer">这里</a>下载对应版本的 GCC 来安装</li>
-  <li>
-    <p>安装 Homebrew，Homebrew 是 Mac 上的一个包管理器，后面为了方便，将直接用 Homebrew 来完成 Git 安装。运行下面指令来安装</p>
-
-    <pre><code>	$ ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)"
-</code></pre>
-
-    <p>Homebrew 如何使用可以直接到<a href="http://mxcl.github.com/homebrew/">这里</a>来看，安装那些 Mac 本身没有的包还是很方便的。</p>
-  </li>
-  <li>
-    <p>安装 Git。运行下面命令来安装</p>
-
-    <pre><code> $ brew install git
-</code></pre>
-  </li>
-  <li>安装 RVM，RVM 是 Ruby 的一个版本管理器，为了方便安装，可以直接到<a href="http://jewelrybox.unfiniti.com/">这里</a>下载 具有 GUI 的版本，这个的安装过程就和 Mac 上的其他软件没有什么不同了。</li>
-  <li>
-    <p>安装 Ruby 1.9.2，绕了一大圈，终于到重点了。运行下面的两条命令安装</p>
-
-    <pre><code> $ rvm install 1.9.2
- $ rvm 1.9.2 --default
-</code></pre>
-  </li>
-</ol>
-
-<h3 id="octopress-1">安装 Octopress</h3>
-
-<p>主角登场。</p>
-
-<p>先在终端移动到你准备存放 Octopress 的地方，用下面的命令</p>
-
-<pre><code>$ cd 你的路径
-</code></pre>
-
-<p>然后直接用 Git 将 Octopress 从 Github 上拖下来就可以了，用下面的命令</p>
-
-<pre><code>$ git clone git://github.com/jsw0528/octopress.git
-</code></pre>
-
-<p>OK，在你当前路径下应该会多出一个叫 octopress 的文件夹，里面的就是 octopress 的程序了，这就叫做轻量。</p>
-
-<p>还需要安装一些基本的套件，否则生成的东西实在没法看，运行下面命令安装相关套件</p>
-
-<pre><code>$ cd octopress
-$ bundle install
-</code></pre>
-
-<p>然后就是安装主题了，这里可以有三种选择（支线剧情 Flag，+_+）：</p>
-
-<ol>
-  <li>
-    <p>使用预设主题，预设主题本身其实已经挺不错了，但是万千世界千篇一律就没意思了，可以将默认主题做模板来修改出自己的主题，用下面的命令安装预设主题</p>
-
-    <pre><code> $ rake install
-</code></pre>
-  </li>
-  <li>
-    <p>直接使用别人的主题或是在别人的主题上稍作修改，这里推荐两款</p>
-
-    <ul>
-      <li>
-        <p>极简风格的 Slash，大家可以到其<a href="http://zespia.tw/Octopress-Theme-Slash/index_tw.html">主页</a>看效果，其实这个 Blog 的主题就是在 Slash 上修改出来的，安装使用下面命令：</p>
-
-        <pre><code>   $ git clone git://github.com/tommy351/Octopress-Theme-Slash.git .themes/slash
-   $ rake install['slash']
-</code></pre>
-      </li>
-      <li>
-        <p>由 <a href="https://github.com/eDoctor">eDoctor</a> 开发的主题，大家可以来 <a href="http://mrzhang.me/">MrZhang.me</a> 来看效果，主题名就叫 “blog”，安装方法如下</p>
-
-        <pre><code>  $ git submodule init
-  $ git submodule update
-  $ rake install['blog']
-</code></pre>
-      </li>
-      <li>
-        <p>如果你觉得别人的主题都太烂了，Come on，自己做一个吧</p>
-      </li>
-    </ul>
-  </li>
-</ol>
-
-<p>安装完主题，Octopress 就算是安装完了，不要松懈，一切才刚刚开始</p>
-
-<h3 id="github-">连接 Github 账号</h3>
-
-<ol>
-  <li>
-    <p>到<a href="https://github.com">这里</a>注册一个 Github 账户，创建一个新的 Repository，名称为 <code>你的帐号.github.com</code>。</p>
-  </li>
-  <li>
-    <p>修改 Octopress 安装目录下的 <code>source/CNAME</code></p>
-
-    <ul>
-      <li>如果你要使用自己的域名，就将<code>source/CNAME</code>修改成你自己的域名，然后将域名的 A Record 指向 IP：<code>207.97.227.245</code>就可以了</li>
-      <li>如果直接使用 Github 提供的二级域名，就直接删除 <code>source/CNAME</code> 文件   </li>
-    </ul>
-  </li>
-  <li>
-    <p>运行下面命令</p>
-
-    <pre><code> $ rake setup_github_pages
-</code></pre>
-
-    <p>会提示输入有读写权限的 Repository url，可以在你刚才新建的 Repository 里面找到，具体位置见图片</p>
-
-    <p><img src="/images/post/Repository_url.jpg" alt="Repository_url 在这里" width="550pt" /></p>
-  </li>
-</ol>
-
-<h3 id="octopress-2">配置 Octopress</h3>
-
-<p>一般只需要配置两个文件就可以了</p>
-
-<ol>
-  <li>配置 <code>_config.yml</code>：这个文件在你的安装目录下面，里面是你 Blog 的一些基本配置，比如名字、创建时间等等，懂英文的一般都懂了一条条是什么意思，需要注意的是冒号后面的一个空格不要漏掉，<a href="https://gist.github.com/pikipity/5010379">这里</a>是我的 <code>_config.yml</code>，大家可以参考参考。</li>
-  <li>配置 <code>Rakefile</code>：这是软件的配置，不明白是什么就不要乱动了，有时候当你写 post 的时候会发现自动生成的文件格式不适合你，你可以修改 <code>Rakefile</code> 中 <code>new_post_ext</code> 对应的内容。</li>
-</ol>
-
-<p>至此，Octopress 就算是安装配置完了，你可以用它来生成博文并发布了。Octopress 的命令可以用下面的方法查询</p>
-
-<pre><code>$ rake -T
-</code></pre>
-
-<p>命令不多，真正常用的就几个，下面列出来：</p>
-
-<ul>
-  <li><code>rake generate</code>：生成站点</li>
-  <li><code>rake deploy</code>：发布站点</li>
-  <li><code>rake den_deploy</code>：上面两条命令的结合</li>
-  <li><code>rake new_post[title]</code>：在 <code>source/_posts</code> 中生成一个新的 post</li>
-  <li><code>rake new_page[filename]</code>：在 <code>source/(filename)/index.markdown</code> 中生成一个新页面</li>
-  <li><code>rake preview</code>：预览站点，默认在浏览器打开 <code>localhost:4000</code> 就可以预览</li>
-</ul>
+<iframe src="http://prezi.com/embed/4hg_0pi7irkq/?bgcolor=ffffff&amp;lock_to_path=0&amp;autoplay=0&amp;autohide_ctrls=0&amp;features=undefined&amp;disabled_features=undefined" width="550" height="400" frameborder="0"></iframe>
 </div>
 
 
@@ -395,19 +195,17 @@ var jiathis_config={
   
 
 
-<time datetime="2013-02-22T08:44:00+08:00" pubdate data-updated="true">2013年02月22日</time></p>
+<time datetime="2013-07-04T21:41:00+08:00" pubdate data-updated="true">2013年07月04日</time></p>
 </footer>
 
 <section>
 <ul id="left-right">
 <span style="float:left">
 	
-        <a class="basic-alignment left" href="/blog/game-pole-pit-father-s-philosophy.html" title="Previous Post: 腐女的哲学"><font face=Wingdings>&#239;</font> 腐女的哲学</a>
+        <a class="basic-alignment left" href="/blog/download-google-voice.html" title="Previous Post: 一起调戏谷歌娘"><font face=Wingdings>&#239;</font> 一起调戏谷歌娘</a>
         </span>
 <span style="float:right">
-	
-        <a class="basic-alignment right" href="/blog/kramdown-syntax-chinese-1.html" title="next Post:  kramdown 语法文档翻译（一）"> kramdown 语法文档翻译（一） <font face=Wingdings>&#240;</font></a>
-       </span>
+	 </span>
 </ul>
 </section>
 
