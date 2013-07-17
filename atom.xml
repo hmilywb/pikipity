@@ -14,6 +14,29 @@
 
   
   <entry>
+    <title type="html"><![CDATA[Mac OS X 隐藏软件]]></title>
+    <link href="http://pikipity.github.com/blog/command-plus-h.html"/>
+    <updated>2013-07-17T07:52:00+08:00</updated>
+    <id>http://pikipity.github.com/blog/command-plus-h</id>
+    <content type="html"><![CDATA[<p>在 Mac OS X 系统中有一个非常好用的功能，就是“隐藏应用程序”。在选定某个应用程序的状态下，按 <code>command+H</code> 就可以隐藏当前选定的软件，按 <code>command+option+H</code> 就可以隐藏当前所有未选定的软件，起到的效果和最小化（顺带一提最小化当前窗口的快捷键是 <code>command+M</code>）一样，唯一的区别就是：“最小化”是对于窗口而言的；“隐藏”是对于软件而言的。也就是说，如果将一个窗口最小化，那么仅仅是当前此窗口最小化，但是如果一个软件被隐藏，那么此软件各个桌面上的窗口都会被最小化。由于 Mac OS X 使用 dock 对于当前打开的窗口和软件进行管理，最小化的窗口和未最小化的窗口难以区分（除非你已经在设置中将<code>将窗口最小化为应用程序图标</code>取消勾选，但是那样的话，当最小化的图标很多时，你的 dock 就会变得拥挤不堪）。所以“隐藏”比“最小化”更加方便程序的统一管理。</p>
+
+<p>在隐藏应用程序之后，又出现一个问题，我们很难通过 dock 一眼看出哪个程序已经被隐藏了，我们可以通过开启“已经隐藏的软件图标在 dock 上虚化的功能”，效果如下图。开启方法是在终端中输入：</p>
+
+<pre><code>defaults write com.apple.Dock showhidden -bool YES;killall Dock
+</code></pre>
+
+<p>dock 重启之后就可以了，当然如果你已经将<code>将窗口最小化为应用程序图标</code>取消勾选，那么这条命令就没有任何用处了。</p>
+
+<p>关闭的方法是在终端中输入：</p>
+
+<pre><code>defaults write com.apple.Dock showhidden -bool NO;killall Dock
+</code></pre>
+
+<p><img src="https://lh5.googleusercontent.com/-L0dW4pXnznc/UeXjaxXktmI/AAAAAAAAA3o/VvtuU_ZgnnE/s512/%25E5%25B1%258F%25E5%25B9%2595%25E5%25BF%25AB%25E7%2585%25A7%25202013-07-17%2520%25E4%25B8%258A%25E5%258D%25888.19.01.png" alt="隐藏软件虚化特效" /></p>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[鼠标发明人道格拉斯·恩杰尔巴特去世]]></title>
     <link href="http://pikipity.github.com/blog/history-mouse.html"/>
     <updated>2013-07-04T21:41:00+08:00</updated>
@@ -21,10 +44,6 @@
     <content type="html"><![CDATA[<p>鼠标发明人道格拉斯·恩杰尔巴特(Douglas C. Engelbart)本周二去世，享年88岁。你不知道它是谁？其实我也不知道，总的来说，就是下面这个老人。他发明了鼠标，却没有从这项发明中得到任何好处，斯坦福研究院申请了鼠标的专利，并授权给了苹果电脑，而这个老人从来就没有出现在人们的眼界之中，不曾记住，也就无法提及忘却。</p>
 
 <p><a href="http://s1302.photobucket.com/user/pikipity/media/U5388P2DT20130704083317_zps4d2a037b.jpg.html" target="_blank"><img src="http://i1302.photobucket.com/albums/ag140/pikipity/U5388P2DT20130704083317_zps4d2a037b.jpg" border="0" alt="道格拉斯·恩杰尔巴特" /></a></p>
-
-<p>下面是一段当年道格拉斯·恩杰尔巴特第一次做鼠标演示时的视频:</p>
-
-<iframe src="http://edge.v.iask.com.sinastorage.com/108819463.mp4" frameborder="0" allowfullscreen=""></iframe>
 
 <p>最后回忆一下那些我们听说过、见过、用过和梦想过的鼠标吧！！ &gt;_&lt;</p>
 
@@ -917,145 +936,6 @@ void main()
 
 <embed src="http://17173.tv.sohu.com/playercs2008.swf?Flvid=1577735" quality="high" width="500" height="395" align="middle" allowscriptaccess="always" allowfullscreen="true" mode="transparent" type="application/x-shockwave-flash" />
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[第八章 串口通信]]></title>
-    <link href="http://pikipity.github.com/blog/scm-priciple-8.html"/>
-    <updated>2013-04-27T17:41:00+08:00</updated>
-    <id>http://pikipity.github.com/blog/scm-priciple-8</id>
-    <content type="html"><![CDATA[<p>串口通信是CPU与周边其他设备传递数据的一种方式。8051单片机使用一组<a href="http://baike.baidu.com/view/15524.htm">全双工</a>的<a href="http://zh.wikipedia.org/wiki/UART">UART</a>，进行资料传输</p>
-
-<h2 id="uart">UART的传输结构</h2>
-
-<p>UART在传输一个字节（8个位元）的时候会在开始加入一个起始位元（一般为0），在末尾加上一个结束位元（一般为1），资料的传输如下：</p>
-
-<pre><code>起始位元(0)  bit0 bit1 bit2 bit3 bit4 bit5 bit6 bit7 结束位元(1)
-</code></pre>
-
-<p>UART的接受端没有资料的时候为高电平（1），当检测到出现0时，开始接受数据，接收完8位数据之后，结束。注意：一个字节的数据是从最低位开始发送的。</p>
-
-<p>这种传输方式也被计作<code>8N1</code>，第一个数字代表传输的符号数（此处为一个字节，8位，所以为”8”），第二个是是否根据数据中1的个数来进行验错（此处为”N”，意思是不验错，还可以为”E”，代表1的个数为偶数，”O”代表1的个数位奇数），最后一个数字是结束位元（此处结束位元为“1”）</p>
-
-<h2 id="section">传输速度</h2>
-
-<p>由于传输的数据很简单，所以通常以波特率来衡量传输速度，波特率指的是一秒钟传输的符号的个数，一般UART常用的波特率为1200、2400、4800、9600及19200等。</p>
-
-<p>注意：不要和<a href="https://zh.wikipedia.org/wiki/%E6%B3%A2%E7%89%B9%E7%8E%87">比特率</a>混淆，波特率指的是一秒钟传输的符号的个数，根据不同的调制形式，一个符号上可负载多个比特信息。比特率指的是1秒传输的比特数。</p>
-
-<p>一般发射和接受端的波特率必须一样，否则会出现误传，但是如果波特率相差不是很大的话，错误率亦不会很大。</p>
-
-<h2 id="uart-1">8051中UART工作机制</h2>
-
-<p>当UART串口检测到有信号传入时，便将8位信号全部存到<code>SBUF</code>寄存器中，然后接受中断旗标置一，进入中断向量。</p>
-
-<p>当向<code>SBUF</code>中移入数据的时候，UART便会将其发送出去，发送结束后，发送中断旗标置一，进入中断向量。</p>
-
-<p>在发送和接受的过程中会使用 <code>Timer1</code> 来控制传输速率（波特率）</p>
-
-<p>注意：尽管中断旗标不一样，但是中断向量却是同一个，都是 <code>23H</code>，所以在中断向量要判断到底是哪一个旗标让程序进入中断的。</p>
-
-<h2 id="uart-2">UART设置</h2>
-
-<p>由于UART要设置<code>Timer1</code>来控制波特率，所以设置比较复杂。需要用到<code>PCON</code>、<code>SCON</code>和<code>TMOD</code>、<code>TH1</code>、<code>TL1</code>。</p>
-
-<h3 id="pcon">PCON</h3>
-
-<p>不可位元寻址</p>
-
-<pre><code>SMOD  -  -  -  GF1  GF0  PD  IDL
-</code></pre>
-
-<p>和UART有关的就是<code>SMOD</code>位，在后面的波特率计算公式中会出现。</p>
-
-<h3 id="scon">SCON</h3>
-
-<p>可位元寻址</p>
-
-<pre><code>SM0  SM1  SM2  REN  TB8  RB8  TI  RI
-</code></pre>
-
-<ul>
-  <li>
-    <p>SM0与SM1：传输模式选择位</p>
-
-    <table>
-      <thead>
-        <tr>
-          <th style="text-align: center">SM0</th>
-          <th style="text-align: center">SM1</th>
-          <th style="text-align: center">模式</th>
-          <th style="text-align: center">描述</th>
-          <th style="text-align: center">波特率</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td style="text-align: center">0</td>
-          <td style="text-align: center">0</td>
-          <td style="text-align: center">0</td>
-          <td style="text-align: center"><a href="http://elearning.stut.edu.tw/mechelec/ch8.htm">一般用于I/O扩充</a></td>
-          <td style="text-align: center"><script type="math/tex">\frac{f_{os}}{12}</script></td>
-        </tr>
-        <tr>
-          <td style="text-align: center">0</td>
-          <td style="text-align: center">1</td>
-          <td style="text-align: center">1</td>
-          <td style="text-align: center">8位元 UART</td>
-          <td style="text-align: center"><script type="math/tex">\frac{2^{SMOD}}{32}\times\frac{f_{os}}{12(256-TH1)}</script></td>
-        </tr>
-        <tr>
-          <td style="text-align: center">1</td>
-          <td style="text-align: center">0</td>
-          <td style="text-align: center">2</td>
-          <td style="text-align: center">9位元 UART</td>
-          <td style="text-align: center"><script type="math/tex">\frac{2^{SMOD}}{64}f_{os}</script></td>
-        </tr>
-        <tr>
-          <td style="text-align: center">1</td>
-          <td style="text-align: center">1</td>
-          <td style="text-align: center">3</td>
-          <td style="text-align: center">9位元 UART</td>
-          <td style="text-align: center"><script type="math/tex">\frac{2^{SMOD}}{32}\times\frac{f_{os}}{12(256-TH1)}</script></td>
-        </tr>
-      </tbody>
-    </table>
-
-    <p>一般使用模式1就可以了。</p>
-  </li>
-  <li>SM2: 在模式2和3中使能通信特性，一般不用。</li>
-  <li>REN：使能接受，置一就是允许接受，置零就是不允许接收。</li>
-  <li>TB8：在模式2和3中设定传输的第九位。</li>
-  <li>RB8：在模式2和3中设定接受的第九位。</li>
-  <li>TI：发送中断旗标。不能硬件置零。</li>
-  <li>RI：接受中断旗标。不能硬件置零。</li>
-</ul>
-
-<h3 id="timer1">Timer1的设定</h3>
-
-<p>一般选择8位自动重载模式就可以了，根据上面的波特率就可以计算出<code>TH1</code>中应该重载的数值。下面是一张设置对应表。</p>
-
-<p><img src="https://lh4.googleusercontent.com/-IwsFV34WlVM/UXvO5DQs7qI/AAAAAAAAAww/nKiVKocEdsI/s912/%25E5%25B1%258F%25E5%25B9%2595%25E5%25BF%25AB%25E7%2585%25A7%25202013-04-27%2520%25E4%25B8%258B%25E5%258D%25889.12.41.png" alt="UART设置对应表" width="450" /></p>
-
-<h3 id="section-1">设置举例</h3>
-
-<pre><code>;PCON设置
-ANL PCON,#01111111B ;这里为SMOD=0，如果SMOD=1，就 ORL PCON,#10000000B
-;设置传输模式
-CLR SM0
-SETB SM1
-CLR SM2
-;设置允许接受
-SETB REN
-;设置波特率
-MOV TMOD,#00100000B ;Timer1 8位自动重载
-MOV TH1,#0FDH       ;9600bps
-SETB TR1            ;Timer1开始计时
-;使能中断
-SETB ES
-SETB EA
-</code></pre>
 ]]></content>
   </entry>
   
