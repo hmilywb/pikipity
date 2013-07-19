@@ -14,6 +14,17 @@
 
   
   <entry>
+    <title type="html"><![CDATA[Matlab 中符号、数值、字符串间的转换指令]]></title>
+    <link href="http://pikipity.github.com/blog/matlab-vairable-type-change.html"/>
+    <updated>2013-07-19T20:07:00+08:00</updated>
+    <id>http://pikipity.github.com/blog/matlab-vairable-type-change</id>
+    <content type="html"><![CDATA[<p>有了这张图，再也不用担心各种奇怪变量类型之间的转换了。</p>
+
+<p><img src="https://lh6.googleusercontent.com/-8LX9XAkBmW8/Uekr5IEcNUI/AAAAAAAAA4g/581Spt_RaYw/s720/20100714070637864.png" alt="Matlab 中符号、数值、字符串间的转换指令" /></p>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[通过几何概型来估算&pi;]]></title>
     <link href="http://pikipity.github.com/blog/find-pi.html"/>
     <updated>2013-03-28T07:52:00+08:00</updated>
