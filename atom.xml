@@ -14,6 +14,67 @@
 
   
   <entry>
+    <title type="html"><![CDATA[MATLAB 函数中的可选参数]]></title>
+    <link href="http://pikipity.github.com/blog/varible-input-matlab.html"/>
+    <updated>2013-07-20T19:34:00+08:00</updated>
+    <id>http://pikipity.github.com/blog/varible-input-matlab</id>
+    <content type="html"><![CDATA[<p>在编写函数的时候，有些输入的参数可输入也可不输入，或是有些输出的结果可输出也可不输出，这个时候就要用到<code>varargin</code>、<code>nargin</code>、<code>nargout</code>和<code>varargout</code>了。</p>
+
+<ul>
+  <li>
+    <p><code>nargin</code>返回的是使用函数的时候输入变量的个数，<code>nargout</code>返回的是使用函数的时候输出结果的个数。</p>
+  </li>
+  <li>
+    <p><code>varargin</code>放在输入参数的位置，可以接受任意个参数，变量类型始终为<code>cell</code>。<code>varargout</code>放在输出结果的位置，和<code>varargin</code>一样，可以输出任意个结果，变量类型始终为<code>cell</code>。</p>
+  </li>
+</ul>
+
+<p>比如，现在想要写一个函数，函数输入为波长、数据，实际默认或可选参数为频率 f 和 采样频率 Fs，那么函数有两种写法：</p>
+
+<ol>
+  <li>
+    <p><code>varargin</code>和<code>nargin</code>混合使用：</p>
+
+    <pre><code> function [tau varargout] = wzjmtGetTau(wavelength, data, varargin)
+     Fs = 1;
+     f = 6378;
+     if nargin &gt; 4
+         Fs = varargin{2};
+     end
+     if nargin &gt; 3
+         f = varargin{1};
+     end
+     计算过程...
+     tau = t;
+     if nargout &gt; 1
+         varargout{1}=exp(-tau);
+     end
+ end
+</code></pre>
+  </li>
+  <li>
+    <p>只用<code>nargin</code>：</p>
+
+    <pre><code> function [tau varargout] = wzjmtGetTau(wavelength, data, f, Fs)
+     if nargin &lt; 4 
+         Fs = 1; 
+     end
+     if nargin &lt; 5 
+         f = 6378; 
+     end
+     计算过程...
+     tau = t;
+     if nargout &gt; 1
+         varargout{1}=exp(-tau);
+     end
+ end
+</code></pre>
+  </li>
+</ol>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[「動腦」也能織圍巾，來條奇妙的腦電波圍巾吧！]]></title>
     <link href="http://pikipity.github.com/blog/eeg-muffler.html"/>
     <updated>2013-07-20T14:46:00+08:00</updated>
@@ -928,17 +989,6 @@ void main()
 
 <embed height="452" width="544" quality="high" allowfullscreen="true" type="application/x-shockwave-flash" src="http://static.hdslb.com/miniloader.swf" flashvars="aid=556019&amp;page=1" pluginspage="http://www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash" />
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[女朋友生日的影响]]></title>
-    <link href="http://pikipity.github.com/blog/affect-of-girl-friend-birthday.html"/>
-    <updated>2013-05-10T09:05:00+08:00</updated>
-    <id>http://pikipity.github.com/blog/affect-of-girl-friend-birthday</id>
-    <content type="html"><![CDATA[<p>今天去看了一下 Google Analysis 上我的网站的浏览量，吓死我了，女朋友生日给我带来了大量浏览量，天啊，这宣传也太有效了吧。</p>
-
-<p><img src="https://lh5.googleusercontent.com/-H832N76TdRc/UYxI9ViL7aI/AAAAAAAAAyU/tkljiGJ0i6I/s912/%25E5%25B1%258F%25E5%25B9%2595%25E5%25BF%25AB%25E7%2585%25A7%25202013-05-10%2520%25E4%25B8%258A%25E5%258D%25889.07.26.png" alt="5月8日惊人的浏览量" /></p>
 ]]></content>
   </entry>
   

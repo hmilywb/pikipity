@@ -14,6 +14,67 @@
 
   
   <entry>
+    <title type="html"><![CDATA[MATLAB 函数中的可选参数]]></title>
+    <link href="http://pikipity.github.com/blog/varible-input-matlab.html"/>
+    <updated>2013-07-20T19:34:00+08:00</updated>
+    <id>http://pikipity.github.com/blog/varible-input-matlab</id>
+    <content type="html"><![CDATA[<p>在编写函数的时候，有些输入的参数可输入也可不输入，或是有些输出的结果可输出也可不输出，这个时候就要用到<code>varargin</code>、<code>nargin</code>、<code>nargout</code>和<code>varargout</code>了。</p>
+
+<ul>
+  <li>
+    <p><code>nargin</code>返回的是使用函数的时候输入变量的个数，<code>nargout</code>返回的是使用函数的时候输出结果的个数。</p>
+  </li>
+  <li>
+    <p><code>varargin</code>放在输入参数的位置，可以接受任意个参数，变量类型始终为<code>cell</code>。<code>varargout</code>放在输出结果的位置，和<code>varargin</code>一样，可以输出任意个结果，变量类型始终为<code>cell</code>。</p>
+  </li>
+</ul>
+
+<p>比如，现在想要写一个函数，函数输入为波长、数据，实际默认或可选参数为频率 f 和 采样频率 Fs，那么函数有两种写法：</p>
+
+<ol>
+  <li>
+    <p><code>varargin</code>和<code>nargin</code>混合使用：</p>
+
+    <pre><code> function [tau varargout] = wzjmtGetTau(wavelength, data, varargin)
+     Fs = 1;
+     f = 6378;
+     if nargin &gt; 4
+         Fs = varargin{2};
+     end
+     if nargin &gt; 3
+         f = varargin{1};
+     end
+     计算过程...
+     tau = t;
+     if nargout &gt; 1
+         varargout{1}=exp(-tau);
+     end
+ end
+</code></pre>
+  </li>
+  <li>
+    <p>只用<code>nargin</code>：</p>
+
+    <pre><code> function [tau varargout] = wzjmtGetTau(wavelength, data, f, Fs)
+     if nargin &lt; 4 
+         Fs = 1; 
+     end
+     if nargin &lt; 5 
+         f = 6378; 
+     end
+     计算过程...
+     tau = t;
+     if nargout &gt; 1
+         varargout{1}=exp(-tau);
+     end
+ end
+</code></pre>
+  </li>
+</ol>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[Matlab 中符号、数值、字符串间的转换指令]]></title>
     <link href="http://pikipity.github.com/blog/matlab-vairable-type-change.html"/>
     <updated>2013-07-19T20:07:00+08:00</updated>
