@@ -14,6 +14,31 @@
 
   
   <entry>
+    <title type="html"><![CDATA[Matlab 编写“生命游戏”]]></title>
+    <link href="http://pikipity.github.com/blog/the-game-of-life.html"/>
+    <updated>2013-07-26T19:46:00+08:00</updated>
+    <id>http://pikipity.github.com/blog/the-game-of-life</id>
+    <content type="html"><![CDATA[<p>生命游戏就是指英国数学家约翰·何顿·康威在1970年发明的细胞自动机。一个平面二维世界被划分为了多个小格子，每个小格子都住着一个细胞，其存在两种状态：生或死（不是薛定谔他家养的猫的细胞，放心，没有中间状态，否则用什么算法？神经网络？）。我们可以为这个世界规定某种规则，然后观看这个世界是如何继续发展的（就是体验上帝啦）。最初，约翰·何顿·康威设定了三个法则：</p>
+
+<ul>
+  <li>当一个细胞周围的八个位置中有3个细胞时，该位置产生细胞；</li>
+  <li>当周围有2个细胞时，该位置维持原样；</li>
+  <li>其他情况，该位置变为无细胞。</li>
+</ul>
+
+<p>然后，世界开始根据这三个法则依据最初细胞摆放数量和位置的不同演变出了各种各样有趣的图案，比如下面这个，这三条看似简单的规律其实蕴含着许许多多的推论，有兴趣的可以看看<a href="http://ja.wikipedia.org/wiki/%E3%83%A9%E3%82%A4%E3%83%95%E3%82%B2%E3%83%BC%E3%83%A0">日文的wiki</a>介绍，详细程度超乎想象。</p>
+
+<p><img src="http://upload.wikimedia.org/wikipedia/commons/e/e5/Gospers_glider_gun.gif" alt="机枪制造“滑翔机”" /></p>
+
+<p>在实验室看论文实在无聊，于是用 Matlab 编写了个生命游戏的小程序，切身地体会到了 Matlab 是一个多么效率低下的语言啊。</p>
+
+<p>PS：程序中存在大量 for 循环，严重影响程序运行质量，我觉得还可以抢救一下，元芳你怎么看？</p>
+
+<p>忘了，程序在我的 Github 里面，传送门在<a href="https://github.com/pikipity/The-game-of-life-by-using-MATLAB.git">这里</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[银行机按键声音]]></title>
     <link href="http://pikipity.github.com/blog/yin-xing-ji-an-jian-sheng-yin.html"/>
     <updated>2013-07-23T08:40:00+08:00</updated>
@@ -262,61 +287,6 @@ y=reshape(y,[1,length(y)]).*4;
 <p>用 <code>y=find_pi([100 1 10 1000])</code> 进行四次测试，结果为 <code>[3.0800 0 3.6000 3.0800]</code>，<code>[3.3200 4.0000 3.2000 3.2240]</code>, <code>[3.3200 4.0000 3.2000 3.1640]</code> 和 <code>[3.3200 4.0000 2.8000 3.0880]</code>，运行正常，结果看起来是真确的啦。</p>
 
 <p>存在一个问题，当运行实验点数较多的情况，比如10000次的时候，函数会卡死，但是把函数语句单独提出来使用一切正常，只是会有小卡顿，看来是我的小 MBP 内存不够了。但是问题还是很明显的，不论最小的点数是多少，都要至少产生两个以最大点数为基础的大矩阵来运算，实在是太浪费了，但是不让使用循环，浪费就浪费吧。函数已放在<a href="https://github.com/pikipity/Find-pi">我的 Github</a>，欢迎来 Fork 我，谢谢。</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[在 Matlab 中如何做傅里叶变换]]></title>
-    <link href="http://pikipity.github.com/blog/fft-in-matlab.html"/>
-    <updated>2013-03-03T11:09:00+08:00</updated>
-    <id>http://pikipity.github.com/blog/fft-in-matlab</id>
-    <content type="html"><![CDATA[<p>翻译自<a href="http://matlabgeeks.com/">Matlab Geeks</a>的 <a href="http://matlabgeeks.com/tips-tutorials/how-to-do-a-fourier-transform-in-matlab/">“How to Do a Fourier Transform in Matlab”</a>。</p>
-
-<p>傅里叶变换是一个在很多科学和工程领域都非常有用的数学工具。傅里叶变换在信号处理、物理、通信、地质学、天文学、光学等很多领域都有应用。这个技术将一个函数或是一组数据从时域或是取样域变换到频域。这意味着，傅里叶变换可以展示一组时间序列数据的频率分量。离散傅里叶变换是将取样域的离散数据转化到频域。快速傅里叶变换是一种高效进行离散傅里叶变换的方法，并且存在很多种方法来完成快速傅里叶变换。Matlab 使用快速傅里叶变换来得到离散数据的频域分量</p>
-
-<p>下面是一个在 Matlab 中如何用快速傅里叶变换来分析音频文件的例子。这个例子中的文件是记录在 note A4 （怎么翻译？不会啊）上的音叉录音。这个展示了傅里叶变换如何进行和如何在 Matlab 中使用这项技术。</p>
-
-<pre><code>%Fourier Transform of Sound File
-
-%Load File
-file = 'C:\MATLAB7\work\tuning_fork_A4';
-[y,Fs,bits] = wavread(file);
-
-Nsamps = length(y);
-t = (1/Fs)*(1:Nsamps)          %Prepare time data for plot
-
-%Do Fourier Transform
-y_fft = abs(fft(y));            %Retain Magnitude
-y_fft = y_fft(1:Nsamps/2);      %Discard Half of Points
-f = Fs*(0:Nsamps/2-1)/Nsamps;   %Prepare freq data for plot
-
-%Plot Sound File in Time Domain
-figure
-plot(t, y)
-xlabel('Time (s)')
-ylabel('Amplitude')
-title('Tuning Fork A4 in Time Domain')
-
-%Plot Sound File in Frequency Domain
-figure
-plot(f, y_fft)
-xlim([0 1000])
-xlabel('Frequency (Hz)')
-ylabel('Amplitude')
-title('Frequency Response of Tuning Fork A4')
-</code></pre>
-
-<p>音频文件 <a href="http://matlabgeeks.com/wp-content/uploads/2010/12/tuning_fork_A4.wav">“tuning_fork_A4”</a> 用 wavread 函数打开，这个函数返回文件的采样数据 “y”、采样频率 “Fs” 和 A/D 转换器使用的比特数 “bits”。注意，文件的扩展名 “.wav” 不需要在使用函数的时候特别指定。就像下面将会展示的，采样频率在重建数据的时候非常重要。</p>
-
-<p>快速傅里叶变换用 “fft” 函数执行。Matlab 没有 “dft” 函数因为快速傅里叶变换实际上就是计算的离散傅里叶变换。尽管快速傅里叶变换的角度在很多应用中非常中央，但是只有快速傅里叶变换的大小被保存了。“fft” 函数允许指定一个快速傅里叶变换的输出点数，但是在这个例子中，我们使用与输入点数一样数目的输出点数。在下一行，快速傅里叶变换的一半数据被舍弃了。为了这个例子的目的所以这样做了，但是在很多应用中，整个波谱都会用到（译者注：我认为这里舍弃一半的点是因为FFT是关于采样频率的一半对称的，所以只要看一半就可以了）。接下来的一行，将会用于横坐标的数据通过使用采样频率和时遇采样数量准备好了。这一步对于确定包含在音频文件的实际频率是很重要的。</p>
-
-<p>接下来，原始数据在时域上被画了下来，快速傅里叶变换的数据也被画了出来。为了展示在峰值的频率上的更多详情，在这个画中，x轴被限定在了 [0,1000] 的范围中。注意，在大约440Hz处，频率响应有一个峰值，这个就是 “note A4” 的频率。在其他频率也有一些很小东西，这些估计是音叉了。对于其他乐器比如吉他，在频率响应的峰值的整数倍上都可以看见谐波。</p>
-
-<p><img src="http://matlabgeeks.com/wp-content/uploads/2010/12/tunforktime.jpg" width="550pt" /></p>
-
-<p><img src="http://matlabgeeks.com/wp-content/uploads/2010/12/tunforkfreq.jpg" width="550pt" /></p>
-
-<p>傅里叶变换在很多不同的领域都是很有用的工具。二维的傅里叶变换也常常用在图像上。尝试一下上面的代码，看看你能不能得到一样的结果。</p>
 ]]></content>
   </entry>
   

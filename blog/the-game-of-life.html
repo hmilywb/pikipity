@@ -3,12 +3,12 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>我不相信，这是Python么？！ - 折腾来折腾去</title>
+	<title>Matlab 编写“生命游戏” - 折腾来折腾去</title>
 	<meta name="author" content="pikipity">
 
 	
-	<meta name="description" content="我不相信，这是Python么？！ Posted by pikipity
-&nbsp; 2013年02月18日 Others Comments 如果看了《别再说你懂C，这才是真正的C》，认为C语言的混乱编程没有什么，那么看看这位 Jeff Preshing 大神的 Python 混乱编程吧。 &hellip;">
+	<meta name="description" content="Matlab 编写“生命游戏” Posted by pikipity
+&nbsp; 2013年07月26日 Matlab Comments 生命游戏就是指英国数学家约翰·何顿·康威在1970年发明的细胞自动机。一个平面二维世界被划分为了多个小格子，每个小格子都住着一个细胞，其存在两种状态：生或死 &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -110,7 +110,7 @@
 	<div id="content" class="inner"><div>
 <article class="post">
 	
-	<h2 class="title">我不相信，这是Python么？！</h2>
+	<h2 class="title">Matlab 编写“生命游戏”</h2>
 	<div class="meta">
 	       <div class="author" style="float:left;">
   
@@ -129,11 +129,11 @@
   
 
 
-<time datetime="2013-02-18T13:37:00+08:00" pubdate data-updated="true">2013年02月18日</time></div>
+<time datetime="2013-07-26T19:46:00+08:00" pubdate data-updated="true">2013年07月26日</time></div>
 		<div class="tags" style="float:left;">
 
 
-	<a class='category' href='/blog/categories/others/'>Others</a>
+	<a class='category' href='/blog/categories/matlab/'>Matlab</a>
 
 
 </div>
@@ -141,88 +141,23 @@
 			<span class="comments"><a href="#com_target">Comments</a></span>
 		
 	</div>
-	<div class="entry-content" style="clear:both;"><p>如果看了<a href="/blog/21th-ioccc-winner.html">《别再说你懂C，这才是真正的C》</a>，认为C语言的混乱编程没有什么，那么看看这位 <a href="http://preshing.com/">Jeff Preshing</a> 大神的 <a href="http://en.wikipedia.org/wiki/Python_(programming_language)">Python</a> 混乱编程吧。</p>
+	<div class="entry-content" style="clear:both;"><p>生命游戏就是指英国数学家约翰·何顿·康威在1970年发明的细胞自动机。一个平面二维世界被划分为了多个小格子，每个小格子都住着一个细胞，其存在两种状态：生或死（不是薛定谔他家养的猫的细胞，放心，没有中间状态，否则用什么算法？神经网络？）。我们可以为这个世界规定某种规则，然后观看这个世界是如何继续发展的（就是体验上帝啦）。最初，约翰·何顿·康威设定了三个法则：</p>
 
-<p>大家都知道 <a href="http://en.wikipedia.org/wiki/Python_(programming_language)">Python</a> 对于格式的要求及其严格，经常一段程序就因为开头多了一个空格就连连报错，这位神人就编写了一段代码来讽刺我这种渣渣</p>
+<ul>
+  <li>当一个细胞周围的八个位置中有3个细胞时，该位置产生细胞；</li>
+  <li>当周围有2个细胞时，该位置维持原样；</li>
+  <li>其他情况，该位置变为无细胞。</li>
+</ul>
 
-<blockquote>
-  <p>Who says you can’t write obfuscated Python?</p>
-</blockquote>
+<p>然后，世界开始根据这三个法则依据最初细胞摆放数量和位置的不同演变出了各种各样有趣的图案，比如下面这个，这三条看似简单的规律其实蕴含着许许多多的推论，有兴趣的可以看看<a href="http://ja.wikipedia.org/wiki/%E3%83%A9%E3%82%A4%E3%83%95%E3%82%B2%E3%83%BC%E3%83%A0">日文的wiki</a>介绍，详细程度超乎想象。</p>
 
-<!--more-->
+<p><img src="http://upload.wikimedia.org/wikipedia/commons/e/e5/Gospers_glider_gun.gif" alt="机枪制造“滑翔机”" /></p>
 
-<p>代码如下</p>
+<p>在实验室看论文实在无聊，于是用 Matlab 编写了个生命游戏的小程序，切身地体会到了 Matlab 是一个多么效率低下的语言啊。</p>
 
-<pre><code>_                                 =\
-                                """if!
-                              1:"e,V=100
-                            0,(0j-1)**-.2;
-                           v,S=.5/  V.real,
-                         [(0,0,4      *e,4*e*
-                       V)];w=1          -v"def!
-                      E(T,A,              B,C):P
-                  ,Q,R=B*w+                A*v,B*w+C
-            *v,A*w+B*v;retur              n[(1,Q,C,A),(1,P
-     ,Q,B),(0,Q,P,A)]*T+[(0,C            ,R,B),(1,R,C,A)]*(1-T)"f
-or!i!in!_[:11]:S       =sum([E          (*x)for       !x!in!S],[])"imp
-  ort!cair               o!as!O;      s=O.Ima               geSurfac
-   e(1,e,e)               ;c=O.Con  text(s);               M,L,G=c.
-     move_to                ,c.line_to,c.s                et_sour
-       ce_rgb                a"def!z(f,a)                :f(-a.
-        imag,a.       real-e-e)"for!T,A,B,C!in[i       !for!i!
-          in!S!if!i[""";exec(reduce(lambda x,i:x.replace(chr
-           (i),"\n "[34-i:]),   range(   35),_+"""0]]:z(M,A
-             );z(L,B);z         (L,C);         c.close_pa
-             th()"G             (.4,.3             ,1);c.
-             paint(             );G(.7             ,.7,1)
-             ;c.fil             l()"fo             r!i!in
-             !range             (9):"!             g=1-i/
-             8;d=i/          4*g;G(d,d,d,          1-g*.8
-             )"!def     !y(f,a):z(f,a+(1+2j)*(     1j**(i
-             /2.))*g)"!for!T,A,B,C!in!S:y(M,C);y(L,A);y(M
-             ,A);y(L,B)"!c.st            roke()"s.write_t
-             o_png('pen                        rose.png')
-             """                                       ))
-</code></pre>
+<p>PS：程序中存在大量 for 循环，严重影响程序运行质量，我觉得还可以抢救一下，元芳你怎么看？</p>
 
-<p>效果是生成一幅 1000×1000 的 <a href="http://en.wikipedia.org/wiki/Penrose_tiling">Penrose tiling</a> 图片，其中包括了 2212 具有3D效果的 Penrose tiles。图像如图</p>
-
-<p><img src="/images/post/penrose-cropped.jpg" alt="闪瞎眼睛的效果图" width="550pt" /></p>
-
-<p>如果想亲自膜拜，原文在<a href="http://preshing.com/20110822/penrose-tiling-in-obfuscated-python">这里</a>。</p>
-
-<p>随后，这位 <a href="http://preshing.com/">Jeff Preshing</a> 大神为了进一步亮瞎 <a href="http://en.wikipedia.org/wiki/Python_(programming_language)">Python</a> 菜鸟的双眼，又上了一段代码：</p>
-
-<pre><code>_                                      =   (
-                                        255,
-                                      lambda
-                               V       ,B,c
-                             :c   and Y(V*V+B,B,  c
-                               -1)if(abs(V)&lt;6)else
-               (              2+c-4*abs(V)**-0.4)/i
-                 )  ;v,      x=1500,1000;C=range(v*x
-                  );import  struct;P=struct.pack;M,\
-            j  ='&lt;QIIHHHH',open('M.bmp','wb').write
-for X in j('BM'+P(M,v*x*3+26,26,12,v,x,1,24))or C:
-            i  ,Y=_;j(P('BBB',*(lambda T:(T*80+T**9
-                  *i-950*T  **99,T*70-880*T**18+701*
-                 T  **9     ,T*i**(1-T**45*2)))(sum(
-               [              Y(0,(A%3/3.+X%v+(X/v+
-                               A/3/3.-x/2)/1j)*2.5
-                             /x   -2.7,i)**2 for  \
-                               A       in C
-                                      [:9]])
-                                        /9)
-                                       )   )
-</code></pre>
-
-<p>效果是生成一幅 <a href="http://zh.wikipedia.org/wiki/%E6%9B%BC%E5%BE%B7%E5%8D%9A%E9%9B%86%E5%90%88">曼德博集合</a> 的图片。</p>
-
-<p><img src="/images/post/M-small.jpg" alt="再次亮瞎双眼的效果图" width="550pt" /></p>
-
-<p>原文膜拜请点<a href="http://preshing.com/20110926/high-resolution-mandelbrot-in-obfuscated-python">这里</a>。</p>
-
-<p><a href="http://www.reddit.com/">reddit</a> 上的 <a href="http://www.reddit.com/user/djimbob">djimbob</a> 大神在 <a href="http://www.reddit.com/r/programming/comments/jqi9d/who_says_you_cant_write_obfuscated_python/c2ecprp">这里</a>具体介绍了如何实现 <a href="http://en.wikipedia.org/wiki/Python_(programming_language)">Python</a> 的混乱编程，以及第一个例子的实现方法。好好学，明天菜鸟变大神。+_+</p>
+<p>忘了，程序在我的 Github 里面，传送门在<a href="https://github.com/pikipity/The-game-of-life-by-using-MATLAB.git">这里</a></p>
 </div>
 
 
@@ -266,19 +201,17 @@ var jiathis_config={
   
 
 
-<time datetime="2013-02-18T13:37:00+08:00" pubdate data-updated="true">2013年02月18日</time></p>
+<time datetime="2013-07-26T19:46:00+08:00" pubdate data-updated="true">2013年07月26日</time></p>
 </footer>
 
 <section>
 <ul id="left-right">
 <span style="float:left">
 	
-        <a class="basic-alignment left" href="/blog/mosfet.html" title="Previous Post: MOSFET分析总结"><font face=Wingdings>&#239;</font> MOSFET分析总结</a>
+        <a class="basic-alignment left" href="/blog/yin-xing-ji-an-jian-sheng-yin.html" title="Previous Post: 银行机按键声音"><font face=Wingdings>&#239;</font> 银行机按键声音</a>
         </span>
 <span style="float:right">
-	
-        <a class="basic-alignment right" href="/blog/single-mos-amp.html" title="next Post: 单 MOSFET 放大器">单 MOSFET 放大器 <font face=Wingdings>&#240;</font></a>
-       </span>
+	 </span>
 </ul>
 </section>
 
