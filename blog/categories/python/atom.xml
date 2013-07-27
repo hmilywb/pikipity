@@ -14,6 +14,33 @@
 
   
   <entry>
+    <title type="html"><![CDATA[用 Pygame 编写的生命游戏]]></title>
+    <link href="http://pikipity.github.com/blog/the-game-of-life-using-pygame.html"/>
+    <updated>2013-07-27T19:58:00+08:00</updated>
+    <id>http://pikipity.github.com/blog/the-game-of-life-using-pygame</id>
+    <content type="html"><![CDATA[<p><a href="http://pikipity.github.io/blog/the-game-of-life.html">之前用 Matlab 编写了一个生命游戏</a>，但是效率实在太低了，只要矩阵稍微大一点，我的小 MacBook Pro 就跑不动了，恰巧最近正在跟随 <a href="http://eyehere.net/2011/python-pygame-novice-professional-1/">“eyeHere”</a> 这样一个网站学习 <a href="http://www.pygame.org/news.html">Pygame</a>。<a href="http://www.pygame.org/news.html">Pygame</a> 是一个将 Python 语言和 <a href="http://zh.wikipedia.org/wiki/SDL">SDL</a> 结合的 Python 库。<a href="http://zh.wikipedia.org/wiki/SDL">SDL</a> 是一个跨平台开源的多媒体库，源代码用 C 语言写成，一般用于游戏、模拟器和多媒体播放器的开发，顺带一提，Linux 上很多游戏都是用 SDL 开发的，当年玩的<a href="http://zh.wikipedia.org/wiki/%E9%9F%A6%E8%AF%BA%E4%B9%8B%E6%88%98">《韦诺之战》</a>也使用它开发的，还有当年红极一时的<a href="http://zh.wikipedia.org/wiki/%E9%AD%94%E5%9F%9F%E5%B9%BB%E5%A2%83%E4%B9%8B%E6%B5%B4%E8%A1%80%E6%88%B0%E5%A0%B42004">《虚拟竞技场》</a>系列的 Linux 版本等等。</p>
+
+<p>Pygame 可以直接在<a href="http://www.pygame.org/download.shtml">官网上下载</a>到，无论是 Windows 版还是 Mac OS X 版都已经打好了包，安装什么的都很方便。</p>
+
+<p>我把我那个用 Matlab 编写的生命游戏，用 Python 重写之后，debug 的时候运行还不是很流畅，但是实际运行的时候，速度超级理想，以至于我最初设定的30的FPS都显得比较大了。用键盘操作，在暂停模式下可以用鼠标添加或是消除细胞，键盘键位如下：</p>
+
+<ul>
+  <li>b键：开始游戏</li>
+  <li>s键：暂停游戏（可以用鼠标添加或是消除细胞）</li>
+  <li>c键：更改大小（在暂停模式下更改。书写格式为：每行细胞数量,每列细胞数量，回车确定）</li>
+</ul>
+
+<p>有兴趣的可以到<a href="https://github.com/pikipity/Game_of_life_python.git">我的 Github </a>去看看，下面是截图：</p>
+
+<p><img src="https://lh3.googleusercontent.com/-xd-_uQQvtRk/UfOyj9m4UCI/AAAAAAAAA58/L1DBnX41zm0/s640/%25E5%25B1%258F%25E5%25B9%2595%25E5%25BF%25AB%25E7%2585%25A7%25202013-07-27%2520%25E4%25B8%258B%25E5%258D%25887.40.40.png" alt="暂停画面" /></p>
+
+<p><img src="https://lh6.googleusercontent.com/-PRk7O1VVdFs/UfOyjw0r3BI/AAAAAAAAA6A/Zba8eMWtklk/s640/%25E5%25B1%258F%25E5%25B9%2595%25E5%25BF%25AB%25E7%2585%25A7%25202013-07-27%2520%25E4%25B8%258B%25E5%258D%25887.40.54.png" alt="运行画面" /></p>
+
+<p><img src="https://lh6.googleusercontent.com/-_9-BV2hoBEs/UfOyj_Nr1EI/AAAAAAAAA54/p2WOY7we-9I/s576/%25E5%25B1%258F%25E5%25B9%2595%25E5%25BF%25AB%25E7%2585%25A7%25202013-07-27%2520%25E4%25B8%258B%25E5%258D%25887.41.28.png" alt="更改大小" /></p>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[一起调戏谷歌娘]]></title>
     <link href="http://pikipity.github.com/blog/download-google-voice.html"/>
     <updated>2013-06-06T15:23:00+08:00</updated>
@@ -123,7 +150,7 @@
     <p><img src="https://lh6.googleusercontent.com/-mCcMvwpzwqQ/UWYhrOvfVpI/AAAAAAAAAqs/plQq7BcSrwU/s640/QtPy.png" width="480" alt="Qt Designer" /></p>
   </li>
   <li>
-    <p>Tkinter: 从名字可以看出，创建的是 Tk 的GUI。优点很明显，是一个已经半官方化的工具包，可以直接使用，无需安装，并且教程众多，几乎所有介绍 Python 入门的书，只要提及 GUI 设计都会讲 Tkinter。缺点一样明显，设计出的 GUI 很难看，要问多难看，你自己看看 Python 的那个 IDLE 就好了，土的掉渣啊，而且元件一样很少，如果只是编写一些小程序的话还可以，如果编写大程序要用到比较复杂的元件的话，就需要从提供的元件里找一些替代品了，手工输入代码，有时候很累啊。但是我认为用 Tkinter 来入门 GUI 设计是很好的，因为思路清晰，代码简单，这也就是为什么我在这里只介绍 Tkinter 的原因。一个英文教程在<a href="http://www.pythonware.com/library/tkinter/introduction/index.htm">这里</a>，由于我不想记住所有元件的方法，所以用到的话就来这里查询，很方便。</p>
+    <p>Tkinter: 从名字可以看出，创建的是 Tk 的GUI。优点很明显，是一个已经半官方化的工具包，可以直接使用，无需安装，并且教程众多，几乎所有介绍 Python 入门的书，只要提及 GUI 设计都会讲 Tkinter。缺点一样明显，设计出的 GUI 很难看，要问多难看，你自己看看 Python 的那个 IDLE 就好了，土的掉渣啊，而且元件一样很少，如果只是编写一些小程序的话还可以，如果编写大程序要用到比较复杂的元件的话，就需要从提供的元件里找一些替代品了，手工输入代码，有时候很累啊。但是我认为用 Tkinter 来入门 GUI 设计是很好的，因为思路清晰，代码简单，这也就是为什么我在这里只介绍 Tkinter 的原因。一个英文教程在<a href="http://effbot.org/tkinterbook/tkinter-index.htm#class-reference">这里</a>（<em style="color: red">之前的网站已经不在了，作者将其移到了这里，貌似开始将从前未写完的补充完整了</em>），由于我不想记住所有元件的方法，所以用到的话就来这里查询，很方便。</p>
 
     <p><img src="https://lh3.googleusercontent.com/-mTq-K8KM-Tk/UWYhrLi4D2I/AAAAAAAAAq0/bRsZe5macLk/s512/Tkinter.png" width="480" alt="Tkinter" /></p>
   </li>
@@ -158,7 +185,7 @@ root.mainloop()  %进入窗体的主循环
 
 <p>根据需要，可以在主窗口中创建多个元件，每一个元件所拥有的参数不同，但是有一点是一样的，就是第一个参数一定是其所属的窗口的变量名。上面的例子中，元件 <code>Label</code>就是隶属于 <code>root</code>，所以在调用 <code>pack</code> 方法之后，这个元件就会在 <code>root</code> 窗口中显示了，只与显示的位置和显示的样子，需要调整 <code>pack</code> 方法的参数，我这里使用默认值，所以什么参数也没有，具体 <code>pack</code> 的用法可以参照<a href="http://www.360doc.com/content/12/0922/02/3234041_237501468.shtml">这里</a>。</p>
 
-<p>这三步其实就是 Tkinter GUI 设计的全部了，剩下的就是每个元件的位置、样子、显示的文字、显示的图像、调用的函数等等元件参数上的设定了，这就涉及到每个元件包含哪些参数、每个参数是什么意思的问题了，这个可以通过查询<a href="http://www.pythonware.com/library/tkinter/introduction/index.htm">我提到的那个网站</a>来得到。</p>
+<p>这三步其实就是 Tkinter GUI 设计的全部了，剩下的就是每个元件的位置、样子、显示的文字、显示的图像、调用的函数等等元件参数上的设定了，这就涉及到每个元件包含哪些参数、每个参数是什么意思的问题了，这个可以通过查询<a href="http://effbot.org/tkinterbook/tkinter-index.htm#class-reference">我提到的那个网站</a>来得到。</p>
 
 <p>在 GUI 设计中有以下几点需要注意（<strong>持续更新中</strong>）：</p>
 

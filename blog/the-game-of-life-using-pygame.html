@@ -3,12 +3,12 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>钓球 - 折腾来折腾去</title>
+	<title>用 Pygame 编写的生命游戏 - 折腾来折腾去</title>
 	<meta name="author" content="pikipity">
 
 	
-	<meta name="description" content="钓球 Posted by pikipity
-&nbsp; 2013年02月12日 Cartoon Comments 很欢快的一部动画片，画风也有点特别，看完之后想说一句 这是江之岛的宣传片么！！！ var jiathis_config={ data_track_clickback:true, &hellip;">
+	<meta name="description" content="用 Pygame 编写的生命游戏 Posted by pikipity
+&nbsp; 2013年07月27日 Python Comments 之前用 Matlab 编写了一个生命游戏，但是效率实在太低了，只要矩阵稍微大一点，我的小 MacBook Pro 就跑不动了，恰巧最近正在跟随 “ &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -110,7 +110,7 @@
 	<div id="content" class="inner"><div>
 <article class="post">
 	
-	<h2 class="title">钓球</h2>
+	<h2 class="title">用 Pygame 编写的生命游戏</h2>
 	<div class="meta">
 	       <div class="author" style="float:left;">
   
@@ -129,11 +129,11 @@
   
 
 
-<time datetime="2013-02-12T18:08:00+08:00" pubdate data-updated="true">2013年02月12日</time></div>
+<time datetime="2013-07-27T19:58:00+08:00" pubdate data-updated="true">2013年07月27日</time></div>
 		<div class="tags" style="float:left;">
 
 
-	<a class='category' href='/blog/categories/cartoon/'>Cartoon</a>
+	<a class='category' href='/blog/categories/python/'>Python</a>
 
 
 </div>
@@ -141,11 +141,25 @@
 			<span class="comments"><a href="#com_target">Comments</a></span>
 		
 	</div>
-	<div class="entry-content" style="clear:both;"><p>很欢快的一部动画片，画风也有点特别，看完之后想说一句</p>
+	<div class="entry-content" style="clear:both;"><p><a href="http://pikipity.github.io/blog/the-game-of-life.html">之前用 Matlab 编写了一个生命游戏</a>，但是效率实在太低了，只要矩阵稍微大一点，我的小 MacBook Pro 就跑不动了，恰巧最近正在跟随 <a href="http://eyehere.net/2011/python-pygame-novice-professional-1/">“eyeHere”</a> 这样一个网站学习 <a href="http://www.pygame.org/news.html">Pygame</a>。<a href="http://www.pygame.org/news.html">Pygame</a> 是一个将 Python 语言和 <a href="http://zh.wikipedia.org/wiki/SDL">SDL</a> 结合的 Python 库。<a href="http://zh.wikipedia.org/wiki/SDL">SDL</a> 是一个跨平台开源的多媒体库，源代码用 C 语言写成，一般用于游戏、模拟器和多媒体播放器的开发，顺带一提，Linux 上很多游戏都是用 SDL 开发的，当年玩的<a href="http://zh.wikipedia.org/wiki/%E9%9F%A6%E8%AF%BA%E4%B9%8B%E6%88%98">《韦诺之战》</a>也使用它开发的，还有当年红极一时的<a href="http://zh.wikipedia.org/wiki/%E9%AD%94%E5%9F%9F%E5%B9%BB%E5%A2%83%E4%B9%8B%E6%B5%B4%E8%A1%80%E6%88%B0%E5%A0%B42004">《虚拟竞技场》</a>系列的 Linux 版本等等。</p>
 
-<p><strong><em>这是江之岛的宣传片么！！！</em></strong></p>
+<p>Pygame 可以直接在<a href="http://www.pygame.org/download.shtml">官网上下载</a>到，无论是 Windows 版还是 Mac OS X 版都已经打好了包，安装什么的都很方便。</p>
 
-<p><a href="http://www.bilibili.tv/video/av466900/index_1.html#"><img src="/images/post/BDrip.jpg" alt="电梯直通bilibili专辑层" width="550pt" /></a></p>
+<p>我把我那个用 Matlab 编写的生命游戏，用 Python 重写之后，debug 的时候运行还不是很流畅，但是实际运行的时候，速度超级理想，以至于我最初设定的30的FPS都显得比较大了。用键盘操作，在暂停模式下可以用鼠标添加或是消除细胞，键盘键位如下：</p>
+
+<ul>
+  <li>b键：开始游戏</li>
+  <li>s键：暂停游戏（可以用鼠标添加或是消除细胞）</li>
+  <li>c键：更改大小（在暂停模式下更改。书写格式为：每行细胞数量,每列细胞数量，回车确定）</li>
+</ul>
+
+<p>有兴趣的可以到<a href="https://github.com/pikipity/Game_of_life_python.git">我的 Github </a>去看看，下面是截图：</p>
+
+<p><img src="https://lh3.googleusercontent.com/-xd-_uQQvtRk/UfOyj9m4UCI/AAAAAAAAA58/L1DBnX41zm0/s640/%25E5%25B1%258F%25E5%25B9%2595%25E5%25BF%25AB%25E7%2585%25A7%25202013-07-27%2520%25E4%25B8%258B%25E5%258D%25887.40.40.png" alt="暂停画面" /></p>
+
+<p><img src="https://lh6.googleusercontent.com/-PRk7O1VVdFs/UfOyjw0r3BI/AAAAAAAAA6A/Zba8eMWtklk/s640/%25E5%25B1%258F%25E5%25B9%2595%25E5%25BF%25AB%25E7%2585%25A7%25202013-07-27%2520%25E4%25B8%258B%25E5%258D%25887.40.54.png" alt="运行画面" /></p>
+
+<p><img src="https://lh6.googleusercontent.com/-_9-BV2hoBEs/UfOyj_Nr1EI/AAAAAAAAA54/p2WOY7we-9I/s576/%25E5%25B1%258F%25E5%25B9%2595%25E5%25BF%25AB%25E7%2585%25A7%25202013-07-27%2520%25E4%25B8%258B%25E5%258D%25887.41.28.png" alt="更改大小" /></p>
 </div>
 
 
@@ -189,19 +203,17 @@ var jiathis_config={
   
 
 
-<time datetime="2013-02-12T18:08:00+08:00" pubdate data-updated="true">2013年02月12日</time></p>
+<time datetime="2013-07-27T19:58:00+08:00" pubdate data-updated="true">2013年07月27日</time></p>
 </footer>
 
 <section>
 <ul id="left-right">
 <span style="float:left">
 	
-        <a class="basic-alignment left" href="/blog/nisemonogatari-vice-tracks.html" title="Previous Post: 伪物语副音轨"><font face=Wingdings>&#239;</font> 伪物语副音轨</a>
+        <a class="basic-alignment left" href="/blog/the-game-of-life.html" title="Previous Post: Matlab 编写“生命游戏”"><font face=Wingdings>&#239;</font> Matlab 编写“生命游戏”</a>
         </span>
 <span style="float:right">
-	
-        <a class="basic-alignment right" href="/blog/updata-macbook.html" title="next Post: 苹果更新MacBook配置并降低产品价格">苹果更新MacBook配置并降低产品价格 <font face=Wingdings>&#240;</font></a>
-       </span>
+	 </span>
 </ul>
 </section>
 
