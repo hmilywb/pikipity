@@ -14,6 +14,17 @@
 
   
   <entry>
+    <title type="html"><![CDATA[2013/7/29 小结]]></title>
+    <link href="http://pikipity.github.com/blog/summary.html"/>
+    <updated>2013-07-29T21:37:00+08:00</updated>
+    <id>http://pikipity.github.com/blog/summary</id>
+    <content type="html"><![CDATA[<p>回到学校以后一直在实验室，看了挺多东西，所以做个小结。</p>
+
+<iframe src="http://prezi.com/embed/lx5tv0a7o7ba/?bgcolor=ffffff&amp;lock_to_path=0&amp;autoplay=0&amp;autohide_ctrls=0&amp;features=undefined&amp;disabled_features=undefined" width="550" height="400" frameborder="0"></iframe>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[用 Pygame 编写的生命游戏]]></title>
     <link href="http://pikipity.github.com/blog/the-game-of-life-using-pygame.html"/>
     <updated>2013-07-27T19:58:00+08:00</updated>
@@ -1464,15 +1475,6 @@ Second level header
 </ul>
 
 <p>PS: 此项翻译工程即将变成有生之年系列了。。。</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Google I/O 直播]]></title>
-    <link href="http://pikipity.github.com/blog/google-i-slash-o-live.html"/>
-    <updated>2013-05-14T15:46:00+08:00</updated>
-    <id>http://pikipity.github.com/blog/google-i-slash-o-live</id>
-    <content type="html"><![CDATA[<iframe allowtransparency="true" src="https://developers.google.com/events/announce/googleio2013/?a=on&amp;cn=&amp;cu=&amp;w=640&amp;h=425" style="border:0;box-shadow:0 0px 20px #888;-webkit-box-shadow:0 0px 20px #888;-khtml-box-shadow:0 0px 20px #888;-moz-box-shadow:0 0px 20px #888;-ms-box-shadow:0 0px 20px #888;-o-box-shadow:0 0px 20px #888;width:640px;height:725px"></iframe>
 ]]></content>
   </entry>
   

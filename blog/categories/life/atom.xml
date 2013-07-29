@@ -14,6 +14,17 @@
 
   
   <entry>
+    <title type="html"><![CDATA[2013/7/29 小结]]></title>
+    <link href="http://pikipity.github.com/blog/summary.html"/>
+    <updated>2013-07-29T21:37:00+08:00</updated>
+    <id>http://pikipity.github.com/blog/summary</id>
+    <content type="html"><![CDATA[<p>回到学校以后一直在实验室，看了挺多东西，所以做个小结。</p>
+
+<iframe src="http://prezi.com/embed/lx5tv0a7o7ba/?bgcolor=ffffff&amp;lock_to_path=0&amp;autoplay=0&amp;autohide_ctrls=0&amp;features=undefined&amp;disabled_features=undefined" width="550" height="400" frameborder="0"></iframe>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[银行机按键声音]]></title>
     <link href="http://pikipity.github.com/blog/yin-xing-ji-an-jian-sheng-yin.html"/>
     <updated>2013-07-23T08:40:00+08:00</updated>
@@ -966,24 +977,6 @@
 <p>雖然腦電波所繪製出來的圖形就算再激烈也似乎都長得差不多，不過如此創新的藝術手法也還真不是一般人所能想到的，這種匯集情感與科學數據的紀念品，或許未來可以考慮推出客製化的織圍巾服務，相信應該有不小的商機。像是情人節的時候能送一條全心想著對方所織出來的腦電波圍巾(就算沒有全心想也要說有！)，相信另一半聽到這條圍巾的由來一定會感動到痛哭流涕！(老婆表示：這條跟上一次的不太一樣，你該不會是想著小三織出來的吧！)</p>
 
 <p>pikipity：在线头上连上电线是要做什么？无法理解。</p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[你想在头上插根棍子么？]]></title>
-    <link href="http://pikipity.github.com/blog/bmi.html"/>
-    <updated>2013-07-19T20:15:00+08:00</updated>
-    <id>http://pikipity.github.com/blog/bmi</id>
-    <content type="html"><![CDATA[<p>本来看到万老师实验的脑电研究，还幻想过用脑电控制机械手臂什么的，但是看完《Brain–machine interfaces: past, present and future》之后我知道了，用这些待在头上的帽子只能测量低频率的脑电波，还没法精确测量，拼写个单词也就是极限了。看了介绍非插入式一段最后总结的一句话后，就彻底桑心了：</p>
-
-<blockquote>
-  <p>But if the goal of a BMI is to restore movements with multiple degrees of freedom through the control of an artificial prosthesis, the message from published evidence is clear: this task will require recording of highresolution signals from the brain, and this can be done using invasive approaches.</p>
-</blockquote>
-
-<p>但是谁愿意像下面这样在脑袋上插根棍子啊，急需志愿者。</p>
-
-<object width="364" height="235"><param name="movie" value="http://i.d.com.com/av/video/embed/player.swf" /><param name="background" value="#333333" /><param name="allowFullScreen" value="true" /><param name="allowScriptAccess" value="true" /><param name="FlashVars" value="playerType=embedded&amp;type=id&amp;value=50004319" /><embed src="http://www.cnet.com/av/video/embed/player.swf" type="application/x-shockwave-flash" background="#333333" width="364" height="235" allowfullscreen="true" allowscriptaccess="always" flashvars="playerType=embedded&amp;type=id&amp;value=50004319" /></object>
 
 ]]></content>
   </entry>
