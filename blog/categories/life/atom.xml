@@ -14,6 +14,36 @@
 
   
   <entry>
+    <title type="html"><![CDATA[推荐两个网站]]></title>
+    <link href="http://pikipity.github.com/blog/interesting-websites.html"/>
+    <updated>2013-08-02T18:31:00+08:00</updated>
+    <id>http://pikipity.github.com/blog/interesting-websites</id>
+    <content type="html"><![CDATA[<p>今天推荐两个网站：<a href="http://www.yeeyan.org/">译言</a> 和 <a href="http://boinc.berkeley.edu/">BOINC</a></p>
+
+<h3 id="httpwwwyeeyanorg"><a href="http://www.yeeyan.org/">译言</a></h3>
+
+<p>你可以把这个网站当做一个开放的翻译平台，从这里，你可以看别人的译文，也可以自己上传译文，内容则完全没有限制，从新闻政治到漫画小说无所不有。如果你对自己的翻译功底有信心还可以参加到集体翻译的活动中，来和其他用户一起翻译一些经典名作，翻译结束以后，你就可以在书店买到自己翻译的书了，当然是有稿费的。</p>
+
+<p>维基上的介绍更加全面，请点<a href="http://zh.wikipedia.org/wiki/%E8%AF%91%E8%A8%80">这里</a>。译言网站在<a href="http://www.yeeyan.org/">这里</a></p>
+
+<p><img src="https://lh4.googleusercontent.com/-rP32MzQ0NGU/UfuSC3A9kAI/AAAAAAAAA7k/Wce9ankYxhA/s512/%25E8%25AF%2591%25E8%25A8%2580%25E7%25BD%2591%2520-%2520%25E9%25A6%2596%25E9%25A1%25B5.png" alt="译言网首页" /></p>
+
+<h3 id="boinchttpboincberkeleyedu"><a href="http://boinc.berkeley.edu/">BOINC</a></h3>
+
+<p>BOINC 确切来说并不是一个网站，这里给出的是它的wiki。BOINC 其实是一个软件，是一个开放式计算平台。如果你是个强迫症患者，看着自家电脑或是单片机上的 CPU 或是 GPU 的运行率仅仅只有 5% 而感到不爽，那么我极力推荐你安装这款软件。众所周知，一些科学研究需要的计算量非常之大，一个人或者一个实验室的电脑可能完全不够用，于是就可以借助这种分布式计算平台，将志愿者的网络和研究者的网络连接，这样你的电脑也就加入到了计算的行列中来了。</p>
+
+<p>安装软件之后，选择希望参加的项目，然后就可以开始了，软件会自动向你的电脑分配计算任务，任务开始后，你就会心喜的发现，你的 CPU 或是 GPU 的使用率瞬间飙升到 100%（太好了，妈妈再也不用担心我的 CPU 闲置了！）。</p>
+
+<p>项目种类多种多样，从数学到生物医学应有尽有。如果你第一次选择项目，完全不知道要选什么，可以试试最古老的 <a href="http://www.equn.com/wiki/SETI@home">SETI@home</a> 来利用你的电脑寻找外星人。</p>
+
+<p>维基上的介绍在<a href="http://zh.wikipedia.org/wiki/BOINC">这里</a>，官方wiki在<a href="http://boinc.berkeley.edu/">这里</a>，如果你觉得看英文太累，可以到<a href="http://www.equn.com/wiki/BOINC">这里</a>看中国分站的页面。</p>
+
+<p><img src="https://lh4.googleusercontent.com/-HI2o79FTVV8/UfuR-qzubSI/AAAAAAAAA7c/eeYEYtgb1Tc/s512/%25E5%25B1%258F%25E5%25B9%2595%25E5%25BF%25AB%25E7%2585%25A7%25202013-08-02%2520%25E4%25B8%258B%25E5%258D%25887.02.36.png" alt="BOINC 支持的项目" /></p>
+
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[2013/7/29 小结]]></title>
     <link href="http://pikipity.github.com/blog/summary.html"/>
     <updated>2013-07-29T21:37:00+08:00</updated>
@@ -948,36 +978,6 @@
 我想再说明一下：这篇雄文作为答案，是源自于神经学家David Eagleman几个月前的一次关于这个主题的演讲。我完全同意他的观点，并且觉得这是一个很好的机会，把他的思想和其他人分享，所以，如果你也我的观点，那么我想说，我只是站在巨人的肩膀上。:-)</p>
 
 <p>这里可能有你们想要的一些资料：维基百科关于<a href="http://en.wikipedia.org/wiki/Possibilianism">Possibilianism</a>。</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[「動腦」也能織圍巾，來條奇妙的腦電波圍巾吧！]]></title>
-    <link href="http://pikipity.github.com/blog/eeg-muffler.html"/>
-    <updated>2013-07-20T14:46:00+08:00</updated>
-    <id>http://pikipity.github.com/blog/eeg-muffler</id>
-    <content type="html"><![CDATA[<h3 id="httpwwwcool3ccomarticle69767">转自<a href="http://www.cool3c.com/article/69767">瘾科技</a></h3>
-
-<p><img src="https://lh3.googleusercontent.com/-O6-qMMJXNA0/UfO89c0-2qI/AAAAAAAAA6c/EXzOghW94R8/s600/brainwave-knitted-scarves02.jpg" alt="" /></p>
-
-<p>每次有人提到「監測腦電波」這五個字，大編腦中就會浮現各式各樣科幻電影中才會出現的情節，其實監測腦電波是個相當實用的醫學技術，像是用來掌握健康狀況，或是做為犯罪測謊，以及進行許多心理相關的研究。但就算它再實用，領域再廣泛，應該也不會有人把「腦電波」跟「圍巾」放在一起聯想吧！</p>
-
-<p><img src="https://lh5.googleusercontent.com/-P7-2WFDpJ2k/UfO89aPMdKI/AAAAAAAAA6g/pUHntLon1ak/s600/brainwave-knitted-scarves03.jpg" alt="" /></p>
-
-<p>不！的確有人會超級天馬行空的把它們聯想在一起，而通常我們把這種人稱為藝術家(笑)。來自西班牙的Varvara Guljajeva和Mar.Canet這兩位藝術家找到了專門研究腦電波的科學實驗室來進行一項奇妙的創作實驗。他們將感應器貼在受測者的腦袋上，接著讓他們聆聽巴赫的「哥德堡變奏曲」十分鐘，看看腦電波會產生什麼樣的變化。</p>
-
-<p><img src="https://lh4.googleusercontent.com/-pMb9fRKti5Q/UfO89U1DjVI/AAAAAAAAA6Y/xKrLkzTxamM/s600/brainwave-knitted-scarves04.jpg" alt="" /></p>
-
-<p><img src="https://lh4.googleusercontent.com/-QSjv5Nkkptk/UfO894gVBdI/AAAAAAAAA6w/EzPbfCPCcRw/s600/brainwave-knitted-scarves041-818x600.jpg" alt="" /></p>
-
-<p>但藝術家的目的怎麼可能只是單純測驗音樂對腦電波的影響呢～Varvara Guljajeva和Mar.Canet異想天開的將腦電波監測器與織布機做連結，讓起起伏伏的波長變成圍巾上的圖樣。他們之所以選擇以音樂作為刺激腦電波的媒介，是希望透過音樂強大且直接的情緒能量來挑起人類的腦電波反應，畢竟越明顯的差異越有實驗的價值。</p>
-
-<p><img src="https://lh3.googleusercontent.com/-EYC8JCnlovk/UfO8-MJDX_I/AAAAAAAAA6s/fYt46bBi064/s600/brainwave-knitted-scarves05.jpg" alt="" /></p>
-
-<p>雖然腦電波所繪製出來的圖形就算再激烈也似乎都長得差不多，不過如此創新的藝術手法也還真不是一般人所能想到的，這種匯集情感與科學數據的紀念品，或許未來可以考慮推出客製化的織圍巾服務，相信應該有不小的商機。像是情人節的時候能送一條全心想著對方所織出來的腦電波圍巾(就算沒有全心想也要說有！)，相信另一半聽到這條圍巾的由來一定會感動到痛哭流涕！(老婆表示：這條跟上一次的不太一樣，你該不會是想著小三織出來的吧！)</p>
-
-<p>pikipity：在线头上连上电线是要做什么？无法理解。</p>
-
 ]]></content>
   </entry>
   

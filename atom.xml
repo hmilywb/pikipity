@@ -14,6 +14,36 @@
 
   
   <entry>
+    <title type="html"><![CDATA[推荐两个网站]]></title>
+    <link href="http://pikipity.github.com/blog/interesting-websites.html"/>
+    <updated>2013-08-02T18:31:00+08:00</updated>
+    <id>http://pikipity.github.com/blog/interesting-websites</id>
+    <content type="html"><![CDATA[<p>今天推荐两个网站：<a href="http://www.yeeyan.org/">译言</a> 和 <a href="http://boinc.berkeley.edu/">BOINC</a></p>
+
+<h3 id="httpwwwyeeyanorg"><a href="http://www.yeeyan.org/">译言</a></h3>
+
+<p>你可以把这个网站当做一个开放的翻译平台，从这里，你可以看别人的译文，也可以自己上传译文，内容则完全没有限制，从新闻政治到漫画小说无所不有。如果你对自己的翻译功底有信心还可以参加到集体翻译的活动中，来和其他用户一起翻译一些经典名作，翻译结束以后，你就可以在书店买到自己翻译的书了，当然是有稿费的。</p>
+
+<p>维基上的介绍更加全面，请点<a href="http://zh.wikipedia.org/wiki/%E8%AF%91%E8%A8%80">这里</a>。译言网站在<a href="http://www.yeeyan.org/">这里</a></p>
+
+<p><img src="https://lh4.googleusercontent.com/-rP32MzQ0NGU/UfuSC3A9kAI/AAAAAAAAA7k/Wce9ankYxhA/s512/%25E8%25AF%2591%25E8%25A8%2580%25E7%25BD%2591%2520-%2520%25E9%25A6%2596%25E9%25A1%25B5.png" alt="译言网首页" /></p>
+
+<h3 id="boinchttpboincberkeleyedu"><a href="http://boinc.berkeley.edu/">BOINC</a></h3>
+
+<p>BOINC 确切来说并不是一个网站，这里给出的是它的wiki。BOINC 其实是一个软件，是一个开放式计算平台。如果你是个强迫症患者，看着自家电脑或是单片机上的 CPU 或是 GPU 的运行率仅仅只有 5% 而感到不爽，那么我极力推荐你安装这款软件。众所周知，一些科学研究需要的计算量非常之大，一个人或者一个实验室的电脑可能完全不够用，于是就可以借助这种分布式计算平台，将志愿者的网络和研究者的网络连接，这样你的电脑也就加入到了计算的行列中来了。</p>
+
+<p>安装软件之后，选择希望参加的项目，然后就可以开始了，软件会自动向你的电脑分配计算任务，任务开始后，你就会心喜的发现，你的 CPU 或是 GPU 的使用率瞬间飙升到 100%（太好了，妈妈再也不用担心我的 CPU 闲置了！）。</p>
+
+<p>项目种类多种多样，从数学到生物医学应有尽有。如果你第一次选择项目，完全不知道要选什么，可以试试最古老的 <a href="http://www.equn.com/wiki/SETI@home">SETI@home</a> 来利用你的电脑寻找外星人。</p>
+
+<p>维基上的介绍在<a href="http://zh.wikipedia.org/wiki/BOINC">这里</a>，官方wiki在<a href="http://boinc.berkeley.edu/">这里</a>，如果你觉得看英文太累，可以到<a href="http://www.equn.com/wiki/BOINC">这里</a>看中国分站的页面。</p>
+
+<p><img src="https://lh4.googleusercontent.com/-HI2o79FTVV8/UfuR-qzubSI/AAAAAAAAA7c/eeYEYtgb1Tc/s512/%25E5%25B1%258F%25E5%25B9%2595%25E5%25BF%25AB%25E7%2585%25A7%25202013-08-02%2520%25E4%25B8%258B%25E5%258D%25887.02.36.png" alt="BOINC 支持的项目" /></p>
+
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[2013/7/29 小结]]></title>
     <link href="http://pikipity.github.com/blog/summary.html"/>
     <updated>2013-07-29T21:37:00+08:00</updated>
@@ -1356,125 +1386,6 @@
 <p><img src="https://lh3.googleusercontent.com/-NGCLPdiXNts/UZwyBt50H0I/AAAAAAAAA1Y/bnrhcwGZ9cQ/s594/%25E5%25B1%258F%25E5%25B9%2595%25E5%25BF%25AB%25E7%2585%25A7%25202013-05-22%2520%25E4%25B8%258A%25E5%258D%258810.47.30.png" alt="设定界面" /></p>
 
 <p><img src="https://lh3.googleusercontent.com/-41jnXgPFCN0/UZwyB5nHiJI/AAAAAAAAA1c/cNVfhZjztZ0/s571/%25E5%25B1%258F%25E5%25B9%2595%25E5%25BF%25AB%25E7%2585%25A7%25202013-05-22%2520%25E4%25B8%258A%25E5%258D%258810.47.42.png" alt="关于我" /></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[kramdown 语法文档翻译（二）]]></title>
-    <link href="http://pikipity.github.com/blog/kramdown-syntax-chinese-2.html"/>
-    <updated>2013-05-19T10:42:00+08:00</updated>
-    <id>http://pikipity.github.com/blog/kramdown-syntax-chinese-2</id>
-    <content type="html"><![CDATA[<p>上接<a href="http://pikipity.github.io/blog/kramdown-syntax-chinese-1.html">kramdown 语法文档翻译（一）</a></p>
-
-<h3 id="section">段落</h3>
-
-<p>一个段落的第一行可以加入三个空格的缩进，其他行可以有任意数量的缩进，因为段落支持自动换行。但是需要补充的一点就是，当一个“定义列表行”出现的时候，一个段落会自动中断。</p>
-
-<p>你可以用一个或多个空行来区分两个连续的段落。需要注意的是源文件中的一个空行并不意味着在输出文件中也是一个空行（因为“懒语法”）！如果你希望在输出中有一个空行（就好像 <code>&lt;br/&gt;</code> 标签），你需要在一行结束加上至少两个空格或是两个斜线！注意，一个段落的最后一行不可以是空行，这种空行会被忽略。开头和结尾的空格不会被纳入段落文字中。</p>
-
-<p>下面给出的是一个段落效果的举例（<code>⋅</code>代表空格）：</p>
-
-<pre><code>This para line starts at the first column. However,
-⋅⋅⋅⋅⋅⋅the following lines can be indented any number of spaces/tabs.
-⋅⋅⋅The para continues here.
-
-⋅⋅This is another paragraph, not connected to the above one. But⋅⋅
-with a hard line break. \\
-And another one.
-</code></pre>
-
-<p>效果如下：</p>
-
-<p>This para line starts at the first column. However,
-      the following lines can be indented any number of spaces/tabs.
-   The para continues here.</p>
-
-<p>This is another paragraph, not connected to the above one. But<br />
-with a hard line break. <br />
-And another one.</p>
-
-<h3 id="section-1">标题</h3>
-
-<p>krandown支持 “Setex” 和 “atx” 格式的标题。所有形式都可以在一个独立的文件中使用</p>
-
-<ul>
-  <li>
-    <p>“Setext” 格式</p>
-
-    <p>“Setext” 格式必须以一行文字（标题文字）和一行只有等号（对于第一级标题）或者破折号（对于第二级标题）。标题文字可以在开头加入三个空格，但是开头和结尾的空格都不会被纳入标题文字中。等号和破折号的数量没有区分，一个就足够了，但是多个可能更好看。等号和破折号必须顶头开始。下面是一个例子：</p>
-
-    <pre><code>First level header
-==================
-  
-Second level header
------
-  
-   Other first level header
-=
-</code></pre>
-
-    <p>因为 “Setext” 的标题是在一个块级元素的开始，所以这意味着它们之前必须有空行。但是它们之后不需要有空行:</p>
-
-    <pre><code> This is a normal
- paragraph.
-   
- And a Header
- ---------------
- And a paragraph
-   
- &gt; This is a blockquote.
-   
- And a Header
- ----------------
-</code></pre>
-
-    <p>但是为了文档的易读性最好在 “Setext” 标题的后面也用一个空行。</p>
-
-    <p>值得一提的是一种边缘情况：</p>
-
-    <pre><code> header
- ---
- para
-</code></pre>
-
-    <p>一般来说，”Setext” 标题比“横线规律”（后面将提到）考前</p>
-  </li>
-  <li>
-    <p>“atx” 格式</p>
-
-    <p>“atx” 格式的标题必须以一行以一个或多个井号字符开头然后跟标题文字的文字开始。在井号符号之前不允许有空格。井号的数量代表标题的级数：一个井号代表第一级标题，两个代表第二级标题，以此类推直到最多六个井号代表第六级标题。在标题文字之后你可以加入任意数量的井号。任何标题文字开头和结尾的空格都不会纳入到标题文字中。下面是一个举例：</p>
-
-    <pre><code># First level hearder
-  
-### Third level header ###
-  
-## Second level header #################
-</code></pre>
-
-    <p>下过如下：</p>
-
-    <h1 id="first-level-hearder">First level hearder</h1>
-
-    <h3 id="third-level-header">Third level header</h3>
-
-    <h2 id="second-level-header">Second level header</h2>
-  </li>
-  <li>
-    <p>表明标题 ID</p>
-
-    <p>kranmdown 支持一种非常好的方法来设置标题的 ID，这种方法来自于 <a href="http://michelf.com/projects/php-markdown/extra/">PHP Markdown Extra</a> 和 <a href="http://maruku.rubyforge.org/">Maruku</a>：如果你在标题后面跟一个左大括号（和标题文字至少以一个空格隔开）、一个井号、标题 ID 和 一个右大括号，那么就为一个标题设置了一个 ID。如果你在 “atx” 风格的标题后面跟有一个井号，那么标题 ID 必须跟在结尾的井号之后。下面是一个例子：</p>
-
-    <pre><code>Hello    {#id}
--------
-  
-# Hello   {#id}
-  
-# Hello   {#id}
-</code></pre>
-  </li>
-</ul>
-
-<p>PS: 此项翻译工程即将变成有生之年系列了。。。</p>
 ]]></content>
   </entry>
   
