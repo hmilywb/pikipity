@@ -14,6 +14,45 @@
 
   
   <entry>
+    <title type="html"><![CDATA[用 Alfred 快速启动 MATLAB]]></title>
+    <link href="http://pikipity.github.com/blog/open-matlab-fast-using-alfred.html"/>
+    <updated>2013-08-05T18:44:00+08:00</updated>
+    <id>http://pikipity.github.com/blog/open-matlab-fast-using-alfred</id>
+    <content type="html"><![CDATA[<p>大概很多人都会难以忍受 MATLAB 启动时候漫长的等待，那是因为 MATLAB 的窗口化是基于 java 的，加载 java 永远是一个让人蛋疼的事情。但是如果你使用的是 Linux 或是 Mac OS X，那么你完全没必要把时间都花费在等待 MATLAB 准备和打开 java 的过程上。我们真正使用 MATLAB 是使用它的命令行，而它的图形化界面，除了修改图片和使用具有 GUI 的 toolbox，一般很少用到，所以到用到的时候在加载 java 就可以了，而且由于加载 java 和启用命令行的操作分开了，同时运行的线程和占用的内存都减少了，java 的加载速度也会相应提升。总而言之，就是让你觉得 Matlab 快了很多很多。</p>
+
+<p><img src="https://lh3.googleusercontent.com/-IPC7qvN44iA/Uf-RDQ06AZI/AAAAAAAAA8E/oyQ6i78YWwo/s800/%25E5%25B1%258F%25E5%25B9%2595%25E5%25BF%25AB%25E7%2585%25A7%25202013-08-05%2520%25E4%25B8%258B%25E5%258D%25887.46.50.png" alt="终端使用 MATLAB" /></p>
+
+<p>这里使用的技巧并不高深，只是让 <a href="http://www.alfredapp.com/">Alfred</a> 执行一段 shell 命令，并为这个命令定制关键词，方便以后用 <a href="http://www.alfredapp.com/">Alfred</a> 搜索。</p>
+
+<p><a href="http://www.alfredapp.com/">Alfred</a> 是 Mac OS X 上的一款快速启动、查询工具，类似于 Mac OS X 自带的 spotlight，但是功能上则强大很多。spotlight仅能查询文件并快速打开，<a href="http://www.alfredapp.com/">Alfred</a> 则不仅如此，查询网页、查询词典、替代计算器、查询 iTunes、执行指定 shell 命令、workflow 或是 AppleScript 等等，而且这些功能全部集成到一个搜索条中，超级方便快捷。现在，spotlight 早已经被我禁用了，完全由 <a href="http://www.alfredapp.com/">Alfred</a> 代替。<a href="http://www.alfredapp.com/">Alfred</a> 的官网在<a href="http://www.alfredapp.com/">这里</a>，你可以免费下载和使用，但是免费版中部分功能被限制，用起来还是很不爽的，你可以通过购买获得 Powerpack 激活码，然后就可以享用 <a href="http://www.alfredapp.com/">Alfred</a> 所有强大的功能了。如果你不想付钱，你可以到<a href="http://pan.baidu.com/share/link?shareid=2139275050&amp;uk=4080321956">这里</a>下载 <em>X解程序</em>，但是 v1 旧版的X解程序，官网提供的新版 v2 的X解还请自行 <a href="https://www.google.com">Google</a> 之。</p>
+
+<p><img src="https://lh5.googleusercontent.com/-M187kHThsnM/Uf-RDKTJYBI/AAAAAAAAA8A/QMe45cbl_gI/s512/%25E5%25B1%258F%25E5%25B9%2595%25E5%25BF%25AB%25E7%2585%25A7%25202013-08-05%2520%25E4%25B8%258B%25E5%258D%25887.00.51.png" alt="Alfred 使用画面" /></p>
+
+<p>这里就不介绍软解的安装与X解还有基本配置了，毕竟软件很简单，一目了然。直奔主题，如何让其执行一段 shell 命令来在终端下打开 MATLAB。</p>
+
+<p>首先，你要知道如何在终端下打开 MATLAB。找到你电脑上的 MATLAB 程序，我指的不是那个 app 在哪，而是在那个 app 上右键，点击显示包内容之后，找到一个文件名叫 matlab 的程序（我记得应该就是一个 shell 脚本），记录下它的路径（右键单击“拷贝路径”中的“Path”，例如我的路径就是<code>/Applications/MATLAB/MATLAB_R2011a.app/bin/matlab</code>）。然后你只要在终端中直接执行这个路径，MATLAB 就会打开了。但是你会发现，依然是以图形化界面的方式打开，所以你需要在路径后面加一些启动参数，常用的启动参数如下</p>
+
+<pre><code>-nodesktop  不启动图形化界面
+-nosplash   无欢迎信息
+</code></pre>
+
+<p>你也可以在后面使用参数<code>-r</code>，这样，MATLAB打开后就会自动执行后面的命令（需要执行的命令空一格用引号引起来放在后面就可以了，例如<code>-r "x=1:10;plot(x)"</code>）。</p>
+
+<p>现在就要将这个启动 MATLAB 的 shell 命令添加入 <a href="http://www.alfredapp.com/">Alfred</a> 中。打开 <a href="http://www.alfredapp.com/">Alfred</a> 的 “Preferences”，在 “Extensions” 中添加一个 shell 命令，名字随便起一个就好了。”Title” 是你将会在 <a href="http://www.alfredapp.com/">Alfred</a> 中搜索看到的名字，起一个好认的就可以了。”Description” 是你将在 <a href="http://www.alfredapp.com/">Alfred</a> 中显示在名字下面的小字，简单注释一下就可以了。”Keyword” 一定要使用，不然每次打名字就太累了，这里可以设置快捷键，以后搜索的时候打入这个关键字就可以了。”Options” 中的 “Silent” 必须取消掉，不然 MATLAB 会在后台启动而不显示。”Command” 就不多说了，把你要执行的命令放进来就可以了。”Parameter” 是设置你将来搜索的时候是否需要参数，”Auto Detect” 就可以了。保存，就可以使用了。</p>
+
+<p><img src="https://lh4.googleusercontent.com/-DWMROP6I7qA/Uf-RC77dmCI/AAAAAAAAA74/4XxBwboOPjA/s640/%25E5%25B1%258F%25E5%25B9%2595%25E5%25BF%25AB%25E7%2585%25A7%25202013-08-05%2520%25E4%25B8%258B%25E5%258D%25886.59.51.png" alt="设置画面" /></p>
+
+<p>如果，你觉得设置很麻烦，可以下载我已经设置好的文件，但是要注意把 “matlab” 的路径改为自己电脑上的路径。第一个文件就是简单的在终端打开 MATLAB，但是它还会打开 “workspace” 并清空终端（因为我唯一需要的窗口就是 “workspace”，用来看一下当前保存了哪些变量，当然你也可以用<code>CommandHistory</code>打开命令历史记录）。第二个文件是在终端打开 MATLAB，并执行你输入的一条命令，例如你在 <a href="http://www.alfredapp.com/">Alfred</a> 中输入 <code>matlab "a=5;"</code>，就会打开 MATLAB 之后创建一个变量<code>a</code>。</p>
+
+<ul>
+  <li><a href="http://pan.baidu.com/share/link?shareid=2246469849&amp;uk=4080321956">Matlab Terminal</a></li>
+  <li><a href="http://pan.baidu.com/share/link?shareid=2452208514&amp;uk=4080321956">Matlab Command</a></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[苹果电脑 MagSafe 电源接口]]></title>
     <link href="http://pikipity.github.com/blog/magsafe.html"/>
     <updated>2013-07-17T18:57:00+08:00</updated>
@@ -237,35 +276,6 @@
   <li><a href="http://bbs.maiyadi.com/thread-877042-1-1.html">《火炬之光（二）》Mac版</a></li>
   <li><a href="http://www.gamersky.com/Soft/201209/39814.shtml">《火炬之光（二）》Windows版</a></li>
 </ol>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[关于“红酒”的那点事]]></title>
-    <link href="http://pikipity.github.com/blog/wine.html"/>
-    <updated>2013-03-04T19:45:00+08:00</updated>
-    <id>http://pikipity.github.com/blog/wine</id>
-    <content type="html"><![CDATA[<p>这一篇当然不是介绍真的红酒了，而是一个允许 Linux 和 Mac 系统运行 Windows 的软件。</p>
-
-<p>“Wine” 是 “Wine Is Not an Emulator” 的缩写。从全称上就可以看出 “Wine” 的想法并不是像虚拟机或是模拟器那样模仿一个 Windows 的逻辑来运行软件。而是将 Windows API 翻译成动态 <a href="http://zh.wikipedia.org/wiki/POSIX">POSIX</a> 来调用，说得简单一点，就是将 Windows 的程序变为原生的 Linux 或是 Mac（实际是类 Unix）程序，这样就避免了虚拟机或是模拟器那样大量的内存占用，并能让 Windows 程序比较干净的整合到你的类 Unix 系统中。</p>
-
-<!--more-->
-
-<p>看了上面的介绍，你可能会问了，这么好的东西为什么大家不用，都去用 “VirtualBox” 或是 “Parallel Desk” 那样的虚拟机呢？我认为，原因很简单，“Wine”并不是很易用。正如上面提到的，Wine 是将 Windows 的 API 之间转换为 POSIX，但是并不能保证这个转换一定是正确的、可用的。很多软件在 Wine上的运行都会出现一些很奇怪的问题，比如突然一个窗口啦，标题错位啦，明明打开了但是鼠标不见啦等等问题，而这些问题往往不是一个外行可以通过度娘或是谷姐就能解决的。需要到官网报告 Bug，然后等待下一次的更新来修正这个错误。而且常常这一个 Wine 的版本可以正常运行的软件，下个版本就无法正常运行了，于是各种苦恼、各种无奈。</p>
-
-<p>而且 Windows 公司虽然没有明确表示抵制 Wine 计划，但是却一直都在阻挠 Wine 计划。不时的出一出更新，说是防止盗版，但是就是阻止 Wine 用户更新程序。也是，由于 Wine 本身是开源、自由的软件，大多数使用者在 Wine上使用的软件也都是盗版，这也无怪乎 Windows 公司不断地阻挠了。</p>
-
-<p>大家可以到<a href="http://wiki.winehq.org/">这里</a>看 Wine 的Wiki，虽然打开是中文的，但是大部分有营养的东西还是英文的，当个中国人难，当个喜欢折腾的中国人更难。</p>
-
-<p>Linux 用户可以到<a href="http://www.winehq.org/download/">这里</a>下载，或是直接用自己系统自带的包管理器下载并安装。Mac用户就比较麻烦了，由于 Wine 没有提供官方的 Mac 安装包，所以只能用第三方的了，而且那些装着 PowerPc 的老 Mac 无法使用，只有 Intel Mac 可以使用。你可以使用MacPorts 或是 Homebrew 来下载 Wine 的源码并编译安装，具体做法<a href="http://www.iiiphone.com/blog/read.php/39.htm">这里</a>有写，你也可以到下载<a href="http://winebottler.kronenberg.org/">WineBotter</a>，这个的安装是图形化的，很方便，并且管理 Wine 的软件也比较方便。</p>
-
-<p>具体的使用可以看 <a href="http://linfan.info/blog/2012/03/01/wine-mac/">“linfan’s blog”</a>，强烈建议在安装任何软件之前到 <a href="http://appdb.winehq.org/">AppDB</a> 里来看看别人的测试结果。</p>
-
-<p>最后补充一点，高富帅们可以考虑购买 <a href="http://www.codeweavers.com/products/">CodeWeavers</a> 据说极其稳定的好用。</p>
-
-<p>最后的最后，赠送给大家一个 Wine 的游戏 – <a href="http://pan.baidu.com/share/link?shareid=393478&amp;uk=4080321956">《火炬之光（一）》</a>。谢谢。</p>
-
-<p><img src="/images/post/wine-software.png" width="550pt" /></p>
 ]]></content>
   </entry>
   
