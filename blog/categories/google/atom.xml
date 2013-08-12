@@ -14,6 +14,23 @@
 
   
   <entry>
+    <title type="html"><![CDATA[推荐一款游戏 Cube Slam]]></title>
+    <link href="http://pikipity.github.com/blog/cube-slam.html"/>
+    <updated>2013-08-13T00:01:00+08:00</updated>
+    <id>http://pikipity.github.com/blog/cube-slam</id>
+    <content type="html"><![CDATA[<p><img src="https://lh4.googleusercontent.com/-idNKKzH2b_0/UgkIm7DLEPI/AAAAAAAABCI/XOPh1qkCafI/s800/%25E5%25B1%258F%25E5%25B9%2595%25E5%25BF%25AB%25E7%2585%25A7%25202013-08-13%2520%25E4%25B8%258A%25E5%258D%258812.03.25.png" alt="Cube Slam" /></p>
+
+<p>今天推荐一款游戏 – <a href="https://www.cubeslam.com">Cube Slam</a>，这款游戏来自于 <a href="http://www.chromeexperiments.com/">Chrome Experiment</a>，只可以使用 <a href="https://www.google.com/intl/zh-CN/chrome/browser/">Chrome 浏览器</a>才可以打开。这款游戏很简单，就是通过移动面前的挡板来阻挡滑块打中自己，开始会有一层保护膜保护自己，当保护膜被击中一次之后就消失了，场上还会随机出现各式各样的道具，比如加长你的挡板、场上出现大雾或是挡板发射假滑块干扰对方等等。这个游戏不仅可以和电脑（那只熊）对战，也可以邀请其他人对战，当你进入游戏的时候会随机分配一个地址给你，你只要把你的地址发送给对方你们两人就可以开始对抗了（我应该常在<a href="https://www.cubeslam.com/bdysis">这里</a>，来找我玩啊 :-D）。</p>
+
+<p>这款游戏不是基于 Flash 制作的（现在好像已经没有多少网页游戏还固守于 Flash 了吧），前段使用 WebGL 和 three.js 搭建产生出3D效果，后端用 Go 语言编写，这个游戏搭建在 Google APP 云端，所以不会在你的电脑上留下许许多多不必要的垃圾文件，同时实现速度流畅。你甚至可以直接打开 Chrome 中的“开发者工具”来浏览源码。更多有关游戏的技术，可以到<a href="https://www.cubeslam.com/tech">这里</a>看一看。</p>
+
+<p><img src="https://lh4.googleusercontent.com/-tgaNnaaGBG8/UgkIm77nS9I/AAAAAAAABCQ/RU1JxWdidQo/s800/%25E5%25B1%258F%25E5%25B9%2595%25E5%25BF%25AB%25E7%2585%25A7%25202013-08-13%2520%25E4%25B8%258A%25E5%258D%258812.03.32.png" alt="操作说明" /></p>
+
+<p><img src="https://lh6.googleusercontent.com/-2u8g95xSROQ/UgkInHfMuVI/AAAAAAAABCM/rCY_e3GAzJk/s800/%25E5%25B1%258F%25E5%25B9%2595%25E5%25BF%25AB%25E7%2585%25A7%25202013-08-13%2520%25E4%25B8%258A%25E5%258D%258812.03.48.png" alt="与“熊”对战" /></p>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[Geek IQ Test]]></title>
     <link href="http://pikipity.github.com/blog/youtube-geek-week.html"/>
     <updated>2013-08-06T22:53:00+08:00</updated>
@@ -182,15 +199,6 @@
 <p>整体来说，新的谷歌地图更加漂亮，更加简便，更加实用。希望赶快能够用到正式版才好。有兴趣的赶快到<a href="https://maps.google.com/help/maps/helloworld/desktop/preview/">这里</a>自己申请体验新版的 Google Maps 吧。下面是一段新 Google Maps 的介绍视频。</p>
 
 <iframe width="560" height="315" src="http://www.youtube.com/embed/THxJHcR1D2c?rel=0" frameborder="0" allowfullscreen=""></iframe>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Google I/O 直播]]></title>
-    <link href="http://pikipity.github.com/blog/google-i-slash-o-live.html"/>
-    <updated>2013-05-14T15:46:00+08:00</updated>
-    <id>http://pikipity.github.com/blog/google-i-slash-o-live</id>
-    <content type="html"><![CDATA[<iframe allowtransparency="true" src="https://developers.google.com/events/announce/googleio2013/?a=on&amp;cn=&amp;cu=&amp;w=640&amp;h=425" style="border:0;box-shadow:0 0px 20px #888;-webkit-box-shadow:0 0px 20px #888;-khtml-box-shadow:0 0px 20px #888;-moz-box-shadow:0 0px 20px #888;-ms-box-shadow:0 0px 20px #888;-o-box-shadow:0 0px 20px #888;width:640px;height:725px"></iframe>
 ]]></content>
   </entry>
   

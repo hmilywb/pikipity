@@ -14,6 +14,23 @@
 
   
   <entry>
+    <title type="html"><![CDATA[推荐一款游戏 Cube Slam]]></title>
+    <link href="http://pikipity.github.com/blog/cube-slam.html"/>
+    <updated>2013-08-13T00:01:00+08:00</updated>
+    <id>http://pikipity.github.com/blog/cube-slam</id>
+    <content type="html"><![CDATA[<p><img src="https://lh4.googleusercontent.com/-idNKKzH2b_0/UgkIm7DLEPI/AAAAAAAABCI/XOPh1qkCafI/s800/%25E5%25B1%258F%25E5%25B9%2595%25E5%25BF%25AB%25E7%2585%25A7%25202013-08-13%2520%25E4%25B8%258A%25E5%258D%258812.03.25.png" alt="Cube Slam" /></p>
+
+<p>今天推荐一款游戏 – <a href="https://www.cubeslam.com">Cube Slam</a>，这款游戏来自于 <a href="http://www.chromeexperiments.com/">Chrome Experiment</a>，只可以使用 <a href="https://www.google.com/intl/zh-CN/chrome/browser/">Chrome 浏览器</a>才可以打开。这款游戏很简单，就是通过移动面前的挡板来阻挡滑块打中自己，开始会有一层保护膜保护自己，当保护膜被击中一次之后就消失了，场上还会随机出现各式各样的道具，比如加长你的挡板、场上出现大雾或是挡板发射假滑块干扰对方等等。这个游戏不仅可以和电脑（那只熊）对战，也可以邀请其他人对战，当你进入游戏的时候会随机分配一个地址给你，你只要把你的地址发送给对方你们两人就可以开始对抗了（我应该常在<a href="https://www.cubeslam.com/bdysis">这里</a>，来找我玩啊 :-D）。</p>
+
+<p>这款游戏不是基于 Flash 制作的（现在好像已经没有多少网页游戏还固守于 Flash 了吧），前段使用 WebGL 和 three.js 搭建产生出3D效果，后端用 Go 语言编写，这个游戏搭建在 Google APP 云端，所以不会在你的电脑上留下许许多多不必要的垃圾文件，同时实现速度流畅。你甚至可以直接打开 Chrome 中的“开发者工具”来浏览源码。更多有关游戏的技术，可以到<a href="https://www.cubeslam.com/tech">这里</a>看一看。</p>
+
+<p><img src="https://lh4.googleusercontent.com/-tgaNnaaGBG8/UgkIm77nS9I/AAAAAAAABCQ/RU1JxWdidQo/s800/%25E5%25B1%258F%25E5%25B9%2595%25E5%25BF%25AB%25E7%2585%25A7%25202013-08-13%2520%25E4%25B8%258A%25E5%258D%258812.03.32.png" alt="操作说明" /></p>
+
+<p><img src="https://lh6.googleusercontent.com/-2u8g95xSROQ/UgkInHfMuVI/AAAAAAAABCM/rCY_e3GAzJk/s800/%25E5%25B1%258F%25E5%25B9%2595%25E5%25BF%25AB%25E7%2585%25A7%25202013-08-13%2520%25E4%25B8%258A%25E5%258D%258812.03.48.png" alt="与“熊”对战" /></p>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[机器人机甲是如何炼成的]]></title>
     <link href="http://pikipity.github.com/blog/how-to-make-a-giant-robot-mech-youtube-geek-week.html"/>
     <updated>2013-08-11T18:49:00+08:00</updated>
@@ -1521,29 +1538,6 @@
 <p><img src="https://lh5.googleusercontent.com/-UM580t1rc1E/UeZ9yzOLaMI/AAAAAAAAA4Q/6iIM52wwxoc/s400/1373627863_89193c4f.png" alt="MagSafe 电源信息" /></p>
 
 <p>你打开 Mac 的 “系统信息”，在硬件栏里也能看到当前所接的 MagSafe 电源的信息，就是通过中间那个触点从电源自带那颗芯片传过来的。</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Mac OS X 隐藏软件]]></title>
-    <link href="http://pikipity.github.com/blog/command-plus-h.html"/>
-    <updated>2013-07-17T07:52:00+08:00</updated>
-    <id>http://pikipity.github.com/blog/command-plus-h</id>
-    <content type="html"><![CDATA[<p>在 Mac OS X 系统中有一个非常好用的功能，就是“隐藏应用程序”。在选定某个应用程序的状态下，按 <code>command+H</code> 就可以隐藏当前选定的软件，按 <code>command+option+H</code> 就可以隐藏当前所有未选定的软件，起到的效果和最小化（顺带一提最小化当前窗口的快捷键是 <code>command+M</code>）一样，唯一的区别就是：“最小化”是对于窗口而言的；“隐藏”是对于软件而言的。也就是说，如果将一个窗口最小化，那么仅仅是当前此窗口最小化，但是如果一个软件被隐藏，那么此软件各个桌面上的窗口都会被最小化。由于 Mac OS X 使用 dock 对于当前打开的窗口和软件进行管理，最小化的窗口和未最小化的窗口难以区分（除非你已经在设置中将<code>将窗口最小化为应用程序图标</code>取消勾选，但是那样的话，当最小化的图标很多时，你的 dock 就会变得拥挤不堪）。所以“隐藏”比“最小化”更加方便程序的统一管理。</p>
-
-<p>在隐藏应用程序之后，又出现一个问题，我们很难通过 dock 一眼看出哪个程序已经被隐藏了，我们可以通过开启“已经隐藏的软件图标在 dock 上虚化的功能”，效果如下图。开启方法是在终端中输入：</p>
-
-<pre><code>defaults write com.apple.Dock showhidden -bool YES;killall Dock
-</code></pre>
-
-<p>dock 重启之后就可以了，当然如果你已经将<code>将窗口最小化为应用程序图标</code>取消勾选，那么这条命令就没有任何用处了。</p>
-
-<p>关闭的方法是在终端中输入：</p>
-
-<pre><code>defaults write com.apple.Dock showhidden -bool NO;killall Dock
-</code></pre>
-
-<p><img src="https://lh5.googleusercontent.com/-L0dW4pXnznc/UeXjaxXktmI/AAAAAAAAA3o/VvtuU_ZgnnE/s512/%25E5%25B1%258F%25E5%25B9%2595%25E5%25BF%25AB%25E7%2585%25A7%25202013-07-17%2520%25E4%25B8%258A%25E5%258D%25888.19.01.png" alt="隐藏软件虚化特效" /></p>
 ]]></content>
   </entry>
   
