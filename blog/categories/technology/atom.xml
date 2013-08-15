@@ -14,7 +14,101 @@
 
   
   <entry>
-    <title type="html"><![CDATA[寻找一种有效估算瞬时频率的方法]]></title>
+    <title type="html"><![CDATA[寻找一种有效估算瞬时频率的方法（EMD 求法讨论 续）]]></title>
+    <link href="http://pikipity.github.com/blog/find-a-way-to-calculate-the-instaneous-frequency-2.html"/>
+    <updated>2013-08-14T03:19:00+08:00</updated>
+    <id>http://pikipity.github.com/blog/find-a-way-to-calculate-the-instaneous-frequency-2</id>
+    <content type="html"><![CDATA[<p>上接<a href="http://pikipity.github.io/blog/find-a-way-to-calculate-the-instaneous-frequency.html">寻找一种有效估算瞬时频率的方法</a>。</p>
+
+<h3 id="hkt--imf">如何判断 $h_k(t)$ 是 IMF</h3>
+
+<p>黄锷院士提供了两种判断方法：</p>
+
+<ol>
+  <li>
+    <p>根据 IMF 的定义：</p>
+
+    <ol>
+      <li>在整个信号上，局部极值（包括局部极大值和局部极小值）的个数和零点的个数必须等于或最多只能相差一个。</li>
+      <li>在任意一点，局部极大值所形成的上包络线和局部极小值所形成的下包络线的平均值等于0</li>
+    </ol>
+
+    <p>在这个定义中涉及局部极值问题，也就是我们将讨论的第三个问题，所以我们这里暂且假定我们可以通过一种方法找到局部极值，那么条件的第一点就可以解决了，但是这里要注意，条件的第一点并不能等价于“所有局部极大值都大于0并且所有极小值都小于0”，尽管通过论文中的论述会很容易认为黄锷院士的本意是这样，但是仅仅根据这条论述，会出现很多特殊情况，下面举几个特殊情况的例子，如图</p>
+
+    <p><img src="https://lh6.googleusercontent.com/-7HQOCNGo3cE/UgqLD89QF7I/AAAAAAAABCs/8flUGmA5sT4/s559/1.png" alt="一个局部极小值在零以上或是一个局部极大值在零以下" /></p>
+
+    <p><img src="https://lh5.googleusercontent.com/-mCwygyF6gUY/UgqLD0CDH5I/AAAAAAAABC0/g5aOdQH99T4/s559/2.png" alt="刚好一个局部极值是零点" /></p>
+
+    <p><img src="https://lh5.googleusercontent.com/-6cLysf5vzQA/UgqLDzAvxpI/AAAAAAAABCo/wDF11u8mCGM/s559/3.png" alt="刚好两个局部极值是零点" /></p>
+
+    <p>在 G. Rilling 编写的 MATLAB 程序中，其使用的是这种方法判断的 IMF，有的时候的确会出现上面列出的三种特殊情况，但是既然是按照定义来的，那么应该也没有什么问题，况且对结果也没有大的影响。</p>
+
+    <p>对于条件的第二点则比较困难，即使我们通过三次样条差值找到了包络线，但是我们能够求的也只是插值之后线上的取样点，所以我们只能通过取样点估算上下包络线的平均值，所以这里写为“约等于”0更为合适。</p>
+  </li>
+  <li>
+    <p>黄锷原始在论文中提到另外一种更为简单的判断方式 – 计算 SD 值：</p>
+
+    <table>
+      <tbody>
+        <tr>
+          <td>$$SD_k=\frac{\sum_{t=0}^T\left</td>
+          <td>h_{k-1}(t)-h_k(t)\right</td>
+          <td>^2}{\sum<em>{t=0}^Th</em>{k-1}^2(t)}$$</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>然后预设一个范围，如果 SD 在此范围内，那么就是 IMF，否则不是。同时，黄锷院士指出 SD 值一般在0.2~0.3之间，但是我看到的大多数程序都是以0.3为界进行判断，小于0.3就是 IMF，大于0.3就不是。Github 上的那个程序就是如此判断的，这样判断的好处是简化了计算过程，使判断变得极为简单，坏处也是显而易见的，SD 的阀值设置的不同导致最终结果就不一样，这和 Wavelet Transform 中选取小波种类类似，阀值的选择反而增大了分析的难度。简化计算难度，增大阀值选择难度，我认为不可取，所以如果能找到一种很好的办法选择出恰当的局部极值点，我认为还是第一种判断方法比较好。</p>
+  </li>
+</ol>
+
+<h3 id="section">局部极值点与零点的判断</h3>
+
+<p>由于将来计算瞬时频率需要用到零点，所以这里我又加入了零点的判断。局部极值点与零点判断困难是因为我们需要通过有限的原始信号采样点来估计出原始信号，由于采样带来的信息缺失导致困难很大，但是因为我们不需要估计出整个信号，我们只需要估计出原始信号的局部极值与零点就可以了，如果假定采样信号的极值点“约等于”原始信号的极值点，那么我们就面临多个很容易遇到的问题，总结起来列在这里：</p>
+
+<ol>
+  <li>采样点中出现连续的极值点与零点如何处理？</li>
+  <li>采样点刚好错过极值点与零点如何处理？</li>
+  <li>边界点如何处理？</li>
+</ol>
+
+<p>在 G. Rilling 的程序中，他取了连续极值点或零点的中间的那个采样点来作为极值点与零点。如果原始信号是一个类正弦信号，这的确是一种好的近似方法，但是对于方波，这种近似方法显然就不合适了。而 Github 上的那个程序，完全没有考虑这个问题。</p>
+
+<p>对于采样点刚好错过极值点与零点的情况，也就是零点或极值点在两个点之间的情况，G. Rilling 的程序只考虑了零点的情况，他将前一个点作为零点的近似，如果采样频率足够大，这的确可以，但是如果采样频率不够大，很显然这样会带来很大的误差。</p>
+
+<p>对于边界点，G. Rilling 根据已有的采样点将边界沿拓，这样边界点就不再是边界点了。在 Github 上的程序则是很简单的将两个边界点直接加入到局部极大值与局部极小值的序列中去。边界沿拓虽然很好，但是复杂并且存在沿拓方法选择的问题。将边界点直接加入虽然简单，但是可能会导致求出的 IMF 边缘震荡，导致分解出无限个 IMF。所以两种方法各有优劣。</p>
+
+<h2 id="section-1">我的想法</h2>
+
+<p>其实总结起来就是两个大问题：</p>
+
+<ol>
+  <li>用局部极值求出的上下包络线会出现与原信号相交的问题，这怎么办？</li>
+  <li>如何通过离散信号求出原信号的局部极值与零点？</li>
+</ol>
+
+<p>而第二个大问题主要就是上面提到的三个特殊情况：</p>
+
+<ol>
+  <li>采样点中出现连续的极值点与零点如何处理？</li>
+  <li>采样点刚好错过极值点与零点如何处理？</li>
+  <li>边界点如何处理？</li>
+</ol>
+
+<p>对于的第二个大问题，我认为可以使用原始信号与以求出的上下包络线的切点来修正上下包络线以此来得到不会与原始信号相交的包络线。</p>
+
+<p>对于采样点中出现连续的极值点与零点，我认为可以全部用来计算包络线，无依据，仅仅是感觉，而且由于脑电几乎不会出现方波的状况，所以我认为 G. Rilling 的解决方法已经可以了。</p>
+
+<p>对于采样点刚好错过极值点与零点的情况，如果是零点，我们可以通过两点确定的直线，估算出零点的位置。对于极值点，可以通过再多取几个点做插值，来估算极值点的位置。</p>
+
+<p>对于边界点，我认为还是沿拓比较好，但是沿拓的方法还有待考虑。</p>
+
+<p>但是如果根据我上面提到的方法修改 G. Rilling 的程序，必然带来一个很严重的情况，就是处理时间的延长。收集数据时间变短，但是处理时间变长，致使总时间几乎不改变甚至变长，这完全没有达到我们开始希望的结果嘛，所以 EMD 求法有待讨论与寻找。我认为，如果可以找到一种快速有效解决上述问题的方法，寻找瞬时频率并不是问题。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[寻找一种有效估算瞬时频率的方法（EMD 求法讨论）]]></title>
     <link href="http://pikipity.github.com/blog/find-a-way-to-calculate-the-instaneous-frequency.html"/>
     <updated>2013-08-09T18:50:00+08:00</updated>
     <id>http://pikipity.github.com/blog/find-a-way-to-calculate-the-instaneous-frequency</id>
@@ -162,6 +256,16 @@
 <p><img src="https://lh3.googleusercontent.com/-qJl5fKw60o8/UgY0P55hX5I/AAAAAAAABBw/x55p0wIhqyI/s912/3.jpg" alt="```spline```和```csape```插值效果比较" /></p>
 
 <p>我们可以发现，只有边界处出现细微差别，其他完全一样，如果调整<code>csape</code>的插值方法，可以得到完全一样的结果，所以使用哪种的效果是完全一样的。</p>
+
+<p>要注意我们用 MATLAB 做三次样条差值是为了寻找上下包络线，那么什么是包络线呢？维基上的解释是这样的</p>
+
+<blockquote>
+  <p>在几何学，某个曲线族的包络线（Envelope），是跟该曲线族的每条线都有至少一点相切的一条曲线。（曲线族即一些曲线的无穷集，它们有一些特定的关系。）</p>
+</blockquote>
+
+<p>不知道你看懂没有，反正我是没有看懂（囧）。但是我至少看懂了一点，包络线不能和曲线族相交们仅仅是相切，但是用局部极值点三次样条差值得到的包络线有的时候会出现与原信号相切的情况，<a href="http://blog.sina.com.cn/s/blog_6ad0d3de01016two.html">这里</a>提供了一种用切点求包络线的方法，但是据博主说，计算用时会大大增加，EMD 的计算用时本来就很长，如果再让求包络线拖慢时间我认为并不值得，况且出现相切的状况只在局部斜率变化缓慢时出现，脑电上很少出现这种状况，所以我认为用极值点插值已经足够了。</p>
+
+<p>然后是是否使用更高次的插值方式，很多论文中提到使用更高次的插值方式使得到的包络线更加平滑，但是我认为完全没有必要，三次样条插值已经足以满足平滑上的需求，而且我们将来使用的也只不过是插值的到的取样点，过好的平滑反而有可能会被取样点的疏松掩盖掉，三次样条差值足以。</p>
 
 <p>（未完待续）</p>
 ]]></content>
@@ -317,23 +421,6 @@
 
 <object width="364" height="235"><param name="movie" value="http://i.d.com.com/av/video/embed/player.swf" /><param name="background" value="#333333" /><param name="allowFullScreen" value="true" /><param name="allowScriptAccess" value="true" /><param name="FlashVars" value="playerType=embedded&amp;type=id&amp;value=50004319" /><embed src="http://www.cnet.com/av/video/embed/player.swf" type="application/x-shockwave-flash" background="#333333" width="364" height="235" allowfullscreen="true" allowscriptaccess="always" flashvars="playerType=embedded&amp;type=id&amp;value=50004319" /></object>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[体温发电手电筒]]></title>
-    <link href="http://pikipity.github.com/blog/2013gsf.html"/>
-    <updated>2013-07-19T19:10:00+08:00</updated>
-    <id>http://pikipity.github.com/blog/2013gsf</id>
-    <content type="html"><![CDATA[<p>加拿大15岁女生利用热电效应，发明了这个只要用手攥着就可以发光的手电筒。这是2013年 <a href="https://www.googlesciencefair.com/zh-CN_ALL/2013/">“Google Science Fair”</a> 参赛作品。9月份，她将与其他14位选手到加州参加决赛，获胜者将参加国家地理远征，前往巴哥群岛10天，并获得5万美金奖学金。很遗憾，中国地区貌似没有人晋级（我怀疑是不是连参加的都没有啊）。</p>
-
-<p>热电效应是通过热电装置，当其两端存在温度差的时候，产生电压的现象。不同的金属导体（或半导体）具有不同的自由电子密度，当两种不同的金属导体相互接触时，在接触面上的电子就会扩散以消除电子密度的差异。而电子的扩散速率与接触区的温度成正比，所以只要维持两金属间的温差，就能使电子持续扩散，在两块金属的另两个端点形成稳定的电压。由此产生的电压通常每开尔文温差只有几微伏，这一效应被称为塞贝克效应。塞贝克效应通常应用于热电偶，用来直接测量温差，或者将金属的一端设定到已知温度来测另一端的温度。当几个温差电偶连接在一起时叫做热电堆，用来制造更大的电压。塞贝克效应还可以用来鉴定合金的成分：将未知金属和已知金属连接，并保持温度不变，根据测得的电压可以算出未知金属的塞贝克系数，从而判断它的材料。</p>
-
-<p>这个手电筒的手柄用铝管打造，中间空心，通过冷热空气自由交换降低内部温度。只要有5摄氏度的温差，就可以产生5.4mW的电压驱动手电筒中的LED灯发出亮光。</p>
-
-<p>这里是发明者对手电筒的介绍视频。</p>
-
-<iframe width="560" height="315" src="http://pikipity.github.com//www.youtube.com/embed/fRdeFcIK8QM?rel=0" frameborder="0" allowfullscreen=""></iframe>
 ]]></content>
   </entry>
   
