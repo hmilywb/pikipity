@@ -14,6 +14,21 @@
 
   
   <entry>
+    <title type="html"><![CDATA[tutorialspoint -- Simple Easy Learning]]></title>
+    <link href="http://pikipity.github.com/blog/tutorialspoint.html"/>
+    <updated>2013-08-23T11:24:00+08:00</updated>
+    <id>http://pikipity.github.com/blog/tutorialspoint</id>
+    <content type="html"><![CDATA[<p><img src="https://lh3.googleusercontent.com/-EOXgioZB97c/UhbZ3vnuTXI/AAAAAAAABG0/cMP-tK0Gn4A/s599/%25E5%25B1%258F%25E5%25B9%2595%25E5%25BF%25AB%25E7%2585%25A7%25202013-08-23%2520%25E4%25B8%258A%25E5%258D%258811.41.01.png" alt="tutorialspoint -- Simple Easy Learning" /></p>
+
+<p>在网上搜索 JavaScript 教程的时候无意间发现了这个网站 – <a href="http://www.tutorialspoint.com/">tutorialpoint（简称 TP）</a>，整体感觉很像是 <a href="http://www.w3schools.com/">W3School</a>，都是一篇一篇短小精悍并且很实用的教程组成，但是内容更为丰富，不仅包括各式各样的编程语言（例如 Ruby、Python，甚至连 Assembly 都有）还包括一些网络及电脑知识（例如什么是 RSS，什么是云计算等等），编程语言的教程中还带有在线仿真编程器，你可以在其网页上就实践教程中的例子，不用为了安装一个编译器或是为了找一个好用的 IDE 伤破脑筋，先学习，觉得这门语言挺好，可以用，再找编译器或是 IDE 也不迟。</p>
+
+<p>快速浏览了一下其中 Python，Ruby 和 Assembly 的教程，感觉教程很基础很实用，非常适合新手学习，上手快，见效快，基本看完一遍教程，大约就明白这门语言的结构并能变出简单的程序了。总而言之，是个学习电脑、网络、编程知识的好地方。</p>
+
+<p><a href="http://www.tutorialspoint.com/">tutorialpoint（简称 TP）网站传送点</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[尝试两种利用 EMD 来计算瞬时频率的方法]]></title>
     <link href="http://pikipity.github.com/blog/try-two-way-to-find-instaneous-frequency-by-using-emd.html"/>
     <updated>2013-08-19T19:00:00+08:00</updated>
@@ -695,36 +710,6 @@ disp(maxf_emd2)
 <p>经过上面的测试，很明显是我错了，ATM机按键声音都是一样的。之后又去 Google 上搜索了一下，看到了这些，囧。</p>
 
 <p><img src="https://lh3.googleusercontent.com/-J9-IpVrgM_g/Ue3anj5bDuI/AAAAAAAAA5g/RfH87ke-HCs/s512/%25E5%25B1%258F%25E5%25B9%2595%25E5%25BF%25AB%25E7%2585%25A7%25202013-07-23%2520%25E4%25B8%258A%25E5%258D%25889.18.51.png" alt="Google 上搜索相关信息。。。第一条是怎么回事？淘宝？" /></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[「動腦」也能織圍巾，來條奇妙的腦電波圍巾吧！]]></title>
-    <link href="http://pikipity.github.com/blog/eeg-muffler.html"/>
-    <updated>2013-07-20T14:46:00+08:00</updated>
-    <id>http://pikipity.github.com/blog/eeg-muffler</id>
-    <content type="html"><![CDATA[<h3 id="httpwwwcool3ccomarticle69767">转自<a href="http://www.cool3c.com/article/69767">瘾科技</a></h3>
-
-<p><img src="https://lh3.googleusercontent.com/-O6-qMMJXNA0/UfO89c0-2qI/AAAAAAAAA6c/EXzOghW94R8/s600/brainwave-knitted-scarves02.jpg" alt="" /></p>
-
-<p>每次有人提到「監測腦電波」這五個字，大編腦中就會浮現各式各樣科幻電影中才會出現的情節，其實監測腦電波是個相當實用的醫學技術，像是用來掌握健康狀況，或是做為犯罪測謊，以及進行許多心理相關的研究。但就算它再實用，領域再廣泛，應該也不會有人把「腦電波」跟「圍巾」放在一起聯想吧！</p>
-
-<p><img src="https://lh5.googleusercontent.com/-P7-2WFDpJ2k/UfO89aPMdKI/AAAAAAAAA6g/pUHntLon1ak/s600/brainwave-knitted-scarves03.jpg" alt="" /></p>
-
-<p>不！的確有人會超級天馬行空的把它們聯想在一起，而通常我們把這種人稱為藝術家(笑)。來自西班牙的Varvara Guljajeva和Mar.Canet這兩位藝術家找到了專門研究腦電波的科學實驗室來進行一項奇妙的創作實驗。他們將感應器貼在受測者的腦袋上，接著讓他們聆聽巴赫的「哥德堡變奏曲」十分鐘，看看腦電波會產生什麼樣的變化。</p>
-
-<p><img src="https://lh4.googleusercontent.com/-pMb9fRKti5Q/UfO89U1DjVI/AAAAAAAAA6Y/xKrLkzTxamM/s600/brainwave-knitted-scarves04.jpg" alt="" /></p>
-
-<p><img src="https://lh4.googleusercontent.com/-QSjv5Nkkptk/UfO894gVBdI/AAAAAAAAA6w/EzPbfCPCcRw/s600/brainwave-knitted-scarves041-818x600.jpg" alt="" /></p>
-
-<p>但藝術家的目的怎麼可能只是單純測驗音樂對腦電波的影響呢～Varvara Guljajeva和Mar.Canet異想天開的將腦電波監測器與織布機做連結，讓起起伏伏的波長變成圍巾上的圖樣。他們之所以選擇以音樂作為刺激腦電波的媒介，是希望透過音樂強大且直接的情緒能量來挑起人類的腦電波反應，畢竟越明顯的差異越有實驗的價值。</p>
-
-<p><img src="https://lh3.googleusercontent.com/-EYC8JCnlovk/UfO8-MJDX_I/AAAAAAAAA6s/fYt46bBi064/s600/brainwave-knitted-scarves05.jpg" alt="" /></p>
-
-<p>雖然腦電波所繪製出來的圖形就算再激烈也似乎都長得差不多，不過如此創新的藝術手法也還真不是一般人所能想到的，這種匯集情感與科學數據的紀念品，或許未來可以考慮推出客製化的織圍巾服務，相信應該有不小的商機。像是情人節的時候能送一條全心想著對方所織出來的腦電波圍巾(就算沒有全心想也要說有！)，相信另一半聽到這條圍巾的由來一定會感動到痛哭流涕！(老婆表示：這條跟上一次的不太一樣，你該不會是想著小三織出來的吧！)</p>
-
-<p>pikipity：在线头上连上电线是要做什么？无法理解。</p>
-
 ]]></content>
   </entry>
   
