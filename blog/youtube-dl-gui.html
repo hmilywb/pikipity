@@ -3,12 +3,12 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>kramdown 语法文档翻译（二） - 折腾来折腾去</title>
+	<title>youtube-dl GUI - 折腾来折腾去</title>
 	<meta name="author" content="pikipity">
 
 	
-	<meta name="description" content="Kramdown 语法文档翻译（二） Posted by pikipity
-&nbsp; 2013年05月19日 Octopress Comments 上接kramdown 语法文档翻译（一） 段落 一个段落的第一行可以加入三个空格的缩进，其他行可以有任意数量的缩进，因为段落支持自动换行。 &hellip;">
+	<meta name="description" content="Youtube-dl GUI Posted by pikipity
+&nbsp; 2013年08月25日 Mac, Movie, Python Comments 经常在网上看到一些很好的视频想要保存下来，如果保存成书签的形式，每次打开都要重新加载一遍实在是太麻烦了，最好的当然是下载到电脑上， &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -110,7 +110,7 @@
 	<div id="content" class="inner"><div>
 <article class="post">
 	
-	<h2 class="title">Kramdown 语法文档翻译（二）</h2>
+	<h2 class="title">Youtube-dl GUI</h2>
 	<div class="meta">
 	       <div class="author" style="float:left;">
   
@@ -129,11 +129,11 @@
   
 
 
-<time datetime="2013-05-19T10:42:00+08:00" pubdate data-updated="true">2013年05月19日</time></div>
+<time datetime="2013-08-25T15:47:00+08:00" pubdate data-updated="true">2013年08月25日</time></div>
 		<div class="tags" style="float:left;">
 
 
-	<a class='category' href='/blog/categories/octopress/'>Octopress</a>
+	<a class='category' href='/blog/categories/mac/'>Mac</a>, <a class='category' href='/blog/categories/movie/'>Movie</a>, <a class='category' href='/blog/categories/python/'>Python</a>
 
 
 </div>
@@ -141,117 +141,13 @@
 			<span class="comments"><a href="#com_target">Comments</a></span>
 		
 	</div>
-	<div class="entry-content" style="clear:both;"><p>上接<a href="http://pikipity.github.io/blog/kramdown-syntax-chinese-1.html">kramdown 语法文档翻译（一）</a></p>
+	<div class="entry-content" style="clear:both;"><p>经常在网上看到一些很好的视频想要保存下来，如果保存成书签的形式，每次打开都要重新加载一遍实在是太麻烦了，最好的当然是下载到电脑上，虽然自己找了许多在 Mac OS X 上下载视频的软件，但是其中的广告或是收费升级通知让我烦不胜烦。最后找到了这个软件 – <a href="http://rg3.github.io/youtube-dl/">youtube-dl</a>。用 Python 编写，本来是专门用于下载 YouTube 上的视频的，但是现在支持大部分的视频网站，经测试优酷和土豆都可以正常下载，唯一的缺点就是没有一个 GUI，每次都要打开终端输入一行代码，而且像我这种记忆渣每次都要查一遍它的参数列表，实在麻烦，但是又不忍放弃，于是决定自己为其写一个 GUI。</p>
 
-<h3 id="section">段落</h3>
+<p><a href="http://pikipity.github.io/youtube-dl-GUI/">这里是此 youtube-dl GUI 的项目主页</a>，安装及使用方法都可以找到。下面是软件截图，因为仅仅是为了使用方便，所以看上去和简陋，但是功能还是齐全的，下一步希望可以抽时间把 “Options” 做的更人性化一点。</p>
 
-<p>一个段落的第一行可以加入三个空格的缩进，其他行可以有任意数量的缩进，因为段落支持自动换行。但是需要补充的一点就是，当一个“定义列表行”出现的时候，一个段落会自动中断。</p>
+<p><img src="https://lh3.googleusercontent.com/-rkDZUJACtqo/UhmniKahR7I/AAAAAAAABHM/iwtIZ9ZXXuo/s640/%25E5%25B1%258F%25E5%25B9%2595%25E5%25BF%25AB%25E7%2585%25A7%25202013-08-25%2520%25E4%25B8%258B%25E5%258D%25882.34.08.png" alt="下载中" /></p>
 
-<p>你可以用一个或多个空行来区分两个连续的段落。需要注意的是源文件中的一个空行并不意味着在输出文件中也是一个空行（因为“懒语法”）！如果你希望在输出中有一个空行（就好像 <code>&lt;br/&gt;</code> 标签），你需要在一行结束加上至少两个空格或是两个斜线！注意，一个段落的最后一行不可以是空行，这种空行会被忽略。开头和结尾的空格不会被纳入段落文字中。</p>
-
-<p>下面给出的是一个段落效果的举例（<code>⋅</code>代表空格）：</p>
-
-<pre><code>This para line starts at the first column. However,
-⋅⋅⋅⋅⋅⋅the following lines can be indented any number of spaces/tabs.
-⋅⋅⋅The para continues here.
-
-⋅⋅This is another paragraph, not connected to the above one. But⋅⋅
-with a hard line break. \\
-And another one.
-</code></pre>
-
-<p>效果如下：</p>
-
-<p>This para line starts at the first column. However,
-      the following lines can be indented any number of spaces/tabs.
-   The para continues here.</p>
-
-<p>This is another paragraph, not connected to the above one. But<br />
-with a hard line break. <br />
-And another one.</p>
-
-<h3 id="section-1">标题</h3>
-
-<p>krandown支持 “Setex” 和 “atx” 格式的标题。所有形式都可以在一个独立的文件中使用</p>
-
-<ul>
-  <li>
-    <p>“Setext” 格式</p>
-
-    <p>“Setext” 格式必须以一行文字（标题文字）和一行只有等号（对于第一级标题）或者破折号（对于第二级标题）。标题文字可以在开头加入三个空格，但是开头和结尾的空格都不会被纳入标题文字中。等号和破折号的数量没有区分，一个就足够了，但是多个可能更好看。等号和破折号必须顶头开始。下面是一个例子：</p>
-
-    <pre><code>First level header
-==================
-  
-Second level header
------
-  
-   Other first level header
-=
-</code></pre>
-
-    <p>因为 “Setext” 的标题是在一个块级元素的开始，所以这意味着它们之前必须有空行。但是它们之后不需要有空行:</p>
-
-    <pre><code> This is a normal
- paragraph.
-   
- And a Header
- ---------------
- And a paragraph
-   
- &gt; This is a blockquote.
-   
- And a Header
- ----------------
-</code></pre>
-
-    <p>但是为了文档的易读性最好在 “Setext” 标题的后面也用一个空行。</p>
-
-    <p>值得一提的是一种边缘情况：</p>
-
-    <pre><code> header
- ---
- para
-</code></pre>
-
-    <p>一般来说，”Setext” 标题比“横线规律”（后面将提到）考前</p>
-  </li>
-  <li>
-    <p>“atx” 格式</p>
-
-    <p>“atx” 格式的标题必须以一行以一个或多个井号字符开头然后跟标题文字的文字开始。在井号符号之前不允许有空格。井号的数量代表标题的级数：一个井号代表第一级标题，两个代表第二级标题，以此类推直到最多六个井号代表第六级标题。在标题文字之后你可以加入任意数量的井号。任何标题文字开头和结尾的空格都不会纳入到标题文字中。下面是一个举例：</p>
-
-    <pre><code># First level hearder
-  
-### Third level header ###
-  
-## Second level header #################
-</code></pre>
-
-    <p>下过如下：</p>
-
-    <h1 id="first-level-hearder">First level hearder</h1>
-
-    <h3 id="third-level-header">Third level header</h3>
-
-    <h2 id="second-level-header">Second level header</h2>
-  </li>
-  <li>
-    <p>表明标题 ID</p>
-
-    <p>kranmdown 支持一种非常好的方法来设置标题的 ID，这种方法来自于 <a href="http://michelf.com/projects/php-markdown/extra/">PHP Markdown Extra</a> 和 <a href="http://maruku.rubyforge.org/">Maruku</a>：如果你在标题后面跟一个左大括号（和标题文字至少以一个空格隔开）、一个井号、标题 ID 和 一个右大括号，那么就为一个标题设置了一个 ID。如果你在 “atx” 风格的标题后面跟有一个井号，那么标题 ID 必须跟在结尾的井号之后。下面是一个例子：</p>
-
-    <pre><code>Hello    {#id}
--------
-  
-# Hello   {#id}
-  
-# Hello   {#id}
-</code></pre>
-  </li>
-</ul>
-
-<p>PS: 此项翻译工程即将变成有生之年系列了。。。</p>
+<p><img src="https://lh3.googleusercontent.com/-ZNcrGbCx18M/UhmniTT8BYI/AAAAAAAABHQ/ig4RsA_k8OM/s640/%25E5%25B1%258F%25E5%25B9%2595%25E5%25BF%25AB%25E7%2585%25A7%25202013-08-25%2520%25E4%25B8%258B%25E5%258D%25882.34.31.png" alt="选择 Options" /></p>
 </div>
 
 
@@ -295,19 +191,17 @@ var jiathis_config={
   
 
 
-<time datetime="2013-05-19T10:42:00+08:00" pubdate data-updated="true">2013年05月19日</time></p>
+<time datetime="2013-08-25T15:47:00+08:00" pubdate data-updated="true">2013年08月25日</time></p>
 </footer>
 
 <section>
 <ul id="left-right">
 <span style="float:left">
 	
-        <a class="basic-alignment left" href="/blog/google-i-slash-o-live.html" title="Previous Post: Google I/O 直播"><font face=Wingdings>&#239;</font> Google I/O 直播</a>
+        <a class="basic-alignment left" href="/blog/tutorialspoint.html" title="Previous Post: tutorialspoint -- Simple Easy Learning"><font face=Wingdings>&#239;</font> tutorialspoint -- Simple Easy Learning</a>
         </span>
 <span style="float:right">
-	
-        <a class="basic-alignment right" href="/blog/what-to-eat-v1-dot-0-publish.html" title="next Post: '今天晚上吃神马？' 基本完成">'今天晚上吃神马？' 基本完成 <font face=Wingdings>&#240;</font></a>
-       </span>
+	 </span>
 </ul>
 </section>
 

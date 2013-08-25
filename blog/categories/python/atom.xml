@@ -14,6 +14,21 @@
 
   
   <entry>
+    <title type="html"><![CDATA[youtube-dl GUI]]></title>
+    <link href="http://pikipity.github.com/blog/youtube-dl-gui.html"/>
+    <updated>2013-08-25T15:47:00+08:00</updated>
+    <id>http://pikipity.github.com/blog/youtube-dl-gui</id>
+    <content type="html"><![CDATA[<p>经常在网上看到一些很好的视频想要保存下来，如果保存成书签的形式，每次打开都要重新加载一遍实在是太麻烦了，最好的当然是下载到电脑上，虽然自己找了许多在 Mac OS X 上下载视频的软件，但是其中的广告或是收费升级通知让我烦不胜烦。最后找到了这个软件 – <a href="http://rg3.github.io/youtube-dl/">youtube-dl</a>。用 Python 编写，本来是专门用于下载 YouTube 上的视频的，但是现在支持大部分的视频网站，经测试优酷和土豆都可以正常下载，唯一的缺点就是没有一个 GUI，每次都要打开终端输入一行代码，而且像我这种记忆渣每次都要查一遍它的参数列表，实在麻烦，但是又不忍放弃，于是决定自己为其写一个 GUI。</p>
+
+<p><a href="http://pikipity.github.io/youtube-dl-GUI/">这里是此 youtube-dl GUI 的项目主页</a>，安装及使用方法都可以找到。下面是软件截图，因为仅仅是为了使用方便，所以看上去和简陋，但是功能还是齐全的，下一步希望可以抽时间把 “Options” 做的更人性化一点。</p>
+
+<p><img src="https://lh3.googleusercontent.com/-rkDZUJACtqo/UhmniKahR7I/AAAAAAAABHM/iwtIZ9ZXXuo/s640/%25E5%25B1%258F%25E5%25B9%2595%25E5%25BF%25AB%25E7%2585%25A7%25202013-08-25%2520%25E4%25B8%258B%25E5%258D%25882.34.08.png" alt="下载中" /></p>
+
+<p><img src="https://lh3.googleusercontent.com/-ZNcrGbCx18M/UhmniTT8BYI/AAAAAAAABHQ/ig4RsA_k8OM/s640/%25E5%25B1%258F%25E5%25B9%2595%25E5%25BF%25AB%25E7%2585%25A7%25202013-08-25%2520%25E4%25B8%258B%25E5%258D%25882.34.31.png" alt="选择 Options" /></p>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[用 Pygame 编写的生命游戏]]></title>
     <link href="http://pikipity.github.com/blog/the-game-of-life-using-pygame.html"/>
     <updated>2013-07-27T19:58:00+08:00</updated>
@@ -114,186 +129,6 @@
 <p><img src="https://lh3.googleusercontent.com/-NGCLPdiXNts/UZwyBt50H0I/AAAAAAAAA1Y/bnrhcwGZ9cQ/s594/%25E5%25B1%258F%25E5%25B9%2595%25E5%25BF%25AB%25E7%2585%25A7%25202013-05-22%2520%25E4%25B8%258A%25E5%258D%258810.47.30.png" alt="设定界面" /></p>
 
 <p><img src="https://lh3.googleusercontent.com/-41jnXgPFCN0/UZwyB5nHiJI/AAAAAAAAA1c/cNVfhZjztZ0/s571/%25E5%25B1%258F%25E5%25B9%2595%25E5%25BF%25AB%25E7%2585%25A7%25202013-05-22%2520%25E4%25B8%258A%25E5%258D%258810.47.42.png" alt="关于我" /></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Python 下用 Tkinter 制作 GUI]]></title>
-    <link href="http://pikipity.github.com/blog/python-tkinter.html"/>
-    <updated>2013-04-11T00:36:00+08:00</updated>
-    <id>http://pikipity.github.com/blog/python-tkinter</id>
-    <content type="html"><![CDATA[<h3 id="gui">什么是 GUI</h3>
-
-<p>既然要制作 GUI，那么就要先明确什么是 GUI。<a href="http://zh.wikipedia.org/wiki/%E5%9B%BE%E5%BD%A2%E7%94%A8%E6%88%B7%E7%95%8C%E9%9D%A2">wiki</a>上是这么说的:</p>
-
-<blockquote>
-  <p>图形用户界面（Graphical User Interface，简称 GUI）是指采用图形方式显示的计算机操作用户接口。</p>
-</blockquote>
-
-<p>曾经有个同学这么跟我说，“MATLAB 有个 GUI 的功能，貌似很强大啊”，听完我就凌乱了，图形用户界面什么时候成了 MATLAB 的专属功能了？我平常用的 Windows 或者 Linux、Mac 都是在图形用户界面下进行操作的，如果想看一看命令行界面，Windows 可以在“运行”中输入 <code>cmd</code> 然后回车，Linux下可以直接 <code>alt+F1</code>（切换回来用 <code>alt+F7</code>）。简单来说，GUI 提供给用户一种更加直白的图形化的人机交互界面。</p>
-
-<p><img src="http://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/X-Window-System.png/720px-X-Window-System.png" width="480" alt="1990年代早期Unix 平台上运行的 X Window System" /></p>
-
-<h3 id="python--gui-">Python 中的 GUI 工具包</h3>
-
-<p>如果想用 Python 语言制作出一个程序的 GUI，不仅仅可以用 Tkinter 一个包，最常见的还有 wxPython 和 PyQt，还有很多很多（我不熟悉啊 (╯▽╰)）。</p>
-
-<ol>
-  <li>
-    <p>wxPython：wxPython 创建的是 wxWidgets。它的好处是，可以通过简单的命令就创建出比较漂亮的界面，并且在中国的使用人数挺多，遇到问题在网上找起答案来比较轻松。缺点是并不是 Python 的标准工具包，还需要另外安装。官网在<a href="http://www.wxpython.org/">这里</a>，官网提供的英文教程在<a href="http://wiki.wxpython.org/Getting%20Started">这里</a></p>
-
-    <p><img src="https://lh3.googleusercontent.com/-lckWJC8vAoc/UWYhrAqM7kI/AAAAAAAAAqw/UTu3LsfWLXA/s640/wxPython.jpg" width="480" alt="wxPython" /></p>
-  </li>
-  <li>
-    <p>PyQt：和名字一样，创建的是 Qt 的 GUI。Qt 的 GUI 当然是漂亮的不能再漂亮了。优点是，创建出的 GUI 很漂亮，且有图形化的 GUI 设计软件 Qt Designer 来使整个设计过程简单化。缺点：同样不是 Python 的标准工具包，还需要另外安装，如果手工输入 GUI 代码习惯了，有时候图形化的 GUI 设计软件反而不习惯。官网在<a href="http://www.riverbankcomputing.co.uk/software/pyqt/intro">这里</a>，<a href="http://blog.csdn.net/wescom/article/details/4727114">这里</a>有一个比较不错的中文教程，主要讲的是 Qt Designer 的入门使用，很不错。</p>
-
-    <p><img src="https://lh6.googleusercontent.com/-mCcMvwpzwqQ/UWYhrOvfVpI/AAAAAAAAAqs/plQq7BcSrwU/s640/QtPy.png" width="480" alt="Qt Designer" /></p>
-  </li>
-  <li>
-    <p>Tkinter: 从名字可以看出，创建的是 Tk 的GUI。优点很明显，是一个已经半官方化的工具包，可以直接使用，无需安装，并且教程众多，几乎所有介绍 Python 入门的书，只要提及 GUI 设计都会讲 Tkinter。缺点一样明显，设计出的 GUI 很难看，要问多难看，你自己看看 Python 的那个 IDLE 就好了，土的掉渣啊，而且元件一样很少，如果只是编写一些小程序的话还可以，如果编写大程序要用到比较复杂的元件的话，就需要从提供的元件里找一些替代品了，手工输入代码，有时候很累啊。但是我认为用 Tkinter 来入门 GUI 设计是很好的，因为思路清晰，代码简单，这也就是为什么我在这里只介绍 Tkinter 的原因。一个英文教程在<a href="http://effbot.org/tkinterbook/tkinter-index.htm#class-reference">这里</a>（<em style="color: red">之前的网站已经不在了，作者将其移到了这里，貌似开始将从前未写完的补充完整了</em>），由于我不想记住所有元件的方法，所以用到的话就来这里查询，很方便。</p>
-
-    <p><img src="https://lh3.googleusercontent.com/-mTq-K8KM-Tk/UWYhrLi4D2I/AAAAAAAAAq0/bRsZe5macLk/s512/Tkinter.png" width="480" alt="Tkinter" /></p>
-  </li>
-</ol>
-
-<h3 id="gui-">GUI 的设计基本思路</h3>
-
-<p>但你开始学习 Python 的时候，所有都会考诉你，Python 是 <a href="http://zh.wikipedia.org/wiki/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1">OOP（面向对象程序设计）</a>的程序语言，但是我认为“类”的概念对于初学者是非常难以理解的，而且也没有人规定在 Python 中必须使用“类”，所以我下面的例子，都不是以定义“类”的形式出现，而是以简单的定义“函数”的形式出现，使代码简单、易懂。</p>
-
-<p>对于 GUI 的设计，我认为是“不要着急，不要着急”。先确保实现主要功能的函数正常运行再来考虑 GUI 也不迟。GUI 的设计主要包括下面三个步骤：</p>
-
-<ol>
-  <li>创建主窗体</li>
-  <li>创建元件</li>
-  <li>显示元件</li>
-  <li>进入窗体的主循环</li>
-</ol>
-
-<p>下面是一个简单的例子：</p>
-
-<pre><code>import Tkinter
-
-root=Tkinter.Tk()  %创建主窗体
-MainLabel=Tkinter.Label(root,text="I am so ugly. -- Tkinter",font="Times 16 bold")  %创建元件
-MainLabel.pack()  %显示元件
-root.mainloop()  %进入窗体的主循环
-</code></pre>
-
-<p>这个例子中，只包含一个元件是 <code>Label</code>，最后效果就是</p>
-
-<p><img src="https://lh6.googleusercontent.com/-W2YkdsudA-8/UWYmD-s8nDI/AAAAAAAAArE/zVuwNeJgLeA/s230/Screen%2520Shot%25202013-04-11%2520at%252010.53.57%2520AM.png" width="200" /></p>
-
-<p>根据需要，可以在主窗口中创建多个元件，每一个元件所拥有的参数不同，但是有一点是一样的，就是第一个参数一定是其所属的窗口的变量名。上面的例子中，元件 <code>Label</code>就是隶属于 <code>root</code>，所以在调用 <code>pack</code> 方法之后，这个元件就会在 <code>root</code> 窗口中显示了，只与显示的位置和显示的样子，需要调整 <code>pack</code> 方法的参数，我这里使用默认值，所以什么参数也没有，具体 <code>pack</code> 的用法可以参照<a href="http://www.360doc.com/content/12/0922/02/3234041_237501468.shtml">这里</a>。</p>
-
-<p>这三步其实就是 Tkinter GUI 设计的全部了，剩下的就是每个元件的位置、样子、显示的文字、显示的图像、调用的函数等等元件参数上的设定了，这就涉及到每个元件包含哪些参数、每个参数是什么意思的问题了，这个可以通过查询<a href="http://effbot.org/tkinterbook/tkinter-index.htm#class-reference">我提到的那个网站</a>来得到。</p>
-
-<p>在 GUI 设计中有以下几点需要注意（<strong>持续更新中</strong>）：</p>
-
-<ol>
-  <li>
-    <p>对于元件函数的调用，有两种方式：直接绑定和间接绑定。直接绑定就是在元件 <code>Button</code> 中的参数 <code>command</code> 中设定回调的函数名称，如下：</p>
-
-    <pre><code>ButtonInput=Tkinter.Button(root,text="Input",command=InputString)
-</code></pre>
-
-    <p>间接绑定是用 <code>bind</code> 方法，对于所有元件都有这个方法，形式如下：</p>
-
-    <pre><code>ButtonInput.bind('&lt;Return&gt;',InputString)
-</code></pre>
-
-    <p><code>bind</code> 需要指定一种触发方式，这里的触发方式就不再仅仅局限于 <code>Button</code> 的左键单击了，键盘输入、鼠标点击都是可以的，我这里的触发方式是 <code>&lt;Return&gt;</code>，也就是回车。但是要注意的是，<code>bind</code> 是绑定在一个元件上的，也就是说，当焦点在这个元件上的时候触发才有用，而且回调的函数必须要要有一个 <code>event</code> 作为输入参数，如果没有就直接 <code>None</code> 好了，如下：</p>
-
-    <pre><code>def InputString(event=None):
-   …
-   …
-   …
-</code></pre>
-
-    <p>这两种方法使用的时候有一个共同需要注意的地方就是，回调函数不要出现参数，下面这种就是错误的：</p>
-
-    <pre><code>ButtonInput=Tkinter.Button(root,text="Input",command=InputString())
-</code></pre>
-
-    <p>如果这样，程序就会直接调用函数 <code>InputString()</code>，而不是等到用户点击按钮的时候再调用了，如果一定要向回调的函数中加入参数的话，就用 <code>lambda</code> 吧，如下：</p>
-
-    <pre><code>ButtonInput=Tkinter.Button(root,text="Input",command=lambda x: InputString(x))
-</code></pre>
-  </li>
-  <li>显示元件的方法不仅仅有 <code>pack()</code>，还有 <code>grid()</code>，如果元件排列需要很整齐，可以用 <code>grid()</code>，通过输入行数和列数来控制元件的显示位置，两者的比较和使用，可以参见<a href="http://purpen.iteye.com/blog/74830">这里</a>。</li>
-  <li>创建主窗口用 <code>Tkinter.Tk()</code>，但是有的时候需要有一些子窗口，可以用 <code>Tkinter.Toplevel()</code> 来创建，保证子窗口一创建出来就在所有窗口的最前面。当运行完某个回调函数需要找回焦点的时候可以用所有元件都有的方法 <code>focus()</code>，来得到某个元件的焦点。</li>
-  <li>
-    <p>窗口退出的时候，可以用方法 <code>quit()</code>，也可以用 <code>destroy()</code>，比如：</p>
-
-    <pre><code>root.quit()
-</code></pre>
-  </li>
-  <li>
-    <p>如果某个元件需要更新，比如图片刷新，可以先调用 <code>destroy()</code> 这个方法摧毁掉这个元件，再将这个元件重建。如果只是 <code>Label</code> 元件的文字上的变动（比如状态栏的文字变化），可以用 <code>StringVar()</code>，需要输入什么直接调用 <code>set()</code> 方法就可以了，如下：</p>
-
-    <pre><code>v = Tkinter.StringVar()
-Tkinter.Label(master, textvariable=v).pack()
-v.set("New Text!")
-</code></pre>
-  </li>
-  <li>
-    <p>菜单栏的创建比较麻烦，如下：</p>
-
-    <pre><code> from Tkinter import *
- root = Tk()
-
- def hello():
-     print('hello')
-
- def about():
-     print('我是开发者')
-
- menubar = Menu(root)
-
- #创建下拉菜单File，然后将其加入到顶级的菜单栏中
- filemenu = Menu(menubar,tearoff=0)
- filemenu.add_command(label="Open", command=hello)
- filemenu.add_command(label="Save", command=hello)
- filemenu.add_separator()
- filemenu.add_command(label="Exit", command=root.quit)
- menubar.add_cascade(label="File", menu=filemenu)
-
- #创建另一个下拉菜单Edit
- editmenu = Menu(menubar, tearoff=0)
- editmenu.add_command(label="Cut", command=hello)
- editmenu.add_command(label="Copy", command=hello)
- editmenu.add_command(label="Paste", command=hello)
- menubar.add_cascade(label="Edit",menu=editmenu)
- #创建下拉菜单Help
- helpmenu = Menu(menubar, tearoff=0)
- helpmenu.add_command(label="About", command=about)
- menubar.add_cascade(label="Help", menu=helpmenu)
-
- #显示菜单
- root.config(menu=menubar)
-
- mainloop()
-</code></pre>
-
-    <p>其中 <code>tearoff=0</code> 就是下拉菜单和窗口是一体的，不能独立形成一个窗口，效果如下：</p>
-
-    <p><img src="https://lh6.googleusercontent.com/-7vMkEb-xO1A/UWfmMhlAm8I/AAAAAAAAAvs/vWqDhrNnK5o/s136/Screen%2520Shot%25202013-04-12%2520at%25206.46.35%2520PM.png" width="200" /></p>
-
-    <p>如果 <code>tearoff=1</code>，则效果如下，点击那个虚线会形成一个新的窗口。</p>
-
-    <p><img src="http://pic002.cnblogs.com/images/2012/370835/2012102220204555.png" width="200" /><img src="http://pic002.cnblogs.com/images/2012/370835/2012102220205355.png" width="200" /></p>
-  </li>
-  <li>简单的提示窗口（比如报错之类的），可以直接调用 <code>tkMessageBox</code> 库，具体用法可以参见<a href="http://www.pythonware.com/library/tkinter/introduction/standard-dialogs.htm">这里</a>。简单的数字输入、文件选取、颜色选取，可以直接调用 <code>tkSimpleDialog</code> 库，具体用法可以参见<a href="http://www.pythonware.com/library/tkinter/introduction/x1164-data-entry.htm">这里</a></li>
-  <li>
-    <p>Tkinter 自带的下拉框元件 <code>Listbox</code> 很不好用，可以使用 <code>ttk</code> 库中的 <code>Combobox</code> 元件，使用如下：</p>
-
-    <pre><code>boudrate=Tkinter.StringVar()
-boudrate.set("9600")
-manul_boudrate=ttk.Combobox(root,text=boudrate,values=["2400","9600","12900"])
-</code></pre>
-
-    <p>需要得到 <code>Combobox</code> 中选中的字符串的时候，直接 <code>boudrate.get()</code> 就可以了。</p>
-  </li>
-</ol>
 ]]></content>
   </entry>
   

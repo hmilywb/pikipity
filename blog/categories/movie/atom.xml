@@ -14,6 +14,21 @@
 
   
   <entry>
+    <title type="html"><![CDATA[youtube-dl GUI]]></title>
+    <link href="http://pikipity.github.com/blog/youtube-dl-gui.html"/>
+    <updated>2013-08-25T15:47:00+08:00</updated>
+    <id>http://pikipity.github.com/blog/youtube-dl-gui</id>
+    <content type="html"><![CDATA[<p>经常在网上看到一些很好的视频想要保存下来，如果保存成书签的形式，每次打开都要重新加载一遍实在是太麻烦了，最好的当然是下载到电脑上，虽然自己找了许多在 Mac OS X 上下载视频的软件，但是其中的广告或是收费升级通知让我烦不胜烦。最后找到了这个软件 – <a href="http://rg3.github.io/youtube-dl/">youtube-dl</a>。用 Python 编写，本来是专门用于下载 YouTube 上的视频的，但是现在支持大部分的视频网站，经测试优酷和土豆都可以正常下载，唯一的缺点就是没有一个 GUI，每次都要打开终端输入一行代码，而且像我这种记忆渣每次都要查一遍它的参数列表，实在麻烦，但是又不忍放弃，于是决定自己为其写一个 GUI。</p>
+
+<p><a href="http://pikipity.github.io/youtube-dl-GUI/">这里是此 youtube-dl GUI 的项目主页</a>，安装及使用方法都可以找到。下面是软件截图，因为仅仅是为了使用方便，所以看上去和简陋，但是功能还是齐全的，下一步希望可以抽时间把 “Options” 做的更人性化一点。</p>
+
+<p><img src="https://lh3.googleusercontent.com/-rkDZUJACtqo/UhmniKahR7I/AAAAAAAABHM/iwtIZ9ZXXuo/s640/%25E5%25B1%258F%25E5%25B9%2595%25E5%25BF%25AB%25E7%2585%25A7%25202013-08-25%2520%25E4%25B8%258B%25E5%258D%25882.34.08.png" alt="下载中" /></p>
+
+<p><img src="https://lh3.googleusercontent.com/-ZNcrGbCx18M/UhmniTT8BYI/AAAAAAAABHQ/ig4RsA_k8OM/s640/%25E5%25B1%258F%25E5%25B9%2595%25E5%25BF%25AB%25E7%2585%25A7%25202013-08-25%2520%25E4%25B8%258B%25E5%258D%25882.34.31.png" alt="选择 Options" /></p>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[海盗湾里最老的种子]]></title>
     <link href="http://pikipity.github.com/blog/thepiratebay-ten-years-old.html"/>
     <updated>2013-03-18T20:49:00+08:00</updated>
