@@ -14,6 +14,46 @@
 
   
   <entry>
+    <title type="html"><![CDATA[新玩具 -- Processing]]></title>
+    <link href="http://pikipity.github.com/blog/new-game-processing.html"/>
+    <updated>2013-08-28T12:37:00+08:00</updated>
+    <id>http://pikipity.github.com/blog/new-game-processing</id>
+    <content type="html"><![CDATA[<p><img src="https://lh5.googleusercontent.com/-YJlrgUSftcw/Uh2LCQCqpSI/AAAAAAAABHk/BrDYwd8hf_s/s180/180px-Processing_Logo_Clipped.svg.png" alt="Processing" /></p>
+
+<p>在看 Arduino 的资料的时候无意间找到了一个新玩具 – <a href="http://processing.org/">Processing</a>，专门用来开发视觉交互界面用的语言，基础语言是 Java，优点就和他官方网站介绍的一样：</p>
+
+<ul>
+  <li>开源，免费下载</li>
+  <li>支持多种输出方式，2D、3D 甚至 pdf</li>
+  <li>使用 OpenGL 作为 3D 的引擎</li>
+  <li>支持多种操作系统，Linux, OSX, Windows</li>
+  <li>网络上有众多的扩展库支持</li>
+  <li>大量的资料书籍（虽然都是英文的）</li>
+</ul>
+
+<p>我的第一反应是把它当做 Pygame 的替代品。相比 Pygame，Processing 的优点众多：</p>
+
+<ul>
+  <li>Java 语言本身的优点：Python 蛋疼的内存管理机制和速度问题现在让我越来越烦心了，Java 在这两点上要好得多。</li>
+  <li>
+    <p>安装方便：Pygame 毕竟是个民间自发的维护项目，更新缓慢，对于刚刚接触 Python 的新手来说安装的过程中就会遇到重重障碍。Processing 的安装则简单的多，而且更新迅速，各个平台的程序都已经打包好了，直接双击安装就可以了，而且自带 IDE（除了自动补全外其他你能想到的、没想到的功能都有了，界面也挺漂亮的），真的是扫除一切学习障碍，诚意满满。</p>
+
+    <p><img src="https://lh5.googleusercontent.com/-m44lymT_wQs/Uh2LCW7aRFI/AAAAAAAABHo/ONQpnwUPbig/s512/%25E5%25B1%258F%25E5%25B9%2595%25E5%25BF%25AB%25E7%2585%25A7%25202013-08-28%2520%25E4%25B8%258B%25E5%258D%25881.30.05.png" alt="自带 IDE 界面" /></p>
+  </li>
+  <li>语言更加人性化：Python 的语言已经很人性化了，而 Processing 的语言，尤其是默认变量的命名通过语意猜测就可以知道其代表什么了。命名方式也很统一（Python。。。谁用谁知道，我不吐槽了。）</li>
+  <li>事件管理更加轻松：相比 Pygame，Processing 简化了事件管理的部分。不再需要专门再编写代码来获得事件，在 Processing 中鼠标与键盘的事件都变成了一个个默认变量，直接使用这些默认变量就可以获得事件。</li>
+  <li>更多扩展库的支持：扩展库不仅数量多而且覆盖的范围很广，使得用 Processing 编写出来的视觉交互界面可以很容易的与其他硬件或软件进行交互，甚至很多特效都已经有库支持，只要直接调用就可以了，非常方便省力。</li>
+</ul>
+
+<p>当然，缺点也是有的，其并不适合编写游戏，毕竟此语言是为了开发交互式界面而发明的，对于游戏上的开发乏力还是可以理解的。</p>
+
+<p>总而言之，如果仅仅是想快速开发出一个简单的交互式界面，Processing 绝对是不二人选，但是要开发复杂的交互界面或者游戏的话，还是考虑直接用 Pygame 或是 更加基础的 C 或 C++ 吧。还有因为 Processing 的底层语言是 Java，所以对于我这种用惯了 Python 的人来说，换用 Java 是各种不习惯啊。。。（吐槽：为什么每一句后面都要加个分号啊，为什么还要大括号啊，为什么 for 循环这么麻烦啊。。。）</p>
+
+<p><a href="http://pan.baidu.com/share/link?shareid=1374351361&amp;uk=4080321956">入门教程推荐 – 《爱上 Processing》（专门用了讲解了如何将 Processing 与 Arduino 配合使用）</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[youtube-dl GUI]]></title>
     <link href="http://pikipity.github.com/blog/youtube-dl-gui.html"/>
     <updated>2013-08-25T15:47:00+08:00</updated>
@@ -1898,24 +1938,6 @@ disp(maxf_emd2)
 <p>雖然腦電波所繪製出來的圖形就算再激烈也似乎都長得差不多，不過如此創新的藝術手法也還真不是一般人所能想到的，這種匯集情感與科學數據的紀念品，或許未來可以考慮推出客製化的織圍巾服務，相信應該有不小的商機。像是情人節的時候能送一條全心想著對方所織出來的腦電波圍巾(就算沒有全心想也要說有！)，相信另一半聽到這條圍巾的由來一定會感動到痛哭流涕！(老婆表示：這條跟上一次的不太一樣，你該不會是想著小三織出來的吧！)</p>
 
 <p>pikipity：在线头上连上电线是要做什么？无法理解。</p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[你想在头上插根棍子么？]]></title>
-    <link href="http://pikipity.github.com/blog/bmi.html"/>
-    <updated>2013-07-19T20:15:00+08:00</updated>
-    <id>http://pikipity.github.com/blog/bmi</id>
-    <content type="html"><![CDATA[<p>本来看到万老师实验的脑电研究，还幻想过用脑电控制机械手臂什么的，但是看完《Brain–machine interfaces: past, present and future》之后我知道了，用这些待在头上的帽子只能测量低频率的脑电波，还没法精确测量，拼写个单词也就是极限了。看了介绍非插入式一段最后总结的一句话后，就彻底桑心了：</p>
-
-<blockquote>
-  <p>But if the goal of a BMI is to restore movements with multiple degrees of freedom through the control of an artificial prosthesis, the message from published evidence is clear: this task will require recording of highresolution signals from the brain, and this can be done using invasive approaches.</p>
-</blockquote>
-
-<p>但是谁愿意像下面这样在脑袋上插根棍子啊，急需志愿者。</p>
-
-<object width="364" height="235"><param name="movie" value="http://i.d.com.com/av/video/embed/player.swf" /><param name="background" value="#333333" /><param name="allowFullScreen" value="true" /><param name="allowScriptAccess" value="true" /><param name="FlashVars" value="playerType=embedded&amp;type=id&amp;value=50004319" /><embed src="http://www.cnet.com/av/video/embed/player.swf" type="application/x-shockwave-flash" background="#333333" width="364" height="235" allowfullscreen="true" allowscriptaccess="always" flashvars="playerType=embedded&amp;type=id&amp;value=50004319" /></object>
 
 ]]></content>
   </entry>
