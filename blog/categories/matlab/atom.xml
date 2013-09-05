@@ -342,7 +342,7 @@ disp(maxf_emd2)
     <id>http://pikipity.github.com/blog/find-a-way-to-calculate-the-instaneous-frequency-2</id>
     <content type="html"><![CDATA[<p>上接<a href="http://pikipity.github.io/blog/find-a-way-to-calculate-the-instaneous-frequency.html">寻找一种有效估算瞬时频率的方法</a>。</p>
 
-<h3 id="hkt--imf">如何判断 $h_k(t)$ 是 IMF</h3>
+<h3 id="hkt--imf">如何判断 <script type="math/tex">h_k(t)</script> 是 IMF</h3>
 
 <p>黄锷院士提供了两种判断方法：</p>
 
@@ -373,9 +373,9 @@ disp(maxf_emd2)
     <table>
       <tbody>
         <tr>
-          <td>$$SD_k=\frac{\sum_{t=0}^T\left</td>
-          <td>h_{k-1}(t)-h_k(t)\right</td>
-          <td>^2}{\sum<em>{t=0}^Th</em>{k-1}^2(t)}$$</td>
+          <td>$$SD_k=\frac{\sum_{t=0}^T \left</td>
+          <td>h_{k-1}(t)-h_k(t) \right</td>
+          <td>^2}{\sum<em>{t=0}^T h</em>{k-1}^2 (t)}$$</td>
         </tr>
       </tbody>
     </table>
