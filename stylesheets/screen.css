@@ -1,3 +1,7 @@
+#aside_music_player {
+  width: 100%
+}
+
 .tex sub, .latex sub, .latex sup {
   text-transform: uppercase;
 }
