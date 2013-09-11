@@ -14,6 +14,17 @@
 
   
   <entry>
+    <title type="html"><![CDATA[processing 练习作 -- 3D 色子]]></title>
+    <link href="http://pikipity.github.com/blog/processing-prectice-3d-dice.html"/>
+    <updated>2013-09-12T00:24:00+08:00</updated>
+    <id>http://pikipity.github.com/blog/processing-prectice-3d-dice</id>
+    <content type="html"><![CDATA[<p>processing 的练习作 – 3D 色子，旨在练习 processing 的 3D 效果制作。点击鼠标可以抛掷色子。色子的图案没有使用额外的图片，全部使用 processing 直接绘制。源代码在<a href="https://github.com/pikipity/3D_Dice.git">这里</a>。由于不是专注于正方体自由旋转落体的模拟，左移在色子的运动上做的很简单：上升和下落都是一个匀加速直线运动，每次落地撞击损失一半的速度；旋转方面每次根据坐标轴随机选取一个旋转方向，旋转速度和位移成正比；没有考虑触地之后的运动。</p>
+
+<p><img src="https://lh4.googleusercontent.com/-Qzgu5jWc-zY/UjCcf32YpqI/AAAAAAAABI4/myK3RPH83x8/s512/%25E5%25B1%258F%25E5%25B9%2595%25E5%25BF%25AB%25E7%2585%25A7%25202013-09-12%2520%25E4%25B8%258A%25E5%258D%258812.33.52.png" alt="程序截图" /></p>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[一本正经的恶搞 -- 伪基百科]]></title>
     <link href="http://pikipity.github.com/blog/introduction-uncyclopedia.html"/>
     <updated>2013-09-10T04:33:00+08:00</updated>
@@ -1056,111 +1067,6 @@ disp(maxf_emd2)
 <p>PS：程序中存在大量 for 循环，严重影响程序运行质量，我觉得还可以抢救一下，元芳你怎么看？</p>
 
 <p>忘了，程序在我的 Github 里面，传送门在<a href="https://github.com/pikipity/The-game-of-life-by-using-MATLAB.git">这里</a></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[银行机按键声音]]></title>
-    <link href="http://pikipity.github.com/blog/yin-xing-ji-an-jian-sheng-yin.html"/>
-    <updated>2013-07-23T08:40:00+08:00</updated>
-    <id>http://pikipity.github.com/blog/yin-xing-ji-an-jian-sheng-yin</id>
-    <content type="html"><![CDATA[<p>这件事的起因是和女朋友争辩银行机的按键声音是否一样，我认为，既然电话的声音都是由两个频率决定，每个按键声音不一样来提示用户按对按键，那么银行机也应该是这样了，而女朋友认为银行机按键为了保密所有按键应该是一样的，争辩不出结果于是决定做实验，于是跑到东亚9楼的ATM取款机用手机录制了下面的4段音频（没找到提供音乐外链的网网站，只能压缩之后用“百度盘”了）：</p>
-
-<p><a href="http://pan.baidu.com/share/link?shareid=2248957344&amp;uk=4080321956">录制的音频文件和处理得到的音频时域和频域图像</a></p>
-
-<p>好，现在开始处理。我认为只要能用 Matlab 对按键声音做 FFT，看按键声音频率是否一样就可以了。拿其中的一段音频做例子，我是这样处理的。</p>
-
-<ol>
-  <li>原始音频文件竟然是<code>flac</code>格式的，无法导入 MATLAB，于是先将其用音频转换软件转换为了<code>wma</code>格式。（我用的是 <a href="http://tmkk.undo.jp/xld/index_e.html">XLD</a> 这个软件）</li>
-  <li>
-    <p>将音频导入 MATLAB，画出原始音频图像：</p>
-
-    <p><img src="https://lh6.googleusercontent.com/-WeOvo4LWCGI/Ue3Ux1O1z-I/AAAAAAAAA40/RPMbZolJC_8/s559/1.jpg" alt="原始音频" /></p>
-  </li>
-  <li>
-    <p>发现噪音还是比较明显的，于是用小波分析的函数<code>wden</code>去了一下噪，命令如下：</p>
-
-    <pre><code>xd=wden(x,'sqtwolog','s','mln',8,'db5');
-</code></pre>
-
-    <p>然后得到了下面的图像，并选取了两个时间点，准备截取一段按键声音做 FFT。</p>
-
-    <p><img src="https://lh3.googleusercontent.com/-rAYyay2qD3Q/Ue3Ux9tem9I/AAAAAAAAA48/CKNe_SHv8WY/s559/2.jpg" alt="去噪之后的图像" /></p>
-  </li>
-  <li>
-    <p>根据上面选取的时间点截取了一段按键声音后，对其做了一下 FFT（用我自己写的函数，比较方便，直接画出图像）。</p>
-
-    <pre><code>fft_plot(xd,fs,'plot');
-</code></pre>
-
-    <p>函数贴在这里：</p>
-
-    <pre><code>function [ frequency,fft_result ] = fft_plot( data,Fs,varargin )
- % Calculate or plot directly fft results of data.
- %
- % [ frequency,fft_result ] = fft_plot( data,Fs,'plot' )
- %
- % inputs:
- %   (1) data: data used to analysis
- %   (2) Fs: sample frequency
- %   (3) 'plot': veriable input. if there is not this input, fft results will be
- %   ploted
- % output:
- %   (1) freqeuncy: frequency corresponding to the fft results
- %   (2) fft_result: fft results
-	
- if nargin&lt;2
-     error('data and Fs must be given');
- elseif nargin==2
-     size_data=size(data);
-     if size_data(1)~=1 &amp;&amp; size_data(2)~=1
-         error('the length or the number of rows must be one.');
-     end
-     L=length(data);
-     NFFT=2^nextpow2(L);
-     fft_result=fft(data,NFFT);
-     frequency=Fs/2*linspace(0,1,NFFT/2+1);
- elseif nargin==3
-         if strcmp(varargin,'plot')
-              size_data=size(data);
-             if size_data(1)~=1 &amp;&amp; size_data(2)~=1
-                 error('the length or the number of rows must be one.');
-             end
-             L=length(data);
-             NFFT=2^nextpow2(L);
-             fft_result=fft(data,NFFT);
-             frequency=Fs/2*linspace(0,1,NFFT/2+1);
-             figure;
-             plot(frequency,abs(fft_result(1:NFFT/2+1)));
-             title('FFT')
-             xlabel('Frequency')
-             ylabel('FFT results')
-         else
-             error('variable input must be ''plot''');
-         end
- elseif nargin&gt;=3
-     error('Too much inputs')
- end
- end
-</code></pre>
-
-    <p>调整了一下，频率范围，得到了这样的频域图：</p>
-
-    <p><img src="https://lh4.googleusercontent.com/-diX6ehStf1o/Ue3UyPdKbCI/AAAAAAAAA5E/iSQUMnsy-NQ/s559/3.jpg" alt="频域图" /></p>
-
-    <p>很明显，大约在 511.4Hz，只有一个频率。看来是我错了，但是还有三段音频那，一起处理了吧。</p>
-
-    <p><img src="https://lh3.googleusercontent.com/-HYlrs_X6TAg/Ue3UybQgpGI/AAAAAAAAA5M/kpmInMrs-ss/s559/4.jpg" alt="竟然一模一样！！" /></p>
-
-    <p><img src="https://lh4.googleusercontent.com/-UAGj7_avc5g/Ue3UynLshpI/AAAAAAAAA5Q/J-6BKsI4m5g/s559/5.jpg" alt="那个小的是什么？看大小可以忽略了。。" /></p>
-
-    <p>好像还有一段音频忘处理了，算了吧，结论很明显了。</p>
-  </li>
-</ol>
-
-<p>经过上面的测试，很明显是我错了，ATM机按键声音都是一样的。之后又去 Google 上搜索了一下，看到了这些，囧。</p>
-
-<p><img src="https://lh3.googleusercontent.com/-J9-IpVrgM_g/Ue3anj5bDuI/AAAAAAAAA5g/RfH87ke-HCs/s512/%25E5%25B1%258F%25E5%25B9%2595%25E5%25BF%25AB%25E7%2585%25A7%25202013-07-23%2520%25E4%25B8%258A%25E5%258D%25889.18.51.png" alt="Google 上搜索相关信息。。。第一条是怎么回事？淘宝？" /></p>
 ]]></content>
   </entry>
   
