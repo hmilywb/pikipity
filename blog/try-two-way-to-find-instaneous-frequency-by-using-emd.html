@@ -319,7 +319,7 @@ end
 
 <h3 id="fft-">两种方法连同 fft 的比较</h3>
 
-<p>下面来比较一下这两种方法，因为 现在使用最多的还是直接用 fft 来计算频率值，所以这里连同 fft 一起进行比较比较。分析的数据，我是用的是实验室曾经记录的 SSVEP 的信号，数据可以在<a href="http://pan.baidu.com/share/link?shareid=3670580674&amp;uk=4080321956">这里</a>下载，其中有说明文件。我使用的是 1a 中 15Hz 的信号与 1b 中 10Hz 的信号，将信号保存到变量<code>x</code>中运行下面这段程序，程序在<a href="https://gist.github.com/pikipity/6268877">这里</a>下载</p>
+<p>下面来比较一下这两种方法，因为 现在使用最多的还是直接用 fft 来计算频率值，所以这里连同 fft 一起进行比较比较。分析的数据，我是用的是实验室曾经记录的 SSVEP 的信号，数据可以在<a href="http://pan.baidu.com/share/link?shareid=3490016825&amp;uk=4080321956">这里</a>下载，将信号保存到变量<code>x</code>中运行下面这段程序（直接加载入 Matlab 就已经保存在变量<code>x</code>中了），程序在<a href="https://gist.github.com/pikipity/6268877">这里</a>下载</p>
 
 <pre><code>% signal -&gt; x
 %begin
@@ -330,11 +330,18 @@ t=(t-1).*Ts;
 %figure('name','original signal');plot(t,x)
 %IMF=eemd_test(x); %try to use eemd to calculate IOF
 IMF=emd(x);
+% original signal
+figure('name','original signal')
+plot(t,x)
+xlabel('t (s)')
+ylabel('Amplitude')
 %IMF components
 figure('name','IMF')
 for n=1:size(IMF,1)
     subplot(size(IMF,1),1,n)
     plot(t,IMF(n,:))
+    xlabel('t (s)')
+    ylabel('Amplitude')
     %hold on
     %plot(t,IMF(n,:),'rx')
 end
@@ -345,6 +352,8 @@ for n=2:size(IMF,1)-1
     subplot(size(IMF,1)-2,1,n-1)
     [frequency,fft_result]=fft_plot(IMF(n,:),fs);
     plot(frequency,abs(fft_result(1:length(frequency))))
+    xlabel('f (Hz)')
+    ylabel('Amplitude')
     axis([0 100 0 max(abs(fft_result(1:length(frequency))))])
     maxf_fft_index=find(abs(fft_result(1:length(frequency)))==max(abs(fft_result(1:length(frequency)))));
     maxf_fftvalue=frequency(maxf_fft_index);
@@ -375,6 +384,8 @@ end
 figure('name','IF value')
 for h=2:size(IMF,1)-1
     subplot(size(IMF,1)-2,1,h-1)
+    xlabel('t (s)')
+    ylabel('f (Hz)')
     [f,tf,f_GZC]=Instaneous_Frequency_Test(IMF(h,:),600);
     hold on
     for n=1:length(f)
@@ -389,6 +400,8 @@ end
 figure('name','IF property hilbert')
 for n=2:size(IMF,1)-1
     subplot(size(IMF,1)-2,1,n-1)
+    xlabel('f (Hz)')
+    ylabel('Number')
      [ XPhase,f,Imag,t,f_OGZ,maxf_emdvalue ]=IF_hilbert(IMF(n,:),fs);
      maxf_emd2(n-1)=maxf_emdvalue;
      f_range=0:1:100;%frequency range
@@ -401,6 +414,8 @@ end
 figure('name','IF value hilbert')
 for h=2:size(IMF,1)-1
     subplot(size(IMF,1)-2,1,h-1)
+    xlabel('t (s)')
+    ylabel('f (Hz)')
     [ XPhase,f,Imag,t,f_OGZ,maxf_emdvalue ]=IF_hilbert(IMF(h,:),fs);
     plot(t,f);
 end
@@ -414,31 +429,35 @@ disp(maxf_emd2)
 
 <p>运行之后会生成多幅图片，对于 15Hz 的信号会得到如下的图片：</p>
 
-<p><img src="https://lh6.googleusercontent.com/-_k4CI7jm7NQ/UhIZZNgnEII/AAAAAAAABEU/6nBNZLqWBHY/s559/1.jpg" alt="15Hz 各 IMF 分量时域图" /></p>
+<p><img src="https://lh4.googleusercontent.com/-0xZGCMWdvnI/UjLU2NV1mII/AAAAAAAABKk/1UGjM6MJRLU/s720/15-1.jpg" alt="15Hz 原始信号" /></p>
 
-<p><img src="https://lh5.googleusercontent.com/-c3AO2DtzPXQ/UhIZZqeMvSI/AAAAAAAABE0/AgYxItP6TS0/s559/2.jpg" alt="15Hz 各 IMF fft 分析得到的频域图" /></p>
+<p><img src="https://lh5.googleusercontent.com/-TwMBSrhpz8M/UjLU2oioM6I/AAAAAAAABKM/gONw6OfgAXA/s800/15-2.jpg" alt="15Hz 各 IMF 分量时域图" /></p>
 
-<p><img src="https://lh5.googleusercontent.com/-TrLEFVddmKY/UhIZZyJb3qI/AAAAAAAABEs/KDNFdHlulHc/s559/3.jpg" alt="15Hz 各 IMF 利用方法二得到的各瞬时频率在频域上的分布" /></p>
+<p><img src="https://lh6.googleusercontent.com/-GQjdCWO10PE/UjLU24GARmI/AAAAAAAABKQ/ltPy7CnekzY/s800/15-3.jpg" alt="15Hz 各 IMF fft 分析得到的频域图" /></p>
 
-<p><img src="https://lh4.googleusercontent.com/-v8GB2sfyW3c/UhIZa5X6HJI/AAAAAAAABFI/S3KcIyyqmuQ/s559/4.jpg" alt="15Hz 各 IMF 利用方法二得到的个瞬时频率时域分布" /></p>
+<p><img src="https://lh6.googleusercontent.com/-t2EUbNuPxLU/UjLU3LfTOnI/AAAAAAAABKY/bLHARTXDYOw/s800/15-4.jpg" alt="15Hz 各 IMF 利用方法二得到的各瞬时频率在频域上的分布" /></p>
 
-<p><img src="https://lh6.googleusercontent.com/-MCRLotJyCWI/UhIZb1JwlBI/AAAAAAAABFk/AzoXEHA3ffI/s559/5.jpg" alt="15Hz 各 IMF 利用方法一得到的各瞬时频率在频域上的分布" /></p>
+<p><img src="https://lh4.googleusercontent.com/-6MV4J5HrAJ8/UjLU3mHvOaI/AAAAAAAABKw/w4kLQhfxcxA/s720/15-5.jpg" alt="15Hz 各 IMF 利用方法二得到的个瞬时频率时域分布" /></p>
+
+<p><img src="https://lh5.googleusercontent.com/-xVpy3GU7ZiA/UjLU3gzA3LI/AAAAAAAABKg/vvoYW_h4cbA/s800/15-6.jpg" alt="15Hz 各 IMF 利用方法一得到的各瞬时频率在频域上的分布" /></p>
 
 <p><img src="https://lh5.googleusercontent.com/--CtgNydXY3o/UhIZcbAxgiI/AAAAAAAABFg/4Ymz3vJTATk/s671/6.jpg" alt="15Hz 各 IMF 利用方法一得到的个瞬时频率时域分布" /></p>
 
 <p>对于 10Hz 的信号会得到如下的图片：</p>
 
-<p><img src="https://lh5.googleusercontent.com/-d1VWoD5ASxo/UhIZZASC04I/AAAAAAAABEc/IEnys5kqkD8/s559/1-2.jpg" alt="13Hz 各 IMF 分量时域图" /></p>
+<p><img src="https://lh5.googleusercontent.com/-oRJXvkHsb0I/UjLU0L2GLKI/AAAAAAAABJY/xRUbYdyfacA/s800/10-1.jpg" alt="10Hz 原始信号" /></p>
 
-<p><img src="https://lh6.googleusercontent.com/-0iJ8mGsBM8o/UhIZZIRnSoI/AAAAAAAABEY/ipFX7q_sVGI/s559/2-2.jpg" alt="13Hz 各 IMF fft 分析得到的频域图" /></p>
+<p><img src="https://lh5.googleusercontent.com/-KM8dafNVOX4/UjLU0YKtv8I/AAAAAAAABJc/D_vIyUT4Bao/s720/10-2.jpg" alt="10Hz 各 IMF 分量时域图" /></p>
 
-<p><img src="https://lh3.googleusercontent.com/-RmH3sG-i5xs/UhIZZ5QhZEI/AAAAAAAABEw/CsRttFYd_2g/s559/3-2.jpg" alt="13Hz 各 IMF 利用方法二得到的各瞬时频率在频域上的分布" /></p>
+<p><img src="https://lh6.googleusercontent.com/--FjsjtAdygg/UjLU0K2zjcI/AAAAAAAABJQ/KlNVWsKeRFk/s800/10-3.jpg" alt="10Hz 各 IMF fft 分析得到的频域图" /></p>
 
-<p><img src="https://lh4.googleusercontent.com/-aoqLFn4NLqw/UhIZaoqzwQI/AAAAAAAABFQ/0uAwM7qzhN4/s559/4-2.jpg" alt="13Hz 各 IMF 利用方法二得到的个瞬时频率时域分布" /></p>
+<p><img src="https://lh6.googleusercontent.com/-N06vYTktp2I/UjLU04xcZXI/AAAAAAAABJg/WNO1VMYZnpo/s720/10-4.jpg" alt="10Hz 各 IMF 利用方法二得到的各瞬时频率在频域上的分布" /></p>
 
-<p><img src="https://lh5.googleusercontent.com/-knzG2n4gKEE/UhIZbGii3wI/AAAAAAAABFA/qlT0U_vrHNs/s559/5-2.jpg" alt="13Hz 各 IMF 利用方法一得到的各瞬时频率在频域上的分布" /></p>
+<p><img src="https://lh3.googleusercontent.com/-PS9f7lRs24Q/UjLU1AtAIYI/AAAAAAAABJ8/Ceu9qIzU3vE/s720/10-5.jpg" alt="10Hz 各 IMF 利用方法二得到的个瞬时频率时域分布" /></p>
 
-<p><img src="https://lh6.googleusercontent.com/-jQR7RJxZhwE/UhIZcNFP4_I/AAAAAAAABFU/xX1crLsefx8/s559/6-2.jpg" alt="13Hz 各 IMF 利用方法一得到的个瞬时频率时域分布" /></p>
+<p><img src="https://lh4.googleusercontent.com/-oF2ANnl2h1w/UjLU1UAksFI/AAAAAAAABJs/Jd5kqOl4gMM/s640/10-6.jpg" alt="10Hz 各 IMF 利用方法一得到的各瞬时频率在频域上的分布" /></p>
+
+<p><img src="https://lh6.googleusercontent.com/-jQR7RJxZhwE/UhIZcNFP4_I/AAAAAAAABFU/xX1crLsefx8/s559/6-2.jpg" alt="10Hz 各 IMF 利用方法一得到的个瞬时频率时域分布" /></p>
 
 <p>在对于数据特征提取的时候，对于 fft，我们直接找频域图（就是第二幅图）上的最大值所对应的频率就是信号的频率，而对于方法一和方法二，我们对于所有瞬时频率进行统计（就是第三和第五幅图，我这里是从1到100，以1为单位进行统计，也就是统计瞬时频率为0.5~1.5的点数，然后统计瞬时频率为1.5~2.5的点数，以此类推），范围内点数最多的频率就是此信号的频率。所以每个频率下的六幅图中，我们重点关注第二、第三和第五幅图，会发现上面两种方法的结果的区别并不明显，并且显然 fft 的结果比上面两种方法的结果还明显。再看一下程序输出的结果，对于15Hz，fft显示频率为14.9414Hz，方法一的结果为13Hz，方法二的结果为13Hz。对于10Hz，fft显示的频率为9.9606Hz，方法一为10Hz，方法二为10Hz。很显然，方法一二在15Hz的时候变得极为不准确。再看图，会发现15Hz的时候方法一得到的瞬时频率时域图（第六幅图）竟然出现了负频，但是 IMF 应该是不存在负频的，而且边缘出现突变，说明算法并不完美，还需要解决这两个问题，而且应该尝试更多的数据并缩短时间（现在我使用的是全部的6秒钟数据）来看看结果如何。</p>
 
