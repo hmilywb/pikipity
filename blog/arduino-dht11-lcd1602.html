@@ -3,12 +3,12 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>可曾记得那个叫渚的女孩 - 折腾来折腾去</title>
+	<title>用 Arduino 测量温度和湿度 - 折腾来折腾去</title>
 	<meta name="author" content="pikipity">
 
 	
-	<meta name="description" content="可曾记得那个叫渚的女孩 Posted by pikipity
-&nbsp; 2013年04月15日 Cartoon Comments 今天看到这样一个视频，觉得必须发上来，同样纪念一下那几个哭得死去活来的日日夜夜。 var jiathis_config={ &hellip;">
+	<meta name="description" content="用 Arduino 测量温度和湿度 Posted by pikipity
+&nbsp; 2013年09月20日 Arduino Comments 今天中秋放假闲在宿舍里，于是就用 Arduino 做了一个测量温度和湿度的小装置，使用 DHT11 测量温度和湿度，然后用 LCD1602 来显示。 &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -112,7 +112,7 @@
 	<div id="content" class="inner"><div>
 <article class="post">
 	
-	<h2 class="title">可曾记得那个叫渚的女孩</h2>
+	<h2 class="title">用 Arduino 测量温度和湿度</h2>
 	<div class="meta">
 	       <div class="author" style="float:left;">
   
@@ -131,11 +131,11 @@
   
 
 
-<time datetime="2013-04-15T22:17:00+08:00" pubdate data-updated="true">2013年04月15日</time></div>
+<time datetime="2013-09-20T22:00:00+08:00" pubdate data-updated="true">2013年09月20日</time></div>
 		<div class="tags" style="float:left;">
 
 
-	<a class='category' href='/blog/categories/cartoon/'>Cartoon</a>
+	<a class='category' href='/blog/categories/arduino/'>Arduino</a>
 
 
 </div>
@@ -143,9 +143,42 @@
 			<span class="comments"><a href="#com_target">Comments</a></span>
 		
 	</div>
-	<div class="entry-content" style="clear:both;"><p>今天看到这样一个视频，觉得必须发上来，同样纪念一下那几个哭得死去活来的日日夜夜。</p>
+	<div class="entry-content" style="clear:both;"><p>今天中秋放假闲在宿舍里，于是就用 Arduino 做了一个测量温度和湿度的小装置，使用 DHT11 测量温度和湿度，然后用 LCD1602 来显示。</p>
 
-<iframe height="498" width="510" src="http://player.youku.com/embed/XNTQyMzI4ODMy" frameborder="0" allowfullscreen=""></iframe>
+<p><a href="http://pan.baidu.com/share/link?shareid=1355986093&amp;uk=4080321956">这里有一个 DHT11 的简单介绍</a>，包括引脚的意义和解法还有一个 Arduino 的例程。DHT11 的使用还是很简单的，基本思路就是先发送给 DHT11 一个信号，将其激活，成功激活后，DHT11 会返回一个信号，之后 DHT11 就会连续发送40位的二进制数据，这40bits的数据包括湿度数值、温度数值和校检数值，其中湿度数值和温度数值都是16位的定点二进制小数（<a href="http://pikipity.github.io/blog/scm-principle-3.html">定点二进制小数在这里有介绍</a>），其中前8位为整数位，后8位为小数位，具体排列如下：</p>
+
+<pre><code>8位湿度整数位 8位湿度小数位 8位温度整数位 8位温度小数位 8位校检数值
+</code></pre>
+
+<p>DHT11 具体操作步骤如下：</p>
+
+<ol>
+  <li>发送启动信号：拉低引脚至少18ms，拉高引脚20us到40us</li>
+  <li>检测 DHT11 的返回信号：如果可以检测到一个低信号80us，然后一个高信号80us，则启动成功，进入下一步开始接受数据，否则启动失败。</li>
+  <li>开始接受数据：低信号时等待下一位数据，高信号时计算高信号的宽度，如果是26us到28us，则此位为“0”，如果是70us，则此位为“1”，共40位。</li>
+</ol>
+
+<p>使用 DHT11 要注意的是：</p>
+
+<ol>
+  <li>湿度单位为“%RH”（<a href="http://zh.wikipedia.org/wiki/%E7%9B%B8%E5%B0%8D%E6%BF%95%E5%BA%A6">相对湿度</a>），温度单位为“℃”（摄氏度）。</li>
+  <li>它的精度并不高，湿度误差为±5%RH，温度为±2℃。</li>
+  <li>校检数值使用方法：如果湿度整数位加上温度整数位等于校检数值，那么传输无误，否则存在传输错误。</li>
+</ol>
+
+<p>LCD1602 就简单很多了，直接使用 Arduino 自带的 “LiquidCrystal” 库就可以很轻松的进行控制了，库中所包含的函数、使用方法和例程可以到<a href="http://arduino.cc/en/Reference/LiquidCrystal">这里看 “LiquidCrystal” 官方说明文档</a>。</p>
+
+<p>以下是我设计的电路：</p>
+
+<p><img src="https://lh6.googleusercontent.com/-lWe2CscmyLw/Ujv5p3ZbUgI/AAAAAAAABMM/0Dv91ak3_9o/s640/Breadboard_bb.png" alt="面包板连接图" /></p>
+
+<p><img src="https://lh6.googleusercontent.com/-aX-NkrUuHvI/Ujv5piz0TnI/AAAAAAAABMQ/bdtvWYZfm1A/s720/Breadboard_schem.png" alt="电路连接图" /></p>
+
+<p><a href="https://github.com/pikipity/Display_Temp_and_Humi_using_LCD1602.git">程序可以到这里下载</a>。其中 “DHT11_Arduino” 文件夹中是对 DHT11 的测试，用的是串口显示测量结果，“LCD_Arduino” 文件夹中是对 LCD1602 的测试，显示的 “hello World”，“display”  文件夹中是整个的代码，”Sketch” 中是电路图和结果图。</p>
+
+<p>最终结果如下：</p>
+
+<p><img src="https://lh5.googleusercontent.com/-z0G7fuWmDjs/Ujv5pwiav-I/AAAAAAAABMU/OTBrKNvVwxU/s640/result.jpg" alt="结果" /></p>
 </div>
 
 
@@ -189,19 +222,17 @@ var jiathis_config={
   
 
 
-<time datetime="2013-04-15T22:17:00+08:00" pubdate data-updated="true">2013年04月15日</time></p>
+<time datetime="2013-09-20T22:00:00+08:00" pubdate data-updated="true">2013年09月20日</time></p>
 </footer>
 
 <section>
 <ul id="left-right">
 <span style="float:left">
 	
-        <a class="basic-alignment left" href="/blog/circuit-lab.html" title="Previous Post: 电路在线仿真 CircuitLab"><font face=Wingdings>&#239;</font> 电路在线仿真 CircuitLab</a>
+        <a class="basic-alignment left" href="/blog/introduction-to-terraria.html" title="Previous Post: 让我们一起来征服世界"><font face=Wingdings>&#239;</font> 让我们一起来征服世界</a>
         </span>
 <span style="float:right">
-	
-        <a class="basic-alignment right" href="/blog/scm-priciple-7.html" title="next Post: 第七章 外部中断">第七章 外部中断 <font face=Wingdings>&#240;</font></a>
-       </span>
+	 </span>
 </ul>
 </section>
 

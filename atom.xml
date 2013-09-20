@@ -14,6 +14,50 @@
 
   
   <entry>
+    <title type="html"><![CDATA[用 Arduino 测量温度和湿度]]></title>
+    <link href="http://pikipity.github.com/blog/arduino-dht11-lcd1602.html"/>
+    <updated>2013-09-20T22:00:00+08:00</updated>
+    <id>http://pikipity.github.com/blog/arduino-dht11-lcd1602</id>
+    <content type="html"><![CDATA[<p>今天中秋放假闲在宿舍里，于是就用 Arduino 做了一个测量温度和湿度的小装置，使用 DHT11 测量温度和湿度，然后用 LCD1602 来显示。</p>
+
+<p><a href="http://pan.baidu.com/share/link?shareid=1355986093&amp;uk=4080321956">这里有一个 DHT11 的简单介绍</a>，包括引脚的意义和解法还有一个 Arduino 的例程。DHT11 的使用还是很简单的，基本思路就是先发送给 DHT11 一个信号，将其激活，成功激活后，DHT11 会返回一个信号，之后 DHT11 就会连续发送40位的二进制数据，这40bits的数据包括湿度数值、温度数值和校检数值，其中湿度数值和温度数值都是16位的定点二进制小数（<a href="http://pikipity.github.io/blog/scm-principle-3.html">定点二进制小数在这里有介绍</a>），其中前8位为整数位，后8位为小数位，具体排列如下：</p>
+
+<pre><code>8位湿度整数位 8位湿度小数位 8位温度整数位 8位温度小数位 8位校检数值
+</code></pre>
+
+<p>DHT11 具体操作步骤如下：</p>
+
+<ol>
+  <li>发送启动信号：拉低引脚至少18ms，拉高引脚20us到40us</li>
+  <li>检测 DHT11 的返回信号：如果可以检测到一个低信号80us，然后一个高信号80us，则启动成功，进入下一步开始接受数据，否则启动失败。</li>
+  <li>开始接受数据：低信号时等待下一位数据，高信号时计算高信号的宽度，如果是26us到28us，则此位为“0”，如果是70us，则此位为“1”，共40位。</li>
+</ol>
+
+<p>使用 DHT11 要注意的是：</p>
+
+<ol>
+  <li>湿度单位为“%RH”（<a href="http://zh.wikipedia.org/wiki/%E7%9B%B8%E5%B0%8D%E6%BF%95%E5%BA%A6">相对湿度</a>），温度单位为“℃”（摄氏度）。</li>
+  <li>它的精度并不高，湿度误差为±5%RH，温度为±2℃。</li>
+  <li>校检数值使用方法：如果湿度整数位加上温度整数位等于校检数值，那么传输无误，否则存在传输错误。</li>
+</ol>
+
+<p>LCD1602 就简单很多了，直接使用 Arduino 自带的 “LiquidCrystal” 库就可以很轻松的进行控制了，库中所包含的函数、使用方法和例程可以到<a href="http://arduino.cc/en/Reference/LiquidCrystal">这里看 “LiquidCrystal” 官方说明文档</a>。</p>
+
+<p>以下是我设计的电路：</p>
+
+<p><img src="https://lh6.googleusercontent.com/-lWe2CscmyLw/Ujv5p3ZbUgI/AAAAAAAABMM/0Dv91ak3_9o/s640/Breadboard_bb.png" alt="面包板连接图" /></p>
+
+<p><img src="https://lh6.googleusercontent.com/-aX-NkrUuHvI/Ujv5piz0TnI/AAAAAAAABMQ/bdtvWYZfm1A/s720/Breadboard_schem.png" alt="电路连接图" /></p>
+
+<p><a href="https://github.com/pikipity/Display_Temp_and_Humi_using_LCD1602.git">程序可以到这里下载</a>。其中 “DHT11_Arduino” 文件夹中是对 DHT11 的测试，用的是串口显示测量结果，“LCD_Arduino” 文件夹中是对 LCD1602 的测试，显示的 “hello World”，“display”  文件夹中是整个的代码，”Sketch” 中是电路图和结果图。</p>
+
+<p>最终结果如下：</p>
+
+<p><img src="https://lh5.googleusercontent.com/-z0G7fuWmDjs/Ujv5pwiav-I/AAAAAAAABMU/OTBrKNvVwxU/s640/result.jpg" alt="结果" /></p>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[让我们一起来征服世界]]></title>
     <link href="http://pikipity.github.com/blog/introduction-to-terraria.html"/>
     <updated>2013-09-16T20:14:00+08:00</updated>
@@ -1060,33 +1104,6 @@ disp(maxf_emd2)
     <content type="html"><![CDATA[<p>回到学校以后一直在实验室，看了挺多东西，所以做个小结。</p>
 
 <iframe src="http://prezi.com/embed/lx5tv0a7o7ba/?bgcolor=ffffff&amp;lock_to_path=0&amp;autoplay=0&amp;autohide_ctrls=0&amp;features=undefined&amp;disabled_features=undefined" width="550" height="400" frameborder="0"></iframe>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[用 Pygame 编写的生命游戏]]></title>
-    <link href="http://pikipity.github.com/blog/the-game-of-life-using-pygame.html"/>
-    <updated>2013-07-27T19:58:00+08:00</updated>
-    <id>http://pikipity.github.com/blog/the-game-of-life-using-pygame</id>
-    <content type="html"><![CDATA[<p><a href="http://pikipity.github.io/blog/the-game-of-life.html">之前用 Matlab 编写了一个生命游戏</a>，但是效率实在太低了，只要矩阵稍微大一点，我的小 MacBook Pro 就跑不动了，恰巧最近正在跟随 <a href="http://eyehere.net/2011/python-pygame-novice-professional-1/">“eyeHere”</a> 这样一个网站学习 <a href="http://www.pygame.org/news.html">Pygame</a>。<a href="http://www.pygame.org/news.html">Pygame</a> 是一个将 Python 语言和 <a href="http://zh.wikipedia.org/wiki/SDL">SDL</a> 结合的 Python 库。<a href="http://zh.wikipedia.org/wiki/SDL">SDL</a> 是一个跨平台开源的多媒体库，源代码用 C 语言写成，一般用于游戏、模拟器和多媒体播放器的开发，顺带一提，Linux 上很多游戏都是用 SDL 开发的，当年玩的<a href="http://zh.wikipedia.org/wiki/%E9%9F%A6%E8%AF%BA%E4%B9%8B%E6%88%98">《韦诺之战》</a>也使用它开发的，还有当年红极一时的<a href="http://zh.wikipedia.org/wiki/%E9%AD%94%E5%9F%9F%E5%B9%BB%E5%A2%83%E4%B9%8B%E6%B5%B4%E8%A1%80%E6%88%B0%E5%A0%B42004">《虚拟竞技场》</a>系列的 Linux 版本等等。</p>
-
-<p>Pygame 可以直接在<a href="http://www.pygame.org/download.shtml">官网上下载</a>到，无论是 Windows 版还是 Mac OS X 版都已经打好了包，安装什么的都很方便。</p>
-
-<p>我把我那个用 Matlab 编写的生命游戏，用 Python 重写之后，debug 的时候运行还不是很流畅，但是实际运行的时候，速度超级理想，以至于我最初设定的30的FPS都显得比较大了。用键盘操作，在暂停模式下可以用鼠标添加或是消除细胞，键盘键位如下：</p>
-
-<ul>
-  <li>b键：开始游戏</li>
-  <li>s键：暂停游戏（可以用鼠标添加或是消除细胞）</li>
-  <li>c键：更改大小（在暂停模式下更改。书写格式为：每行细胞数量,每列细胞数量，回车确定）</li>
-</ul>
-
-<p>有兴趣的可以到<a href="https://github.com/pikipity/Game_of_life_python.git">我的 Github </a>去看看，下面是截图：</p>
-
-<p><img src="https://lh3.googleusercontent.com/-xd-_uQQvtRk/UfOyj9m4UCI/AAAAAAAAA58/L1DBnX41zm0/s640/%25E5%25B1%258F%25E5%25B9%2595%25E5%25BF%25AB%25E7%2585%25A7%25202013-07-27%2520%25E4%25B8%258B%25E5%258D%25887.40.40.png" alt="暂停画面" /></p>
-
-<p><img src="https://lh6.googleusercontent.com/-PRk7O1VVdFs/UfOyjw0r3BI/AAAAAAAAA6A/Zba8eMWtklk/s640/%25E5%25B1%258F%25E5%25B9%2595%25E5%25BF%25AB%25E7%2585%25A7%25202013-07-27%2520%25E4%25B8%258B%25E5%258D%25887.40.54.png" alt="运行画面" /></p>
-
-<p><img src="https://lh6.googleusercontent.com/-_9-BV2hoBEs/UfOyj_Nr1EI/AAAAAAAAA54/p2WOY7we-9I/s576/%25E5%25B1%258F%25E5%25B9%2595%25E5%25BF%25AB%25E7%2585%25A7%25202013-07-27%2520%25E4%25B8%258B%25E5%258D%25887.41.28.png" alt="更改大小" /></p>
 ]]></content>
   </entry>
   
