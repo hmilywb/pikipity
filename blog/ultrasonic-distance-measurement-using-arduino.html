@@ -3,12 +3,12 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>只有程序员才会相信的黄历 -- 程序员老黄历 - 折腾来折腾去</title>
+	<title>利用 Arduino 进行超声波测距 - 折腾来折腾去</title>
 	<meta name="author" content="pikipity">
 
 	
-	<meta name="description" content="只有程序员才会相信的黄历 -- 程序员老黄历 Posted by pikipity
-&nbsp; 2013年04月02日 Life Comments 今天在逛 Guru Diger 的时候看到了这样一个创意 – 程序员老黄历，非常有趣。（等等，我看看，我想在朝向是东76度，那个今天不变成了？ &hellip;">
+	<meta name="description" content="利用 Arduino 进行超声波测距 Posted by pikipity
+&nbsp; 2013年09月21日 Arduino Comments 在昨天测量温度的装置上又加上了 HC-SR04 来进行超声波测距，先利用 DHT11 测量温度，然后利用温度来计算出较为准确的声速（ &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -112,7 +112,7 @@
 	<div id="content" class="inner"><div>
 <article class="post">
 	
-	<h2 class="title">只有程序员才会相信的黄历 -- 程序员老黄历</h2>
+	<h2 class="title">利用 Arduino 进行超声波测距</h2>
 	<div class="meta">
 	       <div class="author" style="float:left;">
   
@@ -131,11 +131,11 @@
   
 
 
-<time datetime="2013-04-02T20:27:00+08:00" pubdate data-updated="true">2013年04月02日</time></div>
+<time datetime="2013-09-21T10:32:00+08:00" pubdate data-updated="true">2013年09月21日</time></div>
 		<div class="tags" style="float:left;">
 
 
-	<a class='category' href='/blog/categories/life/'>Life</a>
+	<a class='category' href='/blog/categories/arduino/'>Arduino</a>
 
 
 </div>
@@ -143,11 +143,29 @@
 			<span class="comments"><a href="#com_target">Comments</a></span>
 		
 	</div>
-	<div class="entry-content" style="clear:both;"><p>今天在逛 <a href="http://gurudigger.com/">Guru Diger</a> 的时候看到了<a href="http://gurudigger.com/ideas/573">这样</a>一个创意 – <a href="http://sandbox.runjs.cn/show/ydp3it7b">程序员老黄历</a>，非常有趣。（等等，我看看，我想在朝向是东76度，那个今天不变成了？貌似永远不会出现这个方向编程Bug最少(╯▽╰)）</p>
+	<div class="entry-content" style="clear:both;"><p>在<a href="http://pikipity.github.io/blog/arduino-dht11-lcd1602.html">昨天测量温度的装置</a>上又加上了 HC-SR04 来进行超声波测距，先利用 DHT11 测量温度，然后利用温度来计算出较为准确的声速（根据<a href="http://en.wikipedia.org/wiki/Relativistic_Euler_equations">相对论的欧拉方程</a>，声速（米每秒）=331+0.6*温度（摄氏度）），再利用 HC-SR04 测得的超声波来回的时间计算出距离，并在 LCD1602 上显示。</p>
 
-<p><img src="https://lh3.googleusercontent.com/-wtsyR-2zlPI/UVrQv7m9U0I/AAAAAAAAAo4/shdNiBLxR0E/s512/Screen%2520Shot%25202013-04-02%2520at%25208.32.23%2520PM.png" width="480" alt="程序员老黄历" /></p>
+<p>HC-SR04 的使用非常简单，<a href="http://www.doc88.com/p-737494835063.html">这里有一份 HC-SR04 的中文手册</a>，首先向 Trig 引脚输入一个不小于10us的高电平，然后测量 Echo 引脚返回的高电平的时间 t，然后利用公式：距离=t*声速/2，就可以计算得到距离了。但是需要注意：</p>
 
-<p>我认为是个不错的 CSS 编程范例，直接右键看源代码就可以了。</p>
+<ol>
+  <li>测量周期要在60ms以上，防止回声影响。</li>
+  <li>计算距离时单位要统一，利用<code>pulseIn()</code>函数返回的时间单位是“微秒”，测量结果单位一般是“厘米”，所以声速要从“米每秒”换算为“厘米每微秒”，也就是除以10000。</li>
+  <li>测量距离为2cm~400cm，太近的话会有盲区，太远的话由于返回信号太弱难以检测。</li>
+</ol>
+
+<p><a href="https://github.com/pikipity/Ultrasonic_distance_measurement_using_Arduino.git">程序可以到这里下载</a>，其中 “HC_SR04_Arduino” 文件夹中是一个 HC-SR04 的 Arduino 测试程序，“display_LCD1602” 文件夹中是这次的程序，”scheme” 文件夹中是电路图。</p>
+
+<p>程序中使用 “Time” 库来实现定时器中断的功能，<a href="http://srmonk.blogspot.com/2012/01/arduino-timer-library.html">“Time” 库可以在这里下载</a>，如果你觉得看英文比较烦得话，可以看<a href="http://yehnan.blogspot.com/2012/03/arduino.html">这里这个中文简易教程</a>。</p>
+
+<p>电路图：</p>
+
+<p><img src="https://lh5.googleusercontent.com/-2ggKDjtrfuY/Uj0D_AibosI/AAAAAAAABMw/4VVXk4M1NiY/s640/Breadboard_bb.png" alt="面包板连接图" /></p>
+
+<p><img src="https://lh3.googleusercontent.com/-P3TPBqNYi1E/Uj0D_AqZCmI/AAAAAAAABMs/KXupBqQvZj8/s576/Breadboard_schem.png" alt="电路图" /></p>
+
+<p>结果（LCD 上，第一行为湿度和温度，第二行为距离）：</p>
+
+<p><img src="https://lh5.googleusercontent.com/-lM53a5xTLsA/Uj0D_fkuoxI/AAAAAAAABM0/eefNICQs9Ys/s512/result.jpg" alt="结果" /></p>
 </div>
 
 
@@ -191,19 +209,17 @@ var jiathis_config={
   
 
 
-<time datetime="2013-04-02T20:27:00+08:00" pubdate data-updated="true">2013年04月02日</time></p>
+<time datetime="2013-09-21T10:32:00+08:00" pubdate data-updated="true">2013年09月21日</time></p>
 </footer>
 
 <section>
 <ul id="left-right">
 <span style="float:left">
 	
-        <a class="basic-alignment left" href="/blog/happy-april-fools.html" title="Previous Post: 愚人节快乐！"><font face=Wingdings>&#239;</font> 愚人节快乐！</a>
+        <a class="basic-alignment left" href="/blog/arduino-dht11-lcd1602.html" title="Previous Post: 用 Arduino 测量温度和湿度"><font face=Wingdings>&#239;</font> 用 Arduino 测量温度和湿度</a>
         </span>
 <span style="float:right">
-	
-        <a class="basic-alignment right" href="/blog/di-tu-tou-ying-he-qiu-ti-dian-ju-xiang-guan.html" title="next Post: 地图投影和球体点距相关">地图投影和球体点距相关 <font face=Wingdings>&#240;</font></a>
-       </span>
+	 </span>
 </ul>
 </section>
 
