@@ -3,12 +3,12 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>愚人节快乐！ - 折腾来折腾去</title>
+	<title>俄罗斯方块（Arduino） - 折腾来折腾去</title>
 	<meta name="author" content="pikipity">
 
 	
-	<meta name="description" content="愚人节快乐！ Posted by pikipity
-&nbsp; 2013年04月01日 Google Comments 大好的愚人节，Google当然不会放过，一起来看看 Google 又放出了哪些愚人节特别项目吧 O(∩_∩)O Google Map 藏宝图模式 今天，大家可以在 &hellip;">
+	<meta name="description" content="俄罗斯方块（Arduino） Posted by pikipity
+&nbsp; 2013年09月29日 Arduino Comments 经过一个星期闲着无聊地编写和调试，终于可以用 Arduino 玩俄罗斯方块了。四个按钮分别控制左、右、加速下落、转动。使用 LCD12864（ &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -112,7 +112,7 @@
 	<div id="content" class="inner"><div>
 <article class="post">
 	
-	<h2 class="title">愚人节快乐！</h2>
+	<h2 class="title">俄罗斯方块（Arduino）</h2>
 	<div class="meta">
 	       <div class="author" style="float:left;">
   
@@ -131,11 +131,11 @@
   
 
 
-<time datetime="2013-04-01T18:50:00+08:00" pubdate data-updated="true">2013年04月01日</time></div>
+<time datetime="2013-09-29T13:34:00+08:00" pubdate data-updated="true">2013年09月29日</time></div>
 		<div class="tags" style="float:left;">
 
 
-	<a class='category' href='/blog/categories/google/'>Google</a>
+	<a class='category' href='/blog/categories/arduino/'>Arduino</a>
 
 
 </div>
@@ -143,44 +143,21 @@
 			<span class="comments"><a href="#com_target">Comments</a></span>
 		
 	</div>
-	<div class="entry-content" style="clear:both;"><p>大好的愚人节，Google当然不会放过，一起来看看 Google 又放出了哪些愚人节特别项目吧 O(∩_∩)O</p>
+	<div class="entry-content" style="clear:both;"><p>经过一个星期闲着无聊地编写和调试，终于可以用 Arduino 玩俄罗斯方块了。四个按钮分别控制左、右、加速下落、转动。使用 LCD12864（QC12864B） 来显示游戏画面。为了寻找可以用来控制 QC12864B 的 Arduino 库花了很长时间，最终选择了 <a href="https://code.google.com/p/u8glib/">u8glib</a>，因为这个库支持的 LCD 控制器非常丰富。<a href="https://code.google.com/p/u8glib/">u8glib 库可以在这里下载</a>，<a href="http://pan.baidu.com/s/1qrhEF">关于 QC12864B 以及如何使用 u8glib 来控制 QC12864B 的资料可以在这里下载</a>，资料中包含一个从网上找来的使用 Arduino 做示波器的例子，使用的就是 <a href="https://code.google.com/p/u8glib/">u8glib</a> 库。</p>
 
-<h3 id="google-map-">Google Map 藏宝图模式</h3>
+<p>我制作的这个<a href="http://pikipity.github.io/Melrose_box">俄罗斯方块游戏机的项目主页在这里</a>。</p>
 
-<p><img src="https://lh3.googleusercontent.com/-ftlXpynzbeE/UVl2_57igtI/AAAAAAAAAoU/gkau5SGx-8I/s800/Screen%2520Shot%25202013-04-01%2520at%25207.52.26%2520PM.png" alt="Google Map 藏宝图模式" width="480" /></p>
+<p>面包板连接图：</p>
 
-<p>今天，大家可以在 Google Map中切换到藏宝图模式。开启之后，整个地图变为了古旧的欧式藏宝图风格，街道、国界分界什么全部消失，只剩下一些树木、山峰和标志性地标物。街景模式也变了，变为从一个望远镜里看到的古旧老照片。到<a href="http://maps.google.com.hk/maps?hl=en&amp;tab=wl">这里</a>来体验一下，据说真的有隐藏宝藏哦！！（什么都没找到？那个，你可以和视频里学一学，放到火上烤一烤怎么样？）</p>
+<p><img src="https://lh3.googleusercontent.com/-MMKU4QZefc4/UkepsoONq0I/AAAAAAAABNI/wASf1AFsVVE/s512/Melrose_box_Scheme_bb.png" alt="面包板连接图" /></p>
 
-<p><img src="https://lh5.googleusercontent.com/-Eevt4yaCNwg/UVl2_9OoobI/AAAAAAAAAoY/DVLh3x-pNL8/s800/Screen%2520Shot%25202013-04-01%2520at%25206.48.38%2520PM.png" alt="藏宝图里的澳门大学" width="480" /></p>
+<p>运行效果：</p>
 
-<embed src="http://www.tudou.com/v/n1hyncm52ys/&amp;resourceId=103356984_05_02_99/v.swf" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" wmode="opaque" width="480" height="400" />
+<p><img src="https://lh6.googleusercontent.com/-uDiZRNthjjI/Uketz4ePskI/AAAAAAAABNk/zKLtFjShG7U/s640/begin.jpg" alt="运行效果1" /></p>
 
-<h3 id="youtube-">Youtube 其实是一个规模宏大的视频比赛！！</h3>
+<p><img src="https://lh5.googleusercontent.com/-PdvRIs9ik6g/UketzzLefkI/AAAAAAAABNc/_8sDPpLxf18/s640/playing.jpg" alt="运行效果2" /></p>
 
-<p>经过八年收集参赛作品，从今天起，Youtube 不再接受新的投稿，接下来，Youtube 的三万人评审团将会选出一个胜出视频，届时其他视频都将消失掉了！！</p>
-
-<embed src="http://www.tudou.com/v/EdcwhD3ae4k/&amp;resourceId=103356984_05_02_99/v.swf" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" wmode="opaque" width="480" height="400" />
-
-<h3 id="gmail-blue">Gmail Blue</h3>
-
-<p>历史六年研发，新的 Gmail 诞生了，全蓝色 Gmail – Gmail Blue！！(╯▽╰)</p>
-
-<embed src="http://www.tudou.com/v/Cm59Hhc9dto/&amp;resourceId=103356984_05_02_99/v.swf" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" wmode="opaque" width="480" height="400" />
-
-<h3 id="section">吧啦吧啦版日语输入法</h3>
-
-<p><img src="https://lh5.googleusercontent.com/-5t1K9KWaxWE/UVl8RVcSQII/AAAAAAAAAoo/sFaDO3gh6ZI/s800/Screen%2520Shot%25202013-04-01%2520at%25208.22.55%2520PM.png" alt="吧啦吧啦版日语输入法" width="480" /></p>
-
-<p>这个是真的可以用的哦，到<a href="http://www.google.co.jp/ime/patapata/message.html">这里</a>就可以用了。模拟摩尔斯电码的形式，只需要敲击一个键就可以输入英文、日语、字符表情。但是貌似是这样，你需要的超强的记忆力或者电光火石一样的反应力，就是这样。（话说，那个打字眼睛不错哦，对于不会盲打的亲们很适合哦！！）</p>
-
-<embed src="http://www.tudou.com/v/yKdicT_4Wnk/&amp;resourceId=103356984_05_02_99/v.swf" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" wmode="opaque" width="480" height="400" />
-
-<h3 id="google-">Google 嗅觉</h3>
-
-<p>这个作为压轴，因为这是最有意思的了，现在，Google 允许你通过气味进行搜索，并可以在结果中提供搜索结果的气味，快到<a href="http://www.google.com/intl/zh-TW/landing/nose/">这里</a>开始 Google 的嗅觉搜索吧（Google 提醒您：如要查詢較為敏感的內容，請啟用安全搜尋以防萬一。你是不是想歪了 (╯▽╰)）。希望大爷您愚人节玩的开心 (have fun)！！</p>
-
-<embed src="http://www.tudou.com/v/PXEZRBe-0Cc/&amp;resourceId=103356984_05_02_99/v.swf" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" wmode="opaque" width="480" height="400" />
-
+<p><img src="https://lh5.googleusercontent.com/-nyWIb1rcJgc/UketznUnOoI/AAAAAAAABNg/9YnAebKKDXY/s640/finish.jpg" alt="运行效果3" /></p>
 </div>
 
 
@@ -224,19 +201,17 @@ var jiathis_config={
   
 
 
-<time datetime="2013-04-01T18:50:00+08:00" pubdate data-updated="true">2013年04月01日</time></p>
+<time datetime="2013-09-29T13:34:00+08:00" pubdate data-updated="true">2013年09月29日</time></p>
 </footer>
 
 <section>
 <ul id="left-right">
 <span style="float:left">
 	
-        <a class="basic-alignment left" href="/blog/excel-game.html" title="Previous Post: 你真的懂 Excel 么？"><font face=Wingdings>&#239;</font> 你真的懂 Excel 么？</a>
+        <a class="basic-alignment left" href="/blog/ultrasonic-distance-measurement-using-arduino.html" title="Previous Post: 利用 Arduino 进行超声波测距"><font face=Wingdings>&#239;</font> 利用 Arduino 进行超声波测距</a>
         </span>
 <span style="float:right">
-	
-        <a class="basic-alignment right" href="/blog/huang-li-of-programmers.html" title="next Post: 只有程序员才会相信的黄历 -- 程序员老黄历">只有程序员才会相信的黄历 -- 程序员老黄历 <font face=Wingdings>&#240;</font></a>
-       </span>
+	 </span>
 </ul>
 </section>
 
