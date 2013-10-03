@@ -3,12 +3,12 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>银行机按键声音 - 折腾来折腾去</title>
+	<title>进击的猎手 - 折腾来折腾去</title>
 	<meta name="author" content="pikipity">
 
 	
-	<meta name="description" content="银行机按键声音 Posted by pikipity
-&nbsp; 2013年07月23日 Life, Matlab, Technology Comments 这件事的起因是和女朋友争辩银行机的按键声音是否一样，我认为，既然电话的声音都是由两个频率决定，每个按键声音不一样来提示用户按对按键， &hellip;">
+	<meta name="description" content="进击的猎手 Posted by pikipity
+&nbsp; 2013年10月03日 Game Comments 今天给大家推荐一款国人制作的 3D 网页游戏–《进击的猎手》，属于《进击的巨人》的同人游戏，由你来扮演《进击的巨人》中的五名主角在不同的地图上猎杀巨人。可以单机玩， &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -112,7 +112,7 @@
 	<div id="content" class="inner"><div>
 <article class="post">
 	
-	<h2 class="title">银行机按键声音</h2>
+	<h2 class="title">进击的猎手</h2>
 	<div class="meta">
 	       <div class="author" style="float:left;">
   
@@ -131,11 +131,11 @@
   
 
 
-<time datetime="2013-07-23T08:40:00+08:00" pubdate data-updated="true">2013年07月23日</time></div>
+<time datetime="2013-10-03T20:28:00+08:00" pubdate data-updated="true">2013年10月03日</time></div>
 		<div class="tags" style="float:left;">
 
 
-	<a class='category' href='/blog/categories/life/'>Life</a>, <a class='category' href='/blog/categories/matlab/'>Matlab</a>, <a class='category' href='/blog/categories/technology/'>Technology</a>
+	<a class='category' href='/blog/categories/game/'>Game</a>
 
 
 </div>
@@ -143,103 +143,40 @@
 			<span class="comments"><a href="#com_target">Comments</a></span>
 		
 	</div>
-	<div class="entry-content" style="clear:both;"><p>这件事的起因是和女朋友争辩银行机的按键声音是否一样，我认为，既然电话的声音都是由两个频率决定，每个按键声音不一样来提示用户按对按键，那么银行机也应该是这样了，而女朋友认为银行机按键为了保密所有按键应该是一样的，争辩不出结果于是决定做实验，于是跑到东亚9楼的ATM取款机用手机录制了下面的4段音频（没找到提供音乐外链的网网站，只能压缩之后用“百度盘”了）：</p>
+	<div class="entry-content" style="clear:both;"><p><img src="https://lh4.googleusercontent.com/-r3XfVFu4YSU/Uk1xgsz8cyI/AAAAAAAABOE/3ONWh1lL_jk/s800/%25E5%25B1%258F%25E5%25B9%2595%25E5%25BF%25AB%25E7%2585%25A7%25202013-10-03%2520%25E4%25B8%258B%25E5%258D%25889.30.19.png" alt="进击的猎手" /></p>
 
-<p><a href="http://pan.baidu.com/share/link?shareid=2248957344&amp;uk=4080321956">录制的音频文件和处理得到的音频时域和频域图像</a></p>
+<p>今天给大家推荐一款国人制作的 3D 网页游戏–《进击的猎手》，属于《进击的巨人》的同人游戏，由你来扮演《进击的巨人》中的五名主角在不同的地图上猎杀巨人。可以单机玩，也可以局域网联机玩。每个角色都有不同的特殊技。操作方面还是很复杂的：</p>
 
-<p>好，现在开始处理。我认为只要能用 Matlab 对按键声音做 FFT，看按键声音频率是否一样就可以了。拿其中的一段音频做例子，我是这样处理的。</p>
+<ul>
+  <li>WASD：上下左右</li>
+  <li>左shift：跳跃（使用气筒喷射，可快速前进）</li>
+  <li>左control：闪避（钩住巨人飞起时可利用闪避跳到更高处）</li>
+  <li>Q：左挂钩（按住是发射，松开就收回了，所以要是想用钩锁挂住并将自己拉近就按住不要松开，发射挂钩和跳跃都会消耗燃气，燃气量显示在屏幕下方中间，如果消耗没了就不能发射挂钩和跳跃了）</li>
+  <li>E：有挂钩（机制和左挂钩一样）</li>
+  <li>空格键：左右挂钩同时发射（机制和左挂钩一样）</li>
+  <li>鼠标左键：普通攻击（就是挥刀）</li>
+  <li>鼠标右键：特殊攻击（不同角色特殊攻击不同）</li>
+  <li>R: 换刀片（刀片数量有限，数量显示在屏幕下方中间部分，换完就要等死了）</li>
+  <li>P：暂停</li>
+  <li>T：重启游戏（如果挂了，就按“T”吧）</li>
+  <li>C：改变镜头</li>
+  <li>X：显示/隐藏瞄准用的准星（准星代表剑的挥舞方向，准星旁边的数字代表最近的是物体离你的举例，准星旁边的”&lt;”代表左挂钩方向，”&gt;”代表右挂钩方向，如果是红色代表物体太远以致挂钩无法钩住或刀无法砍到，白色代表挂钩可以钩住物体或刀可以砍到）</li>
+  <li>Backspace：全屏</li>
+  <li>N：行礼</li>
+</ul>
 
-<ol>
-  <li>原始音频文件竟然是<code>flac</code>格式的，无法导入 MATLAB，于是先将其用音频转换软件转换为了<code>wma</code>格式。（我用的是 <a href="http://tmkk.undo.jp/xld/index_e.html">XLD</a> 这个软件）</li>
-  <li>
-    <p>将音频导入 MATLAB，画出原始音频图像：</p>
+<p>玩了几分钟之后我彻底的“回想起了巨人的恐惧”，太难杀了，因为只有攻击巨人颈后那一小片区域才能杀死巨人，巨人会根据你所在的位置做不同的动作，如果你在天上，就顺手抓住你，如果你在头附近就直接张嘴咬你，如果你在地上还会蹲下把你抓起来，总之想绕到背后超级难，就算你好不容易上到脖子上了，可能还会被巨人抓痒痒一样一下抓住。最好在正式玩之前用“trainning”地图（”tranning”地图里巨人不会动）练练手，熟悉一下操作。我总结了一下，就是远远的找准目标之后，远距离绕到目标背后，用钩锁或是跳跃快速前进，找准时机用钩锁上脖子，果断出刀，如果打偏，不要浪费刀刃，放弃之后赶快用钩锁或跳跃快速逃跑摆脱巨人的追踪。</p>
 
-    <p><img src="https://lh6.googleusercontent.com/-WeOvo4LWCGI/Ue3Ux1O1z-I/AAAAAAAAA40/RPMbZolJC_8/s559/1.jpg" alt="原始音频" /></p>
-  </li>
-  <li>
-    <p>发现噪音还是比较明显的，于是用小波分析的函数<code>wden</code>去了一下噪，命令如下：</p>
+<p><a href="http://fenglee.com/game/aog/">《进击的猎手》游戏网址在这里</a></p>
 
-    <pre><code>xd=wden(x,'sqtwolog','s','mln',8,'db5');
-</code></pre>
+<p><img src="https://lh5.googleusercontent.com/-HGUx9chktuE/Uk1w4DgHGPI/AAAAAAAABN4/hT95c2ojVvo/s720/%25E5%25B1%258F%25E5%25B9%2595%25E5%25BF%25AB%25E7%2585%25A7%25202013-10-03%2520%25E4%25B8%258B%25E5%258D%25889.12.37.png" alt="巨人我来啦！受死吧！" /></p>
 
-    <p>然后得到了下面的图像，并选取了两个时间点，准备截取一段按键声音做 FFT。</p>
+<p><img src="https://lh3.googleusercontent.com/-cqa1rgIfx4A/Uk1w4MmxVGI/AAAAAAAABN8/faFdboZPD5E/s720/%25E5%25B1%258F%25E5%25B9%2595%25E5%25BF%25AB%25E7%2585%25A7%25202013-10-03%2520%25E4%25B8%258B%25E5%258D%25889.20.02.png" alt="迅速惨死在巨人的怀抱中。。。" /></p>
 
-    <p><img src="https://lh3.googleusercontent.com/-rAYyay2qD3Q/Ue3Ux9tem9I/AAAAAAAAA48/CKNe_SHv8WY/s559/2.jpg" alt="去噪之后的图像" /></p>
-  </li>
-  <li>
-    <p>根据上面选取的时间点截取了一段按键声音后，对其做了一下 FFT（用我自己写的函数，比较方便，直接画出图像）。</p>
+<p>看女流姐卖萌玩《进击的猎手》（此为老版本，巨人还很丑，貌似只有一张地图一个人物，现已多次更新，游戏性大大提高）：</p>
 
-    <pre><code>fft_plot(xd,fs,'plot');
-</code></pre>
+<embed src="http://player.youku.com/player.php/sid/XNjA1MDcxMTQ0/v.swf" allowfullscreen="true" quality="high" width="480" height="400" align="middle" allowscriptaccess="always" type="application/x-shockwave-flash" />
 
-    <p>函数贴在这里：</p>
-
-    <pre><code>function [ frequency,fft_result ] = fft_plot( data,Fs,varargin )
- % Calculate or plot directly fft results of data.
- %
- % [ frequency,fft_result ] = fft_plot( data,Fs,'plot' )
- %
- % inputs:
- %   (1) data: data used to analysis
- %   (2) Fs: sample frequency
- %   (3) 'plot': veriable input. if there is not this input, fft results will be
- %   ploted
- % output:
- %   (1) freqeuncy: frequency corresponding to the fft results
- %   (2) fft_result: fft results
-	
- if nargin&lt;2
-     error('data and Fs must be given');
- elseif nargin==2
-     size_data=size(data);
-     if size_data(1)~=1 &amp;&amp; size_data(2)~=1
-         error('the length or the number of rows must be one.');
-     end
-     L=length(data);
-     NFFT=2^nextpow2(L);
-     fft_result=fft(data,NFFT);
-     frequency=Fs/2*linspace(0,1,NFFT/2+1);
- elseif nargin==3
-         if strcmp(varargin,'plot')
-              size_data=size(data);
-             if size_data(1)~=1 &amp;&amp; size_data(2)~=1
-                 error('the length or the number of rows must be one.');
-             end
-             L=length(data);
-             NFFT=2^nextpow2(L);
-             fft_result=fft(data,NFFT);
-             frequency=Fs/2*linspace(0,1,NFFT/2+1);
-             figure;
-             plot(frequency,abs(fft_result(1:NFFT/2+1)));
-             title('FFT')
-             xlabel('Frequency')
-             ylabel('FFT results')
-         else
-             error('variable input must be ''plot''');
-         end
- elseif nargin&gt;=3
-     error('Too much inputs')
- end
- end
-</code></pre>
-
-    <p>调整了一下，频率范围，得到了这样的频域图：</p>
-
-    <p><img src="https://lh4.googleusercontent.com/-diX6ehStf1o/Ue3UyPdKbCI/AAAAAAAAA5E/iSQUMnsy-NQ/s559/3.jpg" alt="频域图" /></p>
-
-    <p>很明显，大约在 511.4Hz，只有一个频率。看来是我错了，但是还有三段音频那，一起处理了吧。</p>
-
-    <p><img src="https://lh3.googleusercontent.com/-HYlrs_X6TAg/Ue3UybQgpGI/AAAAAAAAA5M/kpmInMrs-ss/s559/4.jpg" alt="竟然一模一样！！" /></p>
-
-    <p><img src="https://lh4.googleusercontent.com/-UAGj7_avc5g/Ue3UynLshpI/AAAAAAAAA5Q/J-6BKsI4m5g/s559/5.jpg" alt="那个小的是什么？看大小可以忽略了。。" /></p>
-
-    <p>好像还有一段音频忘处理了，算了吧，结论很明显了。</p>
-  </li>
-</ol>
-
-<p>经过上面的测试，很明显是我错了，ATM机按键声音都是一样的。之后又去 Google 上搜索了一下，看到了这些，囧。</p>
-
-<p><img src="https://lh3.googleusercontent.com/-J9-IpVrgM_g/Ue3anj5bDuI/AAAAAAAAA5g/RfH87ke-HCs/s512/%25E5%25B1%258F%25E5%25B9%2595%25E5%25BF%25AB%25E7%2585%25A7%25202013-07-23%2520%25E4%25B8%258A%25E5%258D%25889.18.51.png" alt="Google 上搜索相关信息。。。第一条是怎么回事？淘宝？" /></p>
 </div>
 
 
@@ -283,19 +220,17 @@ var jiathis_config={
   
 
 
-<time datetime="2013-07-23T08:40:00+08:00" pubdate data-updated="true">2013年07月23日</time></p>
+<time datetime="2013-10-03T20:28:00+08:00" pubdate data-updated="true">2013年10月03日</time></p>
 </footer>
 
 <section>
 <ul id="left-right">
 <span style="float:left">
 	
-        <a class="basic-alignment left" href="/blog/han-men-zai-nan-chu-gui-zi.html" title="Previous Post: 寒门再难出贵子"><font face=Wingdings>&#239;</font> 寒门再难出贵子</a>
+        <a class="basic-alignment left" href="/blog/melrose-box-arduino.html" title="Previous Post: 俄罗斯方块（Arduino）"><font face=Wingdings>&#239;</font> 俄罗斯方块（Arduino）</a>
         </span>
 <span style="float:right">
-	
-        <a class="basic-alignment right" href="/blog/the-game-of-life.html" title="next Post: Matlab 编写“生命游戏”">Matlab 编写“生命游戏” <font face=Wingdings>&#240;</font></a>
-       </span>
+	 </span>
 </ul>
 </section>
 
