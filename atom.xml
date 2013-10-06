@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[折腾来折腾去]]></title>
-  <link href="http://pikipity.github.com/atom.xml" rel="self"/>
-  <link href="http://pikipity.github.com/"/>
+  <link href="http://pikipity.github.io/atom.xml" rel="self"/>
+  <link href="http://pikipity.github.io/"/>
   <updated>2013-01-30T00:00:00+08:00</updated>
-  <id>http://pikipity.github.com/</id>
+  <id>http://pikipity.github.io/</id>
   <author>
     <name><![CDATA[pikipity]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[多人实时合作免费在线绘图软件 -- Process On]]></title>
-    <link href="http://pikipity.github.com/blog/process-on.html"/>
+    <link href="http://pikipity.github.io/blog/process-on.html"/>
     <updated>2013-10-05T08:51:00+08:00</updated>
-    <id>http://pikipity.github.com/blog/process-on</id>
+    <id>http://pikipity.github.io/blog/process-on</id>
     <content type="html"><![CDATA[<p><img src="https://lh4.googleusercontent.com/-Q0n9wEE-bYA/Uk9jd08BJuI/AAAAAAAABR4/QGkUPxMBvR8/s912/%25E5%25B1%258F%25E5%25B9%2595%25E5%25BF%25AB%25E7%2585%25A7%25202013-10-05%2520%25E4%25B8%258A%25E5%258D%25888.48.46.png" alt="Process On" /></p>
 
 <p>今天推荐一款用来绘图的在线应用 – <a href="http://www.processon.com/">Process On</a>，其内置了多种模版，非常适合绘制结构性很强的图片，例如流程图等。</p>
@@ -43,9 +43,9 @@
   
   <entry>
     <title type="html"><![CDATA[解决澳门大学 ummoodle 上 PDF 文件在 IOS 无法正常打开或下载的问题]]></title>
-    <link href="http://pikipity.github.com/blog/ummoodle-pdf.html"/>
+    <link href="http://pikipity.github.io/blog/ummoodle-pdf.html"/>
     <updated>2013-10-04T21:11:00+08:00</updated>
-    <id>http://pikipity.github.com/blog/ummoodle-pdf</id>
+    <id>http://pikipity.github.io/blog/ummoodle-pdf</id>
     <content type="html"><![CDATA[<p>澳门大学的 ummoodle 在更新之后就出现了 pdf 文件在 IOS 设备上无法正常打开的状况，打开包含 pdf 的网页之后就会出现如下画面：</p>
 
 <p><img src="https://lh3.googleusercontent.com/-QQxd0viyyg8/Uk7Cc9wZh5I/AAAAAAAABRE/reSNdTtOBrA/s512/%25E7%2585%25A7%25E7%2589%2587%252004-10-2013%252009%252020%252019%2520PM.png" alt="无法拖动和下载的 pdf 文件" /></p>
@@ -105,9 +105,9 @@ Click &lt;a href="https://ummoodle.umac.mo/pluginfile.php/74630/mod_resource/con
   
   <entry>
     <title type="html"><![CDATA[巨人的猎手]]></title>
-    <link href="http://pikipity.github.com/blog/attack-on-titan.html"/>
+    <link href="http://pikipity.github.io/blog/attack-on-titan.html"/>
     <updated>2013-10-03T20:28:00+08:00</updated>
-    <id>http://pikipity.github.com/blog/attack-on-titan</id>
+    <id>http://pikipity.github.io/blog/attack-on-titan</id>
     <content type="html"><![CDATA[<p><img src="https://lh4.googleusercontent.com/-r3XfVFu4YSU/Uk1xgsz8cyI/AAAAAAAABOE/3ONWh1lL_jk/s800/%25E5%25B1%258F%25E5%25B9%2595%25E5%25BF%25AB%25E7%2585%25A7%25202013-10-03%2520%25E4%25B8%258B%25E5%258D%25889.30.19.png" alt="巨人的猎手" /></p>
 
 <p>今天给大家推荐一款国人制作的 3D 网页游戏–《巨人的猎手》，属于《进击的巨人》的同人游戏，由你来扮演《进击的巨人》中的五名主角在不同的地图上猎杀巨人。可以单机玩，也可以局域网联机玩。每个角色都有不同的特殊技。操作方面还是很复杂的：</p>
@@ -153,9 +153,9 @@ Click &lt;a href="https://ummoodle.umac.mo/pluginfile.php/74630/mod_resource/con
   
   <entry>
     <title type="html"><![CDATA[俄罗斯方块（Arduino）]]></title>
-    <link href="http://pikipity.github.com/blog/melrose-box-arduino.html"/>
+    <link href="http://pikipity.github.io/blog/melrose-box-arduino.html"/>
     <updated>2013-09-29T13:34:00+08:00</updated>
-    <id>http://pikipity.github.com/blog/melrose-box-arduino</id>
+    <id>http://pikipity.github.io/blog/melrose-box-arduino</id>
     <content type="html"><![CDATA[<p>经过一个星期闲着无聊地编写和调试，终于可以用 Arduino 玩俄罗斯方块了。四个按钮分别控制左、右、加速下落、转动。使用 LCD12864（QC12864B） 来显示游戏画面。为了寻找可以用来控制 QC12864B 的 Arduino 库花了很长时间，最终选择了 <a href="https://code.google.com/p/u8glib/">u8glib</a>，因为这个库支持的 LCD 控制器非常丰富。<a href="https://code.google.com/p/u8glib/">u8glib 库可以在这里下载</a>，<a href="http://pan.baidu.com/s/1qrhEF">关于 QC12864B 以及如何使用 u8glib 来控制 QC12864B 的资料可以在这里下载</a>，资料中包含一个从网上找来的使用 Arduino 做示波器的例子，使用的就是 <a href="https://code.google.com/p/u8glib/">u8glib</a> 库。</p>
 
 <p>我制作的这个<a href="http://pikipity.github.io/Melrose_box">俄罗斯方块游戏机的项目主页在这里</a>。</p>
@@ -176,9 +176,9 @@ Click &lt;a href="https://ummoodle.umac.mo/pluginfile.php/74630/mod_resource/con
   
   <entry>
     <title type="html"><![CDATA[利用 Arduino 进行超声波测距]]></title>
-    <link href="http://pikipity.github.com/blog/ultrasonic-distance-measurement-using-arduino.html"/>
+    <link href="http://pikipity.github.io/blog/ultrasonic-distance-measurement-using-arduino.html"/>
     <updated>2013-09-21T10:32:00+08:00</updated>
-    <id>http://pikipity.github.com/blog/ultrasonic-distance-measurement-using-arduino</id>
+    <id>http://pikipity.github.io/blog/ultrasonic-distance-measurement-using-arduino</id>
     <content type="html"><![CDATA[<p>在<a href="http://pikipity.github.io/blog/arduino-dht11-lcd1602.html">昨天测量温度的装置</a>上又加上了 HC-SR04 来进行超声波测距，先利用 DHT11 测量温度，然后利用温度来计算出较为准确的声速（根据<a href="http://en.wikipedia.org/wiki/Relativistic_Euler_equations">相对论的欧拉方程</a>，声速（米每秒）=331+0.6*温度（摄氏度）），再利用 HC-SR04 测得的超声波来回的时间计算出距离，并在 LCD1602 上显示。</p>
 
 <p>HC-SR04 的使用非常简单，<a href="http://www.doc88.com/p-737494835063.html">这里有一份 HC-SR04 的中文手册</a>，首先向 Trig 引脚输入一个不小于10us的高电平，然后测量 Echo 引脚返回的高电平的时间 t，然后利用公式：距离=t*声速/2，就可以计算得到距离了。但是需要注意：</p>
@@ -207,9 +207,9 @@ Click &lt;a href="https://ummoodle.umac.mo/pluginfile.php/74630/mod_resource/con
   
   <entry>
     <title type="html"><![CDATA[用 Arduino 测量温度和湿度]]></title>
-    <link href="http://pikipity.github.com/blog/arduino-dht11-lcd1602.html"/>
+    <link href="http://pikipity.github.io/blog/arduino-dht11-lcd1602.html"/>
     <updated>2013-09-20T22:00:00+08:00</updated>
-    <id>http://pikipity.github.com/blog/arduino-dht11-lcd1602</id>
+    <id>http://pikipity.github.io/blog/arduino-dht11-lcd1602</id>
     <content type="html"><![CDATA[<p>今天中秋放假闲在宿舍里，于是就用 Arduino 做了一个测量温度和湿度的小装置，使用 DHT11 测量温度和湿度，然后用 LCD1602 来显示。</p>
 
 <p><a href="http://wenku.baidu.com/view/bb12c7c7d5bbfd0a795673dd.html">这里有一个 DHT11 的简单介绍</a>，包括引脚的意义和解法还有一个 Arduino 的例程。DHT11 的使用还是很简单的，基本思路就是先发送给 DHT11 一个信号，将其激活，成功激活后，DHT11 会返回一个信号，之后 DHT11 就会连续发送40位的二进制数据，这40bits的数据包括湿度数值、温度数值和校检数值，其中湿度数值和温度数值都是16位的定点二进制小数（<a href="http://pikipity.github.io/blog/scm-principle-3.html">定点二进制小数在这里有介绍</a>），其中前8位为整数位，后8位为小数位，具体排列如下：</p>
@@ -252,9 +252,9 @@ Click &lt;a href="https://ummoodle.umac.mo/pluginfile.php/74630/mod_resource/con
   
   <entry>
     <title type="html"><![CDATA[让我们一起来征服世界]]></title>
-    <link href="http://pikipity.github.com/blog/introduction-to-terraria.html"/>
+    <link href="http://pikipity.github.io/blog/introduction-to-terraria.html"/>
     <updated>2013-09-16T20:14:00+08:00</updated>
-    <id>http://pikipity.github.com/blog/introduction-to-terraria</id>
+    <id>http://pikipity.github.io/blog/introduction-to-terraria</id>
     <content type="html"><![CDATA[<p><img src="https://lh3.googleusercontent.com/-xBEV9XTEUq8/UjcIJFQTLzI/AAAAAAAABL0/MzrQc4KU-oU/s364/Logo.png" alt="Terraria" /></p>
 
 <p>今天推荐一款沙盒游戏 – <a href="http://www.terraria.org/">《Terraria》</a>。“沙盒游戏”是模拟游戏的一个分支，玩家在一个大世界下自由行动，通常没有明确的目标，玩家发挥想象自由创造，例如<a href="http://www.ali213.net/zt/spore/">《孢子》</a>、<a href="http://zh.wikipedia.org/wiki/%E4%BF%A0%E7%9B%9C%E7%8D%B5%E8%BB%8A%E6%89%8B%E7%B3%BB%E5%88%97">《侠盗猎车手》</a>、<a href="https://minecraft.net/">《minecraft》</a>都属于沙盒游戏，其中<a href="https://minecraft.net/">《minecraft》</a>的超高的自由度现在应该是无人不知无人不晓了。</p>
@@ -278,9 +278,9 @@ Click &lt;a href="https://ummoodle.umac.mo/pluginfile.php/74630/mod_resource/con
   
   <entry>
     <title type="html"><![CDATA[processing 练习作 -- 3D 色子]]></title>
-    <link href="http://pikipity.github.com/blog/processing-prectice-3d-dice.html"/>
+    <link href="http://pikipity.github.io/blog/processing-prectice-3d-dice.html"/>
     <updated>2013-09-12T00:24:00+08:00</updated>
-    <id>http://pikipity.github.com/blog/processing-prectice-3d-dice</id>
+    <id>http://pikipity.github.io/blog/processing-prectice-3d-dice</id>
     <content type="html"><![CDATA[<p>processing 的练习作 – 3D 色子，旨在练习 processing 的 3D 效果制作。点击鼠标可以抛掷色子。色子的图案没有使用额外的图片，全部使用 processing 直接绘制。源代码在<a href="https://github.com/pikipity/3D_Dice.git">这里</a>。由于不是专注于正方体自由旋转落体的模拟，左移在色子的运动上做的很简单：上升和下落都是一个匀加速直线运动，每次落地撞击损失一半的速度；旋转方面每次根据坐标轴随机选取一个旋转方向，旋转速度和位移成正比；没有考虑触地之后的运动。</p>
 
 <p><img src="https://lh4.googleusercontent.com/-Qzgu5jWc-zY/UjCcf32YpqI/AAAAAAAABI4/myK3RPH83x8/s512/%25E5%25B1%258F%25E5%25B9%2595%25E5%25BF%25AB%25E7%2585%25A7%25202013-09-12%2520%25E4%25B8%258A%25E5%258D%258812.33.52.png" alt="程序截图" /></p>
@@ -289,9 +289,9 @@ Click &lt;a href="https://ummoodle.umac.mo/pluginfile.php/74630/mod_resource/con
   
   <entry>
     <title type="html"><![CDATA[一本正经的恶搞 -- 伪基百科]]></title>
-    <link href="http://pikipity.github.com/blog/introduction-uncyclopedia.html"/>
+    <link href="http://pikipity.github.io/blog/introduction-uncyclopedia.html"/>
     <updated>2013-09-10T04:33:00+08:00</updated>
-    <id>http://pikipity.github.com/blog/introduction-uncyclopedia</id>
+    <id>http://pikipity.github.io/blog/introduction-uncyclopedia</id>
     <content type="html"><![CDATA[<p><img src="https://lh5.googleusercontent.com/-Ths-brV6Q7E/Ui4wdOPGFsI/AAAAAAAABIo/Fed-Tb1wjr4/s152/Uncyclopedia_Logo_China_1.png" alt="适度恶搞，有益身心" /></p>
 
 <p>今天找资料的时候无意间发现了这样一个网站，里面全是无厘头的恶搞，看得我完全刹不住车了，不是没见过恶搞，但是像这样一本正经、诚意满满地恶搞还从来没有见过。这个网站就是 <a href="http://zh.uncyclopedia.info/wiki/%E9%A6%96%E9%A0%81">“伪基百科”</a>。页面从结构到文章形式完全仿照<a href="http://zh.wikipedia.org/">“维基百科”</a>，但是内容则没有一点是正经的，建议18岁以下儿童及身心脆弱者、极度爱党爱国人士不要点击进入。</p>
@@ -323,9 +323,9 @@ Click &lt;a href="https://ummoodle.umac.mo/pluginfile.php/74630/mod_resource/con
   
   <entry>
     <title type="html"><![CDATA[LED 亮度控制 -- processing 练习作]]></title>
-    <link href="http://pikipity.github.com/blog/light-controller.html"/>
+    <link href="http://pikipity.github.io/blog/light-controller.html"/>
     <updated>2013-09-08T20:52:00+08:00</updated>
-    <id>http://pikipity.github.com/blog/light-controller</id>
+    <id>http://pikipity.github.io/blog/light-controller</id>
     <content type="html"><![CDATA[<p>又是一个自己制作的 processing 的练习作，旨在练习 processing 与 Arduino 的串口通信。使用 Processing 编写的可视化控制条，用户可以通过拉拽控制条来调整亮度的数值，通过串口将亮度输送给 Arduino，由 Arduino 实现 LED 灯亮度的调整。由于是很简单的控制，所以就没有考虑什么保护电阻之类的了，直接很简单将 LED 插在了开发板上。视频中就可以看出，当亮度 100% 的时候（也就是电压达到 5V 的时候），LED 会过亮，可能会损坏 LED。</p>
 
 <p>可以到<a href="https://github.com/pikipity/Light_Controller.git">这里</a>下载源码。</p>
@@ -346,9 +346,9 @@ Click &lt;a href="https://ummoodle.umac.mo/pluginfile.php/74630/mod_resource/con
   
   <entry>
     <title type="html"><![CDATA[processing 练习作 -- 小画板]]></title>
-    <link href="http://pikipity.github.com/blog/practice-for-processing.html"/>
+    <link href="http://pikipity.github.io/blog/practice-for-processing.html"/>
     <updated>2013-09-05T16:57:00+08:00</updated>
-    <id>http://pikipity.github.com/blog/practice-for-processing</id>
+    <id>http://pikipity.github.io/blog/practice-for-processing</id>
     <content type="html"><![CDATA[<p>在<a href="http://pikipity.github.io/blog/new-game-processing.html">这篇文章</a>中我简单介绍了用来编写视觉交互式软件的编程语言 <a href="https://processing.org/">processing</a>，这是我的一个练习作 – 一个简单的小画板，旨在练习 Processing 的基本命令和熟悉 Java 的语法。源代码可以到<a href="https://github.com/pikipity/Drawer.git">这里</a>下载。</p>
 
 <p>左侧选择工具，右侧选择画笔粗细和颜色。按”e”键结束当前工具输入（画直线、方框、圆形和不规则图形时有效）；按”r”键画布清零。</p>
@@ -371,9 +371,9 @@ Click &lt;a href="https://ummoodle.umac.mo/pluginfile.php/74630/mod_resource/con
   
   <entry>
     <title type="html"><![CDATA[听黑桐谷歌访谈有感]]></title>
-    <link href="http://pikipity.github.com/blog/heitongguge.html"/>
+    <link href="http://pikipity.github.io/blog/heitongguge.html"/>
     <updated>2013-08-29T09:33:00+08:00</updated>
-    <id>http://pikipity.github.com/blog/heitongguge</id>
+    <id>http://pikipity.github.io/blog/heitongguge</id>
     <content type="html"><![CDATA[<p>“黑桐谷歌”是出没于优酷和AB站的著名职业游戏解说，今天推荐的是他的一个访谈，访谈本身很业余（毕竟第一期，业余很正常），但是谷歌坦言的自己开始做游戏解说的历史和一路走来的心路历程才是视频的重点内容。</p>
 
 <embed height="452" width="544" quality="high" allowfullscreen="true" type="application/x-shockwave-flash" src="http://static.hdslb.com/miniloader.swf" flashvars="aid=736273&amp;page=1" pluginspage="http://www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash" />
@@ -424,9 +424,9 @@ Click &lt;a href="https://ummoodle.umac.mo/pluginfile.php/74630/mod_resource/con
   
   <entry>
     <title type="html"><![CDATA[新玩具 -- Processing]]></title>
-    <link href="http://pikipity.github.com/blog/new-game-processing.html"/>
+    <link href="http://pikipity.github.io/blog/new-game-processing.html"/>
     <updated>2013-08-28T12:37:00+08:00</updated>
-    <id>http://pikipity.github.com/blog/new-game-processing</id>
+    <id>http://pikipity.github.io/blog/new-game-processing</id>
     <content type="html"><![CDATA[<p><img src="https://lh5.googleusercontent.com/-YJlrgUSftcw/Uh2LCQCqpSI/AAAAAAAABHk/BrDYwd8hf_s/s180/180px-Processing_Logo_Clipped.svg.png" alt="Processing" /></p>
 
 <p>在看 Arduino 的资料的时候无意间找到了一个新玩具 – <a href="http://processing.org/">Processing</a>，专门用来开发视觉交互界面用的语言，基础语言是 Java，优点就和他官方网站介绍的一样：</p>
@@ -464,9 +464,9 @@ Click &lt;a href="https://ummoodle.umac.mo/pluginfile.php/74630/mod_resource/con
   
   <entry>
     <title type="html"><![CDATA[youtube-dl GUI]]></title>
-    <link href="http://pikipity.github.com/blog/youtube-dl-gui.html"/>
+    <link href="http://pikipity.github.io/blog/youtube-dl-gui.html"/>
     <updated>2013-08-25T15:47:00+08:00</updated>
-    <id>http://pikipity.github.com/blog/youtube-dl-gui</id>
+    <id>http://pikipity.github.io/blog/youtube-dl-gui</id>
     <content type="html"><![CDATA[<p>经常在网上看到一些很好的视频想要保存下来，如果保存成书签的形式，每次打开都要重新加载一遍实在是太麻烦了，最好的当然是下载到电脑上，虽然自己找了许多在 Mac OS X 上下载视频的软件，但是其中的广告或是收费升级通知让我烦不胜烦。最后找到了这个软件 – <a href="http://rg3.github.io/youtube-dl/">youtube-dl</a>。用 Python 编写，本来是专门用于下载 YouTube 上的视频的，但是现在支持大部分的视频网站，经测试优酷和土豆都可以正常下载，唯一的缺点就是没有一个 GUI，每次都要打开终端输入一行代码，而且像我这种记忆渣每次都要查一遍它的参数列表，实在麻烦，但是又不忍放弃，于是决定自己为其写一个 GUI。</p>
 
 <p><a href="http://pikipity.github.io/youtube-dl-GUI/">这里是此 youtube-dl GUI 的项目主页</a>，安装及使用方法都可以找到。下面是软件截图，因为仅仅是为了使用方便，所以看上去和简陋，但是功能还是齐全的，下一步希望可以抽时间把 “Options” 做的更人性化一点。</p>
@@ -479,9 +479,9 @@ Click &lt;a href="https://ummoodle.umac.mo/pluginfile.php/74630/mod_resource/con
   
   <entry>
     <title type="html"><![CDATA[tutorialspoint -- Simple Easy Learning]]></title>
-    <link href="http://pikipity.github.com/blog/tutorialspoint.html"/>
+    <link href="http://pikipity.github.io/blog/tutorialspoint.html"/>
     <updated>2013-08-23T11:24:00+08:00</updated>
-    <id>http://pikipity.github.com/blog/tutorialspoint</id>
+    <id>http://pikipity.github.io/blog/tutorialspoint</id>
     <content type="html"><![CDATA[<p><img src="https://lh3.googleusercontent.com/-EOXgioZB97c/UhbZ3vnuTXI/AAAAAAAABG0/cMP-tK0Gn4A/s599/%25E5%25B1%258F%25E5%25B9%2595%25E5%25BF%25AB%25E7%2585%25A7%25202013-08-23%2520%25E4%25B8%258A%25E5%258D%258811.41.01.png" alt="tutorialspoint -- Simple Easy Learning" /></p>
 
 <p>在网上搜索 JavaScript 教程的时候无意间发现了这个网站 – <a href="http://www.tutorialspoint.com/">tutorialpoint（简称 TP）</a>，整体感觉很像是 <a href="http://www.w3schools.com/">W3School</a>，都是一篇一篇短小精悍并且很实用的教程组成，但是内容更为丰富，不仅包括各式各样的编程语言（例如 Ruby、Python，甚至连 Assembly 都有）还包括一些网络及电脑知识（例如什么是 RSS，什么是云计算等等），编程语言的教程中还带有在线仿真编程器，你可以在其网页上就实践教程中的例子，不用为了安装一个编译器或是为了找一个好用的 IDE 伤破脑筋，先学习，觉得这门语言挺好，可以用，再找编译器或是 IDE 也不迟。</p>
@@ -494,9 +494,9 @@ Click &lt;a href="https://ummoodle.umac.mo/pluginfile.php/74630/mod_resource/con
   
   <entry>
     <title type="html"><![CDATA[尝试两种利用 EMD 来计算瞬时频率的方法]]></title>
-    <link href="http://pikipity.github.com/blog/try-two-way-to-find-instaneous-frequency-by-using-emd.html"/>
+    <link href="http://pikipity.github.io/blog/try-two-way-to-find-instaneous-frequency-by-using-emd.html"/>
     <updated>2013-08-19T19:00:00+08:00</updated>
-    <id>http://pikipity.github.com/blog/try-two-way-to-find-instaneous-frequency-by-using-emd</id>
+    <id>http://pikipity.github.io/blog/try-two-way-to-find-instaneous-frequency-by-using-emd</id>
     <content type="html"><![CDATA[<p>这两天利用 Matlab 尝试了两种利用 EMD 来计算瞬时频率的方法。EMD 的介绍请看<a href="http://pikipity.github.io/blog/find-a-way-to-calculate-the-instaneous-frequency.html">这里</a>。我利用的是 G. Rilling 的程序计算的 IMF，程序在<a href="http://perso.ens-lyon.fr/patrick.flandrin/emd.html">这里</a>下载。尽管这个程序存在着<a href="http://pikipity.github.io/blog/find-a-way-to-calculate-the-instaneous-frequency.html">这样</a>或<a href="http://pikipity.github.io/blog/find-a-way-to-calculate-the-instaneous-frequency-2.html">那样</a>的问题，但是他利用自己的假设找到了方法来解决，我曾经尝试着利用我在<a href="http://pikipity.github.io/blog/find-a-way-to-calculate-the-instaneous-frequency-2.html">这篇文章</a>中提到的看法来解决那些问题，但是发现，速度大大降低，结果改善却不明显，所以放弃而在这里使用他的程序。</p>
 
 <p>这两种方法中，一种方法先使用 Hilbert Transform 求得 IMF 的瞬时相位，然后利用瞬时相位求得瞬时频率，另一种则不适用 Hilbert Transform，直接根据 IMF 类似弦波这一特性，利用局部极值点与零点来计算瞬时频率。</p>
@@ -835,9 +835,9 @@ disp(maxf_emd2)
   
   <entry>
     <title type="html"><![CDATA[寻找一种有效估算瞬时频率的方法（EMD 求法讨论 续）]]></title>
-    <link href="http://pikipity.github.com/blog/find-a-way-to-calculate-the-instaneous-frequency-2.html"/>
+    <link href="http://pikipity.github.io/blog/find-a-way-to-calculate-the-instaneous-frequency-2.html"/>
     <updated>2013-08-14T03:19:00+08:00</updated>
-    <id>http://pikipity.github.com/blog/find-a-way-to-calculate-the-instaneous-frequency-2</id>
+    <id>http://pikipity.github.io/blog/find-a-way-to-calculate-the-instaneous-frequency-2</id>
     <content type="html"><![CDATA[<p>上接<a href="http://pikipity.github.io/blog/find-a-way-to-calculate-the-instaneous-frequency.html">寻找一种有效估算瞬时频率的方法</a>。</p>
 
 <h3 id="hkt--imf">如何判断 <script type="math/tex">h_k(t)</script> 是 IMF</h3>
@@ -929,9 +929,9 @@ disp(maxf_emd2)
   
   <entry>
     <title type="html"><![CDATA[推荐一款游戏 Cube Slam]]></title>
-    <link href="http://pikipity.github.com/blog/cube-slam.html"/>
+    <link href="http://pikipity.github.io/blog/cube-slam.html"/>
     <updated>2013-08-13T00:01:00+08:00</updated>
-    <id>http://pikipity.github.com/blog/cube-slam</id>
+    <id>http://pikipity.github.io/blog/cube-slam</id>
     <content type="html"><![CDATA[<p><img src="https://lh4.googleusercontent.com/-idNKKzH2b_0/UgkIm7DLEPI/AAAAAAAABCI/XOPh1qkCafI/s800/%25E5%25B1%258F%25E5%25B9%2595%25E5%25BF%25AB%25E7%2585%25A7%25202013-08-13%2520%25E4%25B8%258A%25E5%258D%258812.03.25.png" alt="Cube Slam" /></p>
 
 <p>今天推荐一款游戏 – <a href="https://www.cubeslam.com">Cube Slam</a>，这款游戏来自于 <a href="http://www.chromeexperiments.com/">Chrome Experiment</a>，只可以使用 <a href="https://www.google.com/intl/zh-CN/chrome/browser/">Chrome 浏览器</a>才可以打开。这款游戏很简单，就是通过移动面前的挡板来阻挡滑块打中自己，开始会有一层保护膜保护自己，当保护膜被击中一次之后就消失了，场上还会随机出现各式各样的道具，比如加长你的挡板、场上出现大雾或是挡板发射假滑块干扰对方等等。这个游戏不仅可以和电脑（那只熊）对战，也可以邀请其他人对战，当你进入游戏的时候会随机分配一个地址给你，你只要把你的地址发送给对方你们两人就可以开始对抗了（我应该常在<a href="https://www.cubeslam.com/bdysis">这里</a>，来找我玩啊 :-D）。</p>
@@ -946,9 +946,9 @@ disp(maxf_emd2)
   
   <entry>
     <title type="html"><![CDATA[机器人机甲是如何炼成的]]></title>
-    <link href="http://pikipity.github.com/blog/how-to-make-a-giant-robot-mech-youtube-geek-week.html"/>
+    <link href="http://pikipity.github.io/blog/how-to-make-a-giant-robot-mech-youtube-geek-week.html"/>
     <updated>2013-08-11T18:49:00+08:00</updated>
-    <id>http://pikipity.github.com/blog/how-to-make-a-giant-robot-mech-youtube-geek-week</id>
+    <id>http://pikipity.github.io/blog/how-to-make-a-giant-robot-mech-youtube-geek-week</id>
     <content type="html"><![CDATA[<p>我一直认为，一个正真的项目并不是只用一个专业的知识就可以完成的。如果可以把一个成熟的项目称为一个生命体的话，那么完成这个项目的人就应该称为这个项目的上帝了吧，所以，仅仅考一个专业的知识是无法完成的。这就体现了合作的重要性，每个人专精于自己的所长，努力完成自己工作的同时，将自己的所知所学与他人分享，并从他人那里汲取知识，然后多人的智慧融会贯通逐渐将一个项目从无到有，最终将其推向完美，这才是我们需要的。我认为“澳门大学”的科技学院现在需要的正式这种多专业合作的感觉，不是每个专业，甚至每个专业里面的各个小分支都各自顾各自，而应该尝试将各个专业的长处进行融合，使科技学院形成一个整体来运作。数学专业为各个专业做理论基础；机电专精机械，打造成品主构架；电机专精电子，为项目嵌入电子的控制芯片；软件专精程序撰写，为芯片写入可以使其运作的程序。这样各司其职，互相学习，互相进步，比强迫每个专业都要乱七八糟的什么都学强多了。</p>
 
 <p>这个视频是 YouTube 在 Geek Week 时发起的一个项目，目的是制作一个巨大的机器人机甲，整个视频关键的不是技术，因为没有什么新颖的科技，甚至有些都是已经市场化的技术，关键的是其中那种各个专业、各个领域的人们团结一致，合作完成项目的那种氛围。我第一次看的时候我就决定一定要搬运这个专题，要让更多的人感觉到这种感觉。</p>
@@ -962,9 +962,9 @@ disp(maxf_emd2)
   
   <entry>
     <title type="html"><![CDATA[寻找一种有效估算瞬时频率的方法（EMD 求法讨论）]]></title>
-    <link href="http://pikipity.github.com/blog/find-a-way-to-calculate-the-instaneous-frequency.html"/>
+    <link href="http://pikipity.github.io/blog/find-a-way-to-calculate-the-instaneous-frequency.html"/>
     <updated>2013-08-09T18:50:00+08:00</updated>
-    <id>http://pikipity.github.com/blog/find-a-way-to-calculate-the-instaneous-frequency</id>
+    <id>http://pikipity.github.io/blog/find-a-way-to-calculate-the-instaneous-frequency</id>
     <content type="html"><![CDATA[<p>我试图寻找一种可以用比较少的数据点就可以较为精确的估算某个时刻瞬时频率的方法，当然了，根据“薛定尔的胖次”（对于虐猫狂人薛定谔不熟悉的可以去看<a href="https://docs.google.com/file/d/0B8AjE9xqZzSiNlVlSEkxNi1uTFE/edit?usp=sharing">这里</a>的这本少儿读本，写的很好）在信号分析中的拓展，如果要精确计算瞬时频率就需要一个在时域上无限长的信号，当然这是不可能的，所以，如果能够找到一种计算方法，在时域上的精度和频域上的精度问题上去的平衡就可以了。</p>
 
 <p>在经过一番大搜索之后，发现现在最为流行的求瞬时频率的方法就是 HHT（希尔伯特-黄转换，也就是 EMD，经验模态分析，论文在<a href="https://docs.google.com/file/d/0B8AjE9xqZzSiUDhGRkJ3UEwzNjQ/edit?usp=sharing">这里</a>，洋洋洒洒90多页，大家慢慢看）。</p>

@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[categories: Github | 折腾来折腾去]]></title>
-  <link href="http://pikipity.github.com/blog/categories/github/atom.xml" rel="self"/>
-  <link href="http://pikipity.github.com/"/>
+  <link href="http://pikipity.github.io/blog/categories/github/atom.xml" rel="self"/>
+  <link href="http://pikipity.github.io/"/>
   <updated>2013-01-30T00:00:00+08:00</updated>
-  <id>http://pikipity.github.com/</id>
+  <id>http://pikipity.github.io/</id>
   <author>
     <name><![CDATA[pikipity]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Github 五岁了]]></title>
-    <link href="http://pikipity.github.com/blog/github-5-years-old.html"/>
+    <link href="http://pikipity.github.io/blog/github-5-years-old.html"/>
     <updated>2013-04-12T14:48:00+08:00</updated>
-    <id>http://pikipity.github.com/blog/github-5-years-old</id>
+    <id>http://pikipity.github.io/blog/github-5-years-old</id>
     <content type="html"><![CDATA[<p>感谢 Tom Preston-Werner、Chris Wanstrath和PJ Hyett 创建这样一个资源共享、合作平台，收集了一些 Github 章鱼猫的图片，可以到<a href="http://pan.baidu.com/share/link?shareid=472164&amp;uk=4080321956">这里</a>下载合集（共28张）</p>
 
 <p><img src="https://lh3.googleusercontent.com/-GtUg-uGWQqM/UWevcsehRSI/AAAAAAAAAtc/kLS-HYQ3bOo/s224/images%2520%25287%2529.jpeg" width="200" /><img src="https://lh5.googleusercontent.com/-xIBU5KTBVcI/UWevbE4xKAI/AAAAAAAAAsY/E-TE4XsxJgw/s224/images%2520%25282%2529.jpeg" width="200" /><img src="https://lh6.googleusercontent.com/-B9FrMxvY9oM/UWevdOl2eWI/AAAAAAAAAtY/0OzTMCCARKE/s224/images%2520%25289%2529.jpeg" width="200" /><img src="https://lh3.googleusercontent.com/-GhzQ2PNotbI/UWevacnK2rI/AAAAAAAAAuI/ud_BkEGqWTk/s235/images%2520%252817%2529.jpeg" width="200" /><img src="https://lh3.googleusercontent.com/-VkRkffqG3p0/UWevYtjxHLI/AAAAAAAAAts/vkcrXe-KnZw/s512/founding-father.jpg" width="200" /><img src="https://lh6.googleusercontent.com/-0BwtaQ5bB_I/UWevZOsK-YI/AAAAAAAAAtw/m31AKo0PS30/s224/images%2520%252811%2529.jpeg" width="200" /></p>
@@ -26,9 +26,9 @@
   
   <entry>
     <title type="html"><![CDATA[向 Github 添加 SSH 公匙]]></title>
-    <link href="http://pikipity.github.com/blog/ssh-public-key.html"/>
+    <link href="http://pikipity.github.io/blog/ssh-public-key.html"/>
     <updated>2013-03-12T20:03:00+08:00</updated>
-    <id>http://pikipity.github.com/blog/ssh-public-key</id>
+    <id>http://pikipity.github.io/blog/ssh-public-key</id>
     <content type="html"><![CDATA[<p>今天用 octopress 遇到一点小问题，在向 Github 发布自己的 post 的时候出现错误：</p>
 
 <pre><code>Permission denied (publickey). fatal: The remote end hung up unexpectedly
@@ -149,9 +149,9 @@
   
   <entry>
     <title type="html"><![CDATA[用Octopress 和 Github 建立自己的 Blog]]></title>
-    <link href="http://pikipity.github.com/blog/octopress-and-github.html"/>
+    <link href="http://pikipity.github.io/blog/octopress-and-github.html"/>
     <updated>2013-02-22T08:44:00+08:00</updated>
-    <id>http://pikipity.github.com/blog/octopress-and-github</id>
+    <id>http://pikipity.github.io/blog/octopress-and-github</id>
     <content type="html"><![CDATA[<p>这个 Blog 就是在使用 Octopress 和 Github 建立起来的。基本思路如下，首先用 Markdown 语言迅速成文，然后由 Octopress 生成站点文件并上传到 Github，利用 Github 的 Pages 功能，就可以直接通过访问 Github 提供的二级域名访问到你的站点了。</p>
 
 <p><img src="/images/post/octopress.jpg" width="550pt" /></p>

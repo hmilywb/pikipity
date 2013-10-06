@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[categories: Assembly | 折腾来折腾去]]></title>
-  <link href="http://pikipity.github.com/blog/categories/assembly/atom.xml" rel="self"/>
-  <link href="http://pikipity.github.com/"/>
+  <link href="http://pikipity.github.io/blog/categories/assembly/atom.xml" rel="self"/>
+  <link href="http://pikipity.github.io/"/>
   <updated>2013-01-30T00:00:00+08:00</updated>
-  <id>http://pikipity.github.com/</id>
+  <id>http://pikipity.github.io/</id>
   <author>
     <name><![CDATA[pikipity]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[第六章 计时器/计数器]]></title>
-    <link href="http://pikipity.github.com/blog/scm-priciple-6.html"/>
+    <link href="http://pikipity.github.io/blog/scm-priciple-6.html"/>
     <updated>2013-04-04T09:29:00+08:00</updated>
-    <id>http://pikipity.github.com/blog/scm-priciple-6</id>
+    <id>http://pikipity.github.io/blog/scm-priciple-6</id>
     <content type="html"><![CDATA[<p>计时器与计数器使用的寄存器和它们的工作原理是一样的，当计时时脉从“0”变为“1”的时候，内部的累加器加一，当累加器溢出的时候，检查中断，如果中断置能，便进入中断，否则重新开始计数。它们唯一的不同就是使用的计时时脉不一样，计时器使用的是内部时脉，因为内部时脉很稳定，所以可以用来计算时间；计数器使用的是从 T1 或者 T0 口输入的外部时脉，如果这个外部时脉的信号代表一个事件发生的次数，那么计时/计数器就是在计算这个事件发生的次数。8051中有两个计时/计数器– Timer0 和 Timer1。</p>
 
 <h2 id="section">控制寄存器</h2>
@@ -144,9 +144,9 @@ MOV TL0,#(256-x)
   
   <entry>
     <title type="html"><![CDATA[单片机原理及程序设计 第四章 汇编语言]]></title>
-    <link href="http://pikipity.github.com/blog/assembly-language.html"/>
+    <link href="http://pikipity.github.io/blog/assembly-language.html"/>
     <updated>2013-03-07T20:39:00+08:00</updated>
-    <id>http://pikipity.github.com/blog/assembly-language</id>
+    <id>http://pikipity.github.io/blog/assembly-language</id>
     <content type="html"><![CDATA[<p>学习汇编语言可以很好地帮助单片机的学习，而且一个好的汇编语言写成的程序要比实现相同功能的 C 语言更短更快。但是难以理解，移植性差，所以现在一般都用 C 语言来为单片机编程，只有部分硬件的驱动或是 C 语言难以控制的部分来用汇编编写。</p>
 
 <h2 id="section">汇编指令分类</h2>
@@ -246,9 +246,9 @@ MOV R0,A
   
   <entry>
     <title type="html"><![CDATA[单片机原理及程序设计 第三章 数据类型与表示方法]]></title>
-    <link href="http://pikipity.github.com/blog/scm-principle-3.html"/>
+    <link href="http://pikipity.github.io/blog/scm-principle-3.html"/>
     <updated>2013-03-07T10:36:00+08:00</updated>
-    <id>http://pikipity.github.com/blog/scm-principle-3</id>
+    <id>http://pikipity.github.io/blog/scm-principle-3</id>
     <content type="html"><![CDATA[<p>对 8051 的编程本质上就是对一个个二进制数在内存中运算和转移，所以明确各种进制（尤其是二进制、十进制和十六进制）在汇编中的表示方法和它们之间的转换方法就非常重要了。</p>
 
 <h2 id="section">二进制</h2>
@@ -370,9 +370,9 @@ MOV R0,A
   
   <entry>
     <title type="html"><![CDATA[汇编实战之LED数码管]]></title>
-    <link href="http://pikipity.github.com/blog/assembly-application-3.html"/>
+    <link href="http://pikipity.github.io/blog/assembly-application-3.html"/>
     <updated>2013-02-08T21:25:00+08:00</updated>
-    <id>http://pikipity.github.com/blog/assembly-application-3</id>
+    <id>http://pikipity.github.io/blog/assembly-application-3</id>
     <content type="html"><![CDATA[<p>之前已经讲述了如何用汇编来实现<a href="/blog/assembly-application-1.html">加减</a><a href="/blog/assembly-application-2.html">乘除</a>的实现方法，但是只是做运算是远远不够的，还需要将运算后的数字显示出来，那么如何显示呢，这篇讲述如何用时钟中断以尽量少的I/O口的数量来实现LED数码管的显示。</p>
 
 <!--more-->
@@ -525,9 +525,9 @@ STOP:
   
   <entry>
     <title type="html"><![CDATA[汇编实战之乘除法]]></title>
-    <link href="http://pikipity.github.com/blog/assembly-application-2.html"/>
+    <link href="http://pikipity.github.io/blog/assembly-application-2.html"/>
     <updated>2013-02-08T09:35:00+08:00</updated>
-    <id>http://pikipity.github.com/blog/assembly-application-2</id>
+    <id>http://pikipity.github.io/blog/assembly-application-2</id>
     <content type="html"><![CDATA[<p>上一篇<a href="/blog/assembly-application-1.html">《汇编实战之加减法》</a>中介绍了加减法的考虑方法，接下来将会介绍稍微难一点乘除法的思考与实现方法。</p>
 
 <!--more-->

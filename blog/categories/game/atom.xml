@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[categories: Game | 折腾来折腾去]]></title>
-  <link href="http://pikipity.github.com/blog/categories/game/atom.xml" rel="self"/>
-  <link href="http://pikipity.github.com/"/>
+  <link href="http://pikipity.github.io/blog/categories/game/atom.xml" rel="self"/>
+  <link href="http://pikipity.github.io/"/>
   <updated>2013-01-30T00:00:00+08:00</updated>
-  <id>http://pikipity.github.com/</id>
+  <id>http://pikipity.github.io/</id>
   <author>
     <name><![CDATA[pikipity]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[巨人的猎手]]></title>
-    <link href="http://pikipity.github.com/blog/attack-on-titan.html"/>
+    <link href="http://pikipity.github.io/blog/attack-on-titan.html"/>
     <updated>2013-10-03T20:28:00+08:00</updated>
-    <id>http://pikipity.github.com/blog/attack-on-titan</id>
+    <id>http://pikipity.github.io/blog/attack-on-titan</id>
     <content type="html"><![CDATA[<p><img src="https://lh4.googleusercontent.com/-r3XfVFu4YSU/Uk1xgsz8cyI/AAAAAAAABOE/3ONWh1lL_jk/s800/%25E5%25B1%258F%25E5%25B9%2595%25E5%25BF%25AB%25E7%2585%25A7%25202013-10-03%2520%25E4%25B8%258B%25E5%258D%25889.30.19.png" alt="巨人的猎手" /></p>
 
 <p>今天给大家推荐一款国人制作的 3D 网页游戏–《巨人的猎手》，属于《进击的巨人》的同人游戏，由你来扮演《进击的巨人》中的五名主角在不同的地图上猎杀巨人。可以单机玩，也可以局域网联机玩。每个角色都有不同的特殊技。操作方面还是很复杂的：</p>
@@ -63,9 +63,9 @@
   
   <entry>
     <title type="html"><![CDATA[让我们一起来征服世界]]></title>
-    <link href="http://pikipity.github.com/blog/introduction-to-terraria.html"/>
+    <link href="http://pikipity.github.io/blog/introduction-to-terraria.html"/>
     <updated>2013-09-16T20:14:00+08:00</updated>
-    <id>http://pikipity.github.com/blog/introduction-to-terraria</id>
+    <id>http://pikipity.github.io/blog/introduction-to-terraria</id>
     <content type="html"><![CDATA[<p><img src="https://lh3.googleusercontent.com/-xBEV9XTEUq8/UjcIJFQTLzI/AAAAAAAABL0/MzrQc4KU-oU/s364/Logo.png" alt="Terraria" /></p>
 
 <p>今天推荐一款沙盒游戏 – <a href="http://www.terraria.org/">《Terraria》</a>。“沙盒游戏”是模拟游戏的一个分支，玩家在一个大世界下自由行动，通常没有明确的目标，玩家发挥想象自由创造，例如<a href="http://www.ali213.net/zt/spore/">《孢子》</a>、<a href="http://zh.wikipedia.org/wiki/%E4%BF%A0%E7%9B%9C%E7%8D%B5%E8%BB%8A%E6%89%8B%E7%B3%BB%E5%88%97">《侠盗猎车手》</a>、<a href="https://minecraft.net/">《minecraft》</a>都属于沙盒游戏，其中<a href="https://minecraft.net/">《minecraft》</a>的超高的自由度现在应该是无人不知无人不晓了。</p>
@@ -89,9 +89,9 @@
   
   <entry>
     <title type="html"><![CDATA[推荐一款游戏 Cube Slam]]></title>
-    <link href="http://pikipity.github.com/blog/cube-slam.html"/>
+    <link href="http://pikipity.github.io/blog/cube-slam.html"/>
     <updated>2013-08-13T00:01:00+08:00</updated>
-    <id>http://pikipity.github.com/blog/cube-slam</id>
+    <id>http://pikipity.github.io/blog/cube-slam</id>
     <content type="html"><![CDATA[<p><img src="https://lh4.googleusercontent.com/-idNKKzH2b_0/UgkIm7DLEPI/AAAAAAAABCI/XOPh1qkCafI/s800/%25E5%25B1%258F%25E5%25B9%2595%25E5%25BF%25AB%25E7%2585%25A7%25202013-08-13%2520%25E4%25B8%258A%25E5%258D%258812.03.25.png" alt="Cube Slam" /></p>
 
 <p>今天推荐一款游戏 – <a href="https://www.cubeslam.com">Cube Slam</a>，这款游戏来自于 <a href="http://www.chromeexperiments.com/">Chrome Experiment</a>，只可以使用 <a href="https://www.google.com/intl/zh-CN/chrome/browser/">Chrome 浏览器</a>才可以打开。这款游戏很简单，就是通过移动面前的挡板来阻挡滑块打中自己，开始会有一层保护膜保护自己，当保护膜被击中一次之后就消失了，场上还会随机出现各式各样的道具，比如加长你的挡板、场上出现大雾或是挡板发射假滑块干扰对方等等。这个游戏不仅可以和电脑（那只熊）对战，也可以邀请其他人对战，当你进入游戏的时候会随机分配一个地址给你，你只要把你的地址发送给对方你们两人就可以开始对抗了（我应该常在<a href="https://www.cubeslam.com/bdysis">这里</a>，来找我玩啊 :-D）。</p>
@@ -106,9 +106,9 @@
   
   <entry>
     <title type="html"><![CDATA[“扫雷”其实是一件燃到爆的游戏]]></title>
-    <link href="http://pikipity.github.com/blog/saolei.html"/>
+    <link href="http://pikipity.github.io/blog/saolei.html"/>
     <updated>2013-04-27T23:29:00+08:00</updated>
-    <id>http://pikipity.github.com/blog/saolei</id>
+    <id>http://pikipity.github.io/blog/saolei</id>
     <content type="html"><![CDATA[<p>看完这个我才知道，原来“扫雷”还是这样<strong>燃</strong>的一个游戏。有兴趣的可以到这个<a href="http://saolei.net/">传说中的地方</a>看看，吓死人了。其实我是今天看了 <a href="https://zh.wikipedia.org/wiki/%E8%B8%A9%E5%9C%B0%E9%9B%B7">wikipedia</a> 才知道了这个<strong>燃到爆</strong>的游戏到底怎么玩。</p>
 
 <embed src="http://17173.tv.sohu.com/playercs2008.swf?Flvid=1577735" quality="high" width="500" height="395" align="middle" allowscriptaccess="always" allowfullscreen="true" mode="transparent" type="application/x-shockwave-flash" />
@@ -118,9 +118,9 @@
   
   <entry>
     <title type="html"><![CDATA[你真的懂 Excel 么？]]></title>
-    <link href="http://pikipity.github.com/blog/excel-game.html"/>
+    <link href="http://pikipity.github.io/blog/excel-game.html"/>
     <updated>2013-03-31T11:46:00+08:00</updated>
-    <id>http://pikipity.github.com/blog/excel-game</id>
+    <id>http://pikipity.github.io/blog/excel-game</id>
     <content type="html"><![CDATA[<p><img src="https://lh5.googleusercontent.com/-UlxnYCvwxMM/UVe59_pmBZI/AAAAAAAAAnc/Wmuz-QC1iBI/s550/5153b5fd15930.png" alt="Excel RPG" width="550pt" /></p>
 
 <p>是的，你没有看错，一名加拿大会计师 Cary Walkin 用 Excel 做了一个 RPG 游戏 Arena.Xlsm。可在 Excel 2007、Excel 2010、Excel 2013 版本中运行，游戏虽然不大，只有 1M 大小，但是内容并不输给一般的 RPG 游戏：</p>

@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[categories: SCM | 折腾来折腾去]]></title>
-  <link href="http://pikipity.github.com/blog/categories/scm/atom.xml" rel="self"/>
-  <link href="http://pikipity.github.com/"/>
+  <link href="http://pikipity.github.io/blog/categories/scm/atom.xml" rel="self"/>
+  <link href="http://pikipity.github.io/"/>
   <updated>2013-01-30T00:00:00+08:00</updated>
-  <id>http://pikipity.github.com/</id>
+  <id>http://pikipity.github.io/</id>
   <author>
     <name><![CDATA[pikipity]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[第十章 LCD]]></title>
-    <link href="http://pikipity.github.com/blog/lcd.html"/>
+    <link href="http://pikipity.github.io/blog/lcd.html"/>
     <updated>2013-05-11T09:08:00+08:00</updated>
-    <id>http://pikipity.github.com/blog/lcd</id>
+    <id>http://pikipity.github.io/blog/lcd</id>
     <content type="html"><![CDATA[<h3 id="lcd">什么是LCD</h3>
 
 <p>LCD 就是液晶显示器，维基百科的解释在<a href="https://zh.wikipedia.org/wiki/%E6%B6%B2%E6%99%B6%E6%98%BE%E7%A4%BA%E5%99%A8">这里</a>，以前的小液晶显示器没有背光，但是现在大多数 LCD 都会加入背光来使得显示器在没有外界光线的情况下也可以使用，但是背光的加入就让能耗上升了。</p>
@@ -359,9 +359,9 @@ void main()
   
   <entry>
     <title type="html"><![CDATA[第九章 时序]]></title>
-    <link href="http://pikipity.github.com/blog/scm-priciple-9.html"/>
+    <link href="http://pikipity.github.io/blog/scm-priciple-9.html"/>
     <updated>2013-05-01T00:09:00+08:00</updated>
-    <id>http://pikipity.github.com/blog/scm-priciple-9</id>
+    <id>http://pikipity.github.io/blog/scm-priciple-9</id>
     <content type="html"><![CDATA[<p>时序在设计电路中很重要，在仿真软件中仿真正常，但是在实际中却出现各种各样奇怪的问题，例如LED应该亮的时候不亮，不应该亮的时候乱亮，导致整个LED矩阵一片混乱，如果接脚一切正常的话，一般就是时序不符合要求，更换芯片或是减少过程中的芯片数量一般就可以解决，但是这些并不是应该在完成产品之后再调整的，否则成本会大大增加，所以时序问题在设计初期就应该考虑进去，来保证最终产品的稳定运行。</p>
 
 <p>每个芯片的说明书上一般会配有大量的时序图，下面是一张 AT89C51 读取外部程序寄存器时候的时序图。</p>
@@ -404,9 +404,9 @@ void main()
   
   <entry>
     <title type="html"><![CDATA[第八章 串口通信]]></title>
-    <link href="http://pikipity.github.com/blog/scm-priciple-8.html"/>
+    <link href="http://pikipity.github.io/blog/scm-priciple-8.html"/>
     <updated>2013-04-27T17:41:00+08:00</updated>
-    <id>http://pikipity.github.com/blog/scm-priciple-8</id>
+    <id>http://pikipity.github.io/blog/scm-priciple-8</id>
     <content type="html"><![CDATA[<p>串口通信是CPU与周边其他设备传递数据的一种方式。8051单片机使用一组<a href="http://baike.baidu.com/view/15524.htm">全双工</a>的<a href="http://zh.wikipedia.org/wiki/UART">UART</a>，进行资料传输</p>
 
 <h2 id="uart">UART的传输结构</h2>
@@ -543,9 +543,9 @@ SETB EA
   
   <entry>
     <title type="html"><![CDATA[第七章 外部中断]]></title>
-    <link href="http://pikipity.github.com/blog/scm-priciple-7.html"/>
+    <link href="http://pikipity.github.io/blog/scm-priciple-7.html"/>
     <updated>2013-04-27T17:13:00+08:00</updated>
-    <id>http://pikipity.github.com/blog/scm-priciple-7</id>
+    <id>http://pikipity.github.io/blog/scm-priciple-7</id>
     <content type="html"><![CDATA[<p>8051单片机提供两个外部中断口，当从这两个外部中断口接收到外部中断信号时程序就会跳到对应的中断向量的位置。这两个外部中断使用的是<code>P3.2/INT0</code>和<code>P3.3/INT1</code>两个口。<code>INT0</code>对应的中断向量为<code>03H</code>，<code>INT1</code>对应的中断向量为<code>13H</code>。</p>
 
 <h3 id="section">外部中断的设置</h3>
@@ -594,9 +594,9 @@ SETB EA
   
   <entry>
     <title type="html"><![CDATA[第六章 计时器/计数器]]></title>
-    <link href="http://pikipity.github.com/blog/scm-priciple-6.html"/>
+    <link href="http://pikipity.github.io/blog/scm-priciple-6.html"/>
     <updated>2013-04-04T09:29:00+08:00</updated>
-    <id>http://pikipity.github.com/blog/scm-priciple-6</id>
+    <id>http://pikipity.github.io/blog/scm-priciple-6</id>
     <content type="html"><![CDATA[<p>计时器与计数器使用的寄存器和它们的工作原理是一样的，当计时时脉从“0”变为“1”的时候，内部的累加器加一，当累加器溢出的时候，检查中断，如果中断置能，便进入中断，否则重新开始计数。它们唯一的不同就是使用的计时时脉不一样，计时器使用的是内部时脉，因为内部时脉很稳定，所以可以用来计算时间；计数器使用的是从 T1 或者 T0 口输入的外部时脉，如果这个外部时脉的信号代表一个事件发生的次数，那么计时/计数器就是在计算这个事件发生的次数。8051中有两个计时/计数器– Timer0 和 Timer1。</p>
 
 <h2 id="section">控制寄存器</h2>

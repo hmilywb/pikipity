@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[categories: Mac | 折腾来折腾去]]></title>
-  <link href="http://pikipity.github.com/blog/categories/mac/atom.xml" rel="self"/>
-  <link href="http://pikipity.github.com/"/>
+  <link href="http://pikipity.github.io/blog/categories/mac/atom.xml" rel="self"/>
+  <link href="http://pikipity.github.io/"/>
   <updated>2013-01-30T00:00:00+08:00</updated>
-  <id>http://pikipity.github.com/</id>
+  <id>http://pikipity.github.io/</id>
   <author>
     <name><![CDATA[pikipity]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[让我们一起来征服世界]]></title>
-    <link href="http://pikipity.github.com/blog/introduction-to-terraria.html"/>
+    <link href="http://pikipity.github.io/blog/introduction-to-terraria.html"/>
     <updated>2013-09-16T20:14:00+08:00</updated>
-    <id>http://pikipity.github.com/blog/introduction-to-terraria</id>
+    <id>http://pikipity.github.io/blog/introduction-to-terraria</id>
     <content type="html"><![CDATA[<p><img src="https://lh3.googleusercontent.com/-xBEV9XTEUq8/UjcIJFQTLzI/AAAAAAAABL0/MzrQc4KU-oU/s364/Logo.png" alt="Terraria" /></p>
 
 <p>今天推荐一款沙盒游戏 – <a href="http://www.terraria.org/">《Terraria》</a>。“沙盒游戏”是模拟游戏的一个分支，玩家在一个大世界下自由行动，通常没有明确的目标，玩家发挥想象自由创造，例如<a href="http://www.ali213.net/zt/spore/">《孢子》</a>、<a href="http://zh.wikipedia.org/wiki/%E4%BF%A0%E7%9B%9C%E7%8D%B5%E8%BB%8A%E6%89%8B%E7%B3%BB%E5%88%97">《侠盗猎车手》</a>、<a href="https://minecraft.net/">《minecraft》</a>都属于沙盒游戏，其中<a href="https://minecraft.net/">《minecraft》</a>的超高的自由度现在应该是无人不知无人不晓了。</p>
@@ -41,9 +41,9 @@
   
   <entry>
     <title type="html"><![CDATA[youtube-dl GUI]]></title>
-    <link href="http://pikipity.github.com/blog/youtube-dl-gui.html"/>
+    <link href="http://pikipity.github.io/blog/youtube-dl-gui.html"/>
     <updated>2013-08-25T15:47:00+08:00</updated>
-    <id>http://pikipity.github.com/blog/youtube-dl-gui</id>
+    <id>http://pikipity.github.io/blog/youtube-dl-gui</id>
     <content type="html"><![CDATA[<p>经常在网上看到一些很好的视频想要保存下来，如果保存成书签的形式，每次打开都要重新加载一遍实在是太麻烦了，最好的当然是下载到电脑上，虽然自己找了许多在 Mac OS X 上下载视频的软件，但是其中的广告或是收费升级通知让我烦不胜烦。最后找到了这个软件 – <a href="http://rg3.github.io/youtube-dl/">youtube-dl</a>。用 Python 编写，本来是专门用于下载 YouTube 上的视频的，但是现在支持大部分的视频网站，经测试优酷和土豆都可以正常下载，唯一的缺点就是没有一个 GUI，每次都要打开终端输入一行代码，而且像我这种记忆渣每次都要查一遍它的参数列表，实在麻烦，但是又不忍放弃，于是决定自己为其写一个 GUI。</p>
 
 <p><a href="http://pikipity.github.io/youtube-dl-GUI/">这里是此 youtube-dl GUI 的项目主页</a>，安装及使用方法都可以找到。下面是软件截图，因为仅仅是为了使用方便，所以看上去和简陋，但是功能还是齐全的，下一步希望可以抽时间把 “Options” 做的更人性化一点。</p>
@@ -56,9 +56,9 @@
   
   <entry>
     <title type="html"><![CDATA[用 Alfred 快速启动 MATLAB]]></title>
-    <link href="http://pikipity.github.com/blog/open-matlab-fast-using-alfred.html"/>
+    <link href="http://pikipity.github.io/blog/open-matlab-fast-using-alfred.html"/>
     <updated>2013-08-05T18:44:00+08:00</updated>
-    <id>http://pikipity.github.com/blog/open-matlab-fast-using-alfred</id>
+    <id>http://pikipity.github.io/blog/open-matlab-fast-using-alfred</id>
     <content type="html"><![CDATA[<p>大概很多人都会难以忍受 MATLAB 启动时候漫长的等待，那是因为 MATLAB 的窗口化是基于 java 的，加载 java 永远是一个让人蛋疼的事情。但是如果你使用的是 Linux 或是 Mac OS X，那么你完全没必要把时间都花费在等待 MATLAB 准备和打开 java 的过程上。我们真正使用 MATLAB 是使用它的命令行，而它的图形化界面，除了修改图片和使用具有 GUI 的 toolbox，一般很少用到，所以到用到的时候在加载 java 就可以了，而且由于加载 java 和启用命令行的操作分开了，同时运行的线程和占用的内存都减少了，java 的加载速度也会相应提升。总而言之，就是让你觉得 Matlab 快了很多很多。</p>
 
 <p><img src="https://lh3.googleusercontent.com/-IPC7qvN44iA/Uf-RDQ06AZI/AAAAAAAAA8E/oyQ6i78YWwo/s800/%25E5%25B1%258F%25E5%25B9%2595%25E5%25BF%25AB%25E7%2585%25A7%25202013-08-05%2520%25E4%25B8%258B%25E5%258D%25887.46.50.png" alt="终端使用 MATLAB" /></p>
@@ -95,9 +95,9 @@
   
   <entry>
     <title type="html"><![CDATA[苹果电脑 MagSafe 电源接口]]></title>
-    <link href="http://pikipity.github.com/blog/magsafe.html"/>
+    <link href="http://pikipity.github.io/blog/magsafe.html"/>
     <updated>2013-07-17T18:57:00+08:00</updated>
-    <id>http://pikipity.github.com/blog/magsafe</id>
+    <id>http://pikipity.github.io/blog/magsafe</id>
     <content type="html"><![CDATA[<p>第一次看到苹果电脑的电源接口就觉得设计的很独特。和平常的电脑不一样，不是将接口插入到电脑上，而是用一块磁铁将电源接口吸附在电脑上。这样的好处是防止突然撦拽电源线的时候，损伤电源接口或是电脑。而且电脑上的接口不仅小而且深度不深，不占地方还易于清理。真的是很好的设计。今天在网上看到一篇译文，专门介绍苹果电脑电源接口的结构，还有指示灯变颜色的原理的，于是抄录在这里。译文原文在<a href="http://www.mac52ipod.cn/post/apple-magsafe-connector-structure-and-how-it-works.php">这里</a>，英文原文在<a href="http://www.righto.com/2013/06/teardown-and-exploration-of-magsafe.html">这里</a>。</p>
 
 <h2 id="magsafe-">苹果电脑 MagSafe 电源接口的结构，还有指示灯变颜色的原理</h2>
@@ -132,9 +132,9 @@
   
   <entry>
     <title type="html"><![CDATA[Mac OS X 隐藏软件]]></title>
-    <link href="http://pikipity.github.com/blog/command-plus-h.html"/>
+    <link href="http://pikipity.github.io/blog/command-plus-h.html"/>
     <updated>2013-07-17T07:52:00+08:00</updated>
-    <id>http://pikipity.github.com/blog/command-plus-h</id>
+    <id>http://pikipity.github.io/blog/command-plus-h</id>
     <content type="html"><![CDATA[<p>在 Mac OS X 系统中有一个非常好用的功能，就是“隐藏应用程序”。在选定某个应用程序的状态下，按 <code>command+H</code> 就可以隐藏当前选定的软件，按 <code>command+option+H</code> 就可以隐藏当前所有未选定的软件，起到的效果和最小化（顺带一提最小化当前窗口的快捷键是 <code>command+M</code>）一样，唯一的区别就是：“最小化”是对于窗口而言的；“隐藏”是对于软件而言的。也就是说，如果将一个窗口最小化，那么仅仅是当前此窗口最小化，但是如果一个软件被隐藏，那么此软件各个桌面上的窗口都会被最小化。由于 Mac OS X 使用 dock 对于当前打开的窗口和软件进行管理，最小化的窗口和未最小化的窗口难以区分（除非你已经在设置中将<code>将窗口最小化为应用程序图标</code>取消勾选，但是那样的话，当最小化的图标很多时，你的 dock 就会变得拥挤不堪）。所以“隐藏”比“最小化”更加方便程序的统一管理。</p>
 
 <p>在隐藏应用程序之后，又出现一个问题，我们很难通过 dock 一眼看出哪个程序已经被隐藏了，我们可以通过开启“已经隐藏的软件图标在 dock 上虚化的功能”，效果如下图。开启方法是在终端中输入：</p>

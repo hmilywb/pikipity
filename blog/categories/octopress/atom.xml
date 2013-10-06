@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[categories: Octopress | 折腾来折腾去]]></title>
-  <link href="http://pikipity.github.com/blog/categories/octopress/atom.xml" rel="self"/>
-  <link href="http://pikipity.github.com/"/>
+  <link href="http://pikipity.github.io/blog/categories/octopress/atom.xml" rel="self"/>
+  <link href="http://pikipity.github.io/"/>
   <updated>2013-01-30T00:00:00+08:00</updated>
-  <id>http://pikipity.github.com/</id>
+  <id>http://pikipity.github.io/</id>
   <author>
     <name><![CDATA[pikipity]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[kramdown 语法文档翻译（二）]]></title>
-    <link href="http://pikipity.github.com/blog/kramdown-syntax-chinese-2.html"/>
+    <link href="http://pikipity.github.io/blog/kramdown-syntax-chinese-2.html"/>
     <updated>2013-05-19T10:42:00+08:00</updated>
-    <id>http://pikipity.github.com/blog/kramdown-syntax-chinese-2</id>
+    <id>http://pikipity.github.io/blog/kramdown-syntax-chinese-2</id>
     <content type="html"><![CDATA[<p>上接<a href="http://pikipity.github.io/blog/kramdown-syntax-chinese-1.html">kramdown 语法文档翻译（一）</a></p>
 
 <h3 id="section">段落</h3>
@@ -134,9 +134,9 @@ Second level header
   
   <entry>
     <title type="html"><![CDATA[ kramdown 语法文档翻译（一）]]></title>
-    <link href="http://pikipity.github.com/blog/kramdown-syntax-chinese-1.html"/>
+    <link href="http://pikipity.github.io/blog/kramdown-syntax-chinese-1.html"/>
     <updated>2013-02-23T17:14:00+08:00</updated>
-    <id>http://pikipity.github.com/blog/kramdown-syntax-chinese-1</id>
+    <id>http://pikipity.github.io/blog/kramdown-syntax-chinese-1</id>
     <content type="html"><![CDATA[<p>这是 《kramdown Syntax》的中文翻译系列，英文、中文都不好，翻译过来为大家方便查询与学习，原文在<a href="http://kramdown.rubyforge.org/syntax.html#attribute-list-definitions">这里</a>。</p>
 
 <p><img src="/images/post/overview_kramdown.png" width="550pt" /></p>
@@ -250,9 +250,9 @@ $         钱的符号
   
   <entry>
     <title type="html"><![CDATA[用Octopress 和 Github 建立自己的 Blog]]></title>
-    <link href="http://pikipity.github.com/blog/octopress-and-github.html"/>
+    <link href="http://pikipity.github.io/blog/octopress-and-github.html"/>
     <updated>2013-02-22T08:44:00+08:00</updated>
-    <id>http://pikipity.github.com/blog/octopress-and-github</id>
+    <id>http://pikipity.github.io/blog/octopress-and-github</id>
     <content type="html"><![CDATA[<p>这个 Blog 就是在使用 Octopress 和 Github 建立起来的。基本思路如下，首先用 Markdown 语言迅速成文，然后由 Octopress 生成站点文件并上传到 Github，利用 Github 的 Pages 功能，就可以直接通过访问 Github 提供的二级域名访问到你的站点了。</p>
 
 <p><img src="/images/post/octopress.jpg" width="550pt" /></p>

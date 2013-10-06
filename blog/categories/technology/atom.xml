@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[categories: Technology | 折腾来折腾去]]></title>
-  <link href="http://pikipity.github.com/blog/categories/technology/atom.xml" rel="self"/>
-  <link href="http://pikipity.github.com/"/>
+  <link href="http://pikipity.github.io/blog/categories/technology/atom.xml" rel="self"/>
+  <link href="http://pikipity.github.io/"/>
   <updated>2013-01-30T00:00:00+08:00</updated>
-  <id>http://pikipity.github.com/</id>
+  <id>http://pikipity.github.io/</id>
   <author>
     <name><![CDATA[pikipity]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[tutorialspoint -- Simple Easy Learning]]></title>
-    <link href="http://pikipity.github.com/blog/tutorialspoint.html"/>
+    <link href="http://pikipity.github.io/blog/tutorialspoint.html"/>
     <updated>2013-08-23T11:24:00+08:00</updated>
-    <id>http://pikipity.github.com/blog/tutorialspoint</id>
+    <id>http://pikipity.github.io/blog/tutorialspoint</id>
     <content type="html"><![CDATA[<p><img src="https://lh3.googleusercontent.com/-EOXgioZB97c/UhbZ3vnuTXI/AAAAAAAABG0/cMP-tK0Gn4A/s599/%25E5%25B1%258F%25E5%25B9%2595%25E5%25BF%25AB%25E7%2585%25A7%25202013-08-23%2520%25E4%25B8%258A%25E5%258D%258811.41.01.png" alt="tutorialspoint -- Simple Easy Learning" /></p>
 
 <p>在网上搜索 JavaScript 教程的时候无意间发现了这个网站 – <a href="http://www.tutorialspoint.com/">tutorialpoint（简称 TP）</a>，整体感觉很像是 <a href="http://www.w3schools.com/">W3School</a>，都是一篇一篇短小精悍并且很实用的教程组成，但是内容更为丰富，不仅包括各式各样的编程语言（例如 Ruby、Python，甚至连 Assembly 都有）还包括一些网络及电脑知识（例如什么是 RSS，什么是云计算等等），编程语言的教程中还带有在线仿真编程器，你可以在其网页上就实践教程中的例子，不用为了安装一个编译器或是为了找一个好用的 IDE 伤破脑筋，先学习，觉得这门语言挺好，可以用，再找编译器或是 IDE 也不迟。</p>
@@ -30,9 +30,9 @@
   
   <entry>
     <title type="html"><![CDATA[尝试两种利用 EMD 来计算瞬时频率的方法]]></title>
-    <link href="http://pikipity.github.com/blog/try-two-way-to-find-instaneous-frequency-by-using-emd.html"/>
+    <link href="http://pikipity.github.io/blog/try-two-way-to-find-instaneous-frequency-by-using-emd.html"/>
     <updated>2013-08-19T19:00:00+08:00</updated>
-    <id>http://pikipity.github.com/blog/try-two-way-to-find-instaneous-frequency-by-using-emd</id>
+    <id>http://pikipity.github.io/blog/try-two-way-to-find-instaneous-frequency-by-using-emd</id>
     <content type="html"><![CDATA[<p>这两天利用 Matlab 尝试了两种利用 EMD 来计算瞬时频率的方法。EMD 的介绍请看<a href="http://pikipity.github.io/blog/find-a-way-to-calculate-the-instaneous-frequency.html">这里</a>。我利用的是 G. Rilling 的程序计算的 IMF，程序在<a href="http://perso.ens-lyon.fr/patrick.flandrin/emd.html">这里</a>下载。尽管这个程序存在着<a href="http://pikipity.github.io/blog/find-a-way-to-calculate-the-instaneous-frequency.html">这样</a>或<a href="http://pikipity.github.io/blog/find-a-way-to-calculate-the-instaneous-frequency-2.html">那样</a>的问题，但是他利用自己的假设找到了方法来解决，我曾经尝试着利用我在<a href="http://pikipity.github.io/blog/find-a-way-to-calculate-the-instaneous-frequency-2.html">这篇文章</a>中提到的看法来解决那些问题，但是发现，速度大大降低，结果改善却不明显，所以放弃而在这里使用他的程序。</p>
 
 <p>这两种方法中，一种方法先使用 Hilbert Transform 求得 IMF 的瞬时相位，然后利用瞬时相位求得瞬时频率，另一种则不适用 Hilbert Transform，直接根据 IMF 类似弦波这一特性，利用局部极值点与零点来计算瞬时频率。</p>
@@ -371,9 +371,9 @@ disp(maxf_emd2)
   
   <entry>
     <title type="html"><![CDATA[寻找一种有效估算瞬时频率的方法（EMD 求法讨论 续）]]></title>
-    <link href="http://pikipity.github.com/blog/find-a-way-to-calculate-the-instaneous-frequency-2.html"/>
+    <link href="http://pikipity.github.io/blog/find-a-way-to-calculate-the-instaneous-frequency-2.html"/>
     <updated>2013-08-14T03:19:00+08:00</updated>
-    <id>http://pikipity.github.com/blog/find-a-way-to-calculate-the-instaneous-frequency-2</id>
+    <id>http://pikipity.github.io/blog/find-a-way-to-calculate-the-instaneous-frequency-2</id>
     <content type="html"><![CDATA[<p>上接<a href="http://pikipity.github.io/blog/find-a-way-to-calculate-the-instaneous-frequency.html">寻找一种有效估算瞬时频率的方法</a>。</p>
 
 <h3 id="hkt--imf">如何判断 <script type="math/tex">h_k(t)</script> 是 IMF</h3>
@@ -465,9 +465,9 @@ disp(maxf_emd2)
   
   <entry>
     <title type="html"><![CDATA[寻找一种有效估算瞬时频率的方法（EMD 求法讨论）]]></title>
-    <link href="http://pikipity.github.com/blog/find-a-way-to-calculate-the-instaneous-frequency.html"/>
+    <link href="http://pikipity.github.io/blog/find-a-way-to-calculate-the-instaneous-frequency.html"/>
     <updated>2013-08-09T18:50:00+08:00</updated>
-    <id>http://pikipity.github.com/blog/find-a-way-to-calculate-the-instaneous-frequency</id>
+    <id>http://pikipity.github.io/blog/find-a-way-to-calculate-the-instaneous-frequency</id>
     <content type="html"><![CDATA[<p>我试图寻找一种可以用比较少的数据点就可以较为精确的估算某个时刻瞬时频率的方法，当然了，根据“薛定尔的胖次”（对于虐猫狂人薛定谔不熟悉的可以去看<a href="https://docs.google.com/file/d/0B8AjE9xqZzSiNlVlSEkxNi1uTFE/edit?usp=sharing">这里</a>的这本少儿读本，写的很好）在信号分析中的拓展，如果要精确计算瞬时频率就需要一个在时域上无限长的信号，当然这是不可能的，所以，如果能够找到一种计算方法，在时域上的精度和频域上的精度问题上去的平衡就可以了。</p>
 
 <p>在经过一番大搜索之后，发现现在最为流行的求瞬时频率的方法就是 HHT（希尔伯特-黄转换，也就是 EMD，经验模态分析，论文在<a href="https://docs.google.com/file/d/0B8AjE9xqZzSiUDhGRkJ3UEwzNjQ/edit?usp=sharing">这里</a>，洋洋洒洒90多页，大家慢慢看）。</p>
@@ -629,9 +629,9 @@ disp(maxf_emd2)
   
   <entry>
     <title type="html"><![CDATA[银行机按键声音]]></title>
-    <link href="http://pikipity.github.com/blog/yin-xing-ji-an-jian-sheng-yin.html"/>
+    <link href="http://pikipity.github.io/blog/yin-xing-ji-an-jian-sheng-yin.html"/>
     <updated>2013-07-23T08:40:00+08:00</updated>
-    <id>http://pikipity.github.com/blog/yin-xing-ji-an-jian-sheng-yin</id>
+    <id>http://pikipity.github.io/blog/yin-xing-ji-an-jian-sheng-yin</id>
     <content type="html"><![CDATA[<p>这件事的起因是和女朋友争辩银行机的按键声音是否一样，我认为，既然电话的声音都是由两个频率决定，每个按键声音不一样来提示用户按对按键，那么银行机也应该是这样了，而女朋友认为银行机按键为了保密所有按键应该是一样的，争辩不出结果于是决定做实验，于是跑到东亚9楼的ATM取款机用手机录制了下面的4段音频（没找到提供音乐外链的网网站，只能压缩之后用“百度盘”了）：</p>
 
 <p><a href="http://pan.baidu.com/share/link?shareid=2248957344&amp;uk=4080321956">录制的音频文件和处理得到的音频时域和频域图像</a></p>

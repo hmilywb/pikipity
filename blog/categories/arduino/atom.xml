@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[categories: Arduino | 折腾来折腾去]]></title>
-  <link href="http://pikipity.github.com/blog/categories/arduino/atom.xml" rel="self"/>
-  <link href="http://pikipity.github.com/"/>
+  <link href="http://pikipity.github.io/blog/categories/arduino/atom.xml" rel="self"/>
+  <link href="http://pikipity.github.io/"/>
   <updated>2013-01-30T00:00:00+08:00</updated>
-  <id>http://pikipity.github.com/</id>
+  <id>http://pikipity.github.io/</id>
   <author>
     <name><![CDATA[pikipity]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[俄罗斯方块（Arduino）]]></title>
-    <link href="http://pikipity.github.com/blog/melrose-box-arduino.html"/>
+    <link href="http://pikipity.github.io/blog/melrose-box-arduino.html"/>
     <updated>2013-09-29T13:34:00+08:00</updated>
-    <id>http://pikipity.github.com/blog/melrose-box-arduino</id>
+    <id>http://pikipity.github.io/blog/melrose-box-arduino</id>
     <content type="html"><![CDATA[<p>经过一个星期闲着无聊地编写和调试，终于可以用 Arduino 玩俄罗斯方块了。四个按钮分别控制左、右、加速下落、转动。使用 LCD12864（QC12864B） 来显示游戏画面。为了寻找可以用来控制 QC12864B 的 Arduino 库花了很长时间，最终选择了 <a href="https://code.google.com/p/u8glib/">u8glib</a>，因为这个库支持的 LCD 控制器非常丰富。<a href="https://code.google.com/p/u8glib/">u8glib 库可以在这里下载</a>，<a href="http://pan.baidu.com/s/1qrhEF">关于 QC12864B 以及如何使用 u8glib 来控制 QC12864B 的资料可以在这里下载</a>，资料中包含一个从网上找来的使用 Arduino 做示波器的例子，使用的就是 <a href="https://code.google.com/p/u8glib/">u8glib</a> 库。</p>
 
 <p>我制作的这个<a href="http://pikipity.github.io/Melrose_box">俄罗斯方块游戏机的项目主页在这里</a>。</p>
@@ -38,9 +38,9 @@
   
   <entry>
     <title type="html"><![CDATA[利用 Arduino 进行超声波测距]]></title>
-    <link href="http://pikipity.github.com/blog/ultrasonic-distance-measurement-using-arduino.html"/>
+    <link href="http://pikipity.github.io/blog/ultrasonic-distance-measurement-using-arduino.html"/>
     <updated>2013-09-21T10:32:00+08:00</updated>
-    <id>http://pikipity.github.com/blog/ultrasonic-distance-measurement-using-arduino</id>
+    <id>http://pikipity.github.io/blog/ultrasonic-distance-measurement-using-arduino</id>
     <content type="html"><![CDATA[<p>在<a href="http://pikipity.github.io/blog/arduino-dht11-lcd1602.html">昨天测量温度的装置</a>上又加上了 HC-SR04 来进行超声波测距，先利用 DHT11 测量温度，然后利用温度来计算出较为准确的声速（根据<a href="http://en.wikipedia.org/wiki/Relativistic_Euler_equations">相对论的欧拉方程</a>，声速（米每秒）=331+0.6*温度（摄氏度）），再利用 HC-SR04 测得的超声波来回的时间计算出距离，并在 LCD1602 上显示。</p>
 
 <p>HC-SR04 的使用非常简单，<a href="http://www.doc88.com/p-737494835063.html">这里有一份 HC-SR04 的中文手册</a>，首先向 Trig 引脚输入一个不小于10us的高电平，然后测量 Echo 引脚返回的高电平的时间 t，然后利用公式：距离=t*声速/2，就可以计算得到距离了。但是需要注意：</p>
@@ -69,9 +69,9 @@
   
   <entry>
     <title type="html"><![CDATA[用 Arduino 测量温度和湿度]]></title>
-    <link href="http://pikipity.github.com/blog/arduino-dht11-lcd1602.html"/>
+    <link href="http://pikipity.github.io/blog/arduino-dht11-lcd1602.html"/>
     <updated>2013-09-20T22:00:00+08:00</updated>
-    <id>http://pikipity.github.com/blog/arduino-dht11-lcd1602</id>
+    <id>http://pikipity.github.io/blog/arduino-dht11-lcd1602</id>
     <content type="html"><![CDATA[<p>今天中秋放假闲在宿舍里，于是就用 Arduino 做了一个测量温度和湿度的小装置，使用 DHT11 测量温度和湿度，然后用 LCD1602 来显示。</p>
 
 <p><a href="http://wenku.baidu.com/view/bb12c7c7d5bbfd0a795673dd.html">这里有一个 DHT11 的简单介绍</a>，包括引脚的意义和解法还有一个 Arduino 的例程。DHT11 的使用还是很简单的，基本思路就是先发送给 DHT11 一个信号，将其激活，成功激活后，DHT11 会返回一个信号，之后 DHT11 就会连续发送40位的二进制数据，这40bits的数据包括湿度数值、温度数值和校检数值，其中湿度数值和温度数值都是16位的定点二进制小数（<a href="http://pikipity.github.io/blog/scm-principle-3.html">定点二进制小数在这里有介绍</a>），其中前8位为整数位，后8位为小数位，具体排列如下：</p>
@@ -114,9 +114,9 @@
   
   <entry>
     <title type="html"><![CDATA[LED 亮度控制 -- processing 练习作]]></title>
-    <link href="http://pikipity.github.com/blog/light-controller.html"/>
+    <link href="http://pikipity.github.io/blog/light-controller.html"/>
     <updated>2013-09-08T20:52:00+08:00</updated>
-    <id>http://pikipity.github.com/blog/light-controller</id>
+    <id>http://pikipity.github.io/blog/light-controller</id>
     <content type="html"><![CDATA[<p>又是一个自己制作的 processing 的练习作，旨在练习 processing 与 Arduino 的串口通信。使用 Processing 编写的可视化控制条，用户可以通过拉拽控制条来调整亮度的数值，通过串口将亮度输送给 Arduino，由 Arduino 实现 LED 灯亮度的调整。由于是很简单的控制，所以就没有考虑什么保护电阻之类的了，直接很简单将 LED 插在了开发板上。视频中就可以看出，当亮度 100% 的时候（也就是电压达到 5V 的时候），LED 会过亮，可能会损坏 LED。</p>
 
 <p>可以到<a href="https://github.com/pikipity/Light_Controller.git">这里</a>下载源码。</p>

@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[categories: Matlab | 折腾来折腾去]]></title>
-  <link href="http://pikipity.github.com/blog/categories/matlab/atom.xml" rel="self"/>
-  <link href="http://pikipity.github.com/"/>
+  <link href="http://pikipity.github.io/blog/categories/matlab/atom.xml" rel="self"/>
+  <link href="http://pikipity.github.io/"/>
   <updated>2013-01-30T00:00:00+08:00</updated>
-  <id>http://pikipity.github.com/</id>
+  <id>http://pikipity.github.io/</id>
   <author>
     <name><![CDATA[pikipity]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[尝试两种利用 EMD 来计算瞬时频率的方法]]></title>
-    <link href="http://pikipity.github.com/blog/try-two-way-to-find-instaneous-frequency-by-using-emd.html"/>
+    <link href="http://pikipity.github.io/blog/try-two-way-to-find-instaneous-frequency-by-using-emd.html"/>
     <updated>2013-08-19T19:00:00+08:00</updated>
-    <id>http://pikipity.github.com/blog/try-two-way-to-find-instaneous-frequency-by-using-emd</id>
+    <id>http://pikipity.github.io/blog/try-two-way-to-find-instaneous-frequency-by-using-emd</id>
     <content type="html"><![CDATA[<p>这两天利用 Matlab 尝试了两种利用 EMD 来计算瞬时频率的方法。EMD 的介绍请看<a href="http://pikipity.github.io/blog/find-a-way-to-calculate-the-instaneous-frequency.html">这里</a>。我利用的是 G. Rilling 的程序计算的 IMF，程序在<a href="http://perso.ens-lyon.fr/patrick.flandrin/emd.html">这里</a>下载。尽管这个程序存在着<a href="http://pikipity.github.io/blog/find-a-way-to-calculate-the-instaneous-frequency.html">这样</a>或<a href="http://pikipity.github.io/blog/find-a-way-to-calculate-the-instaneous-frequency-2.html">那样</a>的问题，但是他利用自己的假设找到了方法来解决，我曾经尝试着利用我在<a href="http://pikipity.github.io/blog/find-a-way-to-calculate-the-instaneous-frequency-2.html">这篇文章</a>中提到的看法来解决那些问题，但是发现，速度大大降低，结果改善却不明显，所以放弃而在这里使用他的程序。</p>
 
 <p>这两种方法中，一种方法先使用 Hilbert Transform 求得 IMF 的瞬时相位，然后利用瞬时相位求得瞬时频率，另一种则不适用 Hilbert Transform，直接根据 IMF 类似弦波这一特性，利用局部极值点与零点来计算瞬时频率。</p>
@@ -356,9 +356,9 @@ disp(maxf_emd2)
   
   <entry>
     <title type="html"><![CDATA[寻找一种有效估算瞬时频率的方法（EMD 求法讨论 续）]]></title>
-    <link href="http://pikipity.github.com/blog/find-a-way-to-calculate-the-instaneous-frequency-2.html"/>
+    <link href="http://pikipity.github.io/blog/find-a-way-to-calculate-the-instaneous-frequency-2.html"/>
     <updated>2013-08-14T03:19:00+08:00</updated>
-    <id>http://pikipity.github.com/blog/find-a-way-to-calculate-the-instaneous-frequency-2</id>
+    <id>http://pikipity.github.io/blog/find-a-way-to-calculate-the-instaneous-frequency-2</id>
     <content type="html"><![CDATA[<p>上接<a href="http://pikipity.github.io/blog/find-a-way-to-calculate-the-instaneous-frequency.html">寻找一种有效估算瞬时频率的方法</a>。</p>
 
 <h3 id="hkt--imf">如何判断 <script type="math/tex">h_k(t)</script> 是 IMF</h3>
@@ -450,9 +450,9 @@ disp(maxf_emd2)
   
   <entry>
     <title type="html"><![CDATA[寻找一种有效估算瞬时频率的方法（EMD 求法讨论）]]></title>
-    <link href="http://pikipity.github.com/blog/find-a-way-to-calculate-the-instaneous-frequency.html"/>
+    <link href="http://pikipity.github.io/blog/find-a-way-to-calculate-the-instaneous-frequency.html"/>
     <updated>2013-08-09T18:50:00+08:00</updated>
-    <id>http://pikipity.github.com/blog/find-a-way-to-calculate-the-instaneous-frequency</id>
+    <id>http://pikipity.github.io/blog/find-a-way-to-calculate-the-instaneous-frequency</id>
     <content type="html"><![CDATA[<p>我试图寻找一种可以用比较少的数据点就可以较为精确的估算某个时刻瞬时频率的方法，当然了，根据“薛定尔的胖次”（对于虐猫狂人薛定谔不熟悉的可以去看<a href="https://docs.google.com/file/d/0B8AjE9xqZzSiNlVlSEkxNi1uTFE/edit?usp=sharing">这里</a>的这本少儿读本，写的很好）在信号分析中的拓展，如果要精确计算瞬时频率就需要一个在时域上无限长的信号，当然这是不可能的，所以，如果能够找到一种计算方法，在时域上的精度和频域上的精度问题上去的平衡就可以了。</p>
 
 <p>在经过一番大搜索之后，发现现在最为流行的求瞬时频率的方法就是 HHT（希尔伯特-黄转换，也就是 EMD，经验模态分析，论文在<a href="https://docs.google.com/file/d/0B8AjE9xqZzSiUDhGRkJ3UEwzNjQ/edit?usp=sharing">这里</a>，洋洋洒洒90多页，大家慢慢看）。</p>
@@ -614,9 +614,9 @@ disp(maxf_emd2)
   
   <entry>
     <title type="html"><![CDATA[用 Alfred 快速启动 MATLAB]]></title>
-    <link href="http://pikipity.github.com/blog/open-matlab-fast-using-alfred.html"/>
+    <link href="http://pikipity.github.io/blog/open-matlab-fast-using-alfred.html"/>
     <updated>2013-08-05T18:44:00+08:00</updated>
-    <id>http://pikipity.github.com/blog/open-matlab-fast-using-alfred</id>
+    <id>http://pikipity.github.io/blog/open-matlab-fast-using-alfred</id>
     <content type="html"><![CDATA[<p>大概很多人都会难以忍受 MATLAB 启动时候漫长的等待，那是因为 MATLAB 的窗口化是基于 java 的，加载 java 永远是一个让人蛋疼的事情。但是如果你使用的是 Linux 或是 Mac OS X，那么你完全没必要把时间都花费在等待 MATLAB 准备和打开 java 的过程上。我们真正使用 MATLAB 是使用它的命令行，而它的图形化界面，除了修改图片和使用具有 GUI 的 toolbox，一般很少用到，所以到用到的时候在加载 java 就可以了，而且由于加载 java 和启用命令行的操作分开了，同时运行的线程和占用的内存都减少了，java 的加载速度也会相应提升。总而言之，就是让你觉得 Matlab 快了很多很多。</p>
 
 <p><img src="https://lh3.googleusercontent.com/-IPC7qvN44iA/Uf-RDQ06AZI/AAAAAAAAA8E/oyQ6i78YWwo/s800/%25E5%25B1%258F%25E5%25B9%2595%25E5%25BF%25AB%25E7%2585%25A7%25202013-08-05%2520%25E4%25B8%258B%25E5%258D%25887.46.50.png" alt="终端使用 MATLAB" /></p>
@@ -653,9 +653,9 @@ disp(maxf_emd2)
   
   <entry>
     <title type="html"><![CDATA[Matlab 编写“生命游戏”]]></title>
-    <link href="http://pikipity.github.com/blog/the-game-of-life.html"/>
+    <link href="http://pikipity.github.io/blog/the-game-of-life.html"/>
     <updated>2013-07-26T19:46:00+08:00</updated>
-    <id>http://pikipity.github.com/blog/the-game-of-life</id>
+    <id>http://pikipity.github.io/blog/the-game-of-life</id>
     <content type="html"><![CDATA[<p>生命游戏就是指英国数学家约翰·何顿·康威在1970年发明的细胞自动机。一个平面二维世界被划分为了多个小格子，每个小格子都住着一个细胞，其存在两种状态：生或死（不是薛定谔他家养的猫的细胞，放心，没有中间状态，否则用什么算法？神经网络？）。我们可以为这个世界规定某种规则，然后观看这个世界是如何继续发展的（就是体验上帝啦）。最初，约翰·何顿·康威设定了三个法则：</p>
 
 <ul>
