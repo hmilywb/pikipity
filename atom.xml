@@ -67,6 +67,7 @@ Click &lt;a href="https://ummoodle.umac.mo/pluginfile.php/74630/mod_resource/con
 
 <ol>
   <li>禁用 IOS 内置的 pdf 阅览器。这个方法比较复杂，由于 IOS 取消了 safari 设置中“禁用内置 pdf 阅览器”的选项，导致现在想要禁用 pdf 阅览器就必须直接删除<code>/Library/</code>下的 pdf 阅览器的插件才行，必须越狱之后安装 iFile 才可以。此方法不仅麻烦，由于需要触碰到系统文件，还比较危险，一旦删错文件，后果不堪设想。</li>
+  <li>使用 moodle 的 APP，例如 <a href="https://itunes.apple.com/us/app/my-moodle/id461289000?mt=8">My Moodle</a> 和 <a href="https://itunes.apple.com/au/app/moodle-mobile/id633359593?mt=8">Moodle Mobile</a>，暂时我还没有使用过，但是据使用者说，可以正常打开 pdf 文件。</li>
   <li>
     <p>直接浏览目标网页的 html 源代码，找到 pdf 文件原始地址来打开。我选择使用这种方法，一次设置之后，以后使用也很方便，熟练以后，因为 ummoodle 的各个网页的 html 代码结构都差不多，所以也是很快捷的。由于 IOS 上的 safari 浏览器无法直接查看源代码，所以需要借助一些可以查看 html 的网站来实现这个方法，我借助的是<a href="http://ole.michelsen.dk/blog/view-source-on-the-ipad-and-iphone/">这个</a>网站的方法。原理就是利用 “GeSHi” 这个小程序将网页发送给 “ole.michelsen.dk” 的服务器来解析网页的 html 代码，然后显示出来（还带有代码高亮呦！！）。具体的设置如下：</p>
 
@@ -100,6 +101,11 @@ Click &lt;a href="https://ummoodle.umac.mo/pluginfile.php/74630/mod_resource/con
     <p><img src="https://lh4.googleusercontent.com/-I6jQKkkt67A/Uk7CcDHtE2I/AAAAAAAABQ4/_Q-EJqEbLYk/s512/%25E7%2585%25A7%25E7%2589%2587%252004-10-2013%252009%252006%252028%2520PM.png" alt="点击 pdf 文件源地址就可以正常打开 pdf 文件了" /></p>
   </li>
 </ol>
+
+<p>PS: ICTO 回复了相关问题，回复邮件内容如下：</p>
+
+<pre><code>For this case, please advice your teacher to change the "Appearance" option of the PDF file to "New window" in UMMoodle and this will solve your problem.
+</code></pre>
 ]]></content>
   </entry>
   
