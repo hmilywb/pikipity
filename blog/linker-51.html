@@ -3,12 +3,12 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>苹果公司供应商地图 - 折腾来折腾去</title>
+	<title>Keil C 中不再编译未使用的函数 - 折腾来折腾去</title>
 	<meta name="author" content="pikipity">
 
 	
-	<meta name="description" content="苹果公司供应商地图 Posted by pikipity
-&nbsp; 2013年02月19日 Mac Comments 网站 “ChinaFile” 使用 “batchgeo” 根据上个月 Apple 公司发布的供应商名单制作了一幅展现全部 Apple 公司供应商的地图。想围观地图请点这里， &hellip;">
+	<meta name="description" content="Keil C 中不再编译未使用的函数 Posted by pikipity
+&nbsp; 2013年10月13日 SCM Comments 最近在为 AT89C52 编写 LCD12864 的头文件的时候发现 Keil 竟然无法自动识别未使用的函数，也就是说 Keil 会将所有函数全部编译一边， &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -112,7 +112,7 @@
 	<div id="content" class="inner"><div>
 <article class="post">
 	
-	<h2 class="title">苹果公司供应商地图</h2>
+	<h2 class="title">Keil C 中不再编译未使用的函数</h2>
 	<div class="meta">
 	       <div class="author" style="float:left;">
   
@@ -131,11 +131,11 @@
   
 
 
-<time datetime="2013-02-19T23:07:00+08:00" pubdate data-updated="true">2013年02月19日</time></div>
+<time datetime="2013-10-13T23:16:00+08:00" pubdate data-updated="true">2013年10月13日</time></div>
 		<div class="tags" style="float:left;">
 
 
-	<a class='category' href='/blog/categories/mac/'>Mac</a>
+	<a class='category' href='/blog/categories/scm/'>SCM</a>
 
 
 </div>
@@ -143,19 +143,40 @@
 			<span class="comments"><a href="#com_target">Comments</a></span>
 		
 	</div>
-	<div class="entry-content" style="clear:both;"><p>网站 <a href="http://www.chinafile.com/">“ChinaFile”</a> 使用 <a href="https://batchgeo.com/">“batchgeo”</a> 根据上个月 Apple 公司发布的<a href="http://images.apple.com/supplierresponsibility/pdf/Apple_SR_2013_Progress_Report.pdf">供应商名单</a>制作了一幅展现全部 Apple 公司供应商的地图。想围观地图请点<a href="https://batchgeo.com/map/92ad350a9800f91f03b3862c64f3593f">这里</a>，围观原文请点<a href="http://www.chinafile.com/who-supplies-apple-it-s-not-just-china-interactive-map">这里</a>。</p>
+	<div class="entry-content" style="clear:both;"><p>最近在为 AT89C52 编写 LCD12864 的头文件的时候发现 Keil 竟然无法自动识别未使用的函数，也就是说 Keil 会将所有函数全部编译一边，如果 main 函数中没有使用某个函数的话，这个没使用的函数不仅占用了单片机的内存，在编译结束后的 Warning 也让人很不舒服。所以去搜索了一下，大体有两种解决方法：</p>
 
-<p><img src="/images/post/apple_supplier.jpg" alt="Apple 公司供应商地图" width="650pt" /></p>
+<ol>
+  <li>添加注释或者编译开关：如果对于小项目，这种方法的确可行，但是如果想编写一个具有通用意义的头文件的话，要一个个把不用的头文件注释掉，显然不实际。每次使用头文件都要修改一次注释和编译开关也不现实。所以这个方法不具有普遍适用意义。</li>
+  <li>各个函数分别编写一个 C 文件，然后仅将用到的函数编译为 OBJ。每次使用头文件都要找到需要的函数然后编译一次，也很麻烦，此方法显然也不具有普遍适用意义。</li>
+</ol>
 
-<!--more-->
+<p>既然 Keil 默然的连接器无法识别未使用的函数，那么可不可以试试别的连接器呢？于是去<a href="http://www.keil.com/"> Keil 的官网</a>逛了一圈，发现 Keil 本身就可以将默认的连接器 BL51 换为另一种连接器 LX51。赶紧更换一下试一试，更换步骤如下：</p>
 
-<p>亚洲竟然有 660 个，发展中国家就这样受欺负么？来看看中国的。</p>
+<ol>
+  <li>工具栏 <code>Project</code> -&gt; 选择 <code>Options For Target 'xx'</code>。</li>
+  <li>在 <code>Device</code> 选项卡，选中 <code>Use Extended Linker(LX51) instead of BL51</code>。</li>
+</ol>
 
-<p><img src="/images/post/apple_supplier_china.jpg" alt="Apple 公司中国供应商地图" width="650pt" /></p>
+<p>但是编译一中发现问题依然没有解决，这是怎么回事呢？应该是还需要添加编译选项吧。于是又去看了一下<a href="http://www.keil.com/support/man/docs/lx51/default.htm"> LX 51 说明文档</a>，发现了 “REMOVEUNUSED” 这样一个选项：</p>
 
-<p>呵呵，好像把日本韩国也截进来了。江苏、广东躺枪啊，这么多。苏州、上海周边的亲们你们到底给 Apple 公司提供了多少廉价劳动力啊！！</p>
+<blockquote>
+  <p>The <strong>REMOVEUNUSED</strong> directive removes unused program and data segments provided that Data Overlaying is enabled. When you apply this directive unused functions along with the related data segments are deleted in the final executable program.</p>
+</blockquote>
 
-<p><img src="/images/post/apple_supplier_jiangsu.jpg" alt="江苏、上海周边的劳动力们啊！！" width="650pt" /></p>
+<p>这不就是我需要的嘛！！赶紧加上去：</p>
+
+<p>在 <code>Options For Target 'xx'</code> 中的 <code>LX51 Misc</code> 选项卡中的 <code>Misc controls</code> 填写 “REMOVEUNUSED”。</p>
+
+<p>再次编译，发现 Warning 不见了，编译之后的 hex 文件也小了，问题解决。</p>
+
+<p>总结一下，就是三步：</p>
+
+<ol>
+  <li>工具栏 <code>Project</code> -&gt; 选择 <code>Options For Target 'xx'</code>。</li>
+  <li>在 <code>Device</code> 选项卡，选中 <code>Use Extended Linker(LX51) instead of BL51</code>。</li>
+  <li>在  <code>LX51 Misc</code> 选项卡中的 <code>Misc controls</code>， 填写 “REMOVEUNUSED”（不加引号）。</li>
+</ol>
+
 </div>
 
 
@@ -199,19 +220,17 @@ var jiathis_config={
   
 
 
-<time datetime="2013-02-19T23:07:00+08:00" pubdate data-updated="true">2013年02月19日</time></p>
+<time datetime="2013-10-13T23:16:00+08:00" pubdate data-updated="true">2013年10月13日</time></p>
 </footer>
 
 <section>
 <ul id="left-right">
 <span style="float:left">
 	
-        <a class="basic-alignment left" href="/blog/single-mos-amp.html" title="Previous Post: 单 MOSFET 放大器"><font face=Wingdings>&#239;</font> 单 MOSFET 放大器</a>
+        <a class="basic-alignment left" href="/blog/process-on.html" title="Previous Post: 多人实时合作免费在线绘图软件 -- Process On"><font face=Wingdings>&#239;</font> 多人实时合作免费在线绘图软件 -- Process On</a>
         </span>
 <span style="float:right">
-	
-        <a class="basic-alignment right" href="/blog/mac-update.html" title="next Post: Apple 公司发布 Mac 紧急更新">Apple 公司发布 Mac 紧急更新 <font face=Wingdings>&#240;</font></a>
-       </span>
+	 </span>
 </ul>
 </section>
 
