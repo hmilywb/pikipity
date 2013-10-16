@@ -14,6 +14,27 @@
 
   
   <entry>
+    <title type="html"><![CDATA[MATLAB 的函数中清理公用 workspace]]></title>
+    <link href="http://pikipity.github.io/blog/clear-workspace-matlab.html"/>
+    <updated>2013-10-16T18:51:00+08:00</updated>
+    <id>http://pikipity.github.io/blog/clear-workspace-matlab</id>
+    <content type="html"><![CDATA[<p>今天在编写一个 MATLAB 函数的时候，尝试使用 <code>clear all;</code> 来清理掉 workspace，结果运行后发现完全没有效果。查找了一下 MATLAB 的帮助文件才发现，每个函数在运行的时候都有自己的 workspace，所以如果在函数内部使用 <code>clear</code> 的话，清空的是函数自己的 workspace，不会影响到公用的 workspace。于是又到<a href="http://www.mathworks.com/matlabcentral/"> mathwork 的 MATLAB Center </a> 逛了一下，发现了一种很好的方法：使用 <code>evalin()</code> 函数。<a href="http://www.mathworks.com/matlabcentral/newsreader/view_thread/253314">原帖在这里</a>。</p>
+
+<p>总结一下，就是使用下面的语句：</p>
+
+<pre><code>evalin('caller','clear all');
+</code></pre>
+
+<p>或者使用</p>
+
+<pre><code>evalin('base','clear all');
+</code></pre>
+
+<p>主要区别是，前一个不仅会清空公用 workspace，也会清空其他函数的 workspace。后一个仅仅只清空公用的 workspace。</p>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[尝试两种利用 EMD 来计算瞬时频率的方法]]></title>
     <link href="http://pikipity.github.io/blog/try-two-way-to-find-instaneous-frequency-by-using-emd.html"/>
     <updated>2013-08-19T19:00:00+08:00</updated>
@@ -648,31 +669,6 @@ disp(maxf_emd2)
   <li><a href="http://pan.baidu.com/share/link?shareid=2452208514&amp;uk=4080321956">Matlab Command</a></li>
 </ul>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Matlab 编写“生命游戏”]]></title>
-    <link href="http://pikipity.github.io/blog/the-game-of-life.html"/>
-    <updated>2013-07-26T19:46:00+08:00</updated>
-    <id>http://pikipity.github.io/blog/the-game-of-life</id>
-    <content type="html"><![CDATA[<p>生命游戏就是指英国数学家约翰·何顿·康威在1970年发明的细胞自动机。一个平面二维世界被划分为了多个小格子，每个小格子都住着一个细胞，其存在两种状态：生或死（不是薛定谔他家养的猫的细胞，放心，没有中间状态，否则用什么算法？神经网络？）。我们可以为这个世界规定某种规则，然后观看这个世界是如何继续发展的（就是体验上帝啦）。最初，约翰·何顿·康威设定了三个法则：</p>
-
-<ul>
-  <li>当一个细胞周围的八个位置中有3个细胞时，该位置产生细胞；</li>
-  <li>当周围有2个细胞时，该位置维持原样；</li>
-  <li>其他情况，该位置变为无细胞。</li>
-</ul>
-
-<p>然后，世界开始根据这三个法则依据最初细胞摆放数量和位置的不同演变出了各种各样有趣的图案，比如下面这个，这三条看似简单的规律其实蕴含着许许多多的推论，有兴趣的可以看看<a href="http://ja.wikipedia.org/wiki/%E3%83%A9%E3%82%A4%E3%83%95%E3%82%B2%E3%83%BC%E3%83%A0">日文的wiki</a>介绍，详细程度超乎想象。</p>
-
-<p><img src="http://upload.wikimedia.org/wikipedia/commons/e/e5/Gospers_glider_gun.gif" alt="机枪制造“滑翔机”" /></p>
-
-<p>在实验室看论文实在无聊，于是用 Matlab 编写了个生命游戏的小程序，切身地体会到了 Matlab 是一个多么效率低下的语言啊。</p>
-
-<p>PS：程序中存在大量 for 循环，严重影响程序运行质量，我觉得还可以抢救一下，元芳你怎么看？</p>
-
-<p>忘了，程序在我的 Github 里面，传送门在<a href="https://github.com/pikipity/The-game-of-life-by-using-MATLAB.git">这里</a></p>
 ]]></content>
   </entry>
   

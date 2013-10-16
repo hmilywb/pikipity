@@ -3,12 +3,12 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>暑假开始 O(∩_∩)O - 折腾来折腾去</title>
+	<title>MATLAB 的函数中清理公用 workspace - 折腾来折腾去</title>
 	<meta name="author" content="pikipity">
 
 	
-	<meta name="description" content="暑假开始 O(∩_∩)O Posted by pikipity
-&nbsp; 2013年05月10日 Life Comments 暑假第一天，庆祝一下，福利放送~~~~~~~~~ var jiathis_config={ data_track_clickback:true, summary &hellip;">
+	<meta name="description" content="MATLAB 的函数中清理公用 Workspace Posted by pikipity
+&nbsp; 2013年10月16日 Matlab Comments 今天在编写一个 MATLAB 函数的时候，尝试使用 clear all; 来清理掉 workspace，结果运行后发现完全没有效果。 &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -112,7 +112,7 @@
 	<div id="content" class="inner"><div>
 <article class="post">
 	
-	<h2 class="title">暑假开始 O(∩_∩)O</h2>
+	<h2 class="title">MATLAB 的函数中清理公用 Workspace</h2>
 	<div class="meta">
 	       <div class="author" style="float:left;">
   
@@ -131,11 +131,11 @@
   
 
 
-<time datetime="2013-05-10T09:26:00+08:00" pubdate data-updated="true">2013年05月10日</time></div>
+<time datetime="2013-10-16T18:51:00+08:00" pubdate data-updated="true">2013年10月16日</time></div>
 		<div class="tags" style="float:left;">
 
 
-	<a class='category' href='/blog/categories/life/'>Life</a>
+	<a class='category' href='/blog/categories/matlab/'>Matlab</a>
 
 
 </div>
@@ -143,10 +143,19 @@
 			<span class="comments"><a href="#com_target">Comments</a></span>
 		
 	</div>
-	<div class="entry-content" style="clear:both;"><p>暑假第一天，庆祝一下，福利放送~~~~~~~~~</p>
+	<div class="entry-content" style="clear:both;"><p>今天在编写一个 MATLAB 函数的时候，尝试使用 <code>clear all;</code> 来清理掉 workspace，结果运行后发现完全没有效果。查找了一下 MATLAB 的帮助文件才发现，每个函数在运行的时候都有自己的 workspace，所以如果在函数内部使用 <code>clear</code> 的话，清空的是函数自己的 workspace，不会影响到公用的 workspace。于是又到<a href="http://www.mathworks.com/matlabcentral/"> mathwork 的 MATLAB Center </a> 逛了一下，发现了一种很好的方法：使用 <code>evalin()</code> 函数。<a href="http://www.mathworks.com/matlabcentral/newsreader/view_thread/253314">原帖在这里</a>。</p>
 
-<embed height="452" width="544" quality="high" allowfullscreen="true" type="application/x-shockwave-flash" src="http://static.hdslb.com/miniloader.swf" flashvars="aid=556019&amp;page=1" pluginspage="http://www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash" />
+<p>总结一下，就是使用下面的语句：</p>
 
+<pre><code>evalin('caller','clear all');
+</code></pre>
+
+<p>或者使用</p>
+
+<pre><code>evalin('base','clear all');
+</code></pre>
+
+<p>主要区别是，前一个不仅会清空公用 workspace，也会清空其他函数的 workspace。后一个仅仅只清空公用的 workspace。</p>
 </div>
 
 
@@ -190,19 +199,17 @@ var jiathis_config={
   
 
 
-<time datetime="2013-05-10T09:26:00+08:00" pubdate data-updated="true">2013年05月10日</time></p>
+<time datetime="2013-10-16T18:51:00+08:00" pubdate data-updated="true">2013年10月16日</time></p>
 </footer>
 
 <section>
 <ul id="left-right">
 <span style="float:left">
 	
-        <a class="basic-alignment left" href="/blog/affect-of-girl-friend-birthday.html" title="Previous Post: 女朋友生日的影响"><font face=Wingdings>&#239;</font> 女朋友生日的影响</a>
+        <a class="basic-alignment left" href="/blog/linker-51.html" title="Previous Post: Keil C 中不再编译未使用的函数"><font face=Wingdings>&#239;</font> Keil C 中不再编译未使用的函数</a>
         </span>
 <span style="float:right">
-	
-        <a class="basic-alignment right" href="/blog/lcd.html" title="next Post: 第十章 LCD">第十章 LCD <font face=Wingdings>&#240;</font></a>
-       </span>
+	 </span>
 </ul>
 </section>
 

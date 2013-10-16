@@ -14,6 +14,27 @@
 
   
   <entry>
+    <title type="html"><![CDATA[MATLAB 的函数中清理公用 workspace]]></title>
+    <link href="http://pikipity.github.io/blog/clear-workspace-matlab.html"/>
+    <updated>2013-10-16T18:51:00+08:00</updated>
+    <id>http://pikipity.github.io/blog/clear-workspace-matlab</id>
+    <content type="html"><![CDATA[<p>今天在编写一个 MATLAB 函数的时候，尝试使用 <code>clear all;</code> 来清理掉 workspace，结果运行后发现完全没有效果。查找了一下 MATLAB 的帮助文件才发现，每个函数在运行的时候都有自己的 workspace，所以如果在函数内部使用 <code>clear</code> 的话，清空的是函数自己的 workspace，不会影响到公用的 workspace。于是又到<a href="http://www.mathworks.com/matlabcentral/"> mathwork 的 MATLAB Center </a> 逛了一下，发现了一种很好的方法：使用 <code>evalin()</code> 函数。<a href="http://www.mathworks.com/matlabcentral/newsreader/view_thread/253314">原帖在这里</a>。</p>
+
+<p>总结一下，就是使用下面的语句：</p>
+
+<pre><code>evalin('caller','clear all');
+</code></pre>
+
+<p>或者使用</p>
+
+<pre><code>evalin('base','clear all');
+</code></pre>
+
+<p>主要区别是，前一个不仅会清空公用 workspace，也会清空其他函数的 workspace。后一个仅仅只清空公用的 workspace。</p>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[Keil C 中不再编译未使用的函数]]></title>
     <link href="http://pikipity.github.io/blog/linker-51.html"/>
     <updated>2013-10-13T23:16:00+08:00</updated>
@@ -989,22 +1010,6 @@ disp(maxf_emd2)
 <p><img src="https://lh4.googleusercontent.com/-tgaNnaaGBG8/UgkIm77nS9I/AAAAAAAABCQ/RU1JxWdidQo/s800/%25E5%25B1%258F%25E5%25B9%2595%25E5%25BF%25AB%25E7%2585%25A7%25202013-08-13%2520%25E4%25B8%258A%25E5%258D%258812.03.32.png" alt="操作说明" /></p>
 
 <p><img src="https://lh6.googleusercontent.com/-2u8g95xSROQ/UgkInHfMuVI/AAAAAAAABCM/rCY_e3GAzJk/s800/%25E5%25B1%258F%25E5%25B9%2595%25E5%25BF%25AB%25E7%2585%25A7%25202013-08-13%2520%25E4%25B8%258A%25E5%258D%258812.03.48.png" alt="与“熊”对战" /></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[机器人机甲是如何炼成的]]></title>
-    <link href="http://pikipity.github.io/blog/how-to-make-a-giant-robot-mech-youtube-geek-week.html"/>
-    <updated>2013-08-11T18:49:00+08:00</updated>
-    <id>http://pikipity.github.io/blog/how-to-make-a-giant-robot-mech-youtube-geek-week</id>
-    <content type="html"><![CDATA[<p>我一直认为，一个正真的项目并不是只用一个专业的知识就可以完成的。如果可以把一个成熟的项目称为一个生命体的话，那么完成这个项目的人就应该称为这个项目的上帝了吧，所以，仅仅考一个专业的知识是无法完成的。这就体现了合作的重要性，每个人专精于自己的所长，努力完成自己工作的同时，将自己的所知所学与他人分享，并从他人那里汲取知识，然后多人的智慧融会贯通逐渐将一个项目从无到有，最终将其推向完美，这才是我们需要的。我认为“澳门大学”的科技学院现在需要的正式这种多专业合作的感觉，不是每个专业，甚至每个专业里面的各个小分支都各自顾各自，而应该尝试将各个专业的长处进行融合，使科技学院形成一个整体来运作。数学专业为各个专业做理论基础；机电专精机械，打造成品主构架；电机专精电子，为项目嵌入电子的控制芯片；软件专精程序撰写，为芯片写入可以使其运作的程序。这样各司其职，互相学习，互相进步，比强迫每个专业都要乱七八糟的什么都学强多了。</p>
-
-<p>这个视频是 YouTube 在 Geek Week 时发起的一个项目，目的是制作一个巨大的机器人机甲，整个视频关键的不是技术，因为没有什么新颖的科技，甚至有些都是已经市场化的技术，关键的是其中那种各个专业、各个领域的人们团结一致，合作完成项目的那种氛围。我第一次看的时候我就决定一定要搬运这个专题，要让更多的人感觉到这种感觉。</p>
-
-<p>YouTube 视频地址在<a href="http://www.youtube.com/channel/UCftwRNsjfRo08xYE31tkiyw">这里</a>。国内的话，我搬运到了 bilibili 上，画质降低了，是没办法啊，上传渣浪也只能这样了，地址在<a href="http://www.bilibili.tv/video/av702285/">这里</a>。下面是第一个视频，一个此项目的总体介绍，喜欢的话还是去 <a href="http://www.bilibili.tv/video/av702285/">bilibili</a> 看全部吧。高清视频在<a href="http://pan.baidu.com/share/link?shareid=2919109282&amp;uk=4080321956">这里</a>下载</p>
-
-<embed height="452" width="544" quality="high" allowfullscreen="true" type="application/x-shockwave-flash" src="http://static.hdslb.com/miniloader.swf" flashvars="aid=702285&amp;page=1" pluginspage="http://www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash" />
-
 ]]></content>
   </entry>
   
