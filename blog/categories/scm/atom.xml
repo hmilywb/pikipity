@@ -14,6 +14,96 @@
 
   
   <entry>
+    <title type="html"><![CDATA[贪吃蛇（8051）]]></title>
+    <link href="http://pikipity.github.io/blog/snake-8051.html"/>
+    <updated>2013-10-19T22:22:00+08:00</updated>
+    <id>http://pikipity.github.io/blog/snake-8051</id>
+    <content type="html"><![CDATA[<h3 id="section">简介</h3>
+
+<p>使用 AT89C52 制作的贪吃蛇游戏。练习在 8051 上使用实时多任务系统。你可以到<a href="http://pikipity.github.io/snake_8051/">这里下载源码</a>。</p>
+
+<p>一开始的构想是利用 LCD12864 来作为显示屏，于是选择了自己比较熟悉的 ST7920 作为控制器的 LCD12864，毕竟之前也使用同样的显示屏用 Arduino 做过尔罗斯方块，虽然图像显示处理缓慢，但是应该还是可以使用的，测试之后的结果大失所望，由于过于过于缓慢的图像显示导致屏幕闪烁现象过于严重，并且导致任务堵塞，程序堵死，于是放弃。改儿使用 4 块 8*8 LED 矩阵来做显示屏，由于要自己撰写显示函数和游戏函数，程序量徒然增加，还出现了单片机内存不足的现象，经过调试，最终结果还算不错，以下基本功能都已经实现：</p>
+
+<ol>
+  <li>蛇和食物的显示。</li>
+  <li>蛇的移动，包括碰撞边界和自身之后的死亡判定和碰撞食物的判定。</li>
+  <li>蛇在吃掉食物之后的增长效果。</li>
+</ol>
+
+<p>由于 8051 单片机本身内存与机能的限制，还有很多预想功能未能实现：</p>
+
+<ol>
+  <li>食物位置不是随机的，永远固定。</li>
+  <li>食物数量固定，就是开始游戏之后的那几个食物，不会再增加了，吃完就获胜。</li>
+  <li>蛇的最大长度是固定的。</li>
+  <li>蛇的初试长度与位置都不是随机的，永远固定。</li>
+</ol>
+
+<h3 id="section-1">文件说明：</h3>
+
+<ol>
+  <li>lcd12864 文件夹中是使用 lcd12864 制作的初版游戏。仅实现了蛇的移动和边界碰撞判定。闪烁现象严重</li>
+  <li>
+    <p>LCD_array 文件夹中是最终成品。使用 4 个 8*8 的 LED 点阵来作为显示，4个按钮控制上下左右，还有一个 Reset 键用来重启单片机（也就是重启游戏）。此文件夹中包括以下文件</p>
+
+    <ul>
+      <li>
+        <p>circuit 文件夹：Proteus 仿真电路图，如下</p>
+
+        <p><img src="https://lh5.googleusercontent.com/-lG-RF7FdufE/UmJ34xQ_jUI/AAAAAAAABS8/sQYAz3mA0DA/s720/circuit.jpg" alt="仿真电路图" /></p>
+      </li>
+      <li>
+        <p>program 文件夹：烧录入单片机中的程序文档，包括</p>
+
+        <ul>
+          <li>Main.h, Sch51.h, Sch51.c, 2<em>01</em>12g.h, 2<em>01</em>12g.c: 实时多任务系统所需的文件，由《PATTERNS FOR TIME-TRIGGERED EMBEDDED SYSTEMS》一书提供。</li>
+          <li>main.c: 主程序。main 函数所在。</li>
+          <li>
+            <p>ledarray.h, ledarray.c: LED 点阵显示函数：</p>
+
+            <ul>
+              <li>LED 点阵初始化函数：<code>led_init()</code></li>
+              <li>绘制第一块与第二块 LED 点阵的函数：<code>draw1()</code></li>
+              <li>绘制第三块与第四块 LED 点阵的函数：<code>draw2()</code></li>
+              <li>清空显示的函数：<code>first_page()</code></li>
+              <li>向某个坐标写入一个点的函数（左上角为原点，x轴正方向向右延伸，y轴正方向向下延伸，下同）：<code>set_dot()</code></li>
+              <li>读取某个坐标是否有点存在的函数：<code>read_dot()</code></li>
+            </ul>
+          </li>
+          <li>
+            <p>game.h, game.c: 游戏控制及显示函数：</p>
+
+            <ul>
+              <li>根据蛇和食物的控制矩阵，向屏幕内绘制点的函数：<code>draw()</code></li>
+              <li>控制蛇移动的函数：<code>move()</code></li>
+              <li>检查按键的函数：<code>button()</code></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ol>
+
+<h3 id="section-2">最终效果：</h3>
+
+<ol>
+  <li>
+    <p>胜利</p>
+
+    <div><object id="sinaplayer" width="480" height="370"><param name="allowScriptAccess" value="always" /><embed pluginspage="http://www.macromedia.com/go/getflashplayer" src="http://you.video.sina.com.cn/api/sinawebApi/outplayrefer.php/vid=117246371_3342829334_bBjjTyc/XmLK+l1lHz2stqlF+6xCpv2xhGm3v1CsJwdaVgiYJMXNb9wG5yvSBsxF8HoLHcwydP8h1Rkra61Z/s.swf" type="application/x-shockwave-flash" name="sinaplayer" allowfullscreen="true" allowscriptaccess="always" width="480" height="370" /></object></div>
+  </li>
+  <li>
+    <p>失败</p>
+
+    <div><object id="sinaplayer" width="480" height="370"><param name="allowScriptAccess" value="always" /><embed pluginspage="http://www.macromedia.com/go/getflashplayer" src="http://you.video.sina.com.cn/api/sinawebApi/outplayrefer.php/vid=117246399_3342829334_aBnnR3M5DGXK+l1lHz2stqlF+6xCpv2xhGm3v1CsJwdaVgiYJMXNb9wG5yvSBsxL+HoLHcwydP8h1Rkra6NR/s.swf" type="application/x-shockwave-flash" name="sinaplayer" allowfullscreen="true" allowscriptaccess="always" width="480" height="370" /></object></div>
+  </li>
+</ol>
+
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[Keil C 中不再编译未使用的函数]]></title>
     <link href="http://pikipity.github.io/blog/linker-51.html"/>
     <updated>2013-10-13T23:16:00+08:00</updated>
@@ -580,57 +670,6 @@ SETB TR1            ;Timer1开始计时
 SETB ES
 SETB EA
 </code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[第七章 外部中断]]></title>
-    <link href="http://pikipity.github.io/blog/scm-priciple-7.html"/>
-    <updated>2013-04-27T17:13:00+08:00</updated>
-    <id>http://pikipity.github.io/blog/scm-priciple-7</id>
-    <content type="html"><![CDATA[<p>8051单片机提供两个外部中断口，当从这两个外部中断口接收到外部中断信号时程序就会跳到对应的中断向量的位置。这两个外部中断使用的是<code>P3.2/INT0</code>和<code>P3.3/INT1</code>两个口。<code>INT0</code>对应的中断向量为<code>03H</code>，<code>INT1</code>对应的中断向量为<code>13H</code>。</p>
-
-<h3 id="section">外部中断的设置</h3>
-
-<p>外部中断的设置使用的是可位元寻址的<code>TCON</code>的后四位，<code>TCON</code>各位的分布为（已在<a href="http://pikipity.github.com/blog/scm-priciple-6.html">第六章 计时器/计数器</a>中提过）:</p>
-
-<pre><code>TF1 TR1 TF0 TR0 IE1 IT1 IE0 IT0
-</code></pre>
-
-<ul>
-  <li>IE1与IE0: 当检测到外部中断信号的边沿时，硬件置1；进入外部中断后，硬件置零。与软件无关</li>
-  <li>IT0与IT1: 由软件置一或清零，控制外部中断的触发类型。置一则为下降沿除法（检测到下降沿就进入中断）。置零则为低电平触发（检测到低电平就进入中断）</li>
-</ul>
-
-<h3 id="section-1">触发方式的选择</h3>
-
-<p>一般外部中断都是作为按键使用，由上面的设置可以看出，8051有两种外部中断触发方式，选择哪一种就成为了问题，两种各有优缺点：</p>
-
-<ul>
-  <li>下降沿触发：
-    <ul>
-      <li>
-        <p>优点：程序编写简单，不会出现按键按下后就不断的触发中断的情况。设置方法如下：</p>
-
-        <pre><code>SETB EX0
-SETB IT0
-SETB EX1
-SETB IT1
-SETB EA
-</code></pre>
-      </li>
-      <li>
-        <p>缺点：仅限于仿真中应用，实际应用中，无法防止误触按键的情况。并且按键只能局限于一下一下的按，不能出现长短按键的形式</p>
-      </li>
-    </ul>
-  </li>
-  <li>下降沿除法：
-    <ul>
-      <li>优点：通过软件的编写可以防止实际生活中误触按键的情况。基本思路就是在进入中断后先等待，一段时间后再次检测，看是否还是低电平，如果还是，就可以确定不是误触。可以通过程序编写出现长短按键的情况</li>
-      <li>缺点：程序编写复杂，容易出现连续触发同一中断的情况</li>
-    </ul>
-  </li>
-</ul>
 ]]></content>
   </entry>
   
