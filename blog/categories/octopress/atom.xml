@@ -139,7 +139,7 @@ Second level header
     <id>http://pikipity.github.io/blog/kramdown-syntax-chinese-1</id>
     <content type="html"><![CDATA[<p>这是 《kramdown Syntax》的中文翻译系列，英文、中文都不好，翻译过来为大家方便查询与学习，原文在<a href="http://kramdown.rubyforge.org/syntax.html#attribute-list-definitions">这里</a>。</p>
 
-<p><img src="/images/post/overview_kramdown.png" width="550pt" /></p>
+<p><img src="{{root_url}}/images/post/overview_kramdown.png" width="550pt" /></p>
 
 <p>kramdown 语法是基于 Markdown 语法建立并加入了一些其他 Markdown 扩展版本（例如，<a href="http://maruku.rubyforge.org/">Maruku</a>、<a href="http://michelf.com/projects/php-markdown/extra/">PHP Markdown Extra</a> 和 <a href="http://johnmacfarlane.net/pandoc/">Pandoc</a>）所具有的特性。不仅如此，它努力去提供一个包括明确规则的严格的语法，所以它不可能完全符合 Markdown 语法。尽管如此，大多数用 Markdown 编写的文档依然可以用 kramdown 很好地解析。下面所有和 Markdown 语法存在不一样的地方的 kranmdown 语法都用高亮指出了。</p>
 
@@ -255,7 +255,7 @@ $         钱的符号
     <id>http://pikipity.github.io/blog/octopress-and-github</id>
     <content type="html"><![CDATA[<p>这个 Blog 就是在使用 Octopress 和 Github 建立起来的。基本思路如下，首先用 Markdown 语言迅速成文，然后由 Octopress 生成站点文件并上传到 Github，利用 Github 的 Pages 功能，就可以直接通过访问 Github 提供的二级域名访问到你的站点了。</p>
 
-<p><img src="/images/post/octopress.jpg" width="550pt" /></p>
+<p><img src="{{root_url}}/images/post/octopress.jpg" width="550pt" /></p>
 
 <!--more-->
 
@@ -436,7 +436,7 @@ $ bundle install
 
     <p>会提示输入有读写权限的 Repository url，可以在你刚才新建的 Repository 里面找到，具体位置见图片</p>
 
-    <p><img src="/images/post/Repository_url.jpg" alt="Repository_url 在这里" width="550pt" /></p>
+    <p><img src="{{root_url}}/images/post/Repository_url.jpg" alt="Repository_url 在这里" width="550pt" /></p>
   </li>
 </ol>
 
