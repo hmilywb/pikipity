@@ -14,6 +14,19 @@
 
   
   <entry>
+    <title type="html"><![CDATA[真正的牛人。。。]]></title>
+    <link href="http://pikipity.github.io/blog/programer-11-11.html"/>
+    <updated>2013-10-31T07:42:00+08:00</updated>
+    <id>http://pikipity.github.io/blog/programer-11-11</id>
+    <content type="html"><![CDATA[<p>在网上看到下面这个 gif 之后才领悟到，真正的编程大牛从来不担心 IDE 的问题，那些为 vim 和 emacs 争得你死我活的人都是渣渣，用 windows 画图程序编程的才是大神。</p>
+
+<p><img src="http://image15-c.poco.cn/mypoco/myphoto/20131031/08/17426002620131031081829010.gif" alt="Windows 画图编程" /></p>
+
+<p>又快光棍节了，回想起了<a href="http://segmentfault.com/game/">一款程序员游戏，地址在这里</a>，当年卡在第五关就没玩下去，实在不行的话，就看<a href="http://www.cnblogs.com/partoo/archive/2012/11/11/2765070.html">攻略</a>吧。</p>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[QC12864B 控制库]]></title>
     <link href="http://pikipity.github.io/blog/qc12864b-library.html"/>
     <updated>2013-10-27T16:27:00+08:00</updated>
@@ -665,21 +678,6 @@ Click &lt;a href="https://ummoodle.umac.mo/pluginfile.php/74630/mod_resource/con
 <p>总而言之，如果仅仅是想快速开发出一个简单的交互式界面，Processing 绝对是不二人选，但是要开发复杂的交互界面或者游戏的话，还是考虑直接用 Pygame 或是 更加基础的 C 或 C++ 吧。还有因为 Processing 的底层语言是 Java，所以对于我这种用惯了 Python 的人来说，换用 Java 是各种不习惯啊。。。（吐槽：为什么每一句后面都要加个分号啊，为什么还要大括号啊，为什么 for 循环这么麻烦啊。。。）</p>
 
 <p><a href="http://pan.baidu.com/share/link?shareid=1374351361&amp;uk=4080321956">入门教程推荐 – 《爱上 Processing》（专门用了讲解了如何将 Processing 与 Arduino 配合使用）</a></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[youtube-dl GUI]]></title>
-    <link href="http://pikipity.github.io/blog/youtube-dl-gui.html"/>
-    <updated>2013-08-25T15:47:00+08:00</updated>
-    <id>http://pikipity.github.io/blog/youtube-dl-gui</id>
-    <content type="html"><![CDATA[<p>经常在网上看到一些很好的视频想要保存下来，如果保存成书签的形式，每次打开都要重新加载一遍实在是太麻烦了，最好的当然是下载到电脑上，虽然自己找了许多在 Mac OS X 上下载视频的软件，但是其中的广告或是收费升级通知让我烦不胜烦。最后找到了这个软件 – <a href="http://rg3.github.io/youtube-dl/">youtube-dl</a>。用 Python 编写，本来是专门用于下载 YouTube 上的视频的，但是现在支持大部分的视频网站，经测试优酷和土豆都可以正常下载，唯一的缺点就是没有一个 GUI，每次都要打开终端输入一行代码，而且像我这种记忆渣每次都要查一遍它的参数列表，实在麻烦，但是又不忍放弃，于是决定自己为其写一个 GUI。</p>
-
-<p><a href="http://pikipity.github.io/youtube-dl-GUI/">这里是此 youtube-dl GUI 的项目主页</a>，安装及使用方法都可以找到。下面是软件截图，因为仅仅是为了使用方便，所以看上去和简陋，但是功能还是齐全的，下一步希望可以抽时间把 “Options” 做的更人性化一点。</p>
-
-<p><img src="https://lh3.googleusercontent.com/-rkDZUJACtqo/UhmniKahR7I/AAAAAAAABHM/iwtIZ9ZXXuo/s640/%25E5%25B1%258F%25E5%25B9%2595%25E5%25BF%25AB%25E7%2585%25A7%25202013-08-25%2520%25E4%25B8%258B%25E5%258D%25882.34.08.png" alt="下载中" /></p>
-
-<p><img src="https://lh3.googleusercontent.com/-ZNcrGbCx18M/UhmniTT8BYI/AAAAAAAABHQ/ig4RsA_k8OM/s640/%25E5%25B1%258F%25E5%25B9%2595%25E5%25BF%25AB%25E7%2585%25A7%25202013-08-25%2520%25E4%25B8%258B%25E5%258D%25882.34.31.png" alt="选择 Options" /></p>
 ]]></content>
   </entry>
   

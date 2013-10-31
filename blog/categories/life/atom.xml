@@ -14,6 +14,19 @@
 
   
   <entry>
+    <title type="html"><![CDATA[真正的牛人。。。]]></title>
+    <link href="http://pikipity.github.io/blog/programer-11-11.html"/>
+    <updated>2013-10-31T07:42:00+08:00</updated>
+    <id>http://pikipity.github.io/blog/programer-11-11</id>
+    <content type="html"><![CDATA[<p>在网上看到下面这个 gif 之后才领悟到，真正的编程大牛从来不担心 IDE 的问题，那些为 vim 和 emacs 争得你死我活的人都是渣渣，用 windows 画图程序编程的才是大神。</p>
+
+<p><img src="http://image15-c.poco.cn/mypoco/myphoto/20131031/08/17426002620131031081829010.gif" alt="Windows 画图编程" /></p>
+
+<p>又快光棍节了，回想起了<a href="http://segmentfault.com/game/">一款程序员游戏，地址在这里</a>，当年卡在第五关就没玩下去，实在不行的话，就看<a href="http://www.cnblogs.com/partoo/archive/2012/11/11/2765070.html">攻略</a>吧。</p>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[粘着系男子的15年纠缠不休]]></title>
     <link href="http://pikipity.github.io/blog/15-year.html"/>
     <updated>2013-10-26T22:27:00+08:00</updated>
@@ -152,21 +165,6 @@ Click &lt;a href="https://ummoodle.umac.mo/pluginfile.php/74630/mod_resource/con
 
 <p>友情提示：由于两者从网页链接到名称都极为相似，做作业的时候注意不要找错网站啊！囧</p>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[tutorialspoint -- Simple Easy Learning]]></title>
-    <link href="http://pikipity.github.io/blog/tutorialspoint.html"/>
-    <updated>2013-08-23T11:24:00+08:00</updated>
-    <id>http://pikipity.github.io/blog/tutorialspoint</id>
-    <content type="html"><![CDATA[<p><img src="https://lh3.googleusercontent.com/-EOXgioZB97c/UhbZ3vnuTXI/AAAAAAAABG0/cMP-tK0Gn4A/s599/%25E5%25B1%258F%25E5%25B9%2595%25E5%25BF%25AB%25E7%2585%25A7%25202013-08-23%2520%25E4%25B8%258A%25E5%258D%258811.41.01.png" alt="tutorialspoint -- Simple Easy Learning" /></p>
-
-<p>在网上搜索 JavaScript 教程的时候无意间发现了这个网站 – <a href="http://www.tutorialspoint.com/">tutorialpoint（简称 TP）</a>，整体感觉很像是 <a href="http://www.w3schools.com/">W3School</a>，都是一篇一篇短小精悍并且很实用的教程组成，但是内容更为丰富，不仅包括各式各样的编程语言（例如 Ruby、Python，甚至连 Assembly 都有）还包括一些网络及电脑知识（例如什么是 RSS，什么是云计算等等），编程语言的教程中还带有在线仿真编程器，你可以在其网页上就实践教程中的例子，不用为了安装一个编译器或是为了找一个好用的 IDE 伤破脑筋，先学习，觉得这门语言挺好，可以用，再找编译器或是 IDE 也不迟。</p>
-
-<p>快速浏览了一下其中 Python，Ruby 和 Assembly 的教程，感觉教程很基础很实用，非常适合新手学习，上手快，见效快，基本看完一遍教程，大约就明白这门语言的结构并能变出简单的程序了。总而言之，是个学习电脑、网络、编程知识的好地方。</p>
-
-<p><a href="http://www.tutorialspoint.com/">tutorialpoint（简称 TP）网站传送点</a></p>
 ]]></content>
   </entry>
   
