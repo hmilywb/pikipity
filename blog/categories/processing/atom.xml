@@ -14,6 +14,40 @@
 
   
   <entry>
+    <title type="html"><![CDATA[一起将 processing 镶嵌在网页上]]></title>
+    <link href="http://pikipity.github.io/blog/sketchpad.html"/>
+    <updated>2013-11-05T21:42:00+08:00</updated>
+    <id>http://pikipity.github.io/blog/sketchpad</id>
+    <content type="html"><![CDATA[<p>一直想找一种方法，将 processing 生成的程序放到网页上。在搜索了一番 Google 之后发现要使用 <a href="http://processingjs.org/">processing.js</a> 才可以，但是要设置自己的网页才可以，太麻烦了，于是就放弃了。今天在浏览 <a href="http://processingjs.org/">processing.js</a> 官网说明的时候发现，在<a href="http://processingjs.org/articles/p5QuickStart.html">《Processing.js Quick Start - Processing Developer Edition》</a>一文中介绍了以下两个网站可以在线编写并共享自己的 processing 代码和效果：</p>
+
+<ol>
+  <li>
+    <p><a href="http://sketchpad.cc/">sketchpad</a></p>
+
+    <p>这个网站上，不仅可以实现在线编写和分享代码，还可以自由浏览别人的共享代码，所有程序的效果可以实时演示，编辑器中还提供多人合作功能，很方便。</p>
+
+    <p>缺点也很显著，编辑器虽然提供语法高亮，但是高不高亮完全没有用，所有文字一个颜色（只有 class 部分和别的不一个颜色）。第二个缺点不晓得是不是我浏览器的问题，贴出来的动画会播放一段时间之后突然放大，导致鼠标定位出现错误，很是奇怪。</p>
+
+    <p><img src="https://lh3.googleusercontent.com/-Cx0ZXzkD2ho/UnkDB9mWrDI/AAAAAAAABTc/FiQVDRkoVCs/s912/%25E5%25B1%258F%25E5%25B9%2595%25E5%25BF%25AB%25E7%2585%25A7%25202013-11-05%2520%25E4%25B8%258B%25E5%258D%258810.22.47.png" alt="sketchpad 编辑器界面" /></p>
+
+    <p>下面是我为了测试编写的一段小代码：</p>
+
+    <iframe id="ifr" width="200" height="235" scrolling="no" style="background: url(http://studio.processingtogether.com/static/img/jun09/pad/connectingbar.gif) no-repeat center 60px;" src="http://studio.processingtogether.com/sp/pad/iframe/ro.9DUd1JyjanBXc/rev.925?autostart=0"></iframe>
+  </li>
+  <li>
+    <p><a href="http://hascanvas.com/">hascanvas</a></p>
+
+    <p>这个网站设计的很独特，编辑器隐藏在左边，鼠标靠近浏览器左边缘的时候，编辑器就会自动弹出，鼠标移开编辑区后，就会保存一次代码并编译，结果就显示在整个页面上。但是我用和上面一模一样的代码进行测试始终报错，这里只好拿别人的代码演示一下了。（貌似鼠标位置依然有偏差）</p>
+
+    <iframe src="http://hascanvas.com/crossing/embed" frameborder="0" scrolling="no" style="width:600px;height:400px;"></iframe>
+
+    <p><img src="https://lh6.googleusercontent.com/-gSeb362FAWw/UnkDCOO0AMI/AAAAAAAABTg/7bDgI4cjK80/s912/%25E5%25B1%258F%25E5%25B9%2595%25E5%25BF%25AB%25E7%2585%25A7%25202013-11-05%2520%25E4%25B8%258B%25E5%258D%258810.36.00.png" alt="hascanvas 界面" /></p>
+  </li>
+</ol>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[processing 练习作 -- 3D 色子]]></title>
     <link href="http://pikipity.github.io/blog/processing-prectice-3d-dice.html"/>
     <updated>2013-09-12T00:24:00+08:00</updated>

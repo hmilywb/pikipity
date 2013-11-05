@@ -14,6 +14,40 @@
 
   
   <entry>
+    <title type="html"><![CDATA[一起将 processing 镶嵌在网页上]]></title>
+    <link href="http://pikipity.github.io/blog/sketchpad.html"/>
+    <updated>2013-11-05T21:42:00+08:00</updated>
+    <id>http://pikipity.github.io/blog/sketchpad</id>
+    <content type="html"><![CDATA[<p>一直想找一种方法，将 processing 生成的程序放到网页上。在搜索了一番 Google 之后发现要使用 <a href="http://processingjs.org/">processing.js</a> 才可以，但是要设置自己的网页才可以，太麻烦了，于是就放弃了。今天在浏览 <a href="http://processingjs.org/">processing.js</a> 官网说明的时候发现，在<a href="http://processingjs.org/articles/p5QuickStart.html">《Processing.js Quick Start - Processing Developer Edition》</a>一文中介绍了以下两个网站可以在线编写并共享自己的 processing 代码和效果：</p>
+
+<ol>
+  <li>
+    <p><a href="http://sketchpad.cc/">sketchpad</a></p>
+
+    <p>这个网站上，不仅可以实现在线编写和分享代码，还可以自由浏览别人的共享代码，所有程序的效果可以实时演示，编辑器中还提供多人合作功能，很方便。</p>
+
+    <p>缺点也很显著，编辑器虽然提供语法高亮，但是高不高亮完全没有用，所有文字一个颜色（只有 class 部分和别的不一个颜色）。第二个缺点不晓得是不是我浏览器的问题，贴出来的动画会播放一段时间之后突然放大，导致鼠标定位出现错误，很是奇怪。</p>
+
+    <p><img src="https://lh3.googleusercontent.com/-Cx0ZXzkD2ho/UnkDB9mWrDI/AAAAAAAABTc/FiQVDRkoVCs/s912/%25E5%25B1%258F%25E5%25B9%2595%25E5%25BF%25AB%25E7%2585%25A7%25202013-11-05%2520%25E4%25B8%258B%25E5%258D%258810.22.47.png" alt="sketchpad 编辑器界面" /></p>
+
+    <p>下面是我为了测试编写的一段小代码：</p>
+
+    <iframe id="ifr" width="200" height="235" scrolling="no" style="background: url(http://studio.processingtogether.com/static/img/jun09/pad/connectingbar.gif) no-repeat center 60px;" src="http://studio.processingtogether.com/sp/pad/iframe/ro.9DUd1JyjanBXc/rev.925?autostart=0"></iframe>
+  </li>
+  <li>
+    <p><a href="http://hascanvas.com/">hascanvas</a></p>
+
+    <p>这个网站设计的很独特，编辑器隐藏在左边，鼠标靠近浏览器左边缘的时候，编辑器就会自动弹出，鼠标移开编辑区后，就会保存一次代码并编译，结果就显示在整个页面上。但是我用和上面一模一样的代码进行测试始终报错，这里只好拿别人的代码演示一下了。（貌似鼠标位置依然有偏差）</p>
+
+    <iframe src="http://hascanvas.com/crossing/embed" frameborder="0" scrolling="no" style="width:600px;height:400px;"></iframe>
+
+    <p><img src="https://lh6.googleusercontent.com/-gSeb362FAWw/UnkDCOO0AMI/AAAAAAAABTg/7bDgI4cjK80/s912/%25E5%25B1%258F%25E5%25B9%2595%25E5%25BF%25AB%25E7%2585%25A7%25202013-11-05%2520%25E4%25B8%258B%25E5%258D%258810.36.00.png" alt="hascanvas 界面" /></p>
+  </li>
+</ol>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[真正的牛人。。。]]></title>
     <link href="http://pikipity.github.io/blog/programer-11-11.html"/>
     <updated>2013-10-31T07:42:00+08:00</updated>
@@ -638,46 +672,6 @@ Click &lt;a href="https://ummoodle.umac.mo/pluginfile.php/74630/mod_resource/con
   <li><a href="http://i.youku.com/u/id_UOTE2MDY5NDg=">黑桐谷歌优酷空间</a></li>
   <li><a href="https://itunes.apple.com/cn/app/you-xi-shi-pin-jie-shuo/id660574550?mt=8">黑桐谷歌视频解说 IOS App</a></li>
 </ul>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[新玩具 -- Processing]]></title>
-    <link href="http://pikipity.github.io/blog/new-game-processing.html"/>
-    <updated>2013-08-28T12:37:00+08:00</updated>
-    <id>http://pikipity.github.io/blog/new-game-processing</id>
-    <content type="html"><![CDATA[<p><img src="https://lh5.googleusercontent.com/-YJlrgUSftcw/Uh2LCQCqpSI/AAAAAAAABHk/BrDYwd8hf_s/s180/180px-Processing_Logo_Clipped.svg.png" alt="Processing" /></p>
-
-<p>在看 Arduino 的资料的时候无意间找到了一个新玩具 – <a href="http://processing.org/">Processing</a>，专门用来开发视觉交互界面用的语言，基础语言是 Java，优点就和他官方网站介绍的一样：</p>
-
-<ul>
-  <li>开源，免费下载</li>
-  <li>支持多种输出方式，2D、3D 甚至 pdf</li>
-  <li>使用 OpenGL 作为 3D 的引擎</li>
-  <li>支持多种操作系统，Linux, OSX, Windows</li>
-  <li>网络上有众多的扩展库支持</li>
-  <li>大量的资料书籍（虽然都是英文的）</li>
-</ul>
-
-<p>我的第一反应是把它当做 Pygame 的替代品。相比 Pygame，Processing 的优点众多：</p>
-
-<ul>
-  <li>Java 语言本身的优点：Python 蛋疼的内存管理机制和速度问题现在让我越来越烦心了，Java 在这两点上要好得多。</li>
-  <li>
-    <p>安装方便：Pygame 毕竟是个民间自发的维护项目，更新缓慢，对于刚刚接触 Python 的新手来说安装的过程中就会遇到重重障碍。Processing 的安装则简单的多，而且更新迅速，各个平台的程序都已经打包好了，直接双击安装就可以了，而且自带 IDE（除了自动补全外其他你能想到的、没想到的功能都有了，界面也挺漂亮的），真的是扫除一切学习障碍，诚意满满。</p>
-
-    <p><img src="https://lh5.googleusercontent.com/-m44lymT_wQs/Uh2LCW7aRFI/AAAAAAAABHo/ONQpnwUPbig/s512/%25E5%25B1%258F%25E5%25B9%2595%25E5%25BF%25AB%25E7%2585%25A7%25202013-08-28%2520%25E4%25B8%258B%25E5%258D%25881.30.05.png" alt="自带 IDE 界面" /></p>
-  </li>
-  <li>语言更加人性化：Python 的语言已经很人性化了，而 Processing 的语言，尤其是默认变量的命名通过语意猜测就可以知道其代表什么了。命名方式也很统一（Python。。。谁用谁知道，我不吐槽了。）</li>
-  <li>事件管理更加轻松：相比 Pygame，Processing 简化了事件管理的部分。不再需要专门再编写代码来获得事件，在 Processing 中鼠标与键盘的事件都变成了一个个默认变量，直接使用这些默认变量就可以获得事件。</li>
-  <li>更多扩展库的支持：扩展库不仅数量多而且覆盖的范围很广，使得用 Processing 编写出来的视觉交互界面可以很容易的与其他硬件或软件进行交互，甚至很多特效都已经有库支持，只要直接调用就可以了，非常方便省力。</li>
-</ul>
-
-<p>当然，缺点也是有的，其并不适合编写游戏，毕竟此语言是为了开发交互式界面而发明的，对于游戏上的开发乏力还是可以理解的。</p>
-
-<p>总而言之，如果仅仅是想快速开发出一个简单的交互式界面，Processing 绝对是不二人选，但是要开发复杂的交互界面或者游戏的话，还是考虑直接用 Pygame 或是 更加基础的 C 或 C++ 吧。还有因为 Processing 的底层语言是 Java，所以对于我这种用惯了 Python 的人来说，换用 Java 是各种不习惯啊。。。（吐槽：为什么每一句后面都要加个分号啊，为什么还要大括号啊，为什么 for 循环这么麻烦啊。。。）</p>
-
-<p><a href="http://pan.baidu.com/share/link?shareid=1374351361&amp;uk=4080321956">入门教程推荐 – 《爱上 Processing》（专门用了讲解了如何将 Processing 与 Arduino 配合使用）</a></p>
 ]]></content>
   </entry>
   
