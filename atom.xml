@@ -14,6 +14,19 @@
 
   
   <entry>
+    <title type="html"><![CDATA[《肖申克的救赎》删减片段]]></title>
+    <link href="http://pikipity.github.io/blog/remove-part-of-the-shawshank-redemption.html"/>
+    <updated>2013-11-24T09:12:00+08:00</updated>
+    <id>http://pikipity.github.io/blog/remove-part-of-the-shawshank-redemption</id>
+    <content type="html"><![CDATA[<p><img src="https://lh4.googleusercontent.com/-i__KzNHZXUk/UpFUwKlq5yI/AAAAAAAABXs/cmnWExXIYeg/s512/414px-Shawshank_Redemption_ver1.jpg" alt="《肖申克的救赎》海报" /></p>
+
+<p>《肖申克的救赎》是我最喜欢的影片之一了，下面是一段《肖申克的救赎》导演及主演的采访片段，介绍两段电影中被删减的片段，分别是关于瑞德出狱之后生活的片段（更加明白的了解，为什么出狱后的人们会纷纷选择自杀，为什么瑞德会开始寻找波兰特）和波兰特越狱后狱警寻找波兰特（波兰特的越狱路线远没有想象中的简单）和瑞德的表现。</p>
+
+<iframe height="498" width="510" src="http://player.youku.com/embed/XNjM3Njc3NTA4" frameborder="0" allowfullscreen=""></iframe>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[游戏大集合 -- Rabbit Rush]]></title>
     <link href="http://pikipity.github.io/blog/rabbit-rush.html"/>
     <updated>2013-11-19T09:56:00+08:00</updated>
@@ -710,17 +723,6 @@ Click &lt;a href="https://ummoodle.umac.mo/pluginfile.php/74630/mod_resource/con
   <li>Andriod 用户可以到<a href="https://play.google.com/store/apps/details?id=com.and.games505.Terraria">这里</a>下载</li>
 </ul>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[processing 练习作 -- 3D 色子]]></title>
-    <link href="http://pikipity.github.io/blog/processing-prectice-3d-dice.html"/>
-    <updated>2013-09-12T00:24:00+08:00</updated>
-    <id>http://pikipity.github.io/blog/processing-prectice-3d-dice</id>
-    <content type="html"><![CDATA[<p>processing 的练习作 – 3D 色子，旨在练习 processing 的 3D 效果制作。点击鼠标可以抛掷色子。色子的图案没有使用额外的图片，全部使用 processing 直接绘制。源代码在<a href="https://github.com/pikipity/3D_Dice.git">这里</a>。由于不是专注于正方体自由旋转落体的模拟，左移在色子的运动上做的很简单：上升和下落都是一个匀加速直线运动，每次落地撞击损失一半的速度；旋转方面每次根据坐标轴随机选取一个旋转方向，旋转速度和位移成正比；没有考虑触地之后的运动。</p>
-
-<p><img src="https://lh4.googleusercontent.com/-Qzgu5jWc-zY/UjCcf32YpqI/AAAAAAAABI4/myK3RPH83x8/s512/%25E5%25B1%258F%25E5%25B9%2595%25E5%25BF%25AB%25E7%2585%25A7%25202013-09-12%2520%25E4%25B8%258A%25E5%258D%258812.33.52.png" alt="程序截图" /></p>
 ]]></content>
   </entry>
   

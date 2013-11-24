@@ -150,6 +150,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/remove-part-of-the-shawshank-redemption.html">《肖申克的救赎》删减片段</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/rabbit-rush.html">游戏大集合 &#8211; Rabbit Rush</a>
       </li>
     
@@ -163,10 +167,6 @@
     
       <li class="post">
         <a href="/blog/ie-niang.html">IE 娘 &#8211; 你难道是。。。</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/funny-gif.html">电风扇如何用一个马达同时完成转动扇叶和摆头</a>
       </li>
     
   </ul>
@@ -840,6 +840,169 @@ $(function(){
     <article class="post">
 	<h2 class="title">
 		
+		<a href="/blog/scm-principle-3.html">
+		
+			单片机原理及程序设计 第三章 数据类型与表示方法</a>
+	</h2>
+	<div class="meta">
+	       <div class="author" style="float:left;">
+  
+
+<span class="byline author vcard">Posted by <span class="fn">pikipity</span></span>
+&nbsp;</div>
+		<div class="date" style="float:left;">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-03-07T10:36:00+08:00" pubdate data-updated="true">2013年03月07日</time></div>
+		<div class="tags" style="float:left;">
+
+
+	<a class='category' href='/blog/categories/assembly/'>Assembly</a>, <a class='category' href='/blog/categories/scm/'>SCM</a>
+
+
+</div>
+		
+			<span class="comments"><a href="/blog/scm-principle-3.html#com_target">Comments</a></span>
+		
+	</div>
+	<div class="entry-content" style="clear:both;">
+		<p>对 8051 的编程本质上就是对一个个二进制数在内存中运算和转移，所以明确各种进制（尤其是二进制、十进制和十六进制）在汇编中的表示方法和它们之间的转换方法就非常重要了。</p>
+
+<h2 id="section">二进制</h2>
+
+<p>无符号二进制的表示方法很简单，只要在你所要表示的二进制数后面加一个 <strong>“B”</strong> 就可以了。例如 <code>1011011B</code>。8位无符号整数范围为 0 ~ 255。16位无符号整数范围为 0 ~ 65535。</p>
+
+<p>表示有符号二进制的时候，一个 Byte 8位中的最高位表示符号，1为负，0为正，后面7位是你要表示的数的绝对值。8位有符号整数范围为 -128 ~ 127。16位有符号整数范围为 -32768 ~ 32767。</p>
+
+<p>当计算有符号二进制数加法的时候（减法只要转换一下加数的符号就变成加法了，所以是一样的），要先将负数变为2补数，然后再相加。所谓<strong>2补数</strong>，就是这个负数的<strong>绝对值</strong>的二进制数的<strong>反数加一</strong>。例如要求-96的2补数，96转换为二进制为01100000，先求反数为10011111，再加一就是-96的2补数10100000</p>
+
+<h2 id="section-1">十进制</h2>
+
+<p>十进制在汇编中的表示很简单，一个单纯的数（例如<code>129</code>）或是一个数字后面加一个 <strong>“D”</strong> （例如<code>129D</code>）就可以了。</p>
+
+<p>从二进制到十进制有一种特殊的转换方法，就是BCD转换方法，先将二进制4位为一部分的分开然后在进行转化，下面的例子展示了如何进行转化。</p>
+
+<p><img src="/images/post/scm-principle-3_1.jpg" alt="BCD转化举例" width="200pt" /></p>
+
+<p>注意：BCD转化出来的一定是十进制，不要与16进制搞混，虽然看上去一样，但是表示的大小则完全不一样。</p>
+
+<h2 id="section-2">十六进制</h2>
+
+<p>十六进制从0到15分别为 <code>0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F</code></p>
+
+<p>十六进制在汇编中只要在数的后面加一个 <strong>“H”</strong> 就可以了，例如 <code>2FH</code>。</p>
+
+<p>需要注意的是，在汇编中，如果这个16进制数的第一个数就是一个字母的话需要在字母前加一个 <strong>“0”</strong>，例如 <code>0FEH</code>。</p>
+
+<h2 id="section-3">小数</h2>
+
+<p>上面介绍的都是整数，小数的表示则比较复杂。小数分为定点小数和浮点小数。</p>
+
+<h3 id="section-4">定点小数</h3>
+
+<p>定点小数的小数位数是固定的，定点小数表示简单，我们可以随意设定自己这个程序里面小数定点小数的表示方法，比如，我们可以规定我们的小数为8位，小数点前的数为7位，最前面还有一个符号位，那么我们的小数就表示如下图所示：</p>
+
+<p><img src="/images/post/scm-principle-3_2.jpg" alt="定点小数表示" width="250pt" /></p>
+
+<p>定点小数的好处是表示简单、计算方便。缺点也很明显，无法表示拥有很多的小数位数的数，所以我们需要浮点小数。</p>
+
+<h3 id="section-5">浮点小数</h3>
+
+<p>浮点小数的小数为不固定，而是用科学计数法的方式记录小数，一个浮点小数分为三部分：符号位 S、阶码位 P 和尾数为 M，所标表示意思如下：</p>
+
+<script type="math/tex; mode=display">(-1)^S\times M\times 2^P</script>
+
+<p>浮点小数又分为单精度浮点和双精度浮点：</p>
+
+<ol>
+  <li>单精度浮点的阶码为8位，位数为23位，共32位（即四个字节）。</li>
+  <li>双精度浮点的阶码为11位，位数为52位，共64位（即八个字节）。</li>
+</ol>
+
+<p>由于双精度和单精度除了长度以外都相同，所以这里只介绍单精度，双精度请自行脑补。</p>
+
+<p>单精度浮点数表示格式如下：</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>S（第31位）</td>
+      <td>P（30位到23位）</td>
+      <td>M（22为到0位）</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>根据 IEEE 754 的标准，浮点小数有四种特殊情况：</p>
+
+<ol>
+  <li>P 和 M 都为全0的时候，表述0</li>
+  <li>P 为全0，M 不为全0，是非规范形式</li>
+  <li>P 为全1，M 为全0的时候，表示无穷大，符号位确定正负</li>
+  <li>P 为全1，M 不为全0的时候，表示“这不是一个数”</li>
+</ol>
+
+<p>也就是说，单浮点最大为 <code>0 11111110 11111111111111111111111</code>，也就是 3.40282346638529E+38，最小为 <code>1 11111110 11111111111111111111111</code>，也就是 -3.40282346638529E+38，最接近0的数是 <code>0 00000000 00000000000000000000001</code>，也就是 1.40129846432482E-45。</p>
+
+<h3 id="section-6">二进制单精度浮点小数转化为十进制方法</h3>
+
+<p>将单精度浮点小数转化为十进制比较简单，只要按照对应的部分转化就可以得到对应的十进制数了，转化规律如：</p>
+
+<ol>
+  <li>符号位：0为正，1为负。</li>
+  <li>阶码位：对应的十进制减127（双浮点减1023）。例如阶码位为 <code>10001010</code> ，那么对应的2的指数就是 $138-127=11$。</li>
+  <li>尾数位：在尾数位的最左边补一个1，将小数点放在这个1的后面，进行转化，所得到的就是尾数了。例如，尾数位为 <code>01110101100011100010001</code>，那么对应的尾数就是 $1.4592$</li>
+  <li>
+    <p>按照公式组合就可以了，这里公式再次给出一边：</p>
+
+<script type="math/tex; mode=display">(-1)^S\times M\times 2^P</script>
+  </li>
+</ol>
+
+<h3 id="section-7">十进制小数转化为二进制单精度浮点的方法</h3>
+
+<p>将十进制转化为单浮点二进制就比较麻烦了，可以按照下面的方法：</p>
+
+<ol>
+  <li>符号位就不说了，主要是计算阶码位和尾数位。首先判断要转化的十进制是不是纯小数（纯小数的意思是无整数部分），如果是就到第三步，如果不是继续到第二步</li>
+  <li>
+    <p>不是纯小数，就可以把数字分为两部分，整数部分和小数部分，整数部分就按照普通的方法转换就可以了，小数部分可以通过下面的方法转换：</p>
+
+    <p><img src="/images/post/scm-principle-3_3.jpg" alt="十进制小数部分转化方法" width="350pt" /></p>
+
+    <p>然后将转化出来的二进制数的小数部分和整数部分组合在一起，左移小数点直到整数部分只剩一个1为止，小数部分取左起23位就是尾数位，将小数点移动的位数加127，转化为二进制就是阶码位。</p>
+  </li>
+  <li>
+    <p>如果是纯小数就要先将纯小数转化为 <script type="math/tex">1.\cdots\times 2^n</script> 的形式，可以通过下面的公式转化（公式中 $X$ 代表待转换的十进制纯小数）：</p>
+
+<script type="math/tex; mode=display">n=\mbox{int}(log_2 X-1)</script>
+
+    <p>然后将转化之后的小数部分按照步骤2中方法进行转化，结果取左起23位就是尾数为，$n+127$ 转化为二进制就是阶码位。</p>
+  </li>
+</ol>
+
+<p>为了方便大家进行二进制、十进制和十六进制之间的转换，我用 Python 编写了一个小程序，下载在<a href="http://pikipity.github.com/Binary-Converter/">这里</a>，如果发现有什么 Bug，欢迎指正，谢谢。</p>
+
+		
+		
+	</div>
+
+
+</article>
+
+
+    <article class="post">
+	<h2 class="title">
+		
 		<a href="/blog/ohlife.html">
 		
 			喂，写日记啦！</a>
@@ -1415,59 +1578,6 @@ end
 <embed src="http://player.youku.com/player.php/sid/XNTAyNTUwNzAw/v.swf" quality="high" width="480" height="400" align="middle" allowscriptaccess="sameDomain" allowfullscreen="true" type="application/x-shockwave-flash" />
 
 <p>影片如果无法播放，请点<a href="http://v.youku.com/v_show/id_XNTAyNTUwNzAw.html">这里</a></p>
-
-		
-		
-	</div>
-
-
-</article>
-
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/fullmetal-alchemist-bgm.html">
-		
-			骨头社出品，必属精品 &#8211; 燃到爆的《钢炼》BGM</a>
-	</h2>
-	<div class="meta">
-	       <div class="author" style="float:left;">
-  
-
-<span class="byline author vcard">Posted by <span class="fn">pikipity</span></span>
-&nbsp;</div>
-		<div class="date" style="float:left;">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-02-25T22:46:00+08:00" pubdate data-updated="true">2013年02月25日</time></div>
-		<div class="tags" style="float:left;">
-
-
-	<a class='category' href='/blog/categories/cartoon/'>Cartoon</a>
-
-
-</div>
-		
-			<span class="comments"><a href="/blog/fullmetal-alchemist-bgm.html#com_target">Comments</a></span>
-		
-	</div>
-	<div class="entry-content" style="clear:both;">
-		<p><a href="http://baike.baidu.com/view/2995261.htm">骨头社</a>出品，绝对热血，绝对燃到爆的<a href="http://baike.baidu.com/view/3656.htm">《钢炼》</a>BGM – Diamond Eyes。up主还很良心的连BGM原档也发布了出来，快狂点<a href="http://pan.baidu.com/share/link?shareid=67962&amp;uk=1477362479">这里</a>下载吧。<a href="http://www.bilibili.tv/video/av323319/">B站直通车这里上车</a></p>
-
-<embed src="http://player.youku.com/player.php/sid/XNDM0NjM3MjM2/v.swf" quality="high" width="480" height="400" align="middle" allowscriptaccess="sameDomain" allowfullscreen="true" type="application/x-shockwave-flash" />
-
-<p>影片如果无法播放，请点<a href="http://v.youku.com/v_show/id_XNDM0NjM3MjM2.html">这里</a></p>
-
 
 		
 		
