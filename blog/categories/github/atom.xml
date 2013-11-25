@@ -154,7 +154,7 @@
     <id>http://pikipity.github.io/blog/octopress-and-github</id>
     <content type="html"><![CDATA[<p>这个 Blog 就是在使用 Octopress 和 Github 建立起来的。基本思路如下，首先用 Markdown 语言迅速成文，然后由 Octopress 生成站点文件并上传到 Github，利用 Github 的 Pages 功能，就可以直接通过访问 Github 提供的二级域名访问到你的站点了。</p>
 
-<p><img src="{{root_url}}/images/post/octopress.jpg" width="550pt" /></p>
+<p><img src="/images/post/octopress.jpg" width="550pt" /></p>
 
 <!--more-->
 
@@ -335,7 +335,7 @@ $ bundle install
 
     <p>会提示输入有读写权限的 Repository url，可以在你刚才新建的 Repository 里面找到，具体位置见图片</p>
 
-    <p><img src="{{root_url}}/images/post/Repository_url.jpg" alt="Repository_url 在这里" width="550pt" /></p>
+    <p><img src="/images/post/Repository_url.jpg" alt="Repository_url 在这里" width="550pt" /></p>
   </li>
 </ol>
 
