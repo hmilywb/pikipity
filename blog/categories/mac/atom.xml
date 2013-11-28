@@ -14,6 +14,72 @@
 
   
   <entry>
+    <title type="html"><![CDATA[自制 Keynote IR Remote Control]]></title>
+    <link href="http://pikipity.github.io/blog/diy-apple-remote-controller.html"/>
+    <updated>2013-11-28T18:47:00+08:00</updated>
+    <id>http://pikipity.github.io/blog/diy-apple-remote-controller</id>
+    <content type="html"><![CDATA[<p><img src="https://lh6.googleusercontent.com/-02eVPhz8fdE/UpcgK1x33qI/AAAAAAAABY0/SDuT9V15AK0/s400/MC377.jpeg" alt="Apple IR Remote Control" /></p>
+
+<p>上图就是 Apple IR Remote Control，利用红外线对 iPod, Apple TV 等苹果设备进行视频播放和音乐播放等控制。对于 Macbook，可以控制 iTunes 的音乐视频播放和 Keynote 的幻灯片演示。官网价钱是港币 148 一个，如果它是蓝牙控制，这个价钱也就没什么了，但是为了一个红外线控制器，这个价钱就不是太值了。但是在使用我的 Macbook Pro 上的 Keynote 做演讲的时候，每次切换幻灯片都要跑到键盘前操作还是太麻烦了，学校网络的问题，iPhone 上的 Keynote Remote 应用不能保证百分之百的和电脑连接上，于是准备自己做一个。</p>
+
+<p>因为手头有一个 Ardiuno，除了平时根据自己喜好做点小东西以外，放着也没什么大用处，所以准备用它来制作这个红外线遥控器。但是制作过程中遇到问题，由于自己买的红色 LED 灯质量不行，发射的信号始终无法被 Macbook 的红外线探测器检查到，于是放弃。</p>
+
+<p>既然遥控器不容易做，那就使用现成的遥控器，用 Ardiuno 做一个红外线接收器好了。于是就有了这个项目。使用 下图的红外线遥控器（在<a href="http://item.taobao.com/item.htm?spm=a1z10.3.w17-8299872990.33.35xCfn&amp;id=17278512079&amp;">“淘宝”</a>上买的，5 块钱一个）进行控制。Ardiuno 作为接收器，接收红外线信号，并解码，将解码结果通过 USB 传送给电脑，电脑上的客户端再根据解码结果，模拟电脑按键来实现对 Keynote 的控制。</p>
+
+<p><img src="https://lh3.googleusercontent.com/-FpgQqEiGrEg/UpcIy8HMWSI/AAAAAAAABYU/Zvznasr8fTM/s640/%25E7%2585%25A7%25E7%2589%2587%252013-11-28%2520%25E4%25B8%258B%25E5%258D%25884%252042%252056.jpg" alt="5 块钱一个的红外线遥控器" /></p>
+
+<p>电路图在下面，超级简单，我使用的是 VS1838B 作为红外线传感器（一样是在<a href="http://item.taobao.com/item.htm?spm=a1z10.3.w17-8299872990.9.VOESMp&amp;id=14835734724&amp;">“淘宝”</a>买的，2 块钱一个）。</p>
+
+<p><img src="https://lh6.googleusercontent.com/-yB0nK0QzIyk/UpcpKN_er6I/AAAAAAAABZE/xTzkLpMezio/s640/apple_controller_bb.png" alt="电路图" /></p>
+
+<p>客户端我使用 Processing 编写，Ardiuno 和 Processing 的程序可以到<a href="https://github.com/pikipity/apple_controller.git">我的 Github </a>下载。下面是遥控器与键盘实际按键的对应关系：</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">遥控器按键</th>
+      <th style="text-align: center">键盘按键</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">后推|«</td>
+      <td style="text-align: center">方向键上</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">前进»|</td>
+      <td style="text-align: center">方向键下</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">音量 +</td>
+      <td style="text-align: center">方向键右</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">音量 -</td>
+      <td style="text-align: center">方向键左</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">关闭键</td>
+      <td style="text-align: center">开启和关闭选择幻灯片</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">数字键 0~9</td>
+      <td style="text-align: center">数字键 0~9</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>实际焊接电路的时候，使用了两个 VS1838B，保证信号接收的覆盖范围。现在唯一的问题就是，控制距离很近，这毕竟受到那个遥控器的限制，没有办法。</p>
+
+<p><img src="https://lh5.googleusercontent.com/-03mn3hE1oG0/UpcIywneYJI/AAAAAAAABYY/sz1hunZUDr8/s640/%25E7%2585%25A7%25E7%2589%2587%252013-11-28%2520%25E4%25B8%258B%25E5%258D%25884%252042%252015.jpg" alt="实际电路正面" /></p>
+
+<p><img src="https://lh3.googleusercontent.com/-RWONifCIKj0/UpcIz7nYDOI/AAAAAAAABYg/KgFqGnWKyYc/s640/%25E7%2585%25A7%25E7%2589%2587%252013-11-28%2520%25E4%25B8%258B%25E5%258D%25884%252044%252019.jpg" alt="实际电路背面" /></p>
+
+<p><img src="https://lh6.googleusercontent.com/-KPxIQL4uRjg/UpcIy3xTkvI/AAAAAAAABYc/ihL8Wa_p1uo/s640/%25E7%2585%25A7%25E7%2589%2587%252013-11-28%2520%25E4%25B8%258B%25E5%258D%25884%252043%252040.jpg" alt="电路和 Ardiuno 连接以后" /></p>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[让我们一起来征服世界]]></title>
     <link href="http://pikipity.github.io/blog/introduction-to-terraria.html"/>
     <updated>2013-09-16T20:14:00+08:00</updated>
@@ -127,29 +193,6 @@
 <p><img src="https://lh5.googleusercontent.com/-UM580t1rc1E/UeZ9yzOLaMI/AAAAAAAAA4Q/6iIM52wwxoc/s400/1373627863_89193c4f.png" alt="MagSafe 电源信息" /></p>
 
 <p>你打开 Mac 的 “系统信息”，在硬件栏里也能看到当前所接的 MagSafe 电源的信息，就是通过中间那个触点从电源自带那颗芯片传过来的。</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Mac OS X 隐藏软件]]></title>
-    <link href="http://pikipity.github.io/blog/command-plus-h.html"/>
-    <updated>2013-07-17T07:52:00+08:00</updated>
-    <id>http://pikipity.github.io/blog/command-plus-h</id>
-    <content type="html"><![CDATA[<p>在 Mac OS X 系统中有一个非常好用的功能，就是“隐藏应用程序”。在选定某个应用程序的状态下，按 <code>command+H</code> 就可以隐藏当前选定的软件，按 <code>command+option+H</code> 就可以隐藏当前所有未选定的软件，起到的效果和最小化（顺带一提最小化当前窗口的快捷键是 <code>command+M</code>）一样，唯一的区别就是：“最小化”是对于窗口而言的；“隐藏”是对于软件而言的。也就是说，如果将一个窗口最小化，那么仅仅是当前此窗口最小化，但是如果一个软件被隐藏，那么此软件各个桌面上的窗口都会被最小化。由于 Mac OS X 使用 dock 对于当前打开的窗口和软件进行管理，最小化的窗口和未最小化的窗口难以区分（除非你已经在设置中将<code>将窗口最小化为应用程序图标</code>取消勾选，但是那样的话，当最小化的图标很多时，你的 dock 就会变得拥挤不堪）。所以“隐藏”比“最小化”更加方便程序的统一管理。</p>
-
-<p>在隐藏应用程序之后，又出现一个问题，我们很难通过 dock 一眼看出哪个程序已经被隐藏了，我们可以通过开启“已经隐藏的软件图标在 dock 上虚化的功能”，效果如下图。开启方法是在终端中输入：</p>
-
-<pre><code>defaults write com.apple.Dock showhidden -bool YES;killall Dock
-</code></pre>
-
-<p>dock 重启之后就可以了，当然如果你已经将<code>将窗口最小化为应用程序图标</code>取消勾选，那么这条命令就没有任何用处了。</p>
-
-<p>关闭的方法是在终端中输入：</p>
-
-<pre><code>defaults write com.apple.Dock showhidden -bool NO;killall Dock
-</code></pre>
-
-<p><img src="https://lh5.googleusercontent.com/-L0dW4pXnznc/UeXjaxXktmI/AAAAAAAAA3o/VvtuU_ZgnnE/s512/%25E5%25B1%258F%25E5%25B9%2595%25E5%25BF%25AB%25E7%2585%25A7%25202013-07-17%2520%25E4%25B8%258A%25E5%258D%25888.19.01.png" alt="隐藏软件虚化特效" /></p>
 ]]></content>
   </entry>
   
