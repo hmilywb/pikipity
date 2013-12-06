@@ -14,6 +14,27 @@
 
   
   <entry>
+    <title type="html"><![CDATA[Yaskawa 3D 模型画圆的改进]]></title>
+    <link href="http://pikipity.github.io/blog/improve-draw-circle-yaskawa-3d-model.html"/>
+    <updated>2013-12-06T10:56:00+08:00</updated>
+    <id>http://pikipity.github.io/blog/improve-draw-circle-yaskawa-3d-model</id>
+    <content type="html"><![CDATA[<p>在<a href="http://pikipity.github.io/blog/yaskawa-3d-matlab.html">《3D Yaskawa 机器臂演示（Matlab）》</a>中，我展示了我用 Matlab 制作的 Yaskawa 3D 模型，其中 Demo2 的画圆部分是有问题。最初考虑，如果想要匀速画圆，那么向心加速度是一定的，于是不停地在考虑，如何改进 Simulink 的 model 使其通过向心加速度来计算出相应的 x,y,z 方向上的速度，进而计算需要的角度，最终也没有想出来。最近，又重新思考了这个问题，发现自己完完全全是想多了。</p>
+
+<p>重新定位现在遇到的问题：<strong>找出匀速圆周运动的速度在三个坐标轴上的分解量</strong>。由于我要画的圆只是在一个水平面上，z 轴的分解量是0，那么也就是：<strong>找出匀速圆周运动的速度在 x,y 两个坐标轴上的分解量</strong>。进而继续简化问题，就得到了：<strong>找出一个大小恒定的向量在 x,y 方向上的分解量</strong>。于是问题瞬间简单了，根据下图所示，</p>
+
+<script type="math/tex; mode=display">V_x=V\sin(\alpha+\frac{\pi}{2})</script>
+
+<script type="math/tex; mode=display">V_y=V\sin(\alpha)</script>
+
+<p><img src="https://lh5.googleusercontent.com/-CWrkCOyy5BY/UqFBZPo_d8I/AAAAAAAABZk/_59DnDkciPw/s720/draw_circle.jpg" alt="计算 x,y 轴上速度的分量" /></p>
+
+<p>也就是说，将之前 Simulink 中 Vx 和 Vy 换为两个 sine wave 就可以了。这么简单的问题竟然让我想了这么久。。。</p>
+
+<p>替换之后，不仅仅运行速度大大提升，画出来的圆也更圆了。问题解决。</p>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[3D Yaskawa 机器臂演示（Matlab）]]></title>
     <link href="http://pikipity.github.io/blog/yaskawa-3d-matlab.html"/>
     <updated>2013-11-25T17:30:00+08:00</updated>
@@ -426,100 +447,6 @@ disp(maxf_emd2)
     <p>缩短时间看结果</p>
   </li>
 </ol>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[寻找一种有效估算瞬时频率的方法（EMD 求法讨论 续）]]></title>
-    <link href="http://pikipity.github.io/blog/find-a-way-to-calculate-the-instaneous-frequency-2.html"/>
-    <updated>2013-08-14T03:19:00+08:00</updated>
-    <id>http://pikipity.github.io/blog/find-a-way-to-calculate-the-instaneous-frequency-2</id>
-    <content type="html"><![CDATA[<p>上接<a href="http://pikipity.github.io/blog/find-a-way-to-calculate-the-instaneous-frequency.html">寻找一种有效估算瞬时频率的方法</a>。</p>
-
-<h3 id="hkt--imf">如何判断 <script type="math/tex">h_k(t)</script> 是 IMF</h3>
-
-<p>黄锷院士提供了两种判断方法：</p>
-
-<ol>
-  <li>
-    <p>根据 IMF 的定义：</p>
-
-    <ol>
-      <li>在整个信号上，局部极值（包括局部极大值和局部极小值）的个数和零点的个数必须等于或最多只能相差一个。</li>
-      <li>在任意一点，局部极大值所形成的上包络线和局部极小值所形成的下包络线的平均值等于0</li>
-    </ol>
-
-    <p>在这个定义中涉及局部极值问题，也就是我们将讨论的第三个问题，所以我们这里暂且假定我们可以通过一种方法找到局部极值，那么条件的第一点就可以解决了，但是这里要注意，条件的第一点并不能等价于“所有局部极大值都大于0并且所有极小值都小于0”，尽管通过论文中的论述会很容易认为黄锷院士的本意是这样，但是仅仅根据这条论述，会出现很多特殊情况，下面举几个特殊情况的例子，如图</p>
-
-    <p><img src="https://lh6.googleusercontent.com/-7HQOCNGo3cE/UgqLD89QF7I/AAAAAAAABCs/8flUGmA5sT4/s559/1.png" alt="一个局部极小值在零以上或是一个局部极大值在零以下" /></p>
-
-    <p><img src="https://lh5.googleusercontent.com/-mCwygyF6gUY/UgqLD0CDH5I/AAAAAAAABC0/g5aOdQH99T4/s559/2.png" alt="刚好一个局部极值是零点" /></p>
-
-    <p><img src="https://lh5.googleusercontent.com/-6cLysf5vzQA/UgqLDzAvxpI/AAAAAAAABCo/wDF11u8mCGM/s559/3.png" alt="刚好两个局部极值是零点" /></p>
-
-    <p>在 G. Rilling 编写的 MATLAB 程序中，其使用的是这种方法判断的 IMF，有的时候的确会出现上面列出的三种特殊情况，但是既然是按照定义来的，那么应该也没有什么问题，况且对结果也没有大的影响。</p>
-
-    <p>对于条件的第二点则比较困难，即使我们通过三次样条差值找到了包络线，但是我们能够求的也只是插值之后线上的取样点，所以我们只能通过取样点估算上下包络线的平均值，所以这里写为“约等于”0更为合适。</p>
-  </li>
-  <li>
-    <p>黄锷原始在论文中提到另外一种更为简单的判断方式 – 计算 SD 值：</p>
-
-    <table>
-      <tbody>
-        <tr>
-          <td>$$SD_k=\frac{\sum_{t=0}^T \left</td>
-          <td>h_{k-1}(t)-h_k(t) \right</td>
-          <td>^2}{\sum<em>{t=0}^T h</em>{k-1}^2 (t)}$$</td>
-        </tr>
-      </tbody>
-    </table>
-
-    <p>然后预设一个范围，如果 SD 在此范围内，那么就是 IMF，否则不是。同时，黄锷院士指出 SD 值一般在0.2~0.3之间，但是我看到的大多数程序都是以0.3为界进行判断，小于0.3就是 IMF，大于0.3就不是。Github 上的那个程序就是如此判断的，这样判断的好处是简化了计算过程，使判断变得极为简单，坏处也是显而易见的，SD 的阀值设置的不同导致最终结果就不一样，这和 Wavelet Transform 中选取小波种类类似，阀值的选择反而增大了分析的难度。简化计算难度，增大阀值选择难度，我认为不可取，所以如果能找到一种很好的办法选择出恰当的局部极值点，我认为还是第一种判断方法比较好。</p>
-  </li>
-</ol>
-
-<h3 id="section">局部极值点与零点的判断</h3>
-
-<p>由于将来计算瞬时频率需要用到零点，所以这里我又加入了零点的判断。局部极值点与零点判断困难是因为我们需要通过有限的原始信号采样点来估计出原始信号，由于采样带来的信息缺失导致困难很大，但是因为我们不需要估计出整个信号，我们只需要估计出原始信号的局部极值与零点就可以了，如果假定采样信号的极值点“约等于”原始信号的极值点，那么我们就面临多个很容易遇到的问题，总结起来列在这里：</p>
-
-<ol>
-  <li>采样点中出现连续的极值点与零点如何处理？</li>
-  <li>采样点刚好错过极值点与零点如何处理？</li>
-  <li>边界点如何处理？</li>
-</ol>
-
-<p>在 G. Rilling 的程序中，他取了连续极值点或零点的中间的那个采样点来作为极值点与零点。如果原始信号是一个类正弦信号，这的确是一种好的近似方法，但是对于方波，这种近似方法显然就不合适了。而 Github 上的那个程序，完全没有考虑这个问题。</p>
-
-<p>对于采样点刚好错过极值点与零点的情况，也就是零点或极值点在两个点之间的情况，G. Rilling 的程序只考虑了零点的情况，他将前一个点作为零点的近似，如果采样频率足够大，这的确可以，但是如果采样频率不够大，很显然这样会带来很大的误差。</p>
-
-<p>对于边界点，G. Rilling 根据已有的采样点将边界沿拓，这样边界点就不再是边界点了。在 Github 上的程序则是很简单的将两个边界点直接加入到局部极大值与局部极小值的序列中去。边界沿拓虽然很好，但是复杂并且存在沿拓方法选择的问题。将边界点直接加入虽然简单，但是可能会导致求出的 IMF 边缘震荡，导致分解出无限个 IMF。所以两种方法各有优劣。</p>
-
-<h2 id="section-1">我的想法</h2>
-
-<p>其实总结起来就是两个大问题：</p>
-
-<ol>
-  <li>用局部极值求出的上下包络线会出现与原信号相交的问题，这怎么办？</li>
-  <li>如何通过离散信号求出原信号的局部极值与零点？</li>
-</ol>
-
-<p>而第二个大问题主要就是上面提到的三个特殊情况：</p>
-
-<ol>
-  <li>采样点中出现连续的极值点与零点如何处理？</li>
-  <li>采样点刚好错过极值点与零点如何处理？</li>
-  <li>边界点如何处理？</li>
-</ol>
-
-<p>对于的第二个大问题，我认为可以使用原始信号与以求出的上下包络线的切点来修正上下包络线以此来得到不会与原始信号相交的包络线。</p>
-
-<p>对于采样点中出现连续的极值点与零点，我认为可以全部用来计算包络线，无依据，仅仅是感觉，而且由于脑电几乎不会出现方波的状况，所以我认为 G. Rilling 的解决方法已经可以了。</p>
-
-<p>对于采样点刚好错过极值点与零点的情况，如果是零点，我们可以通过两点确定的直线，估算出零点的位置。对于极值点，可以通过再多取几个点做插值，来估算极值点的位置。</p>
-
-<p>对于边界点，我认为还是沿拓比较好，但是沿拓的方法还有待考虑。</p>
-
-<p>但是如果根据我上面提到的方法修改 G. Rilling 的程序，必然带来一个很严重的情况，就是处理时间的延长。收集数据时间变短，但是处理时间变长，致使总时间几乎不改变甚至变长，这完全没有达到我们开始希望的结果嘛，所以 EMD 求法有待讨论与寻找。我认为，如果可以找到一种快速有效解决上述问题的方法，寻找瞬时频率并不是问题。</p>
 ]]></content>
   </entry>
   

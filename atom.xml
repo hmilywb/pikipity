@@ -14,6 +14,27 @@
 
   
   <entry>
+    <title type="html"><![CDATA[Yaskawa 3D 模型画圆的改进]]></title>
+    <link href="http://pikipity.github.io/blog/improve-draw-circle-yaskawa-3d-model.html"/>
+    <updated>2013-12-06T10:56:00+08:00</updated>
+    <id>http://pikipity.github.io/blog/improve-draw-circle-yaskawa-3d-model</id>
+    <content type="html"><![CDATA[<p>在<a href="http://pikipity.github.io/blog/yaskawa-3d-matlab.html">《3D Yaskawa 机器臂演示（Matlab）》</a>中，我展示了我用 Matlab 制作的 Yaskawa 3D 模型，其中 Demo2 的画圆部分是有问题。最初考虑，如果想要匀速画圆，那么向心加速度是一定的，于是不停地在考虑，如何改进 Simulink 的 model 使其通过向心加速度来计算出相应的 x,y,z 方向上的速度，进而计算需要的角度，最终也没有想出来。最近，又重新思考了这个问题，发现自己完完全全是想多了。</p>
+
+<p>重新定位现在遇到的问题：<strong>找出匀速圆周运动的速度在三个坐标轴上的分解量</strong>。由于我要画的圆只是在一个水平面上，z 轴的分解量是0，那么也就是：<strong>找出匀速圆周运动的速度在 x,y 两个坐标轴上的分解量</strong>。进而继续简化问题，就得到了：<strong>找出一个大小恒定的向量在 x,y 方向上的分解量</strong>。于是问题瞬间简单了，根据下图所示，</p>
+
+<script type="math/tex; mode=display">V_x=V\sin(\alpha+\frac{\pi}{2})</script>
+
+<script type="math/tex; mode=display">V_y=V\sin(\alpha)</script>
+
+<p><img src="https://lh5.googleusercontent.com/-CWrkCOyy5BY/UqFBZPo_d8I/AAAAAAAABZk/_59DnDkciPw/s720/draw_circle.jpg" alt="计算 x,y 轴上速度的分量" /></p>
+
+<p>也就是说，将之前 Simulink 中 Vx 和 Vy 换为两个 sine wave 就可以了。这么简单的问题竟然让我想了这么久。。。</p>
+
+<p>替换之后，不仅仅运行速度大大提升，画出来的圆也更圆了。问题解决。</p>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[自制 Keynote IR Remote Control]]></title>
     <link href="http://pikipity.github.io/blog/diy-apple-remote-controller.html"/>
     <updated>2013-11-28T18:47:00+08:00</updated>
@@ -724,37 +745,6 @@ Click &lt;a href="https://ummoodle.umac.mo/pluginfile.php/74630/mod_resource/con
 <p><img src="https://lh5.googleusercontent.com/-PdvRIs9ik6g/UketzzLefkI/AAAAAAAABNc/_8sDPpLxf18/s640/playing.jpg" alt="运行效果2" /></p>
 
 <p><img src="https://lh5.googleusercontent.com/-nyWIb1rcJgc/UketznUnOoI/AAAAAAAABNg/9YnAebKKDXY/s640/finish.jpg" alt="运行效果3" /></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[利用 Arduino 进行超声波测距]]></title>
-    <link href="http://pikipity.github.io/blog/ultrasonic-distance-measurement-using-arduino.html"/>
-    <updated>2013-09-21T10:32:00+08:00</updated>
-    <id>http://pikipity.github.io/blog/ultrasonic-distance-measurement-using-arduino</id>
-    <content type="html"><![CDATA[<p>在<a href="http://pikipity.github.io/blog/arduino-dht11-lcd1602.html">昨天测量温度的装置</a>上又加上了 HC-SR04 来进行超声波测距，先利用 DHT11 测量温度，然后利用温度来计算出较为准确的声速（根据<a href="http://en.wikipedia.org/wiki/Relativistic_Euler_equations">相对论的欧拉方程</a>，声速（米每秒）=331+0.6*温度（摄氏度）），再利用 HC-SR04 测得的超声波来回的时间计算出距离，并在 LCD1602 上显示。</p>
-
-<p>HC-SR04 的使用非常简单，<a href="http://www.doc88.com/p-737494835063.html">这里有一份 HC-SR04 的中文手册</a>，首先向 Trig 引脚输入一个不小于10us的高电平，然后测量 Echo 引脚返回的高电平的时间 t，然后利用公式：距离=t*声速/2，就可以计算得到距离了。但是需要注意：</p>
-
-<ol>
-  <li>测量周期要在60ms以上，防止回声影响。</li>
-  <li>计算距离时单位要统一，利用<code>pulseIn()</code>函数返回的时间单位是“微秒”，测量结果单位一般是“厘米”，所以声速要从“米每秒”换算为“厘米每微秒”，也就是除以10000。</li>
-  <li>测量距离为2cm~400cm，太近的话会有盲区，太远的话由于返回信号太弱难以检测。</li>
-</ol>
-
-<p><a href="https://github.com/pikipity/Ultrasonic_distance_measurement_using_Arduino.git">程序可以到这里下载</a>，其中 “HC_SR04_Arduino” 文件夹中是一个 HC-SR04 的 Arduino 测试程序，“display_LCD1602” 文件夹中是这次的程序，”scheme” 文件夹中是电路图。</p>
-
-<p>程序中使用 “Time” 库来实现定时器中断的功能，<a href="http://srmonk.blogspot.com/2012/01/arduino-timer-library.html">“Time” 库可以在这里下载</a>，如果你觉得看英文比较烦得话，可以看<a href="http://yehnan.blogspot.com/2012/03/arduino.html">这里这个中文简易教程</a>。</p>
-
-<p>电路图：</p>
-
-<p><img src="https://lh5.googleusercontent.com/-2ggKDjtrfuY/Uj0D_AibosI/AAAAAAAABMw/4VVXk4M1NiY/s640/Breadboard_bb.png" alt="面包板连接图" /></p>
-
-<p><img src="https://lh3.googleusercontent.com/-P3TPBqNYi1E/Uj0D_AqZCmI/AAAAAAAABMs/KXupBqQvZj8/s576/Breadboard_schem.png" alt="电路图" /></p>
-
-<p>结果（LCD 上，第一行为湿度和温度，第二行为距离）：</p>
-
-<p><img src="https://lh5.googleusercontent.com/-lM53a5xTLsA/Uj0D_fkuoxI/AAAAAAAABM0/eefNICQs9Ys/s512/result.jpg" alt="结果" /></p>
 ]]></content>
   </entry>
   

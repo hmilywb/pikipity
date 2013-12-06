@@ -3,12 +3,12 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>女朋友生日的影响 - 折腾来折腾去</title>
+	<title>Yaskawa 3D 模型画圆的改进 - 折腾来折腾去</title>
 	<meta name="author" content="pikipity">
 
 	
-	<meta name="description" content="女朋友生日的影响 Posted by pikipity
-&nbsp; 2013年05月10日 Life Comments 今天去看了一下 Google Analysis 上我的网站的浏览量，吓死我了，女朋友生日给我带来了大量浏览量，天啊，这宣传也太有效了吧。 var jiathis_config &hellip;">
+	<meta name="description" content="Yaskawa 3D 模型画圆的改进 Posted by pikipity
+&nbsp; 2013年12月06日 Matlab Comments 在《3D Yaskawa 机器臂演示（Matlab）》中，我展示了我用 Matlab 制作的 Yaskawa 3D 模型，其中 Demo2 &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -112,7 +112,7 @@
 	<div id="content" class="inner"><div>
 <article class="post">
 	
-	<h2 class="title">女朋友生日的影响</h2>
+	<h2 class="title">Yaskawa 3D 模型画圆的改进</h2>
 	<div class="meta">
 	       <div class="author" style="float:left;">
   
@@ -131,11 +131,11 @@
   
 
 
-<time datetime="2013-05-10T09:05:00+08:00" pubdate data-updated="true">2013年05月10日</time></div>
+<time datetime="2013-12-06T10:56:00+08:00" pubdate data-updated="true">2013年12月06日</time></div>
 		<div class="tags" style="float:left;">
 
 
-	<a class='category' href='/blog/categories/life/'>Life</a>
+	<a class='category' href='/blog/categories/matlab/'>Matlab</a>
 
 
 </div>
@@ -143,9 +143,19 @@
 			<span class="comments"><a href="#com_target">Comments</a></span>
 		
 	</div>
-	<div class="entry-content" style="clear:both;"><p>今天去看了一下 Google Analysis 上我的网站的浏览量，吓死我了，女朋友生日给我带来了大量浏览量，天啊，这宣传也太有效了吧。</p>
+	<div class="entry-content" style="clear:both;"><p>在<a href="http://pikipity.github.io/blog/yaskawa-3d-matlab.html">《3D Yaskawa 机器臂演示（Matlab）》</a>中，我展示了我用 Matlab 制作的 Yaskawa 3D 模型，其中 Demo2 的画圆部分是有问题。最初考虑，如果想要匀速画圆，那么向心加速度是一定的，于是不停地在考虑，如何改进 Simulink 的 model 使其通过向心加速度来计算出相应的 x,y,z 方向上的速度，进而计算需要的角度，最终也没有想出来。最近，又重新思考了这个问题，发现自己完完全全是想多了。</p>
 
-<p><img src="https://lh5.googleusercontent.com/-H832N76TdRc/UYxI9ViL7aI/AAAAAAAAAyU/tkljiGJ0i6I/s912/%25E5%25B1%258F%25E5%25B9%2595%25E5%25BF%25AB%25E7%2585%25A7%25202013-05-10%2520%25E4%25B8%258A%25E5%258D%25889.07.26.png" alt="5月8日惊人的浏览量" /></p>
+<p>重新定位现在遇到的问题：<strong>找出匀速圆周运动的速度在三个坐标轴上的分解量</strong>。由于我要画的圆只是在一个水平面上，z 轴的分解量是0，那么也就是：<strong>找出匀速圆周运动的速度在 x,y 两个坐标轴上的分解量</strong>。进而继续简化问题，就得到了：<strong>找出一个大小恒定的向量在 x,y 方向上的分解量</strong>。于是问题瞬间简单了，根据下图所示，</p>
+
+<script type="math/tex; mode=display">V_x=V\sin(\alpha+\frac{\pi}{2})</script>
+
+<script type="math/tex; mode=display">V_y=V\sin(\alpha)</script>
+
+<p><img src="https://lh5.googleusercontent.com/-CWrkCOyy5BY/UqFBZPo_d8I/AAAAAAAABZk/_59DnDkciPw/s720/draw_circle.jpg" alt="计算 x,y 轴上速度的分量" /></p>
+
+<p>也就是说，将之前 Simulink 中 Vx 和 Vy 换为两个 sine wave 就可以了。这么简单的问题竟然让我想了这么久。。。</p>
+
+<p>替换之后，不仅仅运行速度大大提升，画出来的圆也更圆了。问题解决。</p>
 </div>
 
 
@@ -189,19 +199,17 @@ var jiathis_config={
   
 
 
-<time datetime="2013-05-10T09:05:00+08:00" pubdate data-updated="true">2013年05月10日</time></p>
+<time datetime="2013-12-06T10:56:00+08:00" pubdate data-updated="true">2013年12月06日</time></p>
 </footer>
 
 <section>
 <ul id="left-right">
 <span style="float:left">
 	
-        <a class="basic-alignment left" href="/blog/medical-elecfans-2013.html" title="Previous Post: 电子发烧友《医疗电子特刊》"><font face=Wingdings>&#239;</font> 电子发烧友《医疗电子特刊》</a>
+        <a class="basic-alignment left" href="/blog/diy-apple-remote-controller.html" title="Previous Post: 自制 Keynote IR Remote Control"><font face=Wingdings>&#239;</font> 自制 Keynote IR Remote Control</a>
         </span>
 <span style="float:right">
-	
-        <a class="basic-alignment right" href="/blog/summer-vacation-2013.html" title="next Post: 暑假开始 O(∩_∩)O">暑假开始 O(∩_∩)O <font face=Wingdings>&#240;</font></a>
-       </span>
+	 </span>
 </ul>
 </section>
 
