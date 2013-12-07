@@ -14,6 +14,20 @@
 
   
   <entry>
+    <title type="html"><![CDATA[Yaskawa 3D 模型在更新]]></title>
+    <link href="http://pikipity.github.io/blog/update-yaskawa-3d.html"/>
+    <updated>2013-12-07T20:44:00+08:00</updated>
+    <id>http://pikipity.github.io/blog/update-yaskawa-3d</id>
+    <content type="html"><![CDATA[<p>继<a href="http://pikipity.github.io/blog/improve-draw-circle-yaskawa-3d-model.html">《Yaskawa 3D 模型画圆的改进》</a>更新后，再次进行连续更新，这次终于搞定了录像部分了，本想让保存 frame 的矩阵在各个函数之间传递，但是不知道为什么每次传递的时候都会发生一些不可预料的事情，不是矩阵中所有数据丢失就是部分数据混乱，最后只好是保存为 appdata 了。现在可以保存两个 demo 录像了。但是不建议对第一个 demo 使用，因为运行期间会占用大约 2G 的内存空间（因为产生的 frame 太多了）。</p>
+
+<iframe height="498" width="510" frameborder="0" src="http://player.youku.com/embed/XNjQ0OTM4NTg0" allowfullscreen=""></iframe>
+
+<iframe height="498" width="510" src="http://player.youku.com/embed/XNjQ0OTA2NjEy" frameborder="0" allowfullscreen=""></iframe>
+
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[Yaskawa 3D 模型画圆的改进]]></title>
     <link href="http://pikipity.github.io/blog/improve-draw-circle-yaskawa-3d-model.html"/>
     <updated>2013-12-06T10:56:00+08:00</updated>
@@ -722,29 +736,6 @@ Click &lt;a href="https://ummoodle.umac.mo/pluginfile.php/74630/mod_resource/con
 
 <embed src="http://player.youku.com/player.php/sid/XNjA1MDcxMTQ0/v.swf" allowfullscreen="true" quality="high" width="480" height="400" align="middle" allowscriptaccess="always" type="application/x-shockwave-flash" />
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[俄罗斯方块（Arduino）]]></title>
-    <link href="http://pikipity.github.io/blog/melrose-box-arduino.html"/>
-    <updated>2013-09-29T13:34:00+08:00</updated>
-    <id>http://pikipity.github.io/blog/melrose-box-arduino</id>
-    <content type="html"><![CDATA[<p>经过一个星期闲着无聊地编写和调试，终于可以用 Arduino 玩俄罗斯方块了。四个按钮分别控制左、右、加速下落、转动。使用 LCD12864（QC12864B） 来显示游戏画面。为了寻找可以用来控制 QC12864B 的 Arduino 库花了很长时间，最终选择了 <a href="https://code.google.com/p/u8glib/">u8glib</a>，因为这个库支持的 LCD 控制器非常丰富。<a href="https://code.google.com/p/u8glib/">u8glib 库可以在这里下载</a>，<a href="http://pan.baidu.com/s/1qrhEF">关于 QC12864B 以及如何使用 u8glib 来控制 QC12864B 的资料可以在这里下载</a>，资料中包含一个从网上找来的使用 Arduino 做示波器的例子，使用的就是 <a href="https://code.google.com/p/u8glib/">u8glib</a> 库。</p>
-
-<p>我制作的这个<a href="http://pikipity.github.io/Melrose_box">俄罗斯方块游戏机的项目主页在这里</a>。</p>
-
-<p>面包板连接图：</p>
-
-<p><img src="https://lh3.googleusercontent.com/-MMKU4QZefc4/UkepsoONq0I/AAAAAAAABNI/wASf1AFsVVE/s512/Melrose_box_Scheme_bb.png" alt="面包板连接图" /></p>
-
-<p>运行效果：</p>
-
-<p><img src="https://lh6.googleusercontent.com/-uDiZRNthjjI/Uketz4ePskI/AAAAAAAABNk/zKLtFjShG7U/s640/begin.jpg" alt="运行效果1" /></p>
-
-<p><img src="https://lh5.googleusercontent.com/-PdvRIs9ik6g/UketzzLefkI/AAAAAAAABNc/_8sDPpLxf18/s640/playing.jpg" alt="运行效果2" /></p>
-
-<p><img src="https://lh5.googleusercontent.com/-nyWIb1rcJgc/UketznUnOoI/AAAAAAAABNg/9YnAebKKDXY/s640/finish.jpg" alt="运行效果3" /></p>
 ]]></content>
   </entry>
   
