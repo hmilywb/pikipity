@@ -18,7 +18,7 @@
     <link href="http://pikipity.github.io/blog/update-yaskawa-3d.html"/>
     <updated>2013-12-07T20:44:00+08:00</updated>
     <id>http://pikipity.github.io/blog/update-yaskawa-3d</id>
-    <content type="html"><![CDATA[<p>继<a href="http://pikipity.github.io/blog/improve-draw-circle-yaskawa-3d-model.html">《Yaskawa 3D 模型画圆的改进》</a>更新后，再次进行连续更新，这次终于搞定了录像部分了，本想让保存 frame 的矩阵在各个函数之间传递，但是不知道为什么每次传递的时候都会发生一些不可预料的事情，不是矩阵中所有数据丢失就是部分数据混乱，最后只好是保存为 appdata 了。现在可以保存两个 demo 录像了。但是不建议对第一个 demo 使用，因为运行期间会占用大约 2G 的内存空间（因为产生的 frame 太多了）。</p>
+    <content type="html"><![CDATA[<p>继<a href="http://pikipity.github.io/blog/improve-draw-circle-yaskawa-3d-model.html">《Yaskawa 3D 模型画圆的改进》</a>更新后，再次进行连续更新，这次终于搞定了录像部分了，本想让保存 frame 的矩阵在各个函数之间传递，但是不知道为什么每次传递的时候都会发生一些不可预料的事情，不是矩阵中所有数据丢失就是部分数据混乱，最后只好是保存为 appdata 了。现在可以保存两个 demo 录像了。但是不建议对第一个 demo 使用，因为运行期间会占用大约 2G 的内存空间（因为产生的 frame 太多了）。下面就是两个 demo 程序自己抓取的视频（抓取之后生成的 avi 视频非常大，优酷压缩之后画质就渣了）。</p>
 
 <iframe height="498" width="510" frameborder="0" src="http://player.youku.com/embed/XNjQ0OTM4NTg0" allowfullscreen=""></iframe>
 
