@@ -14,6 +14,17 @@
 
   
   <entry>
+    <title type="html"><![CDATA[脑电波控制 iphone 拍摄感兴趣的东西（Youtube）]]></title>
+    <link href="http://pikipity.github.io/blog/brain-wave-iphone-camera.html"/>
+    <updated>2013-12-14T20:38:00+08:00</updated>
+    <id>http://pikipity.github.io/blog/brain-wave-iphone-camera</id>
+    <content type="html"><![CDATA[<iframe width="560" height="315" src="http://pikipity.github.io//www.youtube.com/embed/W67LvAYAkY4?rel=0" frameborder="0" allowfullscreen=""></iframe>
+
+<p>更多可以到<a href="http://neurowear.com/projects_detail/neurocam.html">官网</a>看看。这个网站还有很多将脑电与手机应用结合的 project。</p>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[IOS7 是在 Word 里面设计出来的么？]]></title>
     <link href="http://pikipity.github.io/blog/ios-in-word.html"/>
     <updated>2013-10-23T23:05:00+08:00</updated>
@@ -124,17 +135,6 @@ Click &lt;a href="https://ummoodle.umac.mo/pluginfile.php/74630/mod_resource/con
 <p>iOS 6.1.2 仍未封堵最新越狱工具所利用到的漏洞，越狱团队 evad3rs 已将 iOS 6.x 完美越狱工具 <a href="http://evasi0n.com/">Evasi0n</a> 更新至v1.4版以应对最新固件。</p>
 
 <p><img src="/images/post/ios-6.1.2.jpg" width="450pt" /></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[MyScript Calculator -- ipad上的手写计算器]]></title>
-    <link href="http://pikipity.github.io/blog/write-calculator.html"/>
-    <updated>2013-02-10T15:18:00+08:00</updated>
-    <id>http://pikipity.github.io/blog/write-calculator</id>
-    <content type="html"><![CDATA[<p>找到一款ipad上的超级好用的手写计算器，支持加减乘除，乘方、指数、对数三角/反三角函数、括号/根号/分号等等都能识别和计算。不仅能算出很长很复杂的算式，甚至能解方程。o(≧v≦)o~~好棒。PP助手有下载。</p>
-
-<p><img src="/images/post/myscript_calculator.jpg" alt="MyScript Calculator" width="550pt" /></p>
 ]]></content>
   </entry>
   
