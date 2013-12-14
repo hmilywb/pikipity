@@ -14,6 +14,33 @@
 
   
   <entry>
+    <title type="html"><![CDATA[打砖块更新]]></title>
+    <link href="http://pikipity.github.io/blog/breakout-clone-v2.html"/>
+    <updated>2013-12-14T14:51:00+08:00</updated>
+    <id>http://pikipity.github.io/blog/breakout-clone-v2</id>
+    <content type="html"><![CDATA[<p>第一次发布在<a href="http://pikipity.github.io/blog/breakout-8051.html">这里</a>，此次更新：</p>
+
+<ol>
+  <li>更改了碰撞后消失砖块的大小。</li>
+  <li>在两个单片机之间加了两条同步线来使画面和声音更加同步。</li>
+  <li>
+    <p>可以手动调整挡板移动方式，共两种移动方式：</p>
+
+    <ul>
+      <li>按键按下移动，不按不移动 (Not smooth)</li>
+      <li>按键指定方向，挡板自动移动 (Smooth)</li>
+    </ul>
+  </li>
+</ol>
+
+<p>更新后的视频演示：</p>
+
+<iframe height="498" width="510" src="http://player.youku.com/embed/XNjQ4MDQ2ODM2" frameborder="0" allowfullscreen=""></iframe>
+
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[Yaskawa 3D 模型再更新]]></title>
     <link href="http://pikipity.github.io/blog/update-yaskawa-3d.html"/>
     <updated>2013-12-07T20:44:00+08:00</updated>
@@ -688,54 +715,6 @@ Click &lt;a href="https://ummoodle.umac.mo/pluginfile.php/74630/mod_resource/con
 
 <pre><code>For this case, please advice your teacher to change the "Appearance" option of the PDF file to "New window" in UMMoodle and this will solve your problem.
 </code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[巨人的猎手]]></title>
-    <link href="http://pikipity.github.io/blog/attack-on-titan.html"/>
-    <updated>2013-10-03T20:28:00+08:00</updated>
-    <id>http://pikipity.github.io/blog/attack-on-titan</id>
-    <content type="html"><![CDATA[<p><img src="https://lh4.googleusercontent.com/-r3XfVFu4YSU/Uk1xgsz8cyI/AAAAAAAABOE/3ONWh1lL_jk/s800/%25E5%25B1%258F%25E5%25B9%2595%25E5%25BF%25AB%25E7%2585%25A7%25202013-10-03%2520%25E4%25B8%258B%25E5%258D%25889.30.19.png" alt="巨人的猎手" /></p>
-
-<p>今天给大家推荐一款国人制作的 3D 网页游戏–《巨人的猎手》，属于《进击的巨人》的同人游戏，由你来扮演《进击的巨人》中的五名主角在不同的地图上猎杀巨人。可以单机玩，也可以局域网联机玩。每个角色都有不同的特殊技。操作方面还是很复杂的：</p>
-
-<ul>
-  <li>WASD：上下左右</li>
-  <li>左shift：跳跃（使用气筒喷射，可快速前进）</li>
-  <li>左control：闪避（钩住巨人飞起时可利用闪避跳到更高处）</li>
-  <li>Q：左挂钩（按住是发射，松开就收回了，所以要是想用钩锁挂住并将自己拉近就按住不要松开，发射挂钩和跳跃都会消耗燃气，燃气量显示在屏幕下方中间，如果消耗没了就不能发射挂钩和跳跃了）</li>
-  <li>E：有挂钩（机制和左挂钩一样）</li>
-  <li>空格键：左右挂钩同时发射（机制和左挂钩一样）</li>
-  <li>鼠标左键：普通攻击（就是挥刀）</li>
-  <li>鼠标右键：特殊攻击（不同角色特殊攻击不同）</li>
-  <li>R: 换刀片（刀片数量有限，数量显示在屏幕下方中间部分，换完就要等死了）</li>
-  <li>P：暂停</li>
-  <li>T：重启游戏（如果挂了，就按“T”吧）</li>
-  <li>C：改变镜头</li>
-  <li>X：显示/隐藏瞄准用的准星（准星代表剑的挥舞方向，准星旁边的数字代表最近的是物体离你的举例，准星旁边的”&lt;”代表左挂钩方向，”&gt;”代表右挂钩方向，如果是红色代表物体太远以致挂钩无法钩住或刀无法砍到，白色代表挂钩可以钩住物体或刀可以砍到）</li>
-  <li>Backspace：全屏</li>
-  <li>N：行礼</li>
-</ul>
-
-<p>玩了几分钟之后我彻底的“回想起了巨人的恐惧”，太难杀了，因为只有攻击巨人颈后那一小片区域才能杀死巨人，巨人会根据你所在的位置做不同的动作，如果你在天上，就顺手抓住你，如果你在头附近就直接张嘴咬你，如果你在地上还会蹲下把你抓起来，总之想绕到背后超级难，就算你好不容易上到脖子上了，可能还会被巨人抓痒痒一样一下抓住。最好在正式玩之前用“trainning”地图（”tranning”地图里巨人不会动）练练手，熟悉一下操作。我总结了一下，就是远远的找准目标之后，远距离绕到目标背后，用钩锁或是跳跃快速前进，找准时机用钩锁上脖子，果断出刀，如果打偏，不要浪费刀刃，放弃之后赶快用钩锁或跳跃快速逃跑摆脱巨人的追踪。</p>
-
-<p><a href="http://fenglee.com/game/aog/">《巨人的猎手》游戏网址在这里</a></p>
-
-<p>游戏作者“鴌Feng”是一个国内的独立游戏制作人，<a href="http://fenglee.com/blog/">其博客在这里</a>，<a href="http://fenglee.com/blog/html/257.html">《巨人的猎手》的介绍博文在这里</a>，Feng大大过去还制作过几款同样游戏性很高（就是很好玩）的游戏，<a href="http://fenglee.com/">你可以在这里找到他的作品</a>，我只能说：</p>
-
-<blockquote>
-  <p>此乃大神，需要顶礼膜拜~~~（膜拜中。。。膜拜中。。。膜拜中。。。膜拜中。。。）</p>
-</blockquote>
-
-<p><img src="https://lh5.googleusercontent.com/-HGUx9chktuE/Uk1w4DgHGPI/AAAAAAAABN4/hT95c2ojVvo/s720/%25E5%25B1%258F%25E5%25B9%2595%25E5%25BF%25AB%25E7%2585%25A7%25202013-10-03%2520%25E4%25B8%258B%25E5%258D%25889.12.37.png" alt="巨人我来啦！受死吧！" /></p>
-
-<p><img src="https://lh3.googleusercontent.com/-cqa1rgIfx4A/Uk1w4MmxVGI/AAAAAAAABN8/faFdboZPD5E/s720/%25E5%25B1%258F%25E5%25B9%2595%25E5%25BF%25AB%25E7%2585%25A7%25202013-10-03%2520%25E4%25B8%258B%25E5%258D%25889.20.02.png" alt="迅速惨死在巨人的怀抱中。。。" /></p>
-
-<p>看女流姐卖萌玩《巨人的猎手》（此为老版本，巨人还很丑，貌似只有一张地图一个人物，现已多次更新，游戏性大大提高）：</p>
-
-<embed src="http://player.youku.com/player.php/sid/XNjA1MDcxMTQ0/v.swf" allowfullscreen="true" quality="high" width="480" height="400" align="middle" allowscriptaccess="always" type="application/x-shockwave-flash" />
-
 ]]></content>
   </entry>
   
