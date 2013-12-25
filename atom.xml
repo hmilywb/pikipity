@@ -14,6 +14,40 @@
 
   
   <entry>
+    <title type="html"><![CDATA[你好，zsh]]></title>
+    <link href="http://pikipity.github.io/blog/introduction-to-zsh.html"/>
+    <updated>2013-12-25T17:43:00+08:00</updated>
+    <id>http://pikipity.github.io/blog/introduction-to-zsh</id>
+    <content type="html"><![CDATA[<p><img src="https://lh5.googleusercontent.com/-0o9D53zyzsc/Urqxkk8sX8I/AAAAAAAABaM/NUvbaYHXQWA/s337/oh-my-zsh-logo.png" alt="on-my-zsh" /></p>
+
+<p>随着直接使用 shell 的次数增多，越来越感觉 bash shell 各种意义上的不方便：没有自动补全，输入错误指令不能自动校正等等。于是开始寻找一个用起来比较方便快捷的新 shell。在寻找的过程中发现了 zsh。</p>
+
+<p>我没有尝试原版的 zsh（官方网站在<a href="http://www.zsh.org/">这里</a>）。而是直接根据大多数人的推荐，安装了 oh-my-zsh（Github 项目主页在<a href="https://github.com/robbyrussell/oh-my-zsh.git">这里</a>）。用过之后，我就再也不想碰 bash 了。如果你仅仅想知道它和 bash 相比，有什么好处，请移步到<a href="http://www.quora.com/What-are-the-advantages-and-disadvantages-of-using-zsh-instead-of-bash-or-other-shells">这里</a>看看吧，大家说好的东西才是真的好 :-D 。这里我只说说在我眼中 zsh 的好处：</p>
+
+<ol>
+  <li>bash 能做的它都能做，而且在 bash 里怎么做，在 zsh 里就怎么做，可以说学习代价降到了最低。</li>
+  <li>
+    <p>超级好用的自动补全，命令及命令参数不再需要打完整了，打一半，然后 Tab 键，所有可选信息就展示出来，用 Tab 键选择，然后回车输入就可以了，简直方便快捷。尤其是输入路径的时候，再也不用 ls 去看路径的内容了，cd + Tab 搞定一切，省心省力。</p>
+
+    <p><img src="https://lh4.googleusercontent.com/-9L_9-Fr5U4o/UrqxkmsrcXI/AAAAAAAABaI/BEJ-MS1QJUk/s599/%25E5%25B1%258F%25E5%25B9%2595%25E5%25BF%25AB%25E7%2585%25A7%25202013-12-25%2520%25E4%25B8%258B%25E5%258D%25886.05.50.png" alt="自动补全" /></p>
+  </li>
+  <li>
+    <p>自动纠错功能非常好用，再也不用每条命令都明明白白的记住了，记个大概，剩下的交给 zsh 自动纠错了。</p>
+
+    <p><img src="https://lh5.googleusercontent.com/-wqtEVfxhZNg/UrqxlPka2cI/AAAAAAAABaY/3hKt9aOAR5Y/s353/%25E5%25B1%258F%25E5%25B9%2595%25E5%25BF%25AB%25E7%2585%25A7%25202013-12-25%2520%25E4%25B8%258B%25E5%258D%25886.09.05.png" alt="自动纠错" /></p>
+  </li>
+  <li>
+    <p>oh-my-zsh 提供多种多样的主题，无论怎么样，总有一款适合你。如果全都不合适，也可以自己定制。主题（主题库在<a href="https://github.com/robbyrussell/oh-my-zsh/wiki/themes">这里</a>）也不是简简单单改改颜色那么简单欧！！主题配合 oh-my-zsh 自带的 git 插件一起使用，让 git 的使用更加方便快捷！！</p>
+
+    <p><img src="https://lh3.googleusercontent.com/-jyeEtbcDv8k/Urqxkj5eWUI/AAAAAAAABaQ/-CxipTrdNuo/s538/theme-oh-my-zsh.png" alt="一种 oh-my-zsh 的主题" /></p>
+  </li>
+</ol>
+
+<p>在 Mac 下，推荐将 zsh 与 iTerm（在<a href="http://iterm.sourceforge.net/index.shtml">这里</a>下载）配合使用，增加更多的可定制功能，尤其是输入快捷键，将常用指令与快捷键结合之后，现在完全不用记命令了 ~\(≧▽≦)/~</p>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[脑电波控制 iphone 拍摄感兴趣的东西（Youtube）]]></title>
     <link href="http://pikipity.github.io/blog/brain-wave-iphone-camera.html"/>
     <updated>2013-12-14T20:38:00+08:00</updated>
@@ -629,34 +663,6 @@
   <li>在 <code>Device</code> 选项卡，选中 <code>Use Extended Linker(LX51) instead of BL51</code>。</li>
   <li>在  <code>LX51 Misc</code> 选项卡中的 <code>Misc controls</code>， 填写 “REMOVEUNUSED”（不加引号）。</li>
 </ol>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[多人实时合作免费在线绘图软件 -- Process On]]></title>
-    <link href="http://pikipity.github.io/blog/process-on.html"/>
-    <updated>2013-10-05T08:51:00+08:00</updated>
-    <id>http://pikipity.github.io/blog/process-on</id>
-    <content type="html"><![CDATA[<p><img src="https://lh4.googleusercontent.com/-Q0n9wEE-bYA/Uk9jd08BJuI/AAAAAAAABR4/QGkUPxMBvR8/s912/%25E5%25B1%258F%25E5%25B9%2595%25E5%25BF%25AB%25E7%2585%25A7%25202013-10-05%2520%25E4%25B8%258A%25E5%258D%25888.48.46.png" alt="Process On" /></p>
-
-<p>今天推荐一款用来绘图的在线应用 – <a href="http://www.processon.com/">Process On</a>，其内置了多种模版，非常适合绘制结构性很强的图片，例如流程图等。</p>
-
-<p><img src="https://lh5.googleusercontent.com/-DX51QUQnnts/Uk9kIfSkO-I/AAAAAAAABSA/KqhLYRS-gOU/s720/%25E5%25B1%258F%25E5%25B9%2595%25E5%25BF%25AB%25E7%2585%25A7%25202013-10-05%2520%25E4%25B8%258A%25E5%258D%25888.56.29.png" alt="内置模版" /></p>
-
-<p><img src="https://lh6.googleusercontent.com/-Qow5by5ZDps/Uk9krAeS5nI/AAAAAAAABSM/xHXpGkEiW_E/s912/%25E5%25B1%258F%25E5%25B9%2595%25E5%25BF%25AB%25E7%2585%25A7%25202013-10-05%2520%25E4%25B8%258A%25E5%258D%25888.58.58.png" alt="绘制界面" /></p>
-
-<p>上图就是绘制界面了，也许第一眼看是去觉得及其普通，甚至左边所提供的备选图形都和<a href="http://dia-installer.de/">开源软件 Dia</a>如出一辙。的确，其绘图功能没有什么出众的地方，如果想快速绘制出专业的流程图，这款软件并不是一个很好地选择，毕竟<a href="http://office.microsoft.com/en-us/visio/">微软的 Visio</a> 比它专业几百倍。但是今天之所以推荐它，是因为其强大的在线多人合作功能。这里所说的多人合作不是指一人保存退出之后其他人才可以观看和修改，如果是那样的话，用 <a href="https://www.dropbox.com">Dropbox</a> 就可以了，这里所说的合作是实时合作，只要每个人都在线，就可以由作者通过“邀请协作者”的方式将其他人添加入编辑群中，每个协作者的修改都会实时显示在其他协作者的画面上。如果协作者们距离很远，还可以通过内置的“聊天”功能来进行讨论。很大程度上方便了多人流程图绘制的问题，再也不会出现，一个人掌握电脑其他人在旁边七嘴八舌导致操作者不知道应该如何是好的情况。</p>
-
-<p><img src="https://lh6.googleusercontent.com/-iR6I-HdwVgY/Uk9p3JLSJNI/AAAAAAAABSg/syr21nwsI3Q/s740/%25E5%25B1%258F%25E5%25B9%2595%25E5%25BF%25AB%25E7%2585%25A7%25202013-10-05%2520%25E4%25B8%258A%25E5%258D%25889.19.13.png" alt=" Visio 文件导入帮助" /></p>
-
-<p>并且其支持 <a href="http://office.microsoft.com/en-us/visio/">Visio</a> 文件的导入。还有一个类似于社交网络的共享圈，可以通过关注其他人来了解对方正在制作什么样的图片，也可以通过搜索来发现其他人共享出来的图片。总而言之，这是一款不可多得多人实时在线合作绘图网站。</p>
-
-<p><img src="https://lh6.googleusercontent.com/-Rh-C4psyJ84/Uk9p3JQe4AI/AAAAAAAABSk/gozi3_wdROw/s912/%25E5%25B1%258F%25E5%25B9%2595%25E5%25BF%25AB%25E7%2585%25A7%25202013-10-05%2520%25E4%25B8%258A%25E5%258D%25889.18.27.png" alt="类似于社交网络的共享圈" /></p>
-
-<p><a href="http://www.processon.com/">这里是 Process On 的网址，免费注册和使用。</a></p>
-
-<p><a href="https://chrome.google.com/webstore/detail/processon-online-diagramm/pnggaliohjcaboolkcpjhfondbjlehkm?utm_source=chrome-ntp-icon">Chrome 上没有 Process On 的在线编辑器的应用，只有一个网站快捷方式的应用</a></p>
 
 ]]></content>
   </entry>
