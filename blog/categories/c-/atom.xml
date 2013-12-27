@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[categories: C++ | 折腾来折腾去]]></title>
+  <link href="http://pikipity.github.io/blog/categories/c-/atom.xml" rel="self"/>
+  <link href="http://pikipity.github.io/"/>
+  <updated>2013-01-30T00:00:00+08:00</updated>
+  <id>http://pikipity.github.io/</id>
+  <author>
+    <name><![CDATA[pikipity]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[字符雨效果 -- ncurses]]></title>
+    <link href="http://pikipity.github.io/blog/character-rain-ncurse.html"/>
+    <updated>2013-12-27T16:42:00+08:00</updated>
+    <id>http://pikipity.github.io/blog/character-rain-ncurse</id>
+    <content type="html"><![CDATA[<p>今天突然想到可以用 ncurses 实现一下《黑客帝国》中字符雨的效果，应该会很好看，顺便复习一下早已丢掉的 C++。代码很简单，可以到<a href="https://github.com/pikipity/Character_rain_the_matrix.git">这里</a>下载。</p>
+
+<p><img src="https://lh5.googleusercontent.com/-caNd3rPWReM/Ur077_y4FwI/AAAAAAAABas/vC5-57tCXZc/s720/12%25E6%259C%2588%252027%252C%25202013%252016%253A31.gif" alt="程序效果" /></p>
+]]></content>
+  </entry>
+  
+</feed>
