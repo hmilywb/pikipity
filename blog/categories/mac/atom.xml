@@ -14,6 +14,30 @@
 
   
   <entry>
+    <title type="html"><![CDATA[40行代码大赛 -- Cocoa China]]></title>
+    <link href="http://pikipity.github.io/blog/40-line-code-award.html"/>
+    <updated>2014-01-03T09:15:00+08:00</updated>
+    <id>http://pikipity.github.io/blog/40-line-code-award</id>
+    <content type="html"><![CDATA[<p>在2013年的最后四天里，<a href="http://www.cocoachina.com/bbs/thread.php?fid=6&amp;page=1">Cocoa China 论坛</a>举行了一个<a href="http://www.cocoachina.com/bbs/read.php?tid=175903&amp;page=1">“40行代码大赛”</a>，看谁可以使用不超过40行的代码就写出提现 Geek 精神的原创程序，语言不限，objective-C 最好。</p>
+
+<p>虽然已经结束了，但是参赛作品的质量都不容小觑，很值得学习。下面是我看到的很有创意的几个作品：</p>
+
+<ol>
+  <li><a href="http://www.cocoachina.com/bbs/read.php?tid=177830">用shader实现的生命游戏</a></li>
+  <li><a href="http://www.cocoachina.com/bbs/read.php?tid=175964">用二分法查找算法+递归对数组快速匹配单词（外加模糊查找，不连续关键词查找）</a></li>
+  <li><a href="http://www.cocoachina.com/bbs/read.php?tid=177832">代码片段：不加载图片，实现世界地图的显示和旋转</a></li>
+  <li><a href="http://www.cocoachina.com/bbs/read.php?tid=177219">一键打包</a></li>
+  <li><a href="http://www.cocoachina.com/bbs/read.php?tid=176148">用十种语言说“我爱你” (IOS7)</a></li>
+  <li><a href="http://www.cocoachina.com/bbs/read.php?tid=177222&amp;fpage=2">不使用一张图片，实现漂亮的霓虹灯特效</a></li>
+  <li><a href="http://www.cocoachina.com/bbs/read.php?tid=177183&amp;fpage=2">输入的时候自动对银行账号进行格式化</a></li>
+  <li><a href="http://www.cocoachina.com/bbs/read.php?tid=176160&amp;fpage=2">根据分辨率缩放并旋转图片。最重要的是，消除图片白边</a></li>
+  <li><a href="http://www.cocoachina.com/bbs/read.php?tid=176055&amp;fpage=2">一弧形展示代碼片段</a></li>
+  <li><a href="http://www.cocoachina.com/bbs/read.php?tid=176052&amp;fpage=3">圣诞动画</a></li>
+</ol>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[你好，zsh]]></title>
     <link href="http://pikipity.github.io/blog/introduction-to-zsh.html"/>
     <updated>2013-12-25T17:43:00+08:00</updated>
@@ -151,45 +175,6 @@
 <p><img src="https://lh3.googleusercontent.com/-rkDZUJACtqo/UhmniKahR7I/AAAAAAAABHM/iwtIZ9ZXXuo/s640/%25E5%25B1%258F%25E5%25B9%2595%25E5%25BF%25AB%25E7%2585%25A7%25202013-08-25%2520%25E4%25B8%258B%25E5%258D%25882.34.08.png" alt="下载中" /></p>
 
 <p><img src="https://lh3.googleusercontent.com/-ZNcrGbCx18M/UhmniTT8BYI/AAAAAAAABHQ/ig4RsA_k8OM/s640/%25E5%25B1%258F%25E5%25B9%2595%25E5%25BF%25AB%25E7%2585%25A7%25202013-08-25%2520%25E4%25B8%258B%25E5%258D%25882.34.31.png" alt="选择 Options" /></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[用 Alfred 快速启动 MATLAB]]></title>
-    <link href="http://pikipity.github.io/blog/open-matlab-fast-using-alfred.html"/>
-    <updated>2013-08-05T18:44:00+08:00</updated>
-    <id>http://pikipity.github.io/blog/open-matlab-fast-using-alfred</id>
-    <content type="html"><![CDATA[<p>大概很多人都会难以忍受 MATLAB 启动时候漫长的等待，那是因为 MATLAB 的窗口化是基于 java 的，加载 java 永远是一个让人蛋疼的事情。但是如果你使用的是 Linux 或是 Mac OS X，那么你完全没必要把时间都花费在等待 MATLAB 准备和打开 java 的过程上。我们真正使用 MATLAB 是使用它的命令行，而它的图形化界面，除了修改图片和使用具有 GUI 的 toolbox，一般很少用到，所以到用到的时候在加载 java 就可以了，而且由于加载 java 和启用命令行的操作分开了，同时运行的线程和占用的内存都减少了，java 的加载速度也会相应提升。总而言之，就是让你觉得 Matlab 快了很多很多。</p>
-
-<p><img src="https://lh3.googleusercontent.com/-IPC7qvN44iA/Uf-RDQ06AZI/AAAAAAAAA8E/oyQ6i78YWwo/s800/%25E5%25B1%258F%25E5%25B9%2595%25E5%25BF%25AB%25E7%2585%25A7%25202013-08-05%2520%25E4%25B8%258B%25E5%258D%25887.46.50.png" alt="终端使用 MATLAB" /></p>
-
-<p>这里使用的技巧并不高深，只是让 <a href="http://www.alfredapp.com/">Alfred</a> 执行一段 shell 命令，并为这个命令定制关键词，方便以后用 <a href="http://www.alfredapp.com/">Alfred</a> 搜索。</p>
-
-<p><a href="http://www.alfredapp.com/">Alfred</a> 是 Mac OS X 上的一款快速启动、查询工具，类似于 Mac OS X 自带的 spotlight，但是功能上则强大很多。spotlight仅能查询文件并快速打开，<a href="http://www.alfredapp.com/">Alfred</a> 则不仅如此，查询网页、查询词典、替代计算器、查询 iTunes、执行指定 shell 命令、workflow 或是 AppleScript 等等，而且这些功能全部集成到一个搜索条中，超级方便快捷。现在，spotlight 早已经被我禁用了，完全由 <a href="http://www.alfredapp.com/">Alfred</a> 代替。<a href="http://www.alfredapp.com/">Alfred</a> 的官网在<a href="http://www.alfredapp.com/">这里</a>，你可以免费下载和使用，但是免费版中部分功能被限制，用起来还是很不爽的，你可以通过购买获得 Powerpack 激活码，然后就可以享用 <a href="http://www.alfredapp.com/">Alfred</a> 所有强大的功能了。如果你不想付钱，你可以到<a href="http://pan.baidu.com/share/link?shareid=2139275050&amp;uk=4080321956">这里</a>下载 <em>X解程序</em>，但是 v1 旧版的X解程序，官网提供的新版 v2 的X解还请自行 <a href="https://www.google.com">Google</a> 之。</p>
-
-<p><img src="https://lh5.googleusercontent.com/-M187kHThsnM/Uf-RDKTJYBI/AAAAAAAAA8A/QMe45cbl_gI/s512/%25E5%25B1%258F%25E5%25B9%2595%25E5%25BF%25AB%25E7%2585%25A7%25202013-08-05%2520%25E4%25B8%258B%25E5%258D%25887.00.51.png" alt="Alfred 使用画面" /></p>
-
-<p>这里就不介绍软解的安装与X解还有基本配置了，毕竟软件很简单，一目了然。直奔主题，如何让其执行一段 shell 命令来在终端下打开 MATLAB。</p>
-
-<p>首先，你要知道如何在终端下打开 MATLAB。找到你电脑上的 MATLAB 程序，我指的不是那个 app 在哪，而是在那个 app 上右键，点击显示包内容之后，找到一个文件名叫 matlab 的程序（我记得应该就是一个 shell 脚本），记录下它的路径（右键单击“拷贝路径”中的“Path”，例如我的路径就是<code>/Applications/MATLAB/MATLAB_R2011a.app/bin/matlab</code>）。然后你只要在终端中直接执行这个路径，MATLAB 就会打开了。但是你会发现，依然是以图形化界面的方式打开，所以你需要在路径后面加一些启动参数，常用的启动参数如下</p>
-
-<pre><code>-nodesktop  不启动图形化界面
--nosplash   无欢迎信息
-</code></pre>
-
-<p>你也可以在后面使用参数<code>-r</code>，这样，MATLAB打开后就会自动执行后面的命令（需要执行的命令空一格用引号引起来放在后面就可以了，例如<code>-r "x=1:10;plot(x)"</code>）。</p>
-
-<p>现在就要将这个启动 MATLAB 的 shell 命令添加入 <a href="http://www.alfredapp.com/">Alfred</a> 中。打开 <a href="http://www.alfredapp.com/">Alfred</a> 的 “Preferences”，在 “Extensions” 中添加一个 shell 命令，名字随便起一个就好了。”Title” 是你将会在 <a href="http://www.alfredapp.com/">Alfred</a> 中搜索看到的名字，起一个好认的就可以了。”Description” 是你将在 <a href="http://www.alfredapp.com/">Alfred</a> 中显示在名字下面的小字，简单注释一下就可以了。”Keyword” 一定要使用，不然每次打名字就太累了，这里可以设置快捷键，以后搜索的时候打入这个关键字就可以了。”Options” 中的 “Silent” 必须取消掉，不然 MATLAB 会在后台启动而不显示。”Command” 就不多说了，把你要执行的命令放进来就可以了。”Parameter” 是设置你将来搜索的时候是否需要参数，”Auto Detect” 就可以了。保存，就可以使用了。</p>
-
-<p><img src="https://lh4.googleusercontent.com/-DWMROP6I7qA/Uf-RC77dmCI/AAAAAAAAA74/4XxBwboOPjA/s640/%25E5%25B1%258F%25E5%25B9%2595%25E5%25BF%25AB%25E7%2585%25A7%25202013-08-05%2520%25E4%25B8%258B%25E5%258D%25886.59.51.png" alt="设置画面" /></p>
-
-<p>如果，你觉得设置很麻烦，可以下载我已经设置好的文件，但是要注意把 “matlab” 的路径改为自己电脑上的路径。第一个文件就是简单的在终端打开 MATLAB，但是它还会打开 “workspace” 并清空终端（因为我唯一需要的窗口就是 “workspace”，用来看一下当前保存了哪些变量，当然你也可以用<code>CommandHistory</code>打开命令历史记录）。第二个文件是在终端打开 MATLAB，并执行你输入的一条命令，例如你在 <a href="http://www.alfredapp.com/">Alfred</a> 中输入 <code>matlab "a=5;"</code>，就会打开 MATLAB 之后创建一个变量<code>a</code>。</p>
-
-<ul>
-  <li><a href="http://pan.baidu.com/share/link?shareid=2246469849&amp;uk=4080321956">Matlab Terminal</a></li>
-  <li><a href="http://pan.baidu.com/share/link?shareid=2452208514&amp;uk=4080321956">Matlab Command</a></li>
-</ul>
-
 ]]></content>
   </entry>
   

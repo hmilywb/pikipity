@@ -14,6 +14,30 @@
 
   
   <entry>
+    <title type="html"><![CDATA[40行代码大赛 -- Cocoa China]]></title>
+    <link href="http://pikipity.github.io/blog/40-line-code-award.html"/>
+    <updated>2014-01-03T09:15:00+08:00</updated>
+    <id>http://pikipity.github.io/blog/40-line-code-award</id>
+    <content type="html"><![CDATA[<p>在2013年的最后四天里，<a href="http://www.cocoachina.com/bbs/thread.php?fid=6&amp;page=1">Cocoa China 论坛</a>举行了一个<a href="http://www.cocoachina.com/bbs/read.php?tid=175903&amp;page=1">“40行代码大赛”</a>，看谁可以使用不超过40行的代码就写出提现 Geek 精神的原创程序，语言不限，objective-C 最好。</p>
+
+<p>虽然已经结束了，但是参赛作品的质量都不容小觑，很值得学习。下面是我看到的很有创意的几个作品：</p>
+
+<ol>
+  <li><a href="http://www.cocoachina.com/bbs/read.php?tid=177830">用shader实现的生命游戏</a></li>
+  <li><a href="http://www.cocoachina.com/bbs/read.php?tid=175964">用二分法查找算法+递归对数组快速匹配单词（外加模糊查找，不连续关键词查找）</a></li>
+  <li><a href="http://www.cocoachina.com/bbs/read.php?tid=177832">代码片段：不加载图片，实现世界地图的显示和旋转</a></li>
+  <li><a href="http://www.cocoachina.com/bbs/read.php?tid=177219">一键打包</a></li>
+  <li><a href="http://www.cocoachina.com/bbs/read.php?tid=176148">用十种语言说“我爱你” (IOS7)</a></li>
+  <li><a href="http://www.cocoachina.com/bbs/read.php?tid=177222&amp;fpage=2">不使用一张图片，实现漂亮的霓虹灯特效</a></li>
+  <li><a href="http://www.cocoachina.com/bbs/read.php?tid=177183&amp;fpage=2">输入的时候自动对银行账号进行格式化</a></li>
+  <li><a href="http://www.cocoachina.com/bbs/read.php?tid=176160&amp;fpage=2">根据分辨率缩放并旋转图片。最重要的是，消除图片白边</a></li>
+  <li><a href="http://www.cocoachina.com/bbs/read.php?tid=176055&amp;fpage=2">一弧形展示代碼片段</a></li>
+  <li><a href="http://www.cocoachina.com/bbs/read.php?tid=176052&amp;fpage=3">圣诞动画</a></li>
+</ol>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[字符雨效果 -- ncurses]]></title>
     <link href="http://pikipity.github.io/blog/character-rain-ncurse.html"/>
     <updated>2013-12-27T16:42:00+08:00</updated>
@@ -612,27 +636,6 @@
   </li>
 </ol>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[MATLAB 的函数中清理公用 workspace]]></title>
-    <link href="http://pikipity.github.io/blog/clear-workspace-matlab.html"/>
-    <updated>2013-10-16T18:51:00+08:00</updated>
-    <id>http://pikipity.github.io/blog/clear-workspace-matlab</id>
-    <content type="html"><![CDATA[<p>今天在编写一个 MATLAB 函数的时候，尝试使用 <code>clear all;</code> 来清理掉 workspace，结果运行后发现完全没有效果。查找了一下 MATLAB 的帮助文件才发现，每个函数在运行的时候都有自己的 workspace，所以如果在函数内部使用 <code>clear</code> 的话，清空的是函数自己的 workspace，不会影响到公用的 workspace。于是又到<a href="http://www.mathworks.com/matlabcentral/"> mathwork 的 MATLAB Center </a> 逛了一下，发现了一种很好的方法：使用 <code>evalin()</code> 函数。<a href="http://www.mathworks.com/matlabcentral/newsreader/view_thread/253314">原帖在这里</a>。</p>
-
-<p>总结一下，就是使用下面的语句：</p>
-
-<pre><code>evalin('caller','clear all');
-</code></pre>
-
-<p>或者使用</p>
-
-<pre><code>evalin('base','clear all');
-</code></pre>
-
-<p>主要区别是，前一个不仅会清空公用 workspace，也会清空其他函数的 workspace。后一个仅仅只清空公用的 workspace。</p>
 ]]></content>
   </entry>
   
