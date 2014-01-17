@@ -14,6 +14,30 @@
 
   
   <entry>
+    <title type="html"><![CDATA[兰顿蚂蚁（Ncurses）]]></title>
+    <link href="http://pikipity.github.io/blog/langton-ant.html"/>
+    <updated>2014-01-17T09:38:00+08:00</updated>
+    <id>http://pikipity.github.io/blog/langton-ant</id>
+    <content type="html"><![CDATA[<p><img src="https://lh4.googleusercontent.com/-y22D4cBCYE4/UtiMAcZme4I/AAAAAAAABb0/3pzCr03dDQc/s353/LangtonsAntAnimated.gif" alt="兰顿蚂蚁规则演示" /></p>
+
+<p>“生命游戏”已经快被玩坏了，但是“兰顿蚂蚁”貌似很少有人做，可能是因为变化没有那么多，看起来不是那么有意思吧。</p>
+
+<p>“兰顿蚂蚁”也是细胞自动机的一种案例，在一个只有黑白两种方格的世界里，兰顿规定了一种蚂蚁的行动方式：</p>
+
+<ul>
+  <li>如果蚂蚁当前在黑格，那么右转90度，将此格变为白色，前进一步；</li>
+  <li>如果蚂蚁当前在白格，那么左转90度，将此格变为黑色，前进一步。</li>
+</ul>
+
+<p>我用 Ncurses 写了一个一只蚂蚁的程序，黑格用“#”表示，白格什么也没有（或者说是空格），蚂蚁根据朝向不同，字母也不同，朝上是“U”，朝下是“D”，朝左是“L”，朝右是“R”。程序可以到<a href="https://github.com/pikipity/Langton_ant.git">我的 Github 下载</a></p>
+
+<p>下面是此程序的一段演示视频：</p>
+
+<iframe height="498" width="510" src="http://player.youku.com/embed/XNjYyNjI0NjEy" frameborder="0" allowfullscreen=""></iframe>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[Lytro Camera -- 光场相机]]></title>
     <link href="http://pikipity.github.io/blog/light-field-camera.html"/>
     <updated>2014-01-04T08:35:00+08:00</updated>
@@ -559,18 +583,6 @@
     <content type="html"><![CDATA[<p>看到最后才发现是大虐。。。</p>
 
 <embed height="452" width="544" quality="high" allowfullscreen="true" type="application/x-shockwave-flash" src="http://static.hdslb.com/miniloader.swf" flashvars="aid=114900&amp;page=1" pluginspage="http://www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash" />
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[IOS7 是在 Word 里面设计出来的么？]]></title>
-    <link href="http://pikipity.github.io/blog/ios-in-word.html"/>
-    <updated>2013-10-23T23:05:00+08:00</updated>
-    <id>http://pikipity.github.io/blog/ios-in-word</id>
-    <content type="html"><![CDATA[<p>这个视频就是用来吐槽 IOS7 设计的吧，233333</p>
-
-<embed src="http://player.youku.com/player.php/sid/XNjI1MTI5Mjgw/v.swf" allowfullscreen="true" quality="high" width="480" height="400" align="middle" allowscriptaccess="always" type="application/x-shockwave-flash" />
 
 ]]></content>
   </entry>
