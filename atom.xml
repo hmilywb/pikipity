@@ -14,6 +14,55 @@
 
   
   <entry>
+    <title type="html"><![CDATA[奇奇怪怪的机器人]]></title>
+    <link href="http://pikipity.github.io/blog/robot-youtube1.html"/>
+    <updated>2014-01-19T16:02:00+08:00</updated>
+    <id>http://pikipity.github.io/blog/robot-youtube1</id>
+    <content type="html"><![CDATA[<p>在 Youtube 上看到几个机器人的视频，觉得这几个机器人挺特别，就搬运到了优酷上。视频放在这里，有兴趣的可以点开看一看。（顺便一提，今天改进了一下前几天写的<a href="http://pikipity.github.io/">“兰顿蚂蚁”的程序</a>，可以在支持色彩的终端上用色块代替字符，也就这样了，兰顿蚂蚁画出来的东西真是乱起八糟啊。。。o(╯□╰)o）</p>
+
+<!--more-->
+
+<h3 id="section">蜘蛛机器人</h3>
+
+<iframe height="498" width="510" src="http://player.youku.com/embed/XNjYyMjg1MzQ0" frameborder="0" allowfullscreen=""></iframe>
+
+<h3 id="section-1">自组装蛇形机器人</h3>
+
+<iframe height="498" width="510" src="http://player.youku.com/embed/XNjYyMjg3NjY4" frameborder="0" allowfullscreen=""></iframe>
+
+<h3 id="section-2">气球机器人（超漂亮）</h3>
+
+<iframe height="498" width="510" src="http://player.youku.com/embed/XNjYyMjg2NzA4" frameborder="0" allowfullscreen=""></iframe>
+
+<h3 id="morphex-">MorpHex 机器人</h3>
+
+<iframe height="498" width="510" src="http://player.youku.com/embed/XNjYyMjg2MDU2" frameborder="0" allowfullscreen=""></iframe>
+
+<h3 id="section-3">蜻蜓机器人</h3>
+
+<iframe height="498" width="510" src="http://player.youku.com/embed/XNjYyMjg1NjAw" frameborder="0" allowfullscreen=""></iframe>
+
+<h3 id="carleton-university-">Carleton University 机器人课</h3>
+
+<p>人家机器人课玩乐高！！我们还在苦逼的用 Matlab 仿真。%&gt;_&lt;%</p>
+
+<iframe height="498" width="510" src="http://player.youku.com/embed/XNjYyMjg4MDky" frameborder="0" allowfullscreen=""></iframe>
+
+<h3 id="pololu-3pi-">Pololu 3pi 机器人</h3>
+
+<p>这个机器人超好玩，小巧又可以自己 DIY，土豪们可以考虑入手啊。<a href="http://www.pololu.com/product/975">官网销售</a></p>
+
+<iframe height="498" width="510" src="http://player.youku.com/embed/XNjYyMjg3MDY0" frameborder="0" allowfullscreen=""></iframe>
+
+<h3 id="parrot-minidrone-and-parrot-jumping-sumo">Parrot MiniDrone and Parrot Jumping Sumo</h3>
+
+<p>这两个机器人最近很火（官网新闻 <a href="http://blog.parrot.com/2014/01/07/parrot-minidrone/">Parrot MiniDrone</a> 和 <a href="http://blog.parrot.com/2014/01/07/parrot-jumping-sumo/">Parrot Jumping Sumo</a>），但一样是土豪的玩具。%&gt;_&lt;%</p>
+
+<iframe height="498" width="510" src="http://player.youku.com/embed/XNjU3OTcyMjA0" frameborder="0" allowfullscreen=""></iframe>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[兰顿蚂蚁（Ncurses）]]></title>
     <link href="http://pikipity.github.io/blog/langton-ant.html"/>
     <updated>2014-01-17T09:38:00+08:00</updated>
@@ -571,18 +620,6 @@
 <p>这里有一段视频项目中 <code>teasting</code> 文件夹中程序的运行结果：</p>
 
 <embed pluginspage="http://www.macromedia.com/go/getflashplayer" src="http://you.video.sina.com.cn/api/sinawebApi/outplayrefer.php/vid=117845240_3342829334_bh28RyE5DTLK+l1lHz2stqlF+6xCpv2xhGm3v1CsJwdaVgiYJMXNb9wG5yHSBc1G8XoLHcwydP8h3xkoaq5Y/s.swf" type="application/x-shockwave-flash" name="sinaplayer" allowfullscreen="true" width="480" height="370" />
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[粘着系男子的15年纠缠不休]]></title>
-    <link href="http://pikipity.github.io/blog/15-year.html"/>
-    <updated>2013-10-26T22:27:00+08:00</updated>
-    <id>http://pikipity.github.io/blog/15-year</id>
-    <content type="html"><![CDATA[<p>看到最后才发现是大虐。。。</p>
-
-<embed height="452" width="544" quality="high" allowfullscreen="true" type="application/x-shockwave-flash" src="http://static.hdslb.com/miniloader.swf" flashvars="aid=114900&amp;page=1" pluginspage="http://www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash" />
 
 ]]></content>
   </entry>
