@@ -14,6 +14,39 @@
 
   
   <entry>
+    <title type="html"><![CDATA[自动家庭电源控制系统半成品放出]]></title>
+    <link href="http://pikipity.github.io/blog/auto-home-control.html"/>
+    <updated>2014-02-17T20:20:00+08:00</updated>
+    <id>http://pikipity.github.io/blog/auto-home-control</id>
+    <content type="html"><![CDATA[<p>自动家庭电源控制系统基本完成，各个模块基本实现了预期功能，各个模块直接的衔接工作也基本完成，其实年前就已经赶工完成了，本来想趁着过年在家再继续完善一下，但是又犯懒了，什么也没做。</p>
+
+<p>本来预期为了节省成本，想使用 8051 作为控制核心，结果发现控制什么的太麻烦了，尤其是无线模块部分，而且和电脑跨平台连接也相当的复杂，最后还是选择使用了 Arduino，开发难度瞬间降低。我又将其和 <a href="http://pikipity.github.io/blog/little-mr.html">Little Mr.</a> 结合了一下，使其更加有趣。</p>
+
+<p>更加具体的项目介绍在<a href="http://pikipity.github.io/Home-Control/">这里</a>，整个项目的内容在<a href="https://github.com/pikipity/Home-Control.git">这里下载</a>，这还有三段 demo 是视频：</p>
+
+<ol>
+  <li>
+    <p>电脑控制软件的使用方法（8051 为控制核心）</p>
+
+    <iframe height="498" width="510" src="http://player.youku.com/embed/XNjY2NzcwMzcy" frameborder="0" allowfullscreen=""></iframe>
+  </li>
+  <li>
+    <p>如何使用 little Mr. 进行控制（8051 为控制核心）</p>
+
+    <iframe height="498" width="510" src="http://player.youku.com/embed/XNjY2NzcwNzIw" frameborder="0" allowfullscreen=""></iframe>
+  </li>
+  <li>
+    <p>Little Mr. 与 Arduino 结合（Arduino 为控制核心）</p>
+
+    <iframe height="498" width="510" src="http://player.youku.com/embed/XNjY2NzcxMjY0" frameborder="0" allowfullscreen=""></iframe>
+  </li>
+</ol>
+
+<p>这个项目到这里就算是完结了吧，德国 Parce 公司已经有成品放出，正在 indiegogo 上筹资，和我设想的产品从外貌到功能如出一辙，大家可以到<a href="http://www.indiegogo.com/projects/the-parce-idea">这里围观一下</a>，虽然其强调的是省电功能，但是一样具有学习功能，从介绍上看，这种学习功能是使用 Wi-Fi 进行联网之后的一个云端服务。（这种东西果然只靠个人是难以完成的啊。。。╮(╯▽╰)╭）</p>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[Little Mr. (processing)]]></title>
     <link href="http://pikipity.github.io/blog/little-mr.html"/>
     <updated>2014-01-25T11:53:00+08:00</updated>
@@ -581,40 +614,6 @@
     <content type="html"><![CDATA[<p>今天看到一个 GIF 图，很有意思，重点不是机械的原理，重点是这种 GIF 图怎么做啊！（误）</p>
 
 <p><img src="https://lh6.googleusercontent.com/-w8KIYt_Ep_o/Un7wADaDW3I/AAAAAAAABTw/1kPaM-PeNSg/s500/1fff2111.gif" alt="电风扇原理" /></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[一起将 processing 镶嵌在网页上]]></title>
-    <link href="http://pikipity.github.io/blog/sketchpad.html"/>
-    <updated>2013-11-05T21:42:00+08:00</updated>
-    <id>http://pikipity.github.io/blog/sketchpad</id>
-    <content type="html"><![CDATA[<p>一直想找一种方法，将 processing 生成的程序放到网页上。在搜索了一番 Google 之后发现要使用 <a href="http://processingjs.org/">processing.js</a> 才可以，但是要设置自己的网页才可以，太麻烦了，于是就放弃了。今天在浏览 <a href="http://processingjs.org/">processing.js</a> 官网说明的时候发现，在<a href="http://processingjs.org/articles/p5QuickStart.html">《Processing.js Quick Start - Processing Developer Edition》</a>一文中介绍了以下两个网站可以在线编写并共享自己的 processing 代码和效果：</p>
-
-<ol>
-  <li>
-    <p><a href="http://sketchpad.cc/">sketchpad</a></p>
-
-    <p>这个网站上，不仅可以实现在线编写和分享代码，还可以自由浏览别人的共享代码，所有程序的效果可以实时演示，编辑器中还提供多人合作功能，很方便。</p>
-
-    <p>缺点也很显著，编辑器虽然提供语法高亮，但是高不高亮完全没有用，所有文字一个颜色（只有 class 部分和别的不一个颜色）。第二个缺点不晓得是不是我浏览器的问题，贴出来的动画会播放一段时间之后突然放大，导致鼠标定位出现错误，很是奇怪。</p>
-
-    <p><img src="https://lh3.googleusercontent.com/-Cx0ZXzkD2ho/UnkDB9mWrDI/AAAAAAAABTc/FiQVDRkoVCs/s912/%25E5%25B1%258F%25E5%25B9%2595%25E5%25BF%25AB%25E7%2585%25A7%25202013-11-05%2520%25E4%25B8%258B%25E5%258D%258810.22.47.png" alt="sketchpad 编辑器界面" /></p>
-
-    <p>下面是我为了测试编写的一段小代码：</p>
-
-    <iframe id="ifr" width="200" height="235" scrolling="no" style="background: url(http://studio.processingtogether.com/static/img/jun09/pad/connectingbar.gif) no-repeat center 60px;" src="http://studio.processingtogether.com/sp/pad/iframe/ro.9DUd1JyjanBXc/rev.925?autostart=0"></iframe>
-  </li>
-  <li>
-    <p><a href="http://hascanvas.com/">hascanvas</a></p>
-
-    <p>这个网站设计的很独特，编辑器隐藏在左边，鼠标靠近浏览器左边缘的时候，编辑器就会自动弹出，鼠标移开编辑区后，就会保存一次代码并编译，结果就显示在整个页面上。但是我用和上面一模一样的代码进行测试始终报错，这里只好拿别人的代码演示一下了。（貌似鼠标位置依然有偏差）</p>
-
-    <iframe src="http://hascanvas.com/crossing/embed" frameborder="0" scrolling="no" style="width:600px;height:400px;"></iframe>
-
-    <p><img src="https://lh6.googleusercontent.com/-gSeb362FAWw/UnkDCOO0AMI/AAAAAAAABTg/7bDgI4cjK80/s912/%25E5%25B1%258F%25E5%25B9%2595%25E5%25BF%25AB%25E7%2585%25A7%25202013-11-05%2520%25E4%25B8%258B%25E5%258D%258810.36.00.png" alt="hascanvas 界面" /></p>
-  </li>
-</ol>
 ]]></content>
   </entry>
   
