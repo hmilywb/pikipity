@@ -14,6 +14,16 @@
 
   
   <entry>
+    <title type="html"><![CDATA[我终于回来了]]></title>
+    <link href="http://pikipity.github.io/blog/i-am-well.html"/>
+    <updated>2014-08-22T10:12:00+08:00</updated>
+    <id>http://pikipity.github.io/blog/i-am-well</id>
+    <content type="html"><![CDATA[<p>从大四下学期开始一直到现在完全没有闲下来更新一下网站，忙着发论文啊、出国交换啊、比赛啊，一个FYP到处使，现在终于是把那点东西的剩余价值榨取干净了，最终的结果就是更新速度终于从最初的一天一更变到了半年一更。接下来的日子里应该不会把这个网站舍弃掉，但是更新速度肯定会大幅下降，所以网站简介也要改一改了，争取把访问量拉升回来。</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[那些年不得不放弃的梦想]]></title>
     <link href="http://pikipity.github.io/blog/break-dream.html"/>
     <updated>2014-03-04T22:31:00+08:00</updated>
@@ -87,34 +97,6 @@
     <content type="html"><![CDATA[<p>看到最后才发现是大虐。。。</p>
 
 <embed height="452" width="544" quality="high" allowfullscreen="true" type="application/x-shockwave-flash" src="http://static.hdslb.com/miniloader.swf" flashvars="aid=114900&amp;page=1" pluginspage="http://www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash" />
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[多人实时合作免费在线绘图软件 -- Process On]]></title>
-    <link href="http://pikipity.github.io/blog/process-on.html"/>
-    <updated>2013-10-05T08:51:00+08:00</updated>
-    <id>http://pikipity.github.io/blog/process-on</id>
-    <content type="html"><![CDATA[<p><img src="https://lh4.googleusercontent.com/-Q0n9wEE-bYA/Uk9jd08BJuI/AAAAAAAABR4/QGkUPxMBvR8/s912/%25E5%25B1%258F%25E5%25B9%2595%25E5%25BF%25AB%25E7%2585%25A7%25202013-10-05%2520%25E4%25B8%258A%25E5%258D%25888.48.46.png" alt="Process On" /></p>
-
-<p>今天推荐一款用来绘图的在线应用 – <a href="http://www.processon.com/">Process On</a>，其内置了多种模版，非常适合绘制结构性很强的图片，例如流程图等。</p>
-
-<p><img src="https://lh5.googleusercontent.com/-DX51QUQnnts/Uk9kIfSkO-I/AAAAAAAABSA/KqhLYRS-gOU/s720/%25E5%25B1%258F%25E5%25B9%2595%25E5%25BF%25AB%25E7%2585%25A7%25202013-10-05%2520%25E4%25B8%258A%25E5%258D%25888.56.29.png" alt="内置模版" /></p>
-
-<p><img src="https://lh6.googleusercontent.com/-Qow5by5ZDps/Uk9krAeS5nI/AAAAAAAABSM/xHXpGkEiW_E/s912/%25E5%25B1%258F%25E5%25B9%2595%25E5%25BF%25AB%25E7%2585%25A7%25202013-10-05%2520%25E4%25B8%258A%25E5%258D%25888.58.58.png" alt="绘制界面" /></p>
-
-<p>上图就是绘制界面了，也许第一眼看是去觉得及其普通，甚至左边所提供的备选图形都和<a href="http://dia-installer.de/">开源软件 Dia</a>如出一辙。的确，其绘图功能没有什么出众的地方，如果想快速绘制出专业的流程图，这款软件并不是一个很好地选择，毕竟<a href="http://office.microsoft.com/en-us/visio/">微软的 Visio</a> 比它专业几百倍。但是今天之所以推荐它，是因为其强大的在线多人合作功能。这里所说的多人合作不是指一人保存退出之后其他人才可以观看和修改，如果是那样的话，用 <a href="https://www.dropbox.com">Dropbox</a> 就可以了，这里所说的合作是实时合作，只要每个人都在线，就可以由作者通过“邀请协作者”的方式将其他人添加入编辑群中，每个协作者的修改都会实时显示在其他协作者的画面上。如果协作者们距离很远，还可以通过内置的“聊天”功能来进行讨论。很大程度上方便了多人流程图绘制的问题，再也不会出现，一个人掌握电脑其他人在旁边七嘴八舌导致操作者不知道应该如何是好的情况。</p>
-
-<p><img src="https://lh6.googleusercontent.com/-iR6I-HdwVgY/Uk9p3JLSJNI/AAAAAAAABSg/syr21nwsI3Q/s740/%25E5%25B1%258F%25E5%25B9%2595%25E5%25BF%25AB%25E7%2585%25A7%25202013-10-05%2520%25E4%25B8%258A%25E5%258D%25889.19.13.png" alt=" Visio 文件导入帮助" /></p>
-
-<p>并且其支持 <a href="http://office.microsoft.com/en-us/visio/">Visio</a> 文件的导入。还有一个类似于社交网络的共享圈，可以通过关注其他人来了解对方正在制作什么样的图片，也可以通过搜索来发现其他人共享出来的图片。总而言之，这是一款不可多得多人实时在线合作绘图网站。</p>
-
-<p><img src="https://lh6.googleusercontent.com/-Rh-C4psyJ84/Uk9p3JQe4AI/AAAAAAAABSk/gozi3_wdROw/s912/%25E5%25B1%258F%25E5%25B9%2595%25E5%25BF%25AB%25E7%2585%25A7%25202013-10-05%2520%25E4%25B8%258A%25E5%258D%25889.18.27.png" alt="类似于社交网络的共享圈" /></p>
-
-<p><a href="http://www.processon.com/">这里是 Process On 的网址，免费注册和使用。</a></p>
-
-<p><a href="https://chrome.google.com/webstore/detail/processon-online-diagramm/pnggaliohjcaboolkcpjhfondbjlehkm?utm_source=chrome-ntp-icon">Chrome 上没有 Process On 的在线编辑器的应用，只有一个网站快捷方式的应用</a></p>
 
 ]]></content>
   </entry>
